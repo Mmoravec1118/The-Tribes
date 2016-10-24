@@ -12,7 +12,7 @@ public class ButtonBehaviorScript : MonoBehaviour {
     public Button rulesButton;
     public Button playerSlideButton;
     public Text sliderText;
-    public int players = 1;
+    
 
     // Tribe type enumeration
     public enum TribeType
@@ -53,12 +53,6 @@ public class ButtonBehaviorScript : MonoBehaviour {
     public int trustStat;
     public int survivalStat;
     public int notorietyStat;
-
-    public void OnValueChange()
-    {
-        players = (int)GetComponent<Slider>().value;
-        playerSlideButton.GetComponent<Text>().text = "Player Count : (2 -4)  " + players;
-    }
 
     public void ChangeScene()
     {
