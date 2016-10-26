@@ -15,6 +15,8 @@ public class ButtonBehaviorScript : MonoBehaviour {
     public Button playerSlideButton;
     public Text sliderText;
 
+    int players = 1;
+
 
     // Tribe type enumeration
     public enum TribeType
