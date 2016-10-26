@@ -7,12 +7,16 @@ public class ButtonBehaviorScript : MonoBehaviour {
 
     public string sceneName;
 
+    // Buttons passed in
     public PlayerSelectionController playerSelectionController;
 
     public Button playbutton;
     public Button rulesButton;
-    public int players = 1;
+    public Button playerSlideButton;
+    public Text sliderText;
 
+
+    // Tribe type enumeration
     public enum TribeType
     {
         Type0,
@@ -23,12 +27,14 @@ public class ButtonBehaviorScript : MonoBehaviour {
 
     public TribeType tribeType;
 
+    // Tribe Type Buttons
     public Button okbutton;
     public Button tribe0Flavor;
     public Button tribe1Flavor;
     public Button tribe2Flavor;
     public Button tribe3Flavor;
 
+    // Tribe Type Text
     public Text tribe0FlavorText;
     public Text tribe1FlavorText;
     public Text tribe2FlavorText;
@@ -36,6 +42,7 @@ public class ButtonBehaviorScript : MonoBehaviour {
 
     public Image finalDecisionPanel;
 
+    // SLiders for stats
     public Slider playerCountSlider;
 
     public Slider strengthSlider;
@@ -83,7 +90,7 @@ public class ButtonBehaviorScript : MonoBehaviour {
                 playerSelectionController.PlayerSwitch(playerSelectionController.GetTempPlayerCount() + 1);
 
                 ResetStats();
-
+        
                 print(playerSelectionController.GetTempPlayerCount().ToString());
             }
             else
@@ -108,6 +115,11 @@ public class ButtonBehaviorScript : MonoBehaviour {
     public void OnRuleButton ()
     {
         rulesButton.gameObject.SetActive(false);
+    }
+
+    public void Deactivate()
+    {
+        playerSlideButton.gameObject.SetActive(false);
     }
 
     public void Exit()
