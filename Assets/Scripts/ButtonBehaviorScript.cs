@@ -55,26 +55,16 @@ public class ButtonBehaviorScript : MonoBehaviour {
     {
         playerSelectionController = GameObject.FindObjectOfType<PlayerSelectionController>();
 
-        tribeType = TribeType.Type0;
-        strengthStat = 0;
-        agilityStat = 0;
-        trustStat = 0;
-        survivalStat = 0;
-        notorietyStat = 0;
-
-        // Initializing all stats and values to their default states
         PlayerPrefs.SetInt("NumberOfPlayers", 1);
-        PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
-        PlayerPrefs.SetInt(playerSelectionController.GetCurrentStrengthStatKey(), strengthStat);
-        PlayerPrefs.SetInt(playerSelectionController.GetCurrentAgilityStatKey(), agilityStat);
-        PlayerPrefs.SetInt(playerSelectionController.GetCurrentTrustStatKey(), trustStat);
-        PlayerPrefs.SetInt(playerSelectionController.GetCurrentSurvivalStatKey(), survivalStat);
-        PlayerPrefs.SetInt(playerSelectionController.GetCurrentNotorietyStatKey(), notorietyStat);
+
+        ResetStats();
     }
 
     public void OnValueChange()
     {
         players = (int)playerCountSlider.value;
+
+        print("PlayerCount: " + players.ToString());
 
         // This is where the number of players is stored between scenes
         playerSelectionController.SetPlayerCount(players);
@@ -83,6 +73,24 @@ public class ButtonBehaviorScript : MonoBehaviour {
 
     public void ChangeScene()
     {
+        // Loops the player setup scene for the number of players selected
+        if (SceneManager.GetActiveScene().name == "PlayerSetup")
+        {
+            if (playerSelectionController.GetTempPlayerCount() < (players + 1))
+            {
+                sceneName = "PlayerSetup";
+                playerSelectionController.SetTempPlayerCount(playerSelectionController.GetTempPlayerCount() + 1);
+                playerSelectionController.PlayerSwitch(playerSelectionController.GetTempPlayerCount() + 1);
+
+                ResetStats();
+
+                print(playerSelectionController.GetTempPlayerCount().ToString());
+            }
+            else
+            {
+                sceneName = "Gameplay";
+            }
+        }
         
         SceneManager.LoadScene(sceneName);
     }
@@ -249,5 +257,23 @@ public class ButtonBehaviorScript : MonoBehaviour {
         okbutton.gameObject.SetActive(true);
 
         finalDecisionPanel.gameObject.SetActive(false);
+    }
+
+    private void ResetStats()
+    {
+        tribeType = TribeType.Type0;
+        strengthStat = 0;
+        agilityStat = 0;
+        trustStat = 0;
+        survivalStat = 0;
+        notorietyStat = 0;
+
+        // Initializing all stats and values to their default states
+        PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
+        PlayerPrefs.SetInt(playerSelectionController.GetCurrentStrengthStatKey(), strengthStat);
+        PlayerPrefs.SetInt(playerSelectionController.GetCurrentAgilityStatKey(), agilityStat);
+        PlayerPrefs.SetInt(playerSelectionController.GetCurrentTrustStatKey(), trustStat);
+        PlayerPrefs.SetInt(playerSelectionController.GetCurrentSurvivalStatKey(), survivalStat);
+        PlayerPrefs.SetInt(playerSelectionController.GetCurrentNotorietyStatKey(), notorietyStat);
     }
 }

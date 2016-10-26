@@ -10,6 +10,7 @@ public class PlayerSelectionController : MonoBehaviour {
 
     int playersCount = 1;
     int currentPlayer = 1;
+    int tempPlayerCount = 0;
 
     string playerCountKeyString = "";
     string currentPlayerTribeKeyString = "";
@@ -80,5 +81,15 @@ public class PlayerSelectionController : MonoBehaviour {
     public void SetPlayerCount(int numberOfPlayers)
     {
         playersCount = numberOfPlayers;
+    }
+
+    public int GetTempPlayerCount()
+    {
+        return tempPlayerCount;
+    }
+
+    public void SetTempPlayerCount(int newTempPlayerCount)
+    {
+        tempPlayerCount = newTempPlayerCount;
     }
 }
