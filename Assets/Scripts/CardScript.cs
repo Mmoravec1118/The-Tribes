@@ -4,17 +4,19 @@ using System.Collections;
 
 public class CardScript : MonoBehaviour {
 
-    public enum TribeName {Warrior, Peaceful, Nomad, Bandit, Agriculture};
-
-
-    public class Card
+    public class EventCard
     {
-        public Text cardTitle;
-        public TribeName tribe;
-        public Text cardDescription;
+        private string cardTitle;
+        private string cardDescription;
+        private Choice[] choices;
 
         //choices are brought in from the file.  Object type Choice is currently not constructed yet.  requires another script.
-
+        public EventCard(string cardTitle, string cardDescription, Choice[] choices)
+        {
+            this.cardDescription = cardDescription;
+            this.cardTitle = cardTitle;
+            this.choices = choices
+        }
 
         //public Choice choices;
 
@@ -29,7 +31,6 @@ public class CardScript : MonoBehaviour {
 
 
             cardTitle.text = "Severe Drought";
-            tribe = TribeName.Nomad;
             cardDescription.text = "Severe Drought has befallen the land.  Water Dries up far quicker, plants are dying, and your tribes people are struggling in the blazing heat";
             //choices = ;//load in list of choices. here in which to display on the bottom of the screen.
 
@@ -50,7 +51,7 @@ public class CardScript : MonoBehaviour {
         }
 
         //applies the card effect based on the season passed into the card, which modifies the applied effect
-        void ApplyCardEffect(TribeName tribe)
+        void ApplyCardEffect()
         {
             //on choice selection, enact the choice parameters to the player stats.
             //these parameters should be placed in the choice object on that card, so that on clicking it, the game does not
@@ -67,6 +68,14 @@ public class CardScript : MonoBehaviour {
         {
 
         }
+    }
+
+    public class Choice
+    {
+        string description;
+        
+        //EFFECTS?
+
     }
 
 }
