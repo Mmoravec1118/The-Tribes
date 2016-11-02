@@ -18,16 +18,9 @@ public class ButtonBehaviorScript : MonoBehaviour {
     int players = 1;
 
 
-    // Tribe type enumeration
-    public enum TribeType
-    {
-        Type0,
-        Type1,
-        Type2,
-        Type3
-    }
+    
 
-    public TribeType tribeType;
+    public PlayerClass.TribeType tribeType;
 
     // Tribe Type Buttons
     public Button okbutton;
@@ -139,7 +132,7 @@ public class ButtonBehaviorScript : MonoBehaviour {
 
     public void Tribe0Flavor()
     {
-        tribeType = TribeType.Type0;
+        tribeType = PlayerClass.TribeType.Barbarian;
 
         // This is where the selected value of the tribe is stored between scenes
         PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -154,7 +147,7 @@ public class ButtonBehaviorScript : MonoBehaviour {
 
     public void Tribe1Flavor()
     {
-        tribeType = TribeType.Type1;
+        tribeType = PlayerClass.TribeType.PeaceMaker;
 
         // This is where the selected value of the tribe is stored between scenes
         PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -169,7 +162,7 @@ public class ButtonBehaviorScript : MonoBehaviour {
 
     public void Tribe2Flavor()
     {
-        tribeType = TribeType.Type2;
+        tribeType = PlayerClass.TribeType.Nomad;
 
         // This is where the selected value of the tribe is stored between scenes
         PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -184,7 +177,7 @@ public class ButtonBehaviorScript : MonoBehaviour {
 
     public void Tribe3Flavor()
     {
-        tribeType = TribeType.Type3;
+        tribeType = PlayerClass.TribeType.Farmer;
 
         // This is where the selected value of the tribe is stored between scenes
         PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -275,7 +268,7 @@ public class ButtonBehaviorScript : MonoBehaviour {
 
     private void ResetStats()
     {
-        tribeType = TribeType.Type0;
+        tribeType = PlayerClass.TribeType.Barbarian;
         strengthStat = 0;
         agilityStat = 0;
         trustStat = 0;
