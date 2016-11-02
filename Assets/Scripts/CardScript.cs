@@ -27,14 +27,7 @@ public class CardScript : MonoBehaviour {
 
             //cardTitle = title of the card from the text file.  currently Hardcoded.
             //tribeName = the current tribe the player who deals the card is using.
-            //cardDescription = the flavortext on the card with the choices.
-
-
-            cardTitle.text = "Severe Drought";
-            cardDescription.text = "Severe Drought has befallen the land.  Water Dries up far quicker, plants are dying, and your tribes people are struggling in the blazing heat";
-            //choices = ;//load in list of choices. here in which to display on the bottom of the screen.
-
-
+            //cardDescription = the flavortext on the card with the choices
 
 
 
