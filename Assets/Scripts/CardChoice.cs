@@ -3,13 +3,37 @@ using System.Collections;
 
 public class CardChoice : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    Effect[] winEffects;
+    Effect[] lossEffects;
+    string description;
+    string Description
+    {
+        get
+        {
+            return description;
+        }
+    }
+	public CardChoice(string description, Effect[] winEffects, Effect[] lossEffects)
+    {
+        this.description = description;
+        this.winEffects = winEffects;
+        this.lossEffects = lossEffects;
+    }
+}
+
+public class Effect
+{
+    int change;
+    Card.Traits toChange;
+
+    public Effect(int change, Card.Traits toChange)
+    {
+        this.change = change;
+        this.toChange = toChange;
+    }
+
+    public MakeChange(Player player)
+    {
+
+    }
 }
