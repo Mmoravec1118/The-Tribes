@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CardChoice : MonoBehaviour {
 
@@ -13,7 +14,7 @@ public class CardChoice : MonoBehaviour {
             return description;
         }
     }
-	public CardChoice(string description, Effect[] winEffects, Effect[] lossEffects)
+	public CardChoice(string description, Card.Traits trait, int toBeat, Effect[] winEffects, Effect[] lossEffects)
     {
         this.description = description;
         this.winEffects = winEffects;
