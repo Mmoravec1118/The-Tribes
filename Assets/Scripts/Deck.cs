@@ -427,6 +427,71 @@ public class Deck : MonoBehaviour {
 		);
 
 
+		//add items to the queue.
+		//CARD 7
+		//WILDFIRE
+		deck.Enqueue (
+			//new card one
+			new Card ("Wildfire",
+				"Your Settlement finds itself in the path of a raging wildfire!",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("AGILITY - You attempt to abandon your current settlement with your villagers taking anything you can carry.",
+					"You manage to escape, losing no resources but gaining some survival rank.",
+					"You fail to evacuate in time, and while no one is injured, your resources are burnt in the blaze.",
+					//win effect,
+					Card.Traits.Agility,
+					10,
+					new Effect[]{
+						new Effect(1, Card.Traits.Survival),
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-2, Card.Resources.Wood),
+						new Effect(-2, Card.Resources.Food)}
+				),
+
+					//choice 2
+					new CardChoice ("SURVIVAL - You attempt to dig fire trenches between the fire and your village to contain the fire.(12)",
+						"The trench works and your settlement is spared and the new ditch serves as a new infrastructure to irrigate future crops.",
+						"The trench was not complete in time and your village is partially scorched.",
+						Card.Traits.Survival,
+						12,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, Card.Resources.Food),
+							new Effect(1, Card.Traits.Strength)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, Card.Resources.Wood),
+							new Effect(-1, Card.Resources.Food)
+						}
+					),
+
+					//choice 3
+					new CardChoice ("STRENGTH - You take some villagers to attempt to extinguish the fire before it reaches the village.(13)",
+						"Your efforts save the village and you gain some food and wood in the scramble.",
+						"You lose not only a hefty portion of your village, but a large number of villagers",
+						Card.Traits.Strength,
+						13,
+						//win effects
+						new Effect[]{
+							new Effect(2, Card.Resources.Wood),
+							new Effect(1, Card.Resources.Food)	
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, Card.Resources.People),
+							new Effect(-2, Card.Resources.Wood),
+							new Effect(-2, Card.Resources.Food),
+							new Effect(-1, Card.Traits.Survival)
+						})
+				}
+			)
+			//end of enqueue card 7
+		);
+
 
 
 	}
