@@ -32,8 +32,8 @@ public class Effect
         this.toChange = toChange;
     }
 
-    public MakeChange(Player player)
-    {
+    //public void MakeChange(Player player)
+    //{
 
-    }
+    //}
 }
