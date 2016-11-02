@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NewBehaviourScript1 : MonoBehaviour {
 
@@ -30,7 +31,6 @@ public class NewBehaviourScript1 : MonoBehaviour {
 			//In case error
 			default:
 				//Print "There was an error."
-				Console.WriteLine("Default case");
 				break;
 		}
 	}
