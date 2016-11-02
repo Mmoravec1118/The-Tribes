@@ -31,10 +31,10 @@ public class NewBehaviourScript1 : MonoBehaviour {
 			//In case error
 			default:
 				//Print "There was an error."
-<<<<<<< HEAD
-				
-=======
->>>>>>> origin/master
+//<<<<<<< HEAD
+//				
+//=======
+//>>>>>>> origin/master
 				break;
 		}
 	}
