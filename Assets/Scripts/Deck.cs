@@ -212,8 +212,6 @@ public class Deck : MonoBehaviour {
 							new Effect(-2, Card.Resources.Wood),
 							new Effect(-2, Card.Resources.Food)
 						})
-
-
 				}
 			)
 			//end of enqueue card 2
@@ -224,70 +222,211 @@ public class Deck : MonoBehaviour {
 		//PIXIES AT PLAY
 		deck.Enqueue (
 			//new card one
-			new Card ("Orc Invasion",
-				"Your settlement has been invaded by orcs, they look like they want what you have.",
+			new Card ("Pixies at play",
+				"Mischevious Pixies have left their forest to 'investigate' your settlement.",
 
 				//choice 1
-				new CardChoice[] {new CardChoice ("STRENGTH - You try to run the orcs off with your military might(10).",
-					"You successfully chase off the orcs",
-					"You fail to chase off the orcs",
+				new CardChoice[] {new CardChoice ("STRENGTH - You attempt to murder the pixies(12).",
+					"You destroy the pixies and take their resources for yourself.",
+					"The pixies enrage and kill some of your villagers in their sleep.",
 					//win effect,
 					Card.Traits.Strength,
-					10,
+					12,
 					new Effect[]{
-						new Effect(1, Card.Resources.Wood),
-						new Effect(1, Card.Resources.Stone),
+						new Effect(1, Card.Traits.Notoriety),
 						new Effect(1, Card.Resources.Food)
 					},
 					//lose effects
 					new Effect[]{
-						new Effect(-1, Card.Resources.Wood),
-						new Effect(-1, Card.Resources.Stone),
-						new Effect(-1, Card.Resources.Food)}
+						new Effect(-1, Card.Traits.Strength),
+						new Effect(-1, Card.Resources.People)}
 				),
 
 					//choice 2
-					new CardChoice ("AGILITY - Using stealth, you take down the orc leader(10)",
-						"The Orc Leader dies",
-						"The Orc Leader Thwards your assassination attempt",
-						Card.Traits.Agility,
-						10,
+					new CardChoice ("TRUST - You Attempt to persuade the pixies of the fun in protecting your settlement with their magic(7)",
+						"They find the thought amusing and make a magical barrier for your settlement.",
+						"The pixies find it more amusing to makea barrier that instead weakens your settlement to future threats...",
+						Card.Traits.Trust,
+						7,
 						//win effect
 						new Effect[]{ 
-							new Effect(2, Card.Resources.People),
-							new Effect(1, Card.Traits.Strength)
+							new Effect(1, Card.Traits.Strength),
+							new Effect(1, Card.Traits.Agility),
+							new Effect(1, Card.Traits.Trust)
 						},
 						//lose effect
 						new Effect[]{
-							new Effect(-1, Card.Traits.Strength)}
+							new Effect(-1, Card.Traits.Strength),
+							new Effect(-1, Card.Traits.Agility),
+							new Effect(-1, Card.Traits.Trust)
+						}
 
 					),
 
 					//choice 3
-					new CardChoice ("NOTORIETY - Maybe the Orcs are too afraid of you to attack and will offer a peace offering.(12)",
-						"They cower in fear at you!  They offer the peace offering",
-						"They laugh at you, taking your resources",
+					new CardChoice ("NOTORIETY - You attempt to enslave the pixies.(12)",
+						"You somehow manage to enslave the entire pixie colony and they become slaves for your settlement.",
+						"The pixies enslave part of your settlement and drag them into the woods never to be seen again.",
 						Card.Traits.Notoriety,
 						12,
 						//win effects
 						new Effect[]{
-							new Effect(1, Card.Resources.Wood),
-							new Effect(1, Card.Resources.Stone),
-							new Effect(1, Card.Resources.Food)	
+							new Effect(2, Card.Resources.People),
+							new Effect(1, Card.Traits.Notoriety),
+							new Effect(1, Card.Traits.Strength)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, Card.Resources.People),
+							new Effect(-1, Card.Traits.Notoriety),
+							new Effect(-1, Card.Traits.Strength)
+						})
+				}
+			)
+			//end of enqueue card 4
+		);
+
+
+		//add items to the queue.
+		//CARD 5
+		//WIZARD PROTEST
+		deck.Enqueue (
+			//new card one
+			new Card ("Wizard Protest",
+				"The Local Wizard is fed up with his living conditions and decides to threaten your settlement until it improves.",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("TRUST - You offer the Wizard better living conditions by renovating his tower(10).",
+					"He appreciates the offer and at the expense of a few resources, he makes peace.",
+					"The wizard claims your efforts are too late, and takes resources by force",
+					//win effect,
+					Card.Traits.Trust,
+					10,
+					new Effect[]{
+						new Effect(2, Card.Traits.Trust),
+						new Effect(-1, Card.Resources.Stone),
+						new Effect(-1, Card.Resources.Food)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, Card.Traits.Strength),
+						new Effect(-1, Card.Traits.Agility),
+						new Effect(-1, Card.Resources.Wood),
+						new Effect(-1, Card.Resources.Stone)
+					}
+				),
+
+					//choice 2
+					new CardChoice ("AGILITY - You attempt to stop the wizard before he can do any damage(12)",
+						"The Orc Leader dies",
+						"The Orc Leader Thwards your assassination attempt",
+						Card.Traits.Agility,
+						12,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, Card.Resources.Agility),
+							new Effect(-1, Card.Traits.Strength)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, Card.Traits.Strength),
+							new Effect(-1, Card.Traits.Agility)
+						}
+
+					),
+
+					//choice 3
+					new CardChoice ("NOTORIETY - You attempt to intimidate the Wizard into rescinding his attack.(15)",
+						"The Wizard is no match for you, as you outlevel him significantly.  He begs for forgiveness.",
+						"You get ganked by the Wizard and look foolish.",
+						Card.Traits.Notoriety,
+						15,
+						//win effects
+						new Effect[]{
+							new Effect(1, Card.Traits.Strength),
+							new Effect(1, Card.Traits.Notoriety)	
 						},
 						//lose effect
 						new Effect[]{ 
 							new Effect(-1, Card.Traits.Notoriety),
-							new Effect(-1, Card.Resources.Stone),
-							new Effect(-1, Card.Resources.Wood),
-							new Effect(-1, Card.Resources.Food)
+							new Effect(-1, Card.Traits.Strength),
+							new Effect(-1, Card.Resources.People)
 						})
-
-
 				}
 			)
-			//end of enqueue card 1
+			//end of enqueue card 5
 		);
+
+		//add items to the queue.
+		//CARD 6
+		//THRILL OF THE HUNT
+		deck.Enqueue (
+			//new card one
+			new Card ("Thrill of the Hunt",
+				"A vicious hunter begins to stalk and hunt your settlement for sport!",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("NOTORIETY - You attempt to use your reputation to scare off the predatory hunter(14).",
+					"The hunter decides the thrill of the sport is not worth his own life.",
+					"The hunter loves it when his prey puts up a fight and insteads turns up the pressure.",
+					//win effect,
+					Card.Traits.Notoriety,
+					14,
+					new Effect[]{
+						new Effect(3, Card.Traits.Notoriety),
+						new Effect(1, Card.Traits.Strength),
+						new Effect(1, Card.Traits.Agility)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-3, Card.Resources.People),
+						new Effect(-1, Card.Traits.Strength),
+						new Effect(-1, Card.Traits.Notoriety)}
+				),
+
+					//choice 2
+					new CardChoice ("Trust - You attempt to convince the hunter that you are not a worthwhile target and instead can supply him.(10)",
+						"The hunter agrees, trading some resources for the ones he requires.",
+						"The hunter isn't phased by politics, and instead takes resources by force, killing some of your people in the process.",
+						Card.Traits.Trust,
+						10,
+						//win effect
+						new Effect[]{ 
+							new Effect(1, Card.Resources.Wood),
+							new Effect(1, Card.Resources.Stone),
+							new Effect(-1, Card.Resources.Food)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-2, Card.Resources.Food),
+							new Effect(-2, Card.Resources.People)
+						}
+
+					),
+
+					//choice 3
+					new CardChoice ("STRENGTH - You attempt to hunt the hunter, engaging in a deadly bloodsport.(12)",
+						"The hunter becomes the prey and your settlement eliminates him and takes his resources.",
+						"You fight a hard battle, but lose settlers in the process.",
+						Card.Traits.Strength,
+						12,
+						//win effects
+						new Effect[]{
+							new Effect(2, Card.Resources.Food),
+							new Effect(2, Card.Traits.Notoriety)	
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, Card.Resources.People),
+							new Effect(-1, Card.Resources.Wood),
+							new Effect(-1, Card.Resources.Stone)
+						})
+				}
+			)
+			//end of enqueue card 6
+		);
+
+
 
 
 	}
@@ -300,7 +439,8 @@ public class Deck : MonoBehaviour {
 	//removed card from the deck
 	void Dequeue (Card card)
 	{
-		
+		//dequeue the card from the top of the deck
+		deck.Dequeue ();
 	}
 
 
