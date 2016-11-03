@@ -324,7 +324,7 @@ public class Deck : MonoBehaviour {
 						12,
 						//win effect
 						new Effect[]{ 
-							new Effect(2, Card.Resources.Agility),
+							new Effect(2, Card.Traits.Agility),
 							new Effect(-1, Card.Traits.Strength)
 						},
 						//lose effect

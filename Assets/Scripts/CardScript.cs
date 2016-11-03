@@ -15,7 +15,7 @@ public class CardScript : MonoBehaviour {
         {
             this.cardDescription = cardDescription;
             this.cardTitle = cardTitle;
-            this.choices = choices
+            this.choices = choices;
         }
 
         //public Choice choices;

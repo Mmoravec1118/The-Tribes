@@ -7,16 +7,20 @@ public class CardChoice : MonoBehaviour {
     Effect[] winEffects;
     Effect[] lossEffects;
     string description;
-    string Description
+    
 	string winText;
 	string lossText;
+
+    public string Description
     {
         get
         {
             return description;
         }
     }
-	public CardChoice(string description, string winText, string lossText, Card.Traits trait, int toBeat, Effect[] winEffects, Effect[] lossEffects)
+
+
+    public CardChoice(string description, string winText, string lossText, Card.Traits trait, int toBeat, Effect[] winEffects, Effect[] lossEffects)
     {
         this.description = description;
         this.winEffects = winEffects;
