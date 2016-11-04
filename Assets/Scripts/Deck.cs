@@ -6,9 +6,8 @@ public class Deck : MonoBehaviour {
 
 
 	//fields for a new deck
-	Queue<Card> deck;
-
-
+	public static Queue<Card> deck;
+    public GameObject cardPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -318,8 +317,8 @@ public class Deck : MonoBehaviour {
 
 					//choice 2
 					new CardChoice ("AGILITY - You attempt to stop the wizard before he can do any damage(12)",
-						"The Orc Leader dies",
-						"The Orc Leader Thwards your assassination attempt",
+						"You sneak past the wizard and knock him out",
+						"The wizard blows up your village",
 						Card.Traits.Agility,
 						12,
 						//win effect
@@ -502,11 +501,15 @@ public class Deck : MonoBehaviour {
 	}
 
 	//removed card from the deck
-	void Dequeue (Card card)
+	Card Dequeue (Card card)
 	{
 		//dequeue the card from the top of the deck
-		deck.Dequeue ();
+		return deck.Dequeue ();
 	}
 
+    public void DrawCard()
+    {
+        Instantiate(cardPrefab, new Vector3(), new Quaternion());
+    }
 
 }
