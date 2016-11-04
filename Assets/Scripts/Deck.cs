@@ -6,7 +6,7 @@ public class Deck : MonoBehaviour {
 
 
 	//fields for a new deck
-	Queue<Card> deck;
+	public static Queue<Card> deck;
 
 
 
@@ -318,13 +318,13 @@ public class Deck : MonoBehaviour {
 
 					//choice 2
 					new CardChoice ("AGILITY - You attempt to stop the wizard before he can do any damage(12)",
-						"The Orc Leader dies",
-						"The Orc Leader Thwards your assassination attempt",
+						"You sneak past the wizard and knock him out",
+						"The wizard blows up your village",
 						Card.Traits.Agility,
 						12,
 						//win effect
 						new Effect[]{ 
-							new Effect(2, Card.Resources.Agility),
+							new Effect(2, Card.Traits.Agility),
 							new Effect(-1, Card.Traits.Strength)
 						},
 						//lose effect
@@ -502,10 +502,10 @@ public class Deck : MonoBehaviour {
 	}
 
 	//removed card from the deck
-	void Dequeue (Card card)
+	Card Dequeue (Card card)
 	{
 		//dequeue the card from the top of the deck
-		deck.Dequeue ();
+		return deck.Dequeue ();
 	}
 
 

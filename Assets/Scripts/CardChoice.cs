@@ -7,9 +7,9 @@ public class CardChoice : MonoBehaviour {
     Effect[] winEffects;
     Effect[] lossEffects;
     string description;
+    string winText;
+    string lossText;
     string Description
-	string winText;
-	string lossText;
     {
         get
         {
