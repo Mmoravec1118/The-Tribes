@@ -7,6 +7,8 @@ public class CardChoice : MonoBehaviour {
     Effect[] winEffects;
     Effect[] lossEffects;
     string description;
+    string winText;
+    string lossText;
     string Description
     {
         get
@@ -14,24 +16,33 @@ public class CardChoice : MonoBehaviour {
             return description;
         }
     }
-	public CardChoice(string description, Card.Traits trait, int toBeat, Effect[] winEffects, Effect[] lossEffects)
+	public CardChoice(string description, string winText, string lossText, Card.Traits trait, int toBeat, Effect[] winEffects, Effect[] lossEffects)
     {
         this.description = description;
         this.winEffects = winEffects;
         this.lossEffects = lossEffects;
+		this.winText = winText;
+		this.lossText = lossText;
     }
 }
 
 public class Effect
 {
     int change;
-    Card.Traits toChange;
+    Card.Traits toChangeTrait;
+	Card.Resources toChangeResource;
 
-    public Effect(int change, Card.Traits toChange)
+    public Effect(int change, Card.Traits toChangeTrait)
     {
         this.change = change;
-        this.toChange = toChange;
+        this.toChangeTrait = toChangeTrait;
     }
+
+	public Effect(int change, Card.Resources toChangeResource)
+	{
+		this.change = change;
+		this.toChangeResource = toChangeResource;
+	}
 
     //public void MakeChange(Player player)
     //{
