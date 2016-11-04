@@ -2,9 +2,6 @@
 using System.Collections;
 
 public class Card : MonoBehaviour {
-    public enum CardType { Event, GlobalEvent, Scar }
-    public enum Traits { Strength, Agility, Trust, Survival, Notoriety }
-    public enum Resources { Wood, Stone, People, Food }
 
     string title { get; set; }
     string description { get; set; }

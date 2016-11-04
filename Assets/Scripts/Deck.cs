@@ -28,34 +28,34 @@ public class Deck : MonoBehaviour {
 					"You successfully chase off the orcs",
 					"You fail to chase off the orcs",
 				//win effect,
-					Card.Traits.Strength,
+					GlobalsScript.Traits.Strength,
 					10,
 					new Effect[]{
-						new Effect(1, Card.Resources.Wood),
-						new Effect(1, Card.Resources.Stone),
-						new Effect(1, Card.Resources.Food)
+						new Effect(1, GlobalsScript.Resources.Wood),
+						new Effect(1, GlobalsScript.Resources.Stone),
+						new Effect(1, GlobalsScript.Resources.Food)
 					},
 					//lose effects
 						new Effect[]{
-						new Effect(-1, Card.Resources.Wood),
-						new Effect(-1, Card.Resources.Stone),
-						new Effect(-1, Card.Resources.Food)}
+						new Effect(-1, GlobalsScript.Resources.Wood),
+						new Effect(-1, GlobalsScript.Resources.Stone),
+						new Effect(-1, GlobalsScript.Resources.Food)}
 				),
 
 					//choice 2
 					new CardChoice ("AGILITY - Using stealth, you take down the orc leader(10)",
 						"The Orc Leader dies",
 						"The Orc Leader Thwards your assassination attempt",
-						Card.Traits.Agility,
+						GlobalsScript.Traits.Agility,
 						10,
 						//win effect
 						new Effect[]{ 
-						new Effect(2, Card.Resources.People),
-						new Effect(1, Card.Traits.Strength)
+						new Effect(2, GlobalsScript.Resources.People),
+						new Effect(1, GlobalsScript.Traits.Strength)
 					},
 						//lose effect
 					new Effect[]{
-							new Effect(-1, Card.Traits.Strength)}
+							new Effect(-1, GlobalsScript.Traits.Strength)}
 					
 					),
 
@@ -63,20 +63,20 @@ public class Deck : MonoBehaviour {
 					new CardChoice ("NOTORIETY - Maybe the Orcs are too afraid of you to attack and will offer a peace offering.(12)",
 						"They cower in fear at you!  They offer the peace offering",
 						"They laugh at you, taking your resources",
-						Card.Traits.Notoriety,
+						GlobalsScript.Traits.Notoriety,
 						12,
 						//win effects
 						new Effect[]{
-						new Effect(1, Card.Resources.Wood),
-						new Effect(1, Card.Resources.Stone),
-						new Effect(1, Card.Resources.Food)	
+						new Effect(1, GlobalsScript.Resources.Wood),
+						new Effect(1, GlobalsScript.Resources.Stone),
+						new Effect(1, GlobalsScript.Resources.Food)	
 					},
 						//lose effect
 						new Effect[]{ 
-						new Effect(-1, Card.Traits.Notoriety),
-						new Effect(-1, Card.Resources.Stone),
-						new Effect(-1, Card.Resources.Wood),
-						new Effect(-1, Card.Resources.Food)
+						new Effect(-1, GlobalsScript.Traits.Notoriety),
+						new Effect(-1, GlobalsScript.Resources.Stone),
+						new Effect(-1, GlobalsScript.Resources.Wood),
+						new Effect(-1, GlobalsScript.Resources.Food)
 					})
 				
 			
@@ -98,31 +98,31 @@ public class Deck : MonoBehaviour {
 					"The Spiders were crushed and the village is safe, but you gain nothing",
 					"The spiders take some of your villagers for food",
 					//win effect,
-					Card.Traits.Strength,
+					GlobalsScript.Traits.Strength,
 					12,
 					new Effect[]{
-						new Effect(0, Card.Resources.People),
+						new Effect(0, GlobalsScript.Resources.People),
 					},
 					//lose effects
 					new Effect[]{
-						new Effect(-2, Card.Resources.People)}
+						new Effect(-2, GlobalsScript.Resources.People)}
 				),
 
 					//choice 2
 					new CardChoice ("TRUST - You try to communicate with the spiders(14)",
 						"The spiders are actually highly intelligent and you form an alliance!",
 						"You fail to communicate with the spiders.",
-						Card.Traits.Trust,
+						GlobalsScript.Traits.Trust,
 						14,
 						//win effect
 						new Effect[]{ 
-							new Effect(2, Card.Traits.Strength),
-							new Effect(1, Card.Traits.Trust)
+							new Effect(2, GlobalsScript.Traits.Strength),
+							new Effect(1, GlobalsScript.Traits.Trust)
 						},
 						//lose effect
 						new Effect[]{
-							new Effect(-1, Card.Traits.Trust),
-							new Effect(-2, Card.Resources.People)}
+							new Effect(-1, GlobalsScript.Traits.Trust),
+							new Effect(-2, GlobalsScript.Resources.People)}
 
 					),
 
@@ -130,17 +130,17 @@ public class Deck : MonoBehaviour {
 					new CardChoice ("SURVIVAL - You attempt to avoid conflict by leaving your settlement (10)",
 						"You avoid the spiders and find more resources!",
 						"You avoid the spiders but some of your people die in the wilderness.",
-						Card.Traits.Survival,
+						GlobalsScript.Traits.Survival,
 						10,
 						//win effects
 						new Effect[]{
-							new Effect(1, Card.Resources.Wood),
-							new Effect(1, Card.Resources.Food)	
+							new Effect(1, GlobalsScript.Resources.Wood),
+							new Effect(1, GlobalsScript.Resources.Food)	
 						},
 						//lose effect
 						new Effect[]{ 
-							new Effect(-1, Card.Resources.People),
-							new Effect(-1, Card.Resources.Food)
+							new Effect(-1, GlobalsScript.Resources.People),
+							new Effect(-1, GlobalsScript.Resources.Food)
 						})
 
 
@@ -162,54 +162,54 @@ public class Deck : MonoBehaviour {
 					"They Agree to avoid your settlement.",
 					"Minotaurs shag during the meeting and break things...",
 					//win effect,
-					Card.Traits.Trust,
+					GlobalsScript.Traits.Trust,
 					7,
 					new Effect[]{
-						new Effect(1, Card.Traits.Trust),
+						new Effect(1, GlobalsScript.Traits.Trust),
 					},
 					//lose effects
 					new Effect[]{
-						new Effect(-1, Card.Resources.Wood),
-						new Effect(-1, Card.Traits.Trust)}
+						new Effect(-1, GlobalsScript.Resources.Wood),
+						new Effect(-1, GlobalsScript.Traits.Trust)}
 				),
 
 					//choice 2
 					new CardChoice ("SURVIVAL - You attempt to mask your settlement with bull scent.",
 						"Your settlement survives and you find extra resources outside afterward.",
 						"You used the wrong scent and instead attracted Minotaurs.  Oops.",
-						Card.Traits.Survival,
+						GlobalsScript.Traits.Survival,
 						9,
 						//win effect
 						new Effect[]{ 
-							new Effect(2, Card.Resources.Food),
-							new Effect(2, Card.Resources.Wood),
-							new Effect(1, Card.Traits.Survival)
+							new Effect(2, GlobalsScript.Resources.Food),
+							new Effect(2, GlobalsScript.Resources.Wood),
+							new Effect(1, GlobalsScript.Traits.Survival)
 						},
 						//lose effect
 						new Effect[]{
-							new Effect(-2, Card.Resources.Wood),
-							new Effect(-2, Card.Resources.Stone)}
+							new Effect(-2, GlobalsScript.Resources.Wood),
+							new Effect(-2, GlobalsScript.Resources.Stone)}
 					),
 
 					//choice 3
 					new CardChoice ("NOTORIETY - You attempt to use your reputation to scare the Minotaurs off(14)",
 						"The Minotaurs offer the peace offering",
 						"The Minotaurs see your notoriety as a threat and instead launch an attack on your settlement.",
-						Card.Traits.Notoriety,
+						GlobalsScript.Traits.Notoriety,
 						14,
 						//win effects
 						new Effect[]{
-							new Effect(1, Card.Resources.Wood),
-							new Effect(1, Card.Resources.Stone),
-							new Effect(1, Card.Resources.Food),
-							new Effect(1, Card.Traits.Notoriety)
+							new Effect(1, GlobalsScript.Resources.Wood),
+							new Effect(1, GlobalsScript.Resources.Stone),
+							new Effect(1, GlobalsScript.Resources.Food),
+							new Effect(1, GlobalsScript.Traits.Notoriety)
 						},
 						//lose effect
 						new Effect[]{ 
-							new Effect(-1, Card.Traits.Notoriety),
-							new Effect(-2, Card.Resources.Stone),
-							new Effect(-2, Card.Resources.Wood),
-							new Effect(-2, Card.Resources.Food)
+							new Effect(-1, GlobalsScript.Traits.Notoriety),
+							new Effect(-2, GlobalsScript.Resources.Stone),
+							new Effect(-2, GlobalsScript.Resources.Wood),
+							new Effect(-2, GlobalsScript.Resources.Food)
 						})
 				}
 			)
@@ -229,35 +229,35 @@ public class Deck : MonoBehaviour {
 					"You destroy the pixies and take their resources for yourself.",
 					"The pixies enrage and kill some of your villagers in their sleep.",
 					//win effect,
-					Card.Traits.Strength,
+					GlobalsScript.Traits.Strength,
 					12,
 					new Effect[]{
-						new Effect(1, Card.Traits.Notoriety),
-						new Effect(1, Card.Resources.Food)
+						new Effect(1, GlobalsScript.Traits.Notoriety),
+						new Effect(1, GlobalsScript.Resources.Food)
 					},
 					//lose effects
 					new Effect[]{
-						new Effect(-1, Card.Traits.Strength),
-						new Effect(-1, Card.Resources.People)}
+						new Effect(-1, GlobalsScript.Traits.Strength),
+						new Effect(-1, GlobalsScript.Resources.People)}
 				),
 
 					//choice 2
 					new CardChoice ("TRUST - You Attempt to persuade the pixies of the fun in protecting your settlement with their magic(7)",
 						"They find the thought amusing and make a magical barrier for your settlement.",
 						"The pixies find it more amusing to makea barrier that instead weakens your settlement to future threats...",
-						Card.Traits.Trust,
+						GlobalsScript.Traits.Trust,
 						7,
 						//win effect
 						new Effect[]{ 
-							new Effect(1, Card.Traits.Strength),
-							new Effect(1, Card.Traits.Agility),
-							new Effect(1, Card.Traits.Trust)
+							new Effect(1, GlobalsScript.Traits.Strength),
+							new Effect(1, GlobalsScript.Traits.Agility),
+							new Effect(1, GlobalsScript.Traits.Trust)
 						},
 						//lose effect
 						new Effect[]{
-							new Effect(-1, Card.Traits.Strength),
-							new Effect(-1, Card.Traits.Agility),
-							new Effect(-1, Card.Traits.Trust)
+							new Effect(-1, GlobalsScript.Traits.Strength),
+							new Effect(-1, GlobalsScript.Traits.Agility),
+							new Effect(-1, GlobalsScript.Traits.Trust)
 						}
 
 					),
@@ -266,19 +266,19 @@ public class Deck : MonoBehaviour {
 					new CardChoice ("NOTORIETY - You attempt to enslave the pixies.(12)",
 						"You somehow manage to enslave the entire pixie colony and they become slaves for your settlement.",
 						"The pixies enslave part of your settlement and drag them into the woods never to be seen again.",
-						Card.Traits.Notoriety,
+						GlobalsScript.Traits.Notoriety,
 						12,
 						//win effects
 						new Effect[]{
-							new Effect(2, Card.Resources.People),
-							new Effect(1, Card.Traits.Notoriety),
-							new Effect(1, Card.Traits.Strength)
+							new Effect(2, GlobalsScript.Resources.People),
+							new Effect(1, GlobalsScript.Traits.Notoriety),
+							new Effect(1, GlobalsScript.Traits.Strength)
 						},
 						//lose effect
 						new Effect[]{ 
-							new Effect(-2, Card.Resources.People),
-							new Effect(-1, Card.Traits.Notoriety),
-							new Effect(-1, Card.Traits.Strength)
+							new Effect(-2, GlobalsScript.Resources.People),
+							new Effect(-1, GlobalsScript.Traits.Notoriety),
+							new Effect(-1, GlobalsScript.Traits.Strength)
 						})
 				}
 			)
@@ -299,19 +299,19 @@ public class Deck : MonoBehaviour {
 					"He appreciates the offer and at the expense of a few resources, he makes peace.",
 					"The wizard claims your efforts are too late, and takes resources by force",
 					//win effect,
-					Card.Traits.Trust,
+					GlobalsScript.Traits.Trust,
 					10,
 					new Effect[]{
-						new Effect(2, Card.Traits.Trust),
-						new Effect(-1, Card.Resources.Stone),
-						new Effect(-1, Card.Resources.Food)
+						new Effect(2, GlobalsScript.Traits.Trust),
+						new Effect(-1, GlobalsScript.Resources.Stone),
+						new Effect(-1, GlobalsScript.Resources.Food)
 					},
 					//lose effects
 					new Effect[]{
-						new Effect(-1, Card.Traits.Strength),
-						new Effect(-1, Card.Traits.Agility),
-						new Effect(-1, Card.Resources.Wood),
-						new Effect(-1, Card.Resources.Stone)
+						new Effect(-1, GlobalsScript.Traits.Strength),
+						new Effect(-1, GlobalsScript.Traits.Agility),
+						new Effect(-1, GlobalsScript.Resources.Wood),
+						new Effect(-1, GlobalsScript.Resources.Stone)
 					}
 				),
 
@@ -319,17 +319,17 @@ public class Deck : MonoBehaviour {
 					new CardChoice ("AGILITY - You attempt to stop the wizard before he can do any damage(12)",
 						"You sneak past the wizard and knock him out",
 						"The wizard blows up your village",
-						Card.Traits.Agility,
+						GlobalsScript.Traits.Agility,
 						12,
 						//win effect
 						new Effect[]{ 
-							new Effect(2, Card.Traits.Agility),
-							new Effect(-1, Card.Traits.Strength)
+							new Effect(2, GlobalsScript.Traits.Agility),
+							new Effect(-1, GlobalsScript.Traits.Strength)
 						},
 						//lose effect
 						new Effect[]{
-							new Effect(-1, Card.Traits.Strength),
-							new Effect(-1, Card.Traits.Agility)
+							new Effect(-1, GlobalsScript.Traits.Strength),
+							new Effect(-1, GlobalsScript.Traits.Agility)
 						}
 
 					),
@@ -338,18 +338,18 @@ public class Deck : MonoBehaviour {
 					new CardChoice ("NOTORIETY - You attempt to intimidate the Wizard into rescinding his attack.(15)",
 						"The Wizard is no match for you, as you outlevel him significantly.  He begs for forgiveness.",
 						"You get ganked by the Wizard and look foolish.",
-						Card.Traits.Notoriety,
+						GlobalsScript.Traits.Notoriety,
 						15,
 						//win effects
 						new Effect[]{
-							new Effect(1, Card.Traits.Strength),
-							new Effect(1, Card.Traits.Notoriety)	
+							new Effect(1, GlobalsScript.Traits.Strength),
+							new Effect(1, GlobalsScript.Traits.Notoriety)	
 						},
 						//lose effect
 						new Effect[]{ 
-							new Effect(-1, Card.Traits.Notoriety),
-							new Effect(-1, Card.Traits.Strength),
-							new Effect(-1, Card.Resources.People)
+							new Effect(-1, GlobalsScript.Traits.Notoriety),
+							new Effect(-1, GlobalsScript.Traits.Strength),
+							new Effect(-1, GlobalsScript.Resources.People)
 						})
 				}
 			)
@@ -369,36 +369,36 @@ public class Deck : MonoBehaviour {
 					"The hunter decides the thrill of the sport is not worth his own life.",
 					"The hunter loves it when his prey puts up a fight and insteads turns up the pressure.",
 					//win effect,
-					Card.Traits.Notoriety,
+					GlobalsScript.Traits.Notoriety,
 					14,
 					new Effect[]{
-						new Effect(3, Card.Traits.Notoriety),
-						new Effect(1, Card.Traits.Strength),
-						new Effect(1, Card.Traits.Agility)
+						new Effect(3, GlobalsScript.Traits.Notoriety),
+						new Effect(1, GlobalsScript.Traits.Strength),
+						new Effect(1, GlobalsScript.Traits.Agility)
 					},
 					//lose effects
 					new Effect[]{
-						new Effect(-3, Card.Resources.People),
-						new Effect(-1, Card.Traits.Strength),
-						new Effect(-1, Card.Traits.Notoriety)}
+						new Effect(-3, GlobalsScript.Resources.People),
+						new Effect(-1, GlobalsScript.Traits.Strength),
+						new Effect(-1, GlobalsScript.Traits.Notoriety)}
 				),
 
 					//choice 2
 					new CardChoice ("Trust - You attempt to convince the hunter that you are not a worthwhile target and instead can supply him.(10)",
 						"The hunter agrees, trading some resources for the ones he requires.",
 						"The hunter isn't phased by politics, and instead takes resources by force, killing some of your people in the process.",
-						Card.Traits.Trust,
+						GlobalsScript.Traits.Trust,
 						10,
 						//win effect
 						new Effect[]{ 
-							new Effect(1, Card.Resources.Wood),
-							new Effect(1, Card.Resources.Stone),
-							new Effect(-1, Card.Resources.Food)
+							new Effect(1, GlobalsScript.Resources.Wood),
+							new Effect(1, GlobalsScript.Resources.Stone),
+							new Effect(-1, GlobalsScript.Resources.Food)
 						},
 						//lose effect
 						new Effect[]{
-							new Effect(-2, Card.Resources.Food),
-							new Effect(-2, Card.Resources.People)
+							new Effect(-2, GlobalsScript.Resources.Food),
+							new Effect(-2, GlobalsScript.Resources.People)
 						}
 
 					),
@@ -407,18 +407,18 @@ public class Deck : MonoBehaviour {
 					new CardChoice ("STRENGTH - You attempt to hunt the hunter, engaging in a deadly bloodsport.(12)",
 						"The hunter becomes the prey and your settlement eliminates him and takes his resources.",
 						"You fight a hard battle, but lose settlers in the process.",
-						Card.Traits.Strength,
+						GlobalsScript.Traits.Strength,
 						12,
 						//win effects
 						new Effect[]{
-							new Effect(2, Card.Resources.Food),
-							new Effect(2, Card.Traits.Notoriety)	
+							new Effect(2, GlobalsScript.Resources.Food),
+							new Effect(2, GlobalsScript.Traits.Notoriety)	
 						},
 						//lose effect
 						new Effect[]{ 
-							new Effect(-2, Card.Resources.People),
-							new Effect(-1, Card.Resources.Wood),
-							new Effect(-1, Card.Resources.Stone)
+							new Effect(-2, GlobalsScript.Resources.People),
+							new Effect(-1, GlobalsScript.Resources.Wood),
+							new Effect(-1, GlobalsScript.Resources.Stone)
 						})
 				}
 			)
@@ -439,32 +439,32 @@ public class Deck : MonoBehaviour {
 					"You manage to escape, losing no resources but gaining some survival rank.",
 					"You fail to evacuate in time, and while no one is injured, your resources are burnt in the blaze.",
 					//win effect,
-					Card.Traits.Agility,
+					GlobalsScript.Traits.Agility,
 					10,
 					new Effect[]{
-						new Effect(1, Card.Traits.Survival),
+						new Effect(1, GlobalsScript.Traits.Survival),
 					},
 					//lose effects
 					new Effect[]{
-						new Effect(-2, Card.Resources.Wood),
-						new Effect(-2, Card.Resources.Food)}
+						new Effect(-2, GlobalsScript.Resources.Wood),
+						new Effect(-2, GlobalsScript.Resources.Food)}
 				),
 
 					//choice 2
 					new CardChoice ("SURVIVAL - You attempt to dig fire trenches between the fire and your village to contain the fire.(12)",
 						"The trench works and your settlement is spared and the new ditch serves as a new infrastructure to irrigate future crops.",
 						"The trench was not complete in time and your village is partially scorched.",
-						Card.Traits.Survival,
+						GlobalsScript.Traits.Survival,
 						12,
 						//win effect
 						new Effect[]{ 
-							new Effect(2, Card.Resources.Food),
-							new Effect(1, Card.Traits.Strength)
+							new Effect(2, GlobalsScript.Resources.Food),
+							new Effect(1, GlobalsScript.Traits.Strength)
 						},
 						//lose effect
 						new Effect[]{
-							new Effect(-1, Card.Resources.Wood),
-							new Effect(-1, Card.Resources.Food)
+							new Effect(-1, GlobalsScript.Resources.Wood),
+							new Effect(-1, GlobalsScript.Resources.Food)
 						}
 					),
 
@@ -472,19 +472,19 @@ public class Deck : MonoBehaviour {
 					new CardChoice ("STRENGTH - You take some villagers to attempt to extinguish the fire before it reaches the village.(13)",
 						"Your efforts save the village and you gain some food and wood in the scramble.",
 						"You lose not only a hefty portion of your village, but a large number of villagers",
-						Card.Traits.Strength,
+						GlobalsScript.Traits.Strength,
 						13,
 						//win effects
 						new Effect[]{
-							new Effect(2, Card.Resources.Wood),
-							new Effect(1, Card.Resources.Food)	
+							new Effect(2, GlobalsScript.Resources.Wood),
+							new Effect(1, GlobalsScript.Resources.Food)	
 						},
 						//lose effect
 						new Effect[]{ 
-							new Effect(-2, Card.Resources.People),
-							new Effect(-2, Card.Resources.Wood),
-							new Effect(-2, Card.Resources.Food),
-							new Effect(-1, Card.Traits.Survival)
+							new Effect(-2, GlobalsScript.Resources.People),
+							new Effect(-2, GlobalsScript.Resources.Wood),
+							new Effect(-2, GlobalsScript.Resources.Food),
+							new Effect(-1, GlobalsScript.Traits.Survival)
 						})
 				}
 			)
