@@ -21,7 +21,6 @@ public class Card : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
         titleMesh.text = Deck.deck.Dequeue().title;
 	}
 	

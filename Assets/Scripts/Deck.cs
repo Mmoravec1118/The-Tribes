@@ -7,8 +7,7 @@ public class Deck : MonoBehaviour {
 
 	//fields for a new deck
 	public static Queue<Card> deck;
-
-
+    public GameObject cardPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -508,5 +507,9 @@ public class Deck : MonoBehaviour {
 		return deck.Dequeue ();
 	}
 
+    public void DrawCard()
+    {
+        Instantiate(cardPrefab, new Vector3(), new Quaternion());
+    }
 
 }
