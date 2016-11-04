@@ -17,7 +17,7 @@ public class ButtonBehaviorScript : MonoBehaviour {
 
     int players = 1;
 
-    DisplayPlayerInfo playerInfo;
+    GlobalsScript globals;
 
     public GlobalsScript.TribeType tribeType;
 
@@ -285,6 +285,7 @@ public class ButtonBehaviorScript : MonoBehaviour {
 
     public void CreateTribe()
     {
-        //DisplayPlayerInfo
+        //playerInfo.Players = new PlayerClass();
+
     }
 }
