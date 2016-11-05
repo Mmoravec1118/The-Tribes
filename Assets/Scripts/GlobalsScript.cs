@@ -26,7 +26,8 @@ public class GlobalsScript : MonoBehaviour {
 
     #region Fields
 
-    int numPlayers;                                         // number of players in game
+    int numPlayers = 0;                                         // number of players in game
+    int currPlayerCount = 0;
     List<PlayerClass> players = new List<PlayerClass>();    // list of players with stats and such
 
     static GlobalsScript instance;
@@ -57,6 +58,10 @@ public class GlobalsScript : MonoBehaviour {
         {
             return numPlayers;
         }
+        set
+        {
+            numPlayers = value;
+        }
     }
 
     #endregion
@@ -85,7 +90,7 @@ public class GlobalsScript : MonoBehaviour {
     public void AddPlayer(PlayerClass newPlayer)
     {
         players.Add(newPlayer);
-        numPlayers++;
+        currPlayerCount++;
     }
 
 
