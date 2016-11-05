@@ -19,17 +19,11 @@ public class PlayerSetupButtonScript : MonoBehaviour {
     // The text field that shows which player's turn it is
     public Text playerNumberText;
 
-    // Tribe type enumeration
-    public enum TribeType
-    {
-        Type0,
-        Type1,
-        Type2,
-        Type3
-    }
-
     // The player's decided tribe type
-    public TribeType tribeType;
+    public GlobalsScript.TribeType tribeType;
+
+    // currplayer for changing tribe stats before adding to globalsScript
+    PlayerClass currPlayer;
 
     // Tribe Type Buttons
     public Button okbutton;
@@ -110,7 +104,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     public void Tribe0Flavor()
     {
-        tribeType = TribeType.Type0;
+        tribeType = GlobalsScript.TribeType.Barbarian;
 
         // This is where the selected value of the tribe is stored between scenes
         PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -125,7 +119,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     public void Tribe1Flavor()
     {
-        tribeType = TribeType.Type1;
+        tribeType = GlobalsScript.TribeType.PeaceMaker;
 
         // This is where the selected value of the tribe is stored between scenes
         PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -140,7 +134,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     public void Tribe2Flavor()
     {
-        tribeType = TribeType.Type2;
+        tribeType = GlobalsScript.TribeType.Nomad;
 
         // This is where the selected value of the tribe is stored between scenes
         PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -155,7 +149,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     public void Tribe3Flavor()
     {
-        tribeType = TribeType.Type3;
+        tribeType = GlobalsScript.TribeType.Farmer;
 
         // This is where the selected value of the tribe is stored between scenes
         PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -255,7 +249,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     private void ResetStats()
     {
-        tribeType = TribeType.Type0;
+        tribeType = GlobalsScript.TribeType.Barbarian;
         strengthStat = 0;
         agilityStat = 0;
         trustStat = 0;
@@ -269,5 +263,14 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         PlayerPrefs.SetInt(playerSelectionController.GetCurrentTrustStatKey(), trustStat);
         PlayerPrefs.SetInt(playerSelectionController.GetCurrentSurvivalStatKey(), survivalStat);
         PlayerPrefs.SetInt(playerSelectionController.GetCurrentNotorietyStatKey(), notorietyStat);
+    }
+    public void CreateTribe()
+    {
+        currPlayer = new PlayerClass();
+    }
+
+    public void AddTribe()
+    {
+        GlobalsScript.Instance.AddPlayer(currPlayer);
     }
 }
