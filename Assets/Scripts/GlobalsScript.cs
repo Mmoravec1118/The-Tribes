@@ -35,14 +35,21 @@ public class GlobalsScript : MonoBehaviour {
 
     #region Singleton
 
+    // returns instance of object or creates it if it is missing
     public static GlobalsScript Instance
     {
         get { return instance ?? (instance = new GlobalsScript()); }
     }
 
+    // keep object in scene
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     #endregion
 
-        #region Properties
+    #region Properties
 
     public int NumberofPlayers
     {

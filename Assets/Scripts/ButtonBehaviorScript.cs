@@ -51,7 +51,7 @@ public class ButtonBehaviorScript : MonoBehaviour {
     public int notorietyStat;
 
     // currplayer for changing tribe stats before adding to globalsScript
-    PlayerClass currPlayer;
+    public PlayerClass currPlayer;
 
     public void Start()
     {

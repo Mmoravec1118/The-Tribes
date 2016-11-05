@@ -10,17 +10,22 @@ public class PlayerSetupCanvasTextHandler : MonoBehaviour {
 
     public Text statDisplay;
     public PlayerSelectionController playerSelectionController;
-    
+    ButtonBehaviorScript buttonsScript;
+
     // Use this for initialization
-	void Start () 
+    void Start()
     {
-        playerSelectionController = GameObject.FindObjectOfType<PlayerSelectionController>();
-	}
-	
-	// Update is called once per frame
-	void Update () 
+        playerSelectionController = FindObjectOfType<PlayerSelectionController>();
+        buttonsScript = FindObjectOfType<ButtonBehaviorScript>();
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         statDisplay.text = "";
+
+        //statDisplay.text += "Tribe: " + buttonsScript.currPlayer.name;
+        //statDisplay.text += "Strength: " + buttonsScript.currPlayer.Strength;
 
         if (PlayerPrefs.HasKey(playerSelectionController.GetCurrentTribeTypeKey()))
         {
