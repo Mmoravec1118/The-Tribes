@@ -10,6 +10,8 @@ public class Card : MonoBehaviour {
     string description { get; set; }
     CardChoice[] choices = new CardChoice[3];
 
+    public TextMesh titleMesh;
+    public TextMesh descriptionMesh;
     public Card(string title, string description, CardChoice[] choices)
     {
         this.title = title;
@@ -19,7 +21,7 @@ public class Card : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        titleMesh.text = Deck.deck.Dequeue().title;
 	}
 	
 	// Update is called once per frame

@@ -111,6 +111,53 @@ public class PlayerClass : MonoBehaviour {
 
     #endregion
 
+    #region Resources
+    public int Wood
+    {
+        get
+        {
+            return resourceDictionary[Card.Resources.Wood];
+        }
+        set
+        {
+            resourceDictionary[Card.Resources.Wood] = value;
+        }
+    }
+    public int Food
+    {
+        get
+        {
+            return resourceDictionary[Card.Resources.Food];
+        }
+        set
+        {
+            resourceDictionary[Card.Resources.Food] = value;
+        }
+    }
+    public int Stone
+    {
+        get
+        {
+            return resourceDictionary[Card.Resources.Stone];
+        }
+        set
+        {
+            resourceDictionary[Card.Resources.Stone] = value;
+        }
+    }
+    public int People
+    {
+        get
+        {
+            return resourceDictionary[Card.Resources.People];
+        }
+        set
+        {
+            resourceDictionary[Card.Resources.People] = value;
+        }
+    }
+    #endregion
+
     #region Other
 
     public string Name
