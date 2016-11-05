@@ -50,12 +50,13 @@ public class DisplayPlayerInfo : MonoBehaviour {
 
     void DisplayText(int playerTurn)
     {
-        playerDisplay.text = "Tribe Name: " + players[playerTurn].Name
-            + "Player Stats:" + "Strength: " + players[playerTurn].Strength
-            + "Agility: " + players[playerTurn].Agility
-            + "Trust: " + players[playerTurn].Trust
-            +"Survival: " + players[playerTurn].Survival
-            +"Notoriety: " + players[playerTurn].Notoriety;
+        playerDisplay.text = "Tribe Name: " + players[playerTurn].Name + "\n"
+            + "Player Stats:" + "\n"
+            + "  Strength:  " + players[playerTurn].Strength + "\n"
+            + "  Agility:   " + players[playerTurn].Agility + "\n"
+            + "  Trust:     " + players[playerTurn].Trust + "\n"
+            + "  Survival:  " + players[playerTurn].Survival + "\n"
+            + "  Notoriety: " + players[playerTurn].Notoriety;
     }
 
     #endregion

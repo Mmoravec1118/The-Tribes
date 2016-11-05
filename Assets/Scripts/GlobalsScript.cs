@@ -70,6 +70,18 @@ public class GlobalsScript : MonoBehaviour {
         get { return currPlayerCount; }
     }
 
+    public int PlayerTurn
+    {
+        get
+        {
+            return currPlayerTurn;
+        }
+        set
+        {
+            currPlayerTurn = value;
+        }
+    }
+
     #endregion
 
     #region Methods

@@ -62,8 +62,8 @@ public class NewBehaviourScript1 : MonoBehaviour {
             !globals.GetPlayer().HasTool)
         {
             // subtract resources from player
-            globals.GetPlayer().Wood--;
-            globals.GetPlayer().Stone--;
+            globals.GetPlayer().Wood -= 10;
+            globals.GetPlayer().Stone -= 10;
 
             // Add one point to player stat of choice
         }
@@ -77,8 +77,9 @@ public class NewBehaviourScript1 : MonoBehaviour {
 	//Relocate
 	//Takes in choice of location and then moves there
 	//Locations are given by cards? Or by class?
-	void Relocate (int location) {
-		//Move player to location
+	void Relocate (GlobalsScript.Areas location) {
+        //Move player to location
+        globals.GetPlayer().Area = location;
 
 	}
 
@@ -91,6 +92,11 @@ public class NewBehaviourScript1 : MonoBehaviour {
             globals.GetPlayer().Stone >= 10 &&
             globals.GetPlayer().Wood >= 10)
         {
+
+            globals.GetPlayer().People -= 10;
+            globals.GetPlayer().Stone -= 10;
+            globals.GetPlayer().Wood -= 10;
+
             //+1 AP
             globals.GetPlayer().VictoryPoints += 1;
 		} 
@@ -114,5 +120,10 @@ public class NewBehaviourScript1 : MonoBehaviour {
         {
             Debug.Log("Not enough food");
         }
+    }
+
+    void NextTurn()
+    {
+        globals.PlayerTurn += 1;
     }
 }
