@@ -22,6 +22,10 @@ public class DisplayPlayerInfo : MonoBehaviour {
 	void Start () {
 
         playerDisplay = GetComponent<Text>();
+        for (int i = 0; i < GlobalsScript.Instance.NumberofPlayers; i++)
+        {
+            players.Add(GlobalsScript.Instance.GetPlayer(i));
+        }
 	
 	}
 	
@@ -32,6 +36,12 @@ public class DisplayPlayerInfo : MonoBehaviour {
         {
             DisplayText(currTurn - 1);
             prevTurn = currTurn;
+            currTurn++;
+        }
+        if (currTurn > GlobalsScript.Instance.NumberofPlayers)
+        {
+            currTurn = 1;
+            prevTurn = 0;
         }
 	
 	}
