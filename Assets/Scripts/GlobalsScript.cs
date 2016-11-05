@@ -19,6 +19,9 @@ public class GlobalsScript : MonoBehaviour {
     // All Resources
     public enum Resources { Wood, Stone, People, Food }
 
+    // Areas
+    public enum Areas {Mountain, Plain, Swamp, Desert }
+
     #endregion
 
     #region Fields
