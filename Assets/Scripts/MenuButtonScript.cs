@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class NewBehaviourScript1 : MonoBehaviour {
-
+    
 	// Use this for initialization
 	void Start () {
 		
@@ -31,10 +31,7 @@ public class NewBehaviourScript1 : MonoBehaviour {
 			//In case error
 			default:
 				//Print "There was an error."
-//<<<<<<< HEAD
-//				
-//=======
-//>>>>>>> origin/master
+
 				break;
 		}
 	}
