@@ -27,12 +27,6 @@ public class PlayerSelectionController : MonoBehaviour {
         DontDestroyOnLoad(this);
         PlayerSwitch(1);
 	}
-	
-	// Update is called once per frame
-	void Update () 
-    {
-	
-	}
 
     public void PlayerSwitch(int currentPlayerNumber)
     {
