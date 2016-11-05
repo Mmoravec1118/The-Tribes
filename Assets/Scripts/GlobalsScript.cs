@@ -26,7 +26,8 @@ public class GlobalsScript : MonoBehaviour {
 
     #region Fields
 
-    int numPlayers;                                         // number of players in game
+    int numPlayers = 0;                                         // number of players in game
+    int currPlayerCount = 0;
     List<PlayerClass> players = new List<PlayerClass>();    // list of players with stats and such
 
     static GlobalsScript instance;
@@ -35,20 +36,31 @@ public class GlobalsScript : MonoBehaviour {
 
     #region Singleton
 
+    // returns instance of object or creates it if it is missing
     public static GlobalsScript Instance
     {
         get { return instance ?? (instance = new GlobalsScript()); }
     }
 
+    // keep object in scene
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     #endregion
 
-        #region Properties
+    #region Properties
 
     public int NumberofPlayers
     {
         get
         {
             return numPlayers;
+        }
+        set
+        {
+            numPlayers = value;
         }
     }
 
@@ -78,7 +90,7 @@ public class GlobalsScript : MonoBehaviour {
     public void AddPlayer(PlayerClass newPlayer)
     {
         players.Add(newPlayer);
-        numPlayers++;
+        currPlayerCount++;
     }
 
 
