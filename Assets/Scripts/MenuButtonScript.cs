@@ -79,9 +79,4 @@ public class NewBehaviourScript1 : MonoBehaviour {
 	}
 
 	//Recruit
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
