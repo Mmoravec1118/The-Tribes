@@ -29,9 +29,20 @@ public class GlobalsScript : MonoBehaviour {
     int numPlayers;                                         // number of players in game
     List<PlayerClass> players = new List<PlayerClass>();    // list of players with stats and such
 
+    static GlobalsScript instance;
+
     #endregion
 
-    #region Properties
+    #region Singleton
+
+    public static GlobalsScript Instance
+    {
+        get { return instance ?? (instance = new GlobalsScript()); }
+    }
+
+    #endregion
+
+        #region Properties
 
     public int NumberofPlayers
     {

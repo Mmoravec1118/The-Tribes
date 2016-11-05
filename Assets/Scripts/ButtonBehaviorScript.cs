@@ -17,8 +17,6 @@ public class ButtonBehaviorScript : MonoBehaviour {
 
     int players = 1;
 
-    GlobalsScript globals;
-
     public GlobalsScript.TribeType tribeType;
 
     // Tribe Type Buttons
@@ -51,6 +49,9 @@ public class ButtonBehaviorScript : MonoBehaviour {
     public int trustStat;
     public int survivalStat;
     public int notorietyStat;
+
+    // currplayer for changing tribe stats before adding to globalsScript
+    PlayerClass currPlayer;
 
     public void Start()
     {
@@ -285,7 +286,11 @@ public class ButtonBehaviorScript : MonoBehaviour {
 
     public void CreateTribe()
     {
-        //playerInfo.Players = new PlayerClass();
+        currPlayer = new PlayerClass();
+    }
 
+    public void AddTibe()
+    {
+        GlobalsScript.Instance.AddPlayer(currPlayer);
     }
 }
