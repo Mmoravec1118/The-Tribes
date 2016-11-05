@@ -11,20 +11,20 @@ public class NewBehaviourScript1 : MonoBehaviour {
 
 	//Harvest adds one Wood, Stone, or Food to the players assests
 	//Needs choice input for which to add
-	void Harvest (Card.Resources choice) {
+	void Harvest (GlobalsScript.Resources choice) {
 		switch (choice) {
 			//Case 1 is Wood
-			case Card.Resources.Food: 
+			case GlobalsScript.Resources.Food: 
 				//+1 Wood
 
 				break;
 			//Case 2 is Stone
-			case Card.Resources.Stone:
+			case GlobalsScript.Resources.Stone:
 				//+1 Stone
 
 				break;
 			//Case 3 is Food
-			case Card.Resources.Wood:
+			case GlobalsScript.Resources.Wood:
 				//+1 Food
 
 				break;

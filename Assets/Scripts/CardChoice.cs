@@ -16,7 +16,7 @@ public class CardChoice : MonoBehaviour {
             return description;
         }
     }
-	public CardChoice(string description, string winText, string lossText, Card.Traits trait, int toBeat, Effect[] winEffects, Effect[] lossEffects)
+	public CardChoice(string description, string winText, string lossText, GlobalsScript.Traits trait, int toBeat, Effect[] winEffects, Effect[] lossEffects)
     {
         this.description = description;
         this.winEffects = winEffects;
@@ -29,16 +29,16 @@ public class CardChoice : MonoBehaviour {
 public class Effect
 {
     int change;
-    Card.Traits toChangeTrait;
-	Card.Resources toChangeResource;
+    GlobalsScript.Traits toChangeTrait;
+	GlobalsScript.Resources toChangeResource;
 
-    public Effect(int change, Card.Traits toChangeTrait)
+    public Effect(int change, GlobalsScript.Traits toChangeTrait)
     {
         this.change = change;
         this.toChangeTrait = toChangeTrait;
     }
 
-	public Effect(int change, Card.Resources toChangeResource)
+	public Effect(int change, GlobalsScript.Resources toChangeResource)
 	{
 		this.change = change;
 		this.toChangeResource = toChangeResource;
