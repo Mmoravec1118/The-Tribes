@@ -14,10 +14,13 @@ public class PlayerClass : MonoBehaviour {
     int victoryPoint = 0;
 
     // tribe name
-    string name;
+    string name = "";
 
     //Tribe type
     //TribeType tribeType;
+
+    //Current area of tribe
+    GlobalsScript.Areas currArea;
 
     #endregion
 
@@ -37,6 +40,9 @@ public class PlayerClass : MonoBehaviour {
         resourceDictionary[GlobalsScript.Resources.People] = 4;
         resourceDictionary[GlobalsScript.Resources.Stone] = 4;
         resourceDictionary[GlobalsScript.Resources.Wood] = 4;
+
+        currArea = GlobalsScript.Areas.Plain;
+
     }
 
     #endregion
@@ -44,22 +50,22 @@ public class PlayerClass : MonoBehaviour {
     #region Start
 
     // Use this for initialization
-    void Start () {
+    //void Start () {
 
-        // initialize stat dictionary
-        statDictionary[GlobalsScript.Traits.Strength] = 0;
-        statDictionary[GlobalsScript.Traits.Agility] = 0;
-        statDictionary[GlobalsScript.Traits.Trust] = 0;
-        statDictionary[GlobalsScript.Traits.Notoriety] = 0;
-        statDictionary[GlobalsScript.Traits.Survival] = 0;
+    //    // initialize stat dictionary
+    //    statDictionary[GlobalsScript.Traits.Strength] = 0;
+    //    statDictionary[GlobalsScript.Traits.Agility] = 0;
+    //    statDictionary[GlobalsScript.Traits.Trust] = 0;
+    //    statDictionary[GlobalsScript.Traits.Notoriety] = 0;
+    //    statDictionary[GlobalsScript.Traits.Survival] = 0;
 
-        // initialize resource dictionary
-        resourceDictionary[GlobalsScript.Resources.Food] = 4;
-        resourceDictionary[GlobalsScript.Resources.People] = 4;
-        resourceDictionary[GlobalsScript.Resources.Stone] = 4;
-        resourceDictionary[GlobalsScript.Resources.Wood] = 4;
+    //    // initialize resource dictionary
+    //    resourceDictionary[GlobalsScript.Resources.Food] = 4;
+    //    resourceDictionary[GlobalsScript.Resources.People] = 4;
+    //    resourceDictionary[GlobalsScript.Resources.Stone] = 4;
+    //    resourceDictionary[GlobalsScript.Resources.Wood] = 4;
 
-    }
+    //}
 
     #endregion
 
@@ -198,6 +204,18 @@ public class PlayerClass : MonoBehaviour {
         set
         {
             victoryPoint = value;
+        }
+    }
+
+    public GlobalsScript.Areas Area
+    {
+        get
+        {
+            return currArea;
+        }
+        set
+        {
+            currArea = value;
         }
     }
 
