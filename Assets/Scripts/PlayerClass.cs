@@ -20,6 +20,9 @@ public class PlayerClass
     //Tribe type
     //TribeType tribeType;
 
+    // bool for tool creation
+    bool hasTool = false;
+
     //Current area of tribe
     GlobalsScript.Areas currArea;
 
@@ -32,28 +35,6 @@ public class PlayerClass
         // Initializes all values to default
         ResetPlayerValues();
     }
-
-    #endregion
-
-    #region Start
-
-    // Use this for initialization
-    //void Start () {
-
-    //    // initialize stat dictionary
-    //    statDictionary[GlobalsScript.Traits.Strength] = 0;
-    //    statDictionary[GlobalsScript.Traits.Agility] = 0;
-    //    statDictionary[GlobalsScript.Traits.Trust] = 0;
-    //    statDictionary[GlobalsScript.Traits.Notoriety] = 0;
-    //    statDictionary[GlobalsScript.Traits.Survival] = 0;
-
-    //    // initialize resource dictionary
-    //    resourceDictionary[GlobalsScript.Resources.Food] = 4;
-    //    resourceDictionary[GlobalsScript.Resources.People] = 4;
-    //    resourceDictionary[GlobalsScript.Resources.Stone] = 4;
-    //    resourceDictionary[GlobalsScript.Resources.Wood] = 4;
-
-    //}
 
     #endregion
 
@@ -204,6 +185,18 @@ public class PlayerClass
         set
         {
             currArea = value;
+        }
+    }
+
+    public bool HasTool
+    {
+        get
+        {
+            return hasTool;
+        }
+        set
+        {
+            hasTool = value;
         }
     }
 
