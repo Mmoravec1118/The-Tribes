@@ -28,6 +28,7 @@ public class GlobalsScript : MonoBehaviour {
 
     int numPlayers = 0;                                         // number of players in game
     int currPlayerCount = 0;
+    int currPlayerTurn = 0;
     List<PlayerClass> players = new List<PlayerClass>();    // list of players with stats and such
 
     static GlobalsScript instance;
@@ -74,17 +75,23 @@ public class GlobalsScript : MonoBehaviour {
     /// </summary>
     /// <param name="playerNum"></param>
     /// <returns></returns>
-    public PlayerClass GetPlayer(int playerNum)
+    public PlayerClass GetPlayer()
     {
-        if (playerNum < players.Count)
+        return players[currPlayerTurn];
+    }
+
+    public PlayerClass GetPlayer(int number)
+    {
+        if (number < numPlayers)
         {
-            return players[playerNum];
+            return players[number];
         }
         else
         {
-            Debug.Log("Out of Range, not that many players");
+            Debug.Log("Number entered is out of range");
             return null;
         }
+        
     }
 
     public void AddPlayer(PlayerClass newPlayer)
