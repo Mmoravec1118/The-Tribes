@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerClass : MonoBehaviour {
+public class PlayerClass
+{
 
     #region Fields
 
@@ -28,21 +29,8 @@ public class PlayerClass : MonoBehaviour {
 
     public PlayerClass()
     {
-        // initialize stat dictionary
-        statDictionary[GlobalsScript.Traits.Strength] = 0;
-        statDictionary[GlobalsScript.Traits.Agility] = 0;
-        statDictionary[GlobalsScript.Traits.Trust] = 0;
-        statDictionary[GlobalsScript.Traits.Notoriety] = 0;
-        statDictionary[GlobalsScript.Traits.Survival] = 0;
-
-        // initialize resource dictionary
-        resourceDictionary[GlobalsScript.Resources.Food] = 4;
-        resourceDictionary[GlobalsScript.Resources.People] = 4;
-        resourceDictionary[GlobalsScript.Resources.Stone] = 4;
-        resourceDictionary[GlobalsScript.Resources.Wood] = 4;
-
-        currArea = GlobalsScript.Areas.Plain;
-
+        // Initializes all values to default
+        ResetPlayerValues();
     }
 
     #endregion
@@ -95,7 +83,7 @@ public class PlayerClass : MonoBehaviour {
             statDictionary[GlobalsScript.Traits.Agility] = value;
         }
     }
-    public int Survivability
+    public int Survival
     {
         get
         {
@@ -221,6 +209,28 @@ public class PlayerClass : MonoBehaviour {
 
 
     #endregion
+
+    #endregion
+
+    #region Public Methods
+
+    public void ResetPlayerValues()
+    {
+        // initialize stat dictionary
+        statDictionary[GlobalsScript.Traits.Strength] = 0;
+        statDictionary[GlobalsScript.Traits.Agility] = 0;
+        statDictionary[GlobalsScript.Traits.Trust] = 0;
+        statDictionary[GlobalsScript.Traits.Notoriety] = 0;
+        statDictionary[GlobalsScript.Traits.Survival] = 0;
+
+        // initialize resource dictionary
+        resourceDictionary[GlobalsScript.Resources.Food] = 4;
+        resourceDictionary[GlobalsScript.Resources.People] = 4;
+        resourceDictionary[GlobalsScript.Resources.Stone] = 4;
+        resourceDictionary[GlobalsScript.Resources.Wood] = 4;
+
+        currArea = GlobalsScript.Areas.Plain;
+    }
 
     #endregion
 }

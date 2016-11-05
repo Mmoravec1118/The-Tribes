@@ -7,9 +7,6 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     public string sceneName;
 
-    // Buttons passed in
-    public PlayerSelectionController playerSelectionController;
-
     // The number of players in the game
     int players;
 
@@ -56,11 +53,11 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     public void Start()
     {
-        playerSelectionController = GameObject.FindObjectOfType<PlayerSelectionController>();
-
-        players = PlayerPrefs.GetInt("NumberOfPlayers");
+        players = GlobalsScript.NumberofPlayers;
 
         print("Number of Players: " + players.ToString());
+
+        currPlayer = new PlayerClass();
 
         ResetStats();
     }
@@ -73,15 +70,17 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     public void ChangeScene()
     {
+        // Adds player class to GlobalsScript
+        GlobalsScript.Instance.AddPlayer(currPlayer);
+        
         // Loops the player setup scene for the number of players selected
         if (SceneManager.GetActiveScene().name == "PlayerSetup")
         {
-            if (playerSelectionController.GetCurrentPlayerNumber() < players)
+            if (GlobalsScript.Instance.CurrentPlayerCount < players)
             {
                 sceneName = "PlayerSetup";
-                playerSelectionController.PlayerSwitch(playerSelectionController.GetCurrentPlayerNumber() + 1);
-
-                UpdatePlayerNumber(playerSelectionController.GetCurrentPlayerNumber());
+                
+                UpdatePlayerNumber(GlobalsScript.Instance.CurrentPlayerCount);
 
                 ResetStats();
             }
@@ -107,7 +106,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         tribeType = GlobalsScript.TribeType.Barbarian;
 
         // This is where the selected value of the tribe is stored between scenes
-        PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
+        //PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
 
         tribe0FlavorText.gameObject.SetActive(true);
         tribe1FlavorText.gameObject.SetActive(false);
@@ -122,7 +121,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         tribeType = GlobalsScript.TribeType.PeaceMaker;
 
         // This is where the selected value of the tribe is stored between scenes
-        PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
+        //PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
 
         tribe0FlavorText.gameObject.SetActive(false);
         tribe1FlavorText.gameObject.SetActive(true);
@@ -137,7 +136,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         tribeType = GlobalsScript.TribeType.Nomad;
 
         // This is where the selected value of the tribe is stored between scenes
-        PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
+        //PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
 
         tribe0FlavorText.gameObject.SetActive(false);
         tribe1FlavorText.gameObject.SetActive(false);
@@ -152,7 +151,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         tribeType = GlobalsScript.TribeType.Farmer;
 
         // This is where the selected value of the tribe is stored between scenes
-        PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
+        //PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
 
         tribe0FlavorText.gameObject.SetActive(false);
         tribe1FlavorText.gameObject.SetActive(false);
@@ -167,7 +166,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         strengthStat = (int)strengthSlider.value;
 
         // This is where the Strength stat is stored between scenes
-        PlayerPrefs.SetInt(playerSelectionController.GetCurrentStrengthStatKey(), strengthStat);
+        currPlayer.Strength = strengthStat;
     }
 
     public void AgilityUpdate()
@@ -175,7 +174,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         agilityStat = (int)agilitySlider.value;
 
         // This is where the Agility stat is stored between scenes
-        PlayerPrefs.SetInt(playerSelectionController.GetCurrentAgilityStatKey(), agilityStat);
+        currPlayer.Agility = agilityStat;
     }
 
     public void TrustUpdate()
@@ -183,7 +182,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         trustStat = (int)trustSlider.value;
 
         // This is where the Trust stat is stored between scenes
-        PlayerPrefs.SetInt(playerSelectionController.GetCurrentTrustStatKey(), trustStat);
+        currPlayer.Trust = trustStat;
     }
 
     public void SurvivalUpdate()
@@ -191,7 +190,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         survivalStat = (int)survivalSlider.value;
 
         // This is where the Survival stat is stored between scenes
-        PlayerPrefs.SetInt(playerSelectionController.GetCurrentSurvivalStatKey(), survivalStat);
+        currPlayer.Survival = survivalStat;
     }
 
     public void NotorietyUpdate()
@@ -199,7 +198,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         notorietyStat = (int)notorietySlider.value;
 
         // This is where the Notoriety stat is stored between scenes
-        PlayerPrefs.SetInt(playerSelectionController.GetCurrentNotorietyStatKey(), notorietyStat);
+        currPlayer.Notoriety = notorietyStat;
     }
 
     public void OnOKClick()
@@ -247,6 +246,11 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         playerNumberText.text = "Player " + newPlayerNumber.ToString() + "'s turn";
     }
 
+    public PlayerClass GetCurrentPlayerClass()
+    {
+        return currPlayer;
+    }
+
     private void ResetStats()
     {
         tribeType = GlobalsScript.TribeType.Barbarian;
@@ -256,13 +260,8 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         survivalStat = 0;
         notorietyStat = 0;
 
-        // Initializing all stats and values to their default states
-        PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
-        PlayerPrefs.SetInt(playerSelectionController.GetCurrentStrengthStatKey(), strengthStat);
-        PlayerPrefs.SetInt(playerSelectionController.GetCurrentAgilityStatKey(), agilityStat);
-        PlayerPrefs.SetInt(playerSelectionController.GetCurrentTrustStatKey(), trustStat);
-        PlayerPrefs.SetInt(playerSelectionController.GetCurrentSurvivalStatKey(), survivalStat);
-        PlayerPrefs.SetInt(playerSelectionController.GetCurrentNotorietyStatKey(), notorietyStat);
+        // Resets the current player class to its default state
+        currPlayer.ResetPlayerValues();
     }
     public void CreateTribe()
     {

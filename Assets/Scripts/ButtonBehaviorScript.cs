@@ -19,7 +19,7 @@ public class ButtonBehaviorScript : MonoBehaviour
 
     public void Start()
     {
-        GlobalsScript.PlayerCount = players;
+        GlobalsScript.NumberofPlayers = players;
     }
 
     public void OnValueChange()
@@ -29,7 +29,7 @@ public class ButtonBehaviorScript : MonoBehaviour
         print("PlayerCount: " + players.ToString());
 
         // This is where the number of players is stored between scenes
-        GlobalsScript.PlayerCount = players;
+        GlobalsScript.NumberofPlayers = players;
     }
 
     public void ChangeScene()

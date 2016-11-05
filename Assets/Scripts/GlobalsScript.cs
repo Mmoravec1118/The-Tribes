@@ -26,7 +26,7 @@ public class GlobalsScript : MonoBehaviour {
 
     #region Fields
 
-    int numPlayers = 0;                                         // number of players in game
+    static int numPlayers = 0;                                         // number of players in game
     int currPlayerCount = 0;
     List<PlayerClass> players = new List<PlayerClass>();    // list of players with stats and such
 
@@ -52,7 +52,7 @@ public class GlobalsScript : MonoBehaviour {
 
     #region Properties
 
-    public int NumberofPlayers
+    public static int NumberofPlayers
     {
         get
         {
@@ -62,6 +62,11 @@ public class GlobalsScript : MonoBehaviour {
         {
             numPlayers = value;
         }
+    }
+
+    public int CurrentPlayerCount
+    {
+        get { return currPlayerCount; }
     }
 
     #endregion
@@ -76,7 +81,7 @@ public class GlobalsScript : MonoBehaviour {
     /// <returns></returns>
     public PlayerClass GetPlayer(int playerNum)
     {
-        if (playerNum < players.Count)
+        if (playerNum < players.Count && playerNum >= 0)
         {
             return players[playerNum];
         }
