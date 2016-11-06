@@ -79,6 +79,10 @@ public class GlobalsScript : MonoBehaviour {
         set
         {
             currPlayerTurn = value;
+            if (currPlayerTurn > numPlayers - 1)
+            {
+                currPlayerTurn = 0;
+            }
         }
     }
 

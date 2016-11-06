@@ -45,6 +45,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
     public Slider notorietySlider;
 
     // Stat Values
+    public string tribeName;
     public int strengthStat;
     public int agilityStat;
     public int trustStat;
@@ -199,6 +200,11 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
         // This is where the Notoriety stat is stored between scenes
         currPlayer.Notoriety = notorietyStat;
+    }
+    public void NameUpdate()
+    {
+        tribeName = tribeNameInputField.text;
+        currPlayer.Name = tribeName;
     }
 
     public void OnOKClick()
