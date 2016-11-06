@@ -4,9 +4,22 @@ using System.Collections.Generic;
 
 public class Deck : MonoBehaviour {
 
-
+    private static Deck instance;
+    private Deck()
+    { }
+    public static Deck Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new Deck();
+            }
+            return instance;
+        }
+    }
 	//fields for a new deck
-	public static Queue<Card> deck;
+	public Queue<Card> deck;
     public GameObject cardPrefab;
 
 	// Use this for initialization
@@ -501,7 +514,7 @@ public class Deck : MonoBehaviour {
 	}
 
 	//removed card from the deck
-	Card Dequeue (Card card)
+	public Card Dequeue()
 	{
 		//dequeue the card from the top of the deck
 		return deck.Dequeue ();

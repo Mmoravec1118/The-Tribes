@@ -18,7 +18,8 @@ public class Card : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        titleMesh.text = Deck.deck.Dequeue().title;
+        Card card = Deck.Instance.Dequeue();
+        titleMesh.text = card.title;
 	}
 	
 	// Update is called once per frame

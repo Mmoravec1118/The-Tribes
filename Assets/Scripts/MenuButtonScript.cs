@@ -5,17 +5,59 @@ using System.Collections.Generic;
 public class MenuButtonScript : MonoBehaviour {
 
     GlobalsScript globals;
+    public GameObject HarvestPanel;
+    public GameObject CraftPanel;
+    public GameObject RecruitPanel;
+    public GameObject UpgradePanel;
+    public GameObject RelocatePanel;
+    public GameObject TradePanel;
 
-	// Use this for initialization
-	void Start () {
+    public GameObject HarvestButton;
+    public GameObject CraftButton;
+    public GameObject RecruitButton;
+    public GameObject UpgradeButton;
+    public GameObject RelocateButton;
+    public GameObject TradeButton;
+
+    public Deck deck;
+    // Use this for initialization
+    void Start () {
         // save reference to globals script
         globals = GlobalsScript.Instance;
 
 	}
+    public void activateHarvestPanel(bool TF)
+    {
+        HarvestPanel.SetActive( TF );
+    }
 
-	//Harvest adds one Wood, Stone, or Food to the players assests
-	//Needs choice input for which to add
-	public void Harvest (GlobalsScript.Resources choice) {
+    public void activateCraftPanel(bool TF)
+    {
+        CraftPanel.SetActive(TF);
+    }
+
+    public void activateRecruitPanel(bool TF)
+    {
+        RecruitPanel.SetActive(TF);
+    }
+
+    public void activatUpgradePanel(bool TF)
+    {
+        UpgradePanel.SetActive(TF);
+    }
+
+    public void activateRelocatePanel(bool TF)
+    {
+        RelocatePanel.SetActive(TF);
+    }
+
+    public void activateTradePanel(bool TF)
+    {
+        TradePanel.SetActive(TF);
+    }
+    //Harvest adds one Wood, Stone, or Food to the players assests
+    //Needs choice input for which to add
+    public void Harvest (GlobalsScript.Resources choice) {
 		switch (choice) {
 			//Case 1 is Wood
 			case GlobalsScript.Resources.Food:
@@ -188,7 +230,24 @@ public class MenuButtonScript : MonoBehaviour {
             Debug.Log("Not enough food");
         }
     }
+    public void enterDrawCardPhase()
+    {
+        CraftButton.SetActive(false);
+        HarvestButton.SetActive(false);
+        RecruitButton.SetActive(false);
+        TradeButton.SetActive(false);
+        RelocateButton.SetActive(false);
+        UpgradeButton.SetActive(false);
 
+        CraftPanel.SetActive(false);
+        HarvestPanel.SetActive(false);
+        RecruitPanel.SetActive(false);
+        TradePanel.SetActive(false);
+        RelocatePanel.SetActive(false);
+        UpgradePanel.SetActive(false);
+
+        deck.DrawCard();
+    }
     void NextTurn()
     {
         globals.PlayerTurn += 1;
