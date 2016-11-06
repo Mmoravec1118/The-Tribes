@@ -2,47 +2,38 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerClass : MonoBehaviour {
+public class PlayerClass
+{
 
     #region Fields
 
-    // Tribe type enumeration
-    public enum TribeType
-    { Barbarian, PeaceMaker, Nomad, Farmer, Gaility }
-
     // dictionaries for stats and resources
-    Dictionary<Card.Traits, int> statDictionary = new Dictionary<Card.Traits, int>();
-    Dictionary<Card.Resources, int> resourceDictionary = new Dictionary<Card.Resources, int>();
+    Dictionary<GlobalsScript.Traits, int> statDictionary = new Dictionary<GlobalsScript.Traits, int>();
+    Dictionary<GlobalsScript.Resources, int> resourceDictionary = new Dictionary<GlobalsScript.Resources, int>();
 
     // victory point counter
     int victoryPoint = 0;
 
     // tribe name
-    string name;
+    string name = "";
 
     //Tribe type
     //TribeType tribeType;
 
+    // bool for tool creation
+    bool hasTool = false;
+
+    //Current area of tribe
+    GlobalsScript.Areas currArea;
+
     #endregion
 
-    #region Start
+    #region Constructor
 
-    // Use this for initialization
-    void Start () {
-
-        // initialize stat dictionary
-        statDictionary[Card.Traits.Strength] = 0;
-        statDictionary[Card.Traits.Agility] = 0;
-        statDictionary[Card.Traits.Trust] = 0;
-        statDictionary[Card.Traits.Notoriety] = 0;
-        statDictionary[Card.Traits.Survival] = 0;
-
-        // initialize resource dictionary
-        resourceDictionary[Card.Resources.Food] = 0;
-        resourceDictionary[Card.Resources.People] = 0;
-        resourceDictionary[Card.Resources.Stone] = 0;
-        resourceDictionary[Card.Resources.Wood] = 0;
-
+    public PlayerClass()
+    {
+        // Initializes all values to default
+        ResetPlayerValues();
     }
 
     #endregion
@@ -54,11 +45,11 @@ public class PlayerClass : MonoBehaviour {
     {
         get
         {
-            return statDictionary[Card.Traits.Strength];
+            return statDictionary[GlobalsScript.Traits.Strength];
         }
         set
         {
-            statDictionary[Card.Traits.Strength] = value;
+            statDictionary[GlobalsScript.Traits.Strength] = value;
         }
     }
 
@@ -66,22 +57,22 @@ public class PlayerClass : MonoBehaviour {
     {
         get
         {
-            return statDictionary[Card.Traits.Agility];
+            return statDictionary[GlobalsScript.Traits.Agility];
         }
         set
         {
-            statDictionary[Card.Traits.Agility] = value;
+            statDictionary[GlobalsScript.Traits.Agility] = value;
         }
     }
-    public int Survivability
+    public int Survival
     {
         get
         {
-            return statDictionary[Card.Traits.Survival];
+            return statDictionary[GlobalsScript.Traits.Survival];
         }
         set
         {
-            statDictionary[Card.Traits.Survival] = value;
+            statDictionary[GlobalsScript.Traits.Survival] = value;
         }
     }
 
@@ -89,11 +80,11 @@ public class PlayerClass : MonoBehaviour {
     {
         get
         {
-            return statDictionary[Card.Traits.Trust];
+            return statDictionary[GlobalsScript.Traits.Trust];
         }
         set
         {
-            statDictionary[Card.Traits.Trust] = value;
+            statDictionary[GlobalsScript.Traits.Trust] = value;
         }
     }
 
@@ -101,11 +92,11 @@ public class PlayerClass : MonoBehaviour {
     {
         get
         {
-            return statDictionary[Card.Traits.Notoriety];
+            return statDictionary[GlobalsScript.Traits.Notoriety];
         }
         set
         {
-            statDictionary[Card.Traits.Notoriety] = value;
+            statDictionary[GlobalsScript.Traits.Notoriety] = value;
         }
     }
 
@@ -116,44 +107,44 @@ public class PlayerClass : MonoBehaviour {
     {
         get
         {
-            return resourceDictionary[Card.Resources.Wood];
+            return resourceDictionary[GlobalsScript.Resources.Wood];
         }
         set
         {
-            resourceDictionary[Card.Resources.Wood] = value;
+            resourceDictionary[GlobalsScript.Resources.Wood] = value;
         }
     }
     public int Food
     {
         get
         {
-            return resourceDictionary[Card.Resources.Food];
+            return resourceDictionary[GlobalsScript.Resources.Food];
         }
         set
         {
-            resourceDictionary[Card.Resources.Food] = value;
+            resourceDictionary[GlobalsScript.Resources.Food] = value;
         }
     }
     public int Stone
     {
         get
         {
-            return resourceDictionary[Card.Resources.Stone];
+            return resourceDictionary[GlobalsScript.Resources.Stone];
         }
         set
         {
-            resourceDictionary[Card.Resources.Stone] = value;
+            resourceDictionary[GlobalsScript.Resources.Stone] = value;
         }
     }
     public int People
     {
         get
         {
-            return resourceDictionary[Card.Resources.People];
+            return resourceDictionary[GlobalsScript.Resources.People];
         }
         set
         {
-            resourceDictionary[Card.Resources.People] = value;
+            resourceDictionary[GlobalsScript.Resources.People] = value;
         }
     }
     #endregion
@@ -185,8 +176,54 @@ public class PlayerClass : MonoBehaviour {
         }
     }
 
+    public GlobalsScript.Areas Area
+    {
+        get
+        {
+            return currArea;
+        }
+        set
+        {
+            currArea = value;
+        }
+    }
+
+    public bool HasTool
+    {
+        get
+        {
+            return hasTool;
+        }
+        set
+        {
+            hasTool = value;
+        }
+    }
+
 
     #endregion
+
+    #endregion
+
+    #region Public Methods
+
+    public void ResetPlayerValues()
+    {
+        // initialize stat dictionary
+        statDictionary[GlobalsScript.Traits.Strength] = 0;
+        statDictionary[GlobalsScript.Traits.Agility] = 0;
+        statDictionary[GlobalsScript.Traits.Trust] = 0;
+        statDictionary[GlobalsScript.Traits.Notoriety] = 0;
+        statDictionary[GlobalsScript.Traits.Survival] = 0;
+
+        // initialize resource dictionary
+        resourceDictionary[GlobalsScript.Resources.Food] = 4;
+        resourceDictionary[GlobalsScript.Resources.People] = 4;
+        resourceDictionary[GlobalsScript.Resources.Stone] = 4;
+        resourceDictionary[GlobalsScript.Resources.Wood] = 4;
+
+        currArea = GlobalsScript.Areas.Plain;
+    }
 
     #endregion
 }

@@ -9,42 +9,33 @@ using System.Collections;
 public class PlayerSetupCanvasTextHandler : MonoBehaviour {
 
     public Text statDisplay;
-    public PlayerSelectionController playerSelectionController;
-    
+    ButtonBehaviorScript buttonsScript;
+    public PlayerSetupButtonScript playerSetupButtonScript;
+
+    // The current player stats to show
+    PlayerClass currPlayer;
+
     // Use this for initialization
-	void Start () 
+    void Start()
     {
-        playerSelectionController = GameObject.FindObjectOfType<PlayerSelectionController>();
-	}
-	
-	// Update is called once per frame
-	void Update () 
+        buttonsScript = FindObjectOfType<ButtonBehaviorScript>();
+        playerSetupButtonScript = FindObjectOfType<PlayerSetupButtonScript>();
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         statDisplay.text = "";
 
-        if (PlayerPrefs.HasKey(playerSelectionController.GetCurrentTribeTypeKey()))
+        if (playerSetupButtonScript.GetCurrentPlayerClass() != null)
         {
-            statDisplay.text += "Tribe: " + PlayerPrefs.GetString(playerSelectionController.GetCurrentTribeTypeKey()) + ";";
-        }
-        if (PlayerPrefs.HasKey(playerSelectionController.GetCurrentStrengthStatKey()))
-        {
-            statDisplay.text += "Strength: " + PlayerPrefs.GetInt(playerSelectionController.GetCurrentStrengthStatKey()).ToString() + ";";
-        }
-        if (PlayerPrefs.HasKey(playerSelectionController.GetCurrentAgilityStatKey()))
-        {
-            statDisplay.text += "Agility: " + PlayerPrefs.GetInt(playerSelectionController.GetCurrentAgilityStatKey()).ToString() + ";";
-        }
-        if (PlayerPrefs.HasKey(playerSelectionController.GetCurrentTrustStatKey()))
-        {
-            statDisplay.text += "Trust: " + PlayerPrefs.GetInt(playerSelectionController.GetCurrentTrustStatKey()).ToString() + ";";
-        }
-        if (PlayerPrefs.HasKey(playerSelectionController.GetCurrentSurvivalStatKey()))
-        {
-            statDisplay.text += "Survival: " + PlayerPrefs.GetInt(playerSelectionController.GetCurrentSurvivalStatKey()).ToString() + ";";
-        }
-        if (PlayerPrefs.HasKey(playerSelectionController.GetCurrentNotorietyStatKey()))
-        {
-            statDisplay.text += "Notoriety: " + PlayerPrefs.GetInt(playerSelectionController.GetCurrentNotorietyStatKey()).ToString() + ";";
+            currPlayer = playerSetupButtonScript.GetCurrentPlayerClass();
+
+            statDisplay.text += "Strength: " + currPlayer.Strength.ToString() + ";";
+            statDisplay.text += "Agility: " + currPlayer.Agility.ToString() + ";";
+            statDisplay.text += "Trust: " + currPlayer.Trust.ToString() + ";";
+            statDisplay.text += "Survival : " + currPlayer.Survival.ToString() + ";";
+            statDisplay.text += "Notoriety : " + currPlayer.Notoriety.ToString() + ";";
         }
 	}
 }

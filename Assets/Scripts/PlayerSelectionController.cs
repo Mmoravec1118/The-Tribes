@@ -10,7 +10,7 @@ public class PlayerSelectionController : MonoBehaviour {
 
     int playersCount = 1;
     int currentPlayer = 1;
-    int tempPlayerCount = 0;
+    //int tempPlayerCount = 0;
 
     string playerCountKeyString = "";
     string currentPlayerTribeKeyString = "";
@@ -21,17 +21,19 @@ public class PlayerSelectionController : MonoBehaviour {
     string currentPlayerNotorietyKeyString = "";
     
     // Use this for initialization
+    void Awake()
+    {
+        if (FindObjectsOfType<PlayerSelectionController>().Length > 1)
+        {
+            DestroyImmediate(this);
+        }
+    }
+
 	void Start () 
     {
         // Makes the object persistent between scenes
         DontDestroyOnLoad(this);
         PlayerSwitch(1);
-	}
-	
-	// Update is called once per frame
-	void Update () 
-    {
-	
 	}
 
     public void PlayerSwitch(int currentPlayerNumber)
@@ -45,7 +47,7 @@ public class PlayerSelectionController : MonoBehaviour {
         currentPlayerSurvivalKeyString = "SurvivalStat" + currentPlayer.ToString();
         currentPlayerNotorietyKeyString = "NotorietyStat" + currentPlayer.ToString();
 
-        print("player switch initiated");
+        print("Player " + currentPlayer.ToString() + "'s turn");
     }
 
     public string GetCurrentTribeTypeKey()
@@ -83,13 +85,18 @@ public class PlayerSelectionController : MonoBehaviour {
         playersCount = numberOfPlayers;
     }
 
-    public int GetTempPlayerCount()
+    public int GetCurrentPlayerNumber()
     {
-        return tempPlayerCount;
+        return currentPlayer;
     }
 
-    public void SetTempPlayerCount(int newTempPlayerCount)
-    {
-        tempPlayerCount = newTempPlayerCount;
-    }
+    //public int GetTempPlayerCount()
+    //{
+    //    return tempPlayerCount;
+    //}
+
+    //public void SetTempPlayerCount(int newTempPlayerCount)
+    //{
+    //    tempPlayerCount = newTempPlayerCount;
+    //}
 }

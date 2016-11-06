@@ -22,6 +22,10 @@ public class DisplayPlayerInfo : MonoBehaviour {
 	void Start () {
 
         playerDisplay = GetComponent<Text>();
+        for (int i = 0; i < GlobalsScript.NumberofPlayers; i++)
+        {
+            players.Add(GlobalsScript.Instance.GetPlayer(i));
+        }
 	
 	}
 	
@@ -32,6 +36,12 @@ public class DisplayPlayerInfo : MonoBehaviour {
         {
             DisplayText(currTurn - 1);
             prevTurn = currTurn;
+            currTurn++;
+        }
+        if (currTurn > GlobalsScript.NumberofPlayers)
+        {
+            currTurn = 1;
+            prevTurn = 0;
         }
 	
 	}
@@ -40,12 +50,13 @@ public class DisplayPlayerInfo : MonoBehaviour {
 
     void DisplayText(int playerTurn)
     {
-        playerDisplay.text = "Tribe Name: " + players[playerTurn].name
-            + "Player Stats:" + "Strength: " + players[playerTurn].Strength
-            + "Agility: " + players[playerTurn].Agility
-            + "Trust: " + players[playerTurn].Trust
-            +"Survival: " + players[playerTurn].Survivability
-            +"Notoriety: " + players[playerTurn].Notoriety;
+        playerDisplay.text = "Tribe Name: " + players[playerTurn].Name + "\n"
+            + "Player Stats:" + "\n"
+            + "  Strength:  " + players[playerTurn].Strength + "\n"
+            + "  Agility:   " + players[playerTurn].Agility + "\n"
+            + "  Trust:     " + players[playerTurn].Trust + "\n"
+            + "  Survival:  " + players[playerTurn].Survival + "\n"
+            + "  Notoriety: " + players[playerTurn].Notoriety;
     }
 
     #endregion
