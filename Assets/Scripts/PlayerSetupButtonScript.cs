@@ -58,6 +58,8 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
         print("Number of Players: " + players.ToString());
 
+        playerNumberText.text = "Player " + (GlobalsScript.Instance.CurrentPlayerCount + 1).ToString() + "'s turn";
+
         currPlayer = new PlayerClass();
 
         ResetStats();
@@ -80,8 +82,6 @@ public class PlayerSetupButtonScript : MonoBehaviour {
             if (GlobalsScript.Instance.CurrentPlayerCount < players)
             {
                 sceneName = "PlayerSetup";
-                
-                UpdatePlayerNumber(GlobalsScript.Instance.CurrentPlayerCount);
 
                 ResetStats();
             }
@@ -249,7 +249,8 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     public void UpdatePlayerNumber(int newPlayerNumber)
     {
-        playerNumberText.text = "Player " + newPlayerNumber.ToString() + "'s turn";
+        playerNumberText.text = "Player " + newPlayerNumber.ToString() + "s turn";
+        print("Current player number: " + newPlayerNumber.ToString());
     }
 
     public PlayerClass GetCurrentPlayerClass()
