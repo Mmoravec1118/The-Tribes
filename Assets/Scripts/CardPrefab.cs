@@ -7,5 +7,6 @@ namespace Assets.Scripts
 {
     class CardPrefab
     {
+        
     }
 }

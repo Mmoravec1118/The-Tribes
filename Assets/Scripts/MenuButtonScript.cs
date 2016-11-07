@@ -26,6 +26,7 @@ public class MenuButtonScript : MonoBehaviour {
         globals = GlobalsScript.Instance;
 
 	}
+
     public void activateHarvestPanel(bool TF)
     {
         HarvestPanel.SetActive( TF );

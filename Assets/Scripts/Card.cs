@@ -17,7 +17,7 @@ public class Card : MonoBehaviour {
         this.title = title;
         this.description = description;
         this.choices = choices;
-		this.option1 = choices [0];
+        this.option1 = choices[0];
     }
 
 	// Use this for initialization
@@ -25,7 +25,7 @@ public class Card : MonoBehaviour {
         Card card = GlobalsScript.Instance.PlayDeck.Dequeue();
         titleMesh.text = card.title;
         descriptionMesh.text = card.description;
-       // option1.guiText = card.choices[0].
+        //option1.guiText = card.choices[0].
 	}
 	
 	// Update is called once per frame
