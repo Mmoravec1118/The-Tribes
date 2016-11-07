@@ -30,6 +30,7 @@ public class GlobalsScript : MonoBehaviour {
     int currPlayerCount = 0;
     int currPlayerTurn = 0;
     List<PlayerClass> players = new List<PlayerClass>();    // list of players with stats and such
+    Deck deck = new Deck();
 
     static GlobalsScript instance;
 
@@ -52,6 +53,15 @@ public class GlobalsScript : MonoBehaviour {
     #endregion
 
     #region Properties
+
+    public Deck PlayDeck
+    {
+        get
+        {
+            return deck;
+        }
+    }
+
 
     public static int NumberofPlayers
     {

@@ -32,17 +32,17 @@ public class DisplayPlayerInfo : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //if (currTurn != prevTurn)
-        //{
-        //    DisplayText(currTurn - 1);
-        //    prevTurn = currTurn;
-        //    currTurn++;
-        //}
-        //if (currTurn > GlobalsScript.NumberofPlayers)
-        //{
-        //    currTurn = 1;
-        //    prevTurn = 0;
-        //}
+        if (currTurn != prevTurn)
+        {
+            DisplayText(currTurn - 1);
+            prevTurn = currTurn;
+            //currTurn++;
+        }
+        if (currTurn > GlobalsScript.NumberofPlayers)
+        {
+            currTurn = 1;
+            prevTurn = 0;
+        }
 	
 	}
 

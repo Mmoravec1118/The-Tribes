@@ -26,6 +26,7 @@ public class MenuButtonScript : MonoBehaviour {
         globals = GlobalsScript.Instance;
 
 	}
+
     public void activateHarvestPanel(bool TF)
     {
         HarvestPanel.SetActive( TF );
@@ -246,7 +247,7 @@ public class MenuButtonScript : MonoBehaviour {
         RelocatePanel.SetActive(false);
         UpgradePanel.SetActive(false);
 
-        deck.DrawCard();
+        globals.PlayDeck.DrawCard();
     }
     void NextTurn()
     {

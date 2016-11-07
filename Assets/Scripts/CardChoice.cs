@@ -9,7 +9,7 @@ public class CardChoice : MonoBehaviour {
     string description;
     string winText;
     string lossText;
-    string Description
+    public string Description
     {
         get
         {

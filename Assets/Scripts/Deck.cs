@@ -5,8 +5,6 @@ using System.Collections.Generic;
 public class Deck : MonoBehaviour {
 
     private static Deck instance;
-    private Deck()
-    { }
     public static Deck Instance
     {
         get
@@ -20,18 +18,22 @@ public class Deck : MonoBehaviour {
     }
 	//fields for a new deck
 	public Queue<Card> deck;
-    public GameObject cardPrefab;
+    public GameObject cardPrefab; 
 
+    public Deck()
+        {
+        Start();
+        }
 	// Use this for initialization
 	void Start () {
 		
 	//instantiate new deck on start
 		deck = new Queue<Card>();
-
-		//add items to the queue.
-		//CARD 1
-		//ORC INVASION
-		deck.Enqueue (
+        cardPrefab = Resources.Load("CARD_PREFAB") as GameObject;
+        //add items to the queue.
+        //CARD 1
+        //ORC INVASION
+        deck.Enqueue (
 			//new card one
 			new Card ("Orc Invasion",
 				"Your settlement has been invaded by orcs, they look like they want what you have.",
