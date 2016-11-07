@@ -5,10 +5,11 @@ public class Card : MonoBehaviour {
 
     string title { get; set; }
     string description { get; set; }
-    CardChoice[] choices = new CardChoice[3];
+    CardChoice[] choices { get; set; }
 
     public TextMesh titleMesh;
     public TextMesh descriptionMesh;
+    public ButtonBehaviorScript option1;
     public Card(string title, string description, CardChoice[] choices)
     {
         this.title = title;
@@ -18,8 +19,10 @@ public class Card : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Card card = Deck.Instance.Dequeue();
+        Card card = GlobalsScript.Instance.PlayDeck.Dequeue();
         titleMesh.text = card.title;
+        descriptionMesh.text = card.description;
+       // option1.guiText = card.choices[0].
 	}
 	
 	// Update is called once per frame
