@@ -36,7 +36,7 @@ public class DisplayPlayerInfo : MonoBehaviour {
         {
             DisplayText(currTurn - 1);
             prevTurn = currTurn;
-            currTurn++;
+            //currTurn++;
         }
         if (currTurn > GlobalsScript.NumberofPlayers)
         {
