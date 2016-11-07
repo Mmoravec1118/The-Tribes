@@ -10,11 +10,14 @@ public class Card : MonoBehaviour {
     public TextMesh titleMesh;
     public TextMesh descriptionMesh;
     public ButtonBehaviorScript option1;
+	public ButtonBehaviorScript option2;
+	public ButtonBehaviorScript option3;
     public Card(string title, string description, CardChoice[] choices)
     {
         this.title = title;
         this.description = description;
         this.choices = choices;
+		this.option1 = choices [0];
     }
 
 	// Use this for initialization
