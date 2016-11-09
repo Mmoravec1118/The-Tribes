@@ -524,7 +524,8 @@ public class Deck : MonoBehaviour {
 
     public void DrawCard()
     {
-        Instantiate(cardPrefab, new Vector3(), new Quaternion());
+        Instantiate(cardPrefab, FindObjectOfType<Canvas>().transform);
+        
     }
 
 }
