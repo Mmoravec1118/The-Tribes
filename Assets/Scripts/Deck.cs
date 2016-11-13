@@ -508,60 +508,63 @@ public class Deck : MonoBehaviour {
 
 		//add eighth card-------------------------------------------------------------------------------------------------------------------------------
 		//CARD 8----------------------------------------------------------------------------------------------------------------------------------------
-		//Harrowing Hermit------------------------------------------------------------------------------------------------------------------------------
+		//Traders arrive------------------------------------------------------------------------------------------------------------------------------
 		deck.Enqueue (
 			//new card one
-			new Card ("Spider Infestation",
-				"Your settlement is about to be overrun by giant spiders.",
+			new Card ("Traders",
+				"A caravan arrives, offering goods to your village.",
 
 				//choice 1
-				new CardChoice[] {new CardChoice ("STRENGTH - You try to crush the spiders (12).",
-					"The Spiders were crushed and the village is safe, but you gain nothing",
-					"The spiders take some of your villagers for food",
+				new CardChoice[] {new CardChoice ("TRUST - You negotiate with the traders for a good deal(8)",
+					"Your bargaining pays off, giving some food for supplies",
+					"You didn't convince them, but still get something for your food",
 					//win effect,
-					GlobalsScript.Traits.Strength,
-					12,
+					GlobalsScript.Traits.Trust,
+					8,
 					new Effect[]{
-						new Effect(0, GlobalsScript.Resources.People),
+						new Effect(2, GlobalsScript.Resources.Wood),
+						new Effect (1, GlobalsScript.Resources.Stone),
+						new Effect (-3, GlobalsScript.Resources.Food),
 					},
 					//lose effects
 					new Effect[]{
-						new Effect(-2, GlobalsScript.Resources.People)}
+						new Effect(1, GlobalsScript.Resources.Wood),
+						new Effect(-1, GlobalsScript.Resources.Food)}
 				),
 
 					//choice 2
-					new CardChoice ("TRUST - You try to communicate with the spiders(14)",
-						"The spiders are actually highly intelligent and you form an alliance!",
-						"You fail to communicate with the spiders.",
-						GlobalsScript.Traits.Trust,
+					new CardChoice ("STRENGTH - You show power and try to convince the caravan they need you(10)",
+						"In a marvellous display, you convince them",
+						"Failing to lift anything, they laugh at you",
+						GlobalsScript.Traits.Strength,
 						14,
 						//win effect
 						new Effect[]{ 
-							new Effect(2, GlobalsScript.Traits.Strength),
+							new Effect(1, GlobalsScript.Traits.Strength),
 							new Effect(1, GlobalsScript.Traits.Trust)
 						},
 						//lose effect
 						new Effect[]{
-							new Effect(-1, GlobalsScript.Traits.Trust),
-							new Effect(-2, GlobalsScript.Resources.People)}
+							new Effect(-1, GlobalsScript.Traits.Strength)}
 
 					),
 
 					//choice 3
-					new CardChoice ("SURVIVAL - You attempt to avoid conflict by leaving your settlement (10)",
-						"You avoid the spiders and find more resources!",
-						"You avoid the spiders but some of your people die in the wilderness.",
+					new CardChoice ("AGILITY - You attempt to steal from the traders(8)",
+						"You succeed, grabbing supplies",
+						"They spot you, making sure others know you are not to be trusted",
 						GlobalsScript.Traits.Survival,
 						10,
 						//win effects
 						new Effect[]{
 							new Effect(1, GlobalsScript.Resources.Wood),
-							new Effect(1, GlobalsScript.Resources.Food)	
+							new Effect(1, GlobalsScript.Resources.Food),
+							new Effect(1, GlobalsScript.Resources.People),
+							new Effect(1, GlobalsScript.Resources.Stone)
 						},
 						//lose effect
 						new Effect[]{ 
-							new Effect(-1, GlobalsScript.Resources.People),
-							new Effect(-1, GlobalsScript.Resources.Food)
+							new Effect(2, GlobalsScript.Traits.Notoriety)
 						})
 
 
