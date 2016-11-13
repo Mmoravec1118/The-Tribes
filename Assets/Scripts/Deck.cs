@@ -30,9 +30,9 @@ public class Deck : MonoBehaviour {
 	//instantiate new deck on start
 		deck = new Queue<Card>();
         cardPrefab = Resources.Load("CARD_PREFAB") as GameObject;
-        //add items to the queue.
-        //CARD 1
-        //ORC INVASION
+        //add items to the queue------------------------------------------------------------------------------------------------------------------------
+        //CARD 1----------------------------------------------------------------------------------------------------------------------------------------
+        //ORC INVASION----------------------------------------------------------------------------------------------------------------------------------
         deck.Enqueue (
 			//new card one
 			new Card ("Orc Invasion",
@@ -100,9 +100,9 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 1
 		);
 
-		//add second card
-		//CARD 2
-		//SPIDER INFESTATION
+		//add second card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 2----------------------------------------------------------------------------------------------------------------------------------------
+		//SPIDER INFESTATION----------------------------------------------------------------------------------------------------------------------------
 		deck.Enqueue (
 			//new card one
 			new Card ("Spider Infestation",
@@ -164,9 +164,9 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 2
 		);
 
-		//add card 3
-		//CARD 3
-		//MINOTAUR RUTTING SEASON
+		//add card 3------------------------------------------------------------------------------------------------------------------------------------
+		//CARD 3----------------------------------------------------------------------------------------------------------------------------------------
+		//MINOTAUR RUTTING SEASON-----------------------------------------------------------------------------------------------------------------------
 		deck.Enqueue (
 			//new card one
 			new Card ("Minotaur Rutting Season",
@@ -232,8 +232,8 @@ public class Deck : MonoBehaviour {
 		);
 
 
-		//CARD 4
-		//PIXIES AT PLAY
+		//CARD 4----------------------------------------------------------------------------------------------------------------------------------------
+		//PIXIES AT PLAY--------------------------------------------------------------------------------------------------------------------------------
 		deck.Enqueue (
 			//new card one
 			new Card ("Pixies at play",
@@ -301,9 +301,9 @@ public class Deck : MonoBehaviour {
 		);
 
 
-		//add items to the queue.
-		//CARD 5
-		//WIZARD PROTEST
+		//add items to the queue------------------------------------------------------------------------------------------------------------------------
+		//CARD 5----------------------------------------------------------------------------------------------------------------------------------------
+		//WIZARD PROTEST--------------------------------------------------------------------------------------------------------------------------------
 		deck.Enqueue (
 			//new card one
 			new Card ("Wizard Protest",
@@ -371,9 +371,9 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 5
 		);
 
-		//add items to the queue.
-		//CARD 6
-		//THRILL OF THE HUNT
+		//add items to the queue------------------------------------------------------------------------------------------------------------------------
+		//CARD 6----------------------------------------------------------------------------------------------------------------------------------------
+		//THRILL OF THE HUNT----------------------------------------------------------------------------------------------------------------------------
 		deck.Enqueue (
 			//new card one
 			new Card ("Thrill of the Hunt",
@@ -441,9 +441,9 @@ public class Deck : MonoBehaviour {
 		);
 
 
-		//add items to the queue.
-		//CARD 7
-		//WILDFIRE
+		//add items to the queue------------------------------------------------------------------------------------------------------------------------
+		//CARD 7----------------------------------------------------------------------------------------------------------------------------------------
+		//WILDFIRE--------------------------------------------------------------------------------------------------------------------------------------
 		deck.Enqueue (
 			//new card one
 			new Card ("Wildfire",
@@ -504,6 +504,70 @@ public class Deck : MonoBehaviour {
 				}
 			)
 			//end of enqueue card 7
+		);
+
+		//add eighth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 8----------------------------------------------------------------------------------------------------------------------------------------
+		//Harrowing Hermit------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Spider Infestation",
+				"Your settlement is about to be overrun by giant spiders.",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("STRENGTH - You try to crush the spiders (12).",
+					"The Spiders were crushed and the village is safe, but you gain nothing",
+					"The spiders take some of your villagers for food",
+					//win effect,
+					GlobalsScript.Traits.Strength,
+					12,
+					new Effect[]{
+						new Effect(0, GlobalsScript.Resources.People),
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-2, GlobalsScript.Resources.People)}
+				),
+
+					//choice 2
+					new CardChoice ("TRUST - You try to communicate with the spiders(14)",
+						"The spiders are actually highly intelligent and you form an alliance!",
+						"You fail to communicate with the spiders.",
+						GlobalsScript.Traits.Trust,
+						14,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, GlobalsScript.Traits.Strength),
+							new Effect(1, GlobalsScript.Traits.Trust)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, GlobalsScript.Traits.Trust),
+							new Effect(-2, GlobalsScript.Resources.People)}
+
+					),
+
+					//choice 3
+					new CardChoice ("SURVIVAL - You attempt to avoid conflict by leaving your settlement (10)",
+						"You avoid the spiders and find more resources!",
+						"You avoid the spiders but some of your people die in the wilderness.",
+						GlobalsScript.Traits.Survival,
+						10,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Resources.Wood),
+							new Effect(1, GlobalsScript.Resources.Food)	
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-1, GlobalsScript.Resources.People),
+							new Effect(-1, GlobalsScript.Resources.Food)
+						})
+
+
+				}
+			)
+			//end of enqueue card 8
 		);
 
 
