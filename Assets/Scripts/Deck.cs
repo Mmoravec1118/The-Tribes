@@ -506,9 +506,361 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 7
 		);
 
+        //add items to the queue.
+        //CARD 8
+        //THE PLAGUE
+        deck.Enqueue(
+            //new card one
+            new Card("The Plague",
+                "Rats have brought the plague to your village!",
 
+                //choice 1
+                new CardChoice[] {new CardChoice ("SURVIVAL - You attempt to find a cure for the plague.(11)",
+                    "You manage to find the cure, however you lose some food but gain some survival rank.",
+                    "You fail to find a cure in time, many people are dead.",
+					//win effect,
+					GlobalsScript.Traits.Survival,
+                    11,
+                    new Effect[]{
+                        new Effect(1, GlobalsScript.Traits.Survival),
+                        new Effect(-1, GlobalsScript.Resources.Food)
+                    },
+					//lose effects
+					new Effect[]{
+                        new Effect(-2, GlobalsScript.Resources.People)}
+                ),
 
-	}
+					//choice 2
+					new CardChoice ("AGILITY - You attempt to flee the village with anyone not sick(12)",
+                        "The evacuation was successfull, you and your people wait until those infected die off before moving back in.",
+                        "In the chaos of running away, your people lose valuable resources.",
+                        GlobalsScript.Traits.Agility,
+                        12,
+						//win effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Resources.People),
+                            new Effect(2, GlobalsScript.Traits.Notoriety)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Resources.Wood),
+                            new Effect(-1, GlobalsScript.Resources.Food),
+                            new Effect(-1, GlobalsScript.Resources.Stone)
+                        }
+                    ),
+
+					//choice 3
+					new CardChoice ("NOTORIETY - You decide to kill the infected and burn their bodies.(14)",
+                        "The people might not be happy about killing their own, but at least they are alive and fear you.",
+                        "The people ignore you and try to help the infected causing the plague to spread, they realize you were right, you find stash of resources",
+                        GlobalsScript.Traits.Notoriety,
+                        14,
+						//win effects
+						new Effect[]{
+                            new Effect(2, GlobalsScript.Traits.Notoriety),
+                            new Effect(-1, GlobalsScript.Resources.People)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Resources.People),
+                            new Effect(1, GlobalsScript.Resources.Wood),
+                            new Effect(1, GlobalsScript.Resources.Food),
+                            new Effect(1, GlobalsScript.Traits.Trust)
+                        })
+                }
+            )
+        //end of enqueue card 8
+        );
+
+        //add items to the queue.
+        //CARD 9
+        //BANDITS
+        deck.Enqueue(
+            //new card one
+            new Card("BANDITS",
+                "Your Settlement has been targeted by a group of Bandits!",
+
+                //choice 1
+                new CardChoice[] {new CardChoice ("NOTORIETY - You decide to intimadate the bandits using your fearful presence.",
+                    "The bandits are completely frightened by your presence, they decide to join you",
+                    "The bandits laugh at your pitiful display, they take what they want.",
+					//win effect,
+					GlobalsScript.Traits.Notoriety,
+                    14,
+                    new Effect[]{
+                        new Effect(2, GlobalsScript.Traits.Notoriety),
+                        new Effect(1, GlobalsScript.Traits.Strength),
+                        new Effect(3, GlobalsScript.Resources.People),
+                        new Effect(2, GlobalsScript.Resources.Food),
+                        new Effect(2, GlobalsScript.Resources.Stone),
+                        new Effect(2, GlobalsScript.Resources.Wood)
+                    },
+					//lose effects
+					new Effect[]{
+                        new Effect(-2, GlobalsScript.Resources.Wood),
+                        new Effect(-2, GlobalsScript.Resources.Food),
+                        new Effect(-1, GlobalsScript.Resources.People),
+                        new Effect(-2, GlobalsScript.Traits.Notoriety)}
+                ),
+
+					//choice 2
+					new CardChoice ("SURVIVAL - You attempt to negioate with the bandits.(10)",
+                        "The negioations were successful, they leave with a few resources and your people admire you.",
+                        "The negioations failed completely, they enslave a portion of your people.",
+                        GlobalsScript.Traits.Survival,
+                        10,
+						//win effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Resources.Food),
+                            new Effect(-1, GlobalsScript.Resources.Wood),
+                            new Effect(2, GlobalsScript.Traits.Trust)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Resources.People),
+                            new Effect(-1, GlobalsScript.Traits.Survival)
+                        }
+                    ),
+
+					//choice 3
+					new CardChoice ("STRENGTH - You take your strongest villagers and attempt to fight them off.(12)",
+                        "Your warriors drive the enemy off your lands, you locate their base free the slaves and gain resources.",
+                        "You underestimated the bandits and now they have taken the town, your people curse your name.",
+                        GlobalsScript.Traits.Strength,
+                        12,
+						//win effects
+						new Effect[]{
+                            new Effect(2, GlobalsScript.Resources.Wood),
+                            new Effect(2, GlobalsScript.Resources.Food),
+                            new Effect(2, GlobalsScript.Resources.Stone),
+                            new Effect(2, GlobalsScript.Resources.People),
+                            new Effect(2, GlobalsScript.Traits.Strength),
+                            new Effect(1, GlobalsScript.Traits.Notoriety)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Resources.People),
+                            new Effect(-1, GlobalsScript.Resources.Wood),
+                            new Effect(-2, GlobalsScript.Resources.Food),
+                            new Effect(-1, GlobalsScript.Resources.Stone),
+                            new Effect(-1, GlobalsScript.Traits.Strength),
+                            new Effect(-2, GlobalsScript.Traits.Trust)
+                        })
+                }
+            )
+        //end of enqueue card 9
+        );
+
+        //add items to the queue.
+        //CARD 10
+        //FLEEING REFUGEES
+        deck.Enqueue(
+            //new card one
+            new Card("FLEEING REFUGEES",
+                "A large group of refugees approach your village!",
+
+                //choice 1
+                new CardChoice[] {new CardChoice ("TRUST - You attempt to convince your village to help the refugees.(11)",
+                    "The people decide to let the refugees in, while food might be stretched, they bring some resources.",
+                    "The people ignore you and turn away the refugees, the refugees believe it is because of you.",
+					//win effect,
+					GlobalsScript.Traits.Trust,
+                    11,
+                    new Effect[]{
+                        new Effect(3, GlobalsScript.Traits.Trust),
+                        new Effect(-1, GlobalsScript.Resources.Food),
+                        new Effect(1, GlobalsScript.Resources.Wood),
+                        new Effect(1, GlobalsScript.Resources.Stone)
+                    },
+					//lose effects
+					new Effect[]{
+                        new Effect(2, GlobalsScript.Traits.Notoriety),
+                        new Effect(-2, GlobalsScript.Traits.Trust)}
+                ),
+
+					//choice 2
+					new CardChoice ("AGILITY - You decide to flee with your people from whatever the refugees are fleeing from.(14)",
+                        "Your village leaves the area without losing anything, they pick up some refugees and your survival increases.",
+                        "The people panic when the refugees near and scatter across the land.",
+                        GlobalsScript.Traits.Agility,
+                        14,
+						//win effect
+						new Effect[]{
+                            new Effect(1, GlobalsScript.Resources.People),
+                            new Effect(2, GlobalsScript.Traits.Survival),
+                            new Effect(1, GlobalsScript.Traits.Agility)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Resources.Wood),
+                            new Effect(-1, GlobalsScript.Resources.Food),
+                            new Effect(-1, GlobalsScript.Resources.Stone),
+                            new Effect(-1, GlobalsScript.Resources.People),
+                        }
+                    ),
+
+					//choice 3
+					new CardChoice ("STRENGTH - You decide to build a new village for the Refugees.(12)",
+                        "While it did cost resources, the village is thriving and you have new allies.",
+                        "Instead of a village you create a shantytown, the refugees leave, cursing your name and stealing some food.",
+                        GlobalsScript.Traits.Strength,
+                        12,
+						//win effects
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Resources.Wood),
+                            new Effect(-1, GlobalsScript.Resources.Food),
+                            new Effect(-1, GlobalsScript.Resources.Stone),
+                            new Effect(2, GlobalsScript.Traits.Trust),
+                            new Effect(1, GlobalsScript.Traits.Strength)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Resources.Food),
+                            new Effect(-2, GlobalsScript.Traits.Trust),
+                            new Effect(2, GlobalsScript.Traits.Notoriety)
+                        })
+                }
+            )
+        //end of enqueue card 10
+        );
+
+        //add items to the queue.
+        //CARD 11
+        //BLOOD FOR THE BLOOD GOD
+        deck.Enqueue(
+            //new card one
+            new Card("BLOOD FOR THE BLOOD GOD",
+                "The god of blood and death demands a sacrifice.",
+
+                //choice 1
+                new CardChoice[] {new CardChoice ("NOTORIETY - Deciding not to anger the god, you sacrifice one of your people.(14)",
+                    "The blood god is pleased with the sacrifice, Resources are bountiful in the area and you feel a change inside you.",
+                    "The sacrifical pawn flees, the god is angered about you incompetence and curses you.",
+					//win effect,
+					GlobalsScript.Traits.Notoriety,
+                    14,
+                    new Effect[]{
+                        new Effect(3, GlobalsScript.Traits.Notoriety),
+                        new Effect(-1, GlobalsScript.Traits.Trust),
+                        new Effect(2, GlobalsScript.Traits.Strength),
+                        new Effect(1, GlobalsScript.Traits.Agility),
+                        new Effect(1, GlobalsScript.Traits.Survival),
+                        new Effect(-1, GlobalsScript.Resources.People),
+                        new Effect(3, GlobalsScript.Resources.Food),
+                        new Effect(3, GlobalsScript.Resources.Stone),
+                        new Effect(3, GlobalsScript.Resources.Wood)
+                    },
+					//lose effects
+					new Effect[]{
+                        new Effect(-1, GlobalsScript.Traits.Agility),
+                        new Effect(-1, GlobalsScript.Traits.Notoriety),
+                        new Effect(-1, GlobalsScript.Traits.Strength),
+                        new Effect(-1, GlobalsScript.Traits.Survival)
+                    }
+                ),
+
+					//choice 2
+					new CardChoice ("TRUST - You decide to sacrifice yourself for the good of the village.(10)",
+                        "The people are so moved by your sacrifice that they plead with the gods to bring you back, now your are stronger.",
+                        "Your pitiful blood does not appease the god, lighting destroys the grain silo.",
+                        GlobalsScript.Traits.Trust,
+                        10,
+						//win effect
+						new Effect[]{
+                            new Effect(2, GlobalsScript.Traits.Strength),
+                            new Effect(1, GlobalsScript.Traits.Agility)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Resources.Food)
+                        }
+                    ),
+
+					//choice 3
+					new CardChoice ("SURVIVAL - In a surge of desperation, you appeal to the other gods for help.(13)",
+                        "The Goddess of Wisdom hears your pleas and forces the blood god to leave, you feel more knowledgable on the world.",
+                        "The gods laugh at you groveling skills, you are forced to preform a larger sacrifice",
+                        GlobalsScript.Traits.Survival,
+                        13,
+						//win effects
+						new Effect[]{
+                            new Effect(2, GlobalsScript.Traits.Survival)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Resources.People),
+                            new Effect(-2, GlobalsScript.Resources.Food)
+                        })
+                }
+            )
+        //end of enqueue card 11
+        );
+
+        //add items to the queue.
+        //CARD 12
+        //FESTIVAL OF LOVE
+        deck.Enqueue(
+            //new card one
+            new Card("FESTIVAL OF LOVE",
+                "It is time to increase the population!",
+
+                //choice 1
+                new CardChoice[] {new CardChoice ("AGILITY - You hold a race to win over the womens affections.(12)",
+                    "The women are impressed with the agile prowess of the men, everyone has a great time.",
+                    "Many of the men break their legs while racing, the women laugh and some leave the tribe.",
+					//win effect,
+					GlobalsScript.Traits.Agility,
+                    12,
+                    new Effect[]{
+                        new Effect(3, GlobalsScript.Resources.People)
+                    },
+					//lose effects
+					new Effect[]{
+                        new Effect(-1, GlobalsScript.Resources.People)
+                    }
+                ),
+
+					//choice 2
+					new CardChoice ("STRENGTH - You decide to have the men do a log lifthing tournament.(10)",
+                        "The tribes women are impressed by the strength of their men, celebrations begin.",
+                        "Your weak men run for their lives, hating you for this horrible idea.",
+                        GlobalsScript.Traits.Strength,
+                        10,
+						//win effect
+						new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Strength),
+                            new Effect(2, GlobalsScript.Resources.Wood),
+                            new Effect(2, GlobalsScript.Resources.People)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Traits.Trust),
+                            new Effect(-1, GlobalsScript.Resources.People)
+                        }
+                    ),
+
+					//choice 3
+					new CardChoice ("SURVIVAL - Its decided to hold a hunt for the Silver Stag.(11)",
+                        "The silver stag got away, but the hunters brought in a lot of food.",
+                        "The hunt turns into the great farce, some people are killed and others wander away.",
+                        GlobalsScript.Traits.Survival,
+                        13,
+						//win effects
+						new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Survival),
+                            new Effect(2, GlobalsScript.Resources.Food),
+                            new Effect(1, GlobalsScript.Resources.People)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Resources.People),
+                            new Effect(1, GlobalsScript.Traits.Notoriety)
+                        })
+                }
+            )
+        //end of enqueue card 12
+        );
+    }
 	
 	// Update is called once per frame
 	void Update () {
