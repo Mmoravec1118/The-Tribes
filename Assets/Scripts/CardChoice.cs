@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class CardChoice : MonoBehaviour {
-
+    
+    //Fields
     Effect[] winEffects;
     Effect[] lossEffects;
     string description;
     string winText;
     string lossText;
+    int cost;
+    GlobalsScript.Traits currTrait;
+
     public string Description
     {
         get
@@ -23,7 +27,31 @@ public class CardChoice : MonoBehaviour {
         this.lossEffects = lossEffects;
 		this.winText = winText;
 		this.lossText = lossText;
+        cost = toBeat;
+        currTrait = trait;
     }
+
+    #region Properties
+
+    public int GetEffectCost
+    {
+        get
+        {
+            return cost;
+        }
+    }
+
+    public GlobalsScript.Traits GetTrait
+    {
+        get
+        {
+            return currTrait;
+        }
+    }
+
+
+    #endregion
+
 }
 
 public class Effect
@@ -44,8 +72,32 @@ public class Effect
 		this.toChangeResource = toChangeResource;
 	}
 
-    //public void MakeChange(Player player)
-    //{
 
-    //}
+    #region Properties
+
+    public int GetChange
+    {
+        get
+        {
+            return change;
+        }
+    }
+
+    public GlobalsScript.Resources GetResource
+    {
+        get
+        {
+            return toChangeResource;
+        }
+    }
+
+    public GlobalsScript.Traits GetTrait
+    {
+        get
+        {
+            return toChangeTrait;
+        }
+    }
+
+    #endregion
 }
