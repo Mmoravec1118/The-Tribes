@@ -573,7 +573,430 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 8
 		);
 
+		//add ninth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 9----------------------------------------------------------------------------------------------------------------------------------------
+		//Poachers------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Poachers",
+				"Poachers begin hunting prey on your land",
 
+				//choice 1
+				new CardChoice[] {new CardChoice ("NOTORIETY - You attempt to scare them away",
+					"The hunters run in fears",
+					"You aren't more scary than they are hungry",
+					//win effect,
+					GlobalsScript.Traits.Notoriety,
+					8,
+					new Effect[]{
+						new Effect (1, GlobalsScript.Resources.Food),
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.Food),
+						new Effect(-1, GlobalsScript.Traits.Notoriety)}
+				),
+
+					//choice 2
+					new CardChoice ("TRUST - You attempt to set up a deal(9)",
+						"The poachers agree to your terms",
+						"You attempt reason, but the poachers are too savage and attack",
+						GlobalsScript.Traits.Strength,
+						14,
+						//win effect
+						new Effect[]{ 
+							new Effect(-1, GlobalsScript.Resources.Food),
+							new Effect(-1, GlobalsScript.Traits.Notoriety),
+							new Effect(1, GlobalsScript.Resources.Wood),
+							new Effect(1, GlobalsScript.Traits.Trust),
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, GlobalsScript.Resources.People)}
+
+					),
+
+					//choice 3
+					new CardChoice ("SURVIVAL - You attack to remove them all(10)",
+						"With the hunters dead, you take their resources",
+						"You aren't as skilled as you think, and they kill your party",
+						GlobalsScript.Traits.Survival,
+						10,
+						//win effects
+						new Effect[]{
+							new Effect (2, GlobalsScript.Resources.Food),
+							new Effect (1, GlobalsScript.Traits.Notoriety)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Resources.People),
+						})
+
+
+				}
+			)
+			//end of enqueue card 9
+		);
+
+		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 10----------------------------------------------------------------------------------------------------------------------------------------
+		//A Raiding Party------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Raid",
+				"A raiding party attacks your camp",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("AGILITY - You evacuate the camp(10)",
+					"You succeed, but gain nothing in the process",
+					"You are not fast enough and are attacked",
+					//win effect,
+					GlobalsScript.Traits.Agility,
+					0,
+					new Effect[]{
+						
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.Food),
+						new Effect(-1, GlobalsScript.Traits.Notoriety)}
+				),
+
+					//choice 2
+					new CardChoice ("NOTORIETY - Your people are fierce and attempt to show them that",
+						"You scare away the raiders and even convince some to join",
+						"The raiders aren't scared, and show you that",
+						GlobalsScript.Traits.Notoriety,
+						11,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, GlobalsScript.Resources.People)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect (-1, GlobalsScript.Resources.People),
+							new Effect (-1, GlobalsScript.Resources.Food)}
+
+					),
+
+					//choice 3
+					new CardChoice ("SURVIVAL - You lay an ambush for the raiders(12)",
+						"Your ambush was successful, obliterating the raiding party",
+						"They see you coming, leading to a blood bath",
+						GlobalsScript.Traits.Survival,
+						12,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Notoriety)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Resources.People)
+						})
+				}
+			)
+			//end of enqueue card 9
+		);
+
+		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 11----------------------------------------------------------------------------------------------------------------------------------------
+		//A Raiding Party------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Raid",
+				"A raiding party attacks your camp",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("AGILITY - You evacuate the camp(10)",
+					"You succeed, but gain nothing in the process",
+					"You are not fast enough and are attacked",
+					//win effect,
+					GlobalsScript.Traits.Agility,
+					0,
+					new Effect[]{
+
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.Food),
+						new Effect(-1, GlobalsScript.Traits.Notoriety)}
+				),
+
+					//choice 2
+					new CardChoice ("NOTORIETY - Your people are fierce and attempt to show them that",
+						"You scare away the raiders and even convince some to join",
+						"The raiders aren't scared, and show you that",
+						GlobalsScript.Traits.Notoriety,
+						11,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, GlobalsScript.Resources.People)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect (-1, GlobalsScript.Resources.People),
+							new Effect (-1, GlobalsScript.Resources.Food)}
+
+					),
+
+					//choice 3
+					new CardChoice ("SURVIVAL - You lay an ambush for the raiders(12)",
+						"Your ambush was successful, obliterating the raiding party",
+						"They see you coming, leading to a blood bath",
+						GlobalsScript.Traits.Survival,
+						12,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Notoriety)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Resources.People)
+						})
+				}
+			)
+			//end of enqueue card 9
+		);
+
+		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 12----------------------------------------------------------------------------------------------------------------------------------------
+		//A Raiding Party------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Raid",
+				"A raiding party attacks your camp",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("AGILITY - You evacuate the camp(10)",
+					"You succeed, but gain nothing in the process",
+					"You are not fast enough and are attacked",
+					//win effect,
+					GlobalsScript.Traits.Agility,
+					0,
+					new Effect[]{
+
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.Food),
+						new Effect(-1, GlobalsScript.Traits.Notoriety)}
+				),
+
+					//choice 2
+					new CardChoice ("NOTORIETY - Your people are fierce and attempt to show them that",
+						"You scare away the raiders and even convince some to join",
+						"The raiders aren't scared, and show you that",
+						GlobalsScript.Traits.Notoriety,
+						11,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, GlobalsScript.Resources.People)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect (-1, GlobalsScript.Resources.People),
+							new Effect (-1, GlobalsScript.Resources.Food)}
+
+					),
+
+					//choice 3
+					new CardChoice ("SURVIVAL - You lay an ambush for the raiders(12)",
+						"Your ambush was successful, obliterating the raiding party",
+						"They see you coming, leading to a blood bath",
+						GlobalsScript.Traits.Survival,
+						12,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Notoriety)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Resources.People)
+						})
+				}
+			)
+			//end of enqueue card 9
+		);
+
+		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 13----------------------------------------------------------------------------------------------------------------------------------------
+		//A Raiding Party------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Raid",
+				"A raiding party attacks your camp",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("AGILITY - You evacuate the camp(10)",
+					"You succeed, but gain nothing in the process",
+					"You are not fast enough and are attacked",
+					//win effect,
+					GlobalsScript.Traits.Agility,
+					0,
+					new Effect[]{
+
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.Food),
+						new Effect(-1, GlobalsScript.Traits.Notoriety)}
+				),
+
+					//choice 2
+					new CardChoice ("NOTORIETY - Your people are fierce and attempt to show them that",
+						"You scare away the raiders and even convince some to join",
+						"The raiders aren't scared, and show you that",
+						GlobalsScript.Traits.Notoriety,
+						11,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, GlobalsScript.Resources.People)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect (-1, GlobalsScript.Resources.People),
+							new Effect (-1, GlobalsScript.Resources.Food)}
+
+					),
+
+					//choice 3
+					new CardChoice ("SURVIVAL - You lay an ambush for the raiders(12)",
+						"Your ambush was successful, obliterating the raiding party",
+						"They see you coming, leading to a blood bath",
+						GlobalsScript.Traits.Survival,
+						12,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Notoriety)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Resources.People)
+						})
+				}
+			)
+			//end of enqueue card 9
+		);
+
+		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 14----------------------------------------------------------------------------------------------------------------------------------------
+		//A Raiding Party------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Raid",
+				"A raiding party attacks your camp",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("AGILITY - You evacuate the camp(10)",
+					"You succeed, but gain nothing in the process",
+					"You are not fast enough and are attacked",
+					//win effect,
+					GlobalsScript.Traits.Agility,
+					0,
+					new Effect[]{
+
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.Food),
+						new Effect(-1, GlobalsScript.Traits.Notoriety)}
+				),
+
+					//choice 2
+					new CardChoice ("NOTORIETY - Your people are fierce and attempt to show them that",
+						"You scare away the raiders and even convince some to join",
+						"The raiders aren't scared, and show you that",
+						GlobalsScript.Traits.Notoriety,
+						11,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, GlobalsScript.Resources.People)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect (-1, GlobalsScript.Resources.People),
+							new Effect (-1, GlobalsScript.Resources.Food)}
+
+					),
+
+					//choice 3
+					new CardChoice ("SURVIVAL - You lay an ambush for the raiders(12)",
+						"Your ambush was successful, obliterating the raiding party",
+						"They see you coming, leading to a blood bath",
+						GlobalsScript.Traits.Survival,
+						12,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Notoriety)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Resources.People)
+						})
+				}
+			)
+			//end of enqueue card 9
+		);
+
+		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 15----------------------------------------------------------------------------------------------------------------------------------------
+		//A Raiding Party------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Raid",
+				"A raiding party attacks your camp",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("AGILITY - You evacuate the camp(10)",
+					"You succeed, but gain nothing in the process",
+					"You are not fast enough and are attacked",
+					//win effect,
+					GlobalsScript.Traits.Agility,
+					0,
+					new Effect[]{
+
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.Food),
+						new Effect(-1, GlobalsScript.Traits.Notoriety)}
+				),
+
+					//choice 2
+					new CardChoice ("NOTORIETY - Your people are fierce and attempt to show them that",
+						"You scare away the raiders and even convince some to join",
+						"The raiders aren't scared, and show you that",
+						GlobalsScript.Traits.Notoriety,
+						11,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, GlobalsScript.Resources.People)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect (-1, GlobalsScript.Resources.People),
+							new Effect (-1, GlobalsScript.Resources.Food)}
+
+					),
+
+					//choice 3
+					new CardChoice ("SURVIVAL - You lay an ambush for the raiders(12)",
+						"Your ambush was successful, obliterating the raiding party",
+						"They see you coming, leading to a blood bath",
+						GlobalsScript.Traits.Survival,
+						12,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Notoriety)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Resources.People)
+						})
+				}
+			)
+			//end of enqueue card 9
+		);
 
 	}
 	
