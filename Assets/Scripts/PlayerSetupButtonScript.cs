@@ -64,12 +64,6 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
         ResetStats();
     }
-	
-	// Update is called once per frame
-	void Update () 
-    {
-	
-	}
 
     public void ChangeScene()
     {
