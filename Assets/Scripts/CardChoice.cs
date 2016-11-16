@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class CardChoice : MonoBehaviour {
-    
+
+    #region Fields
+
     //Fields
     Effect[] winEffects;
     Effect[] lossEffects;
@@ -13,14 +15,11 @@ public class CardChoice : MonoBehaviour {
     int cost;
     GlobalsScript.Traits currTrait;
 
-    public string Description
-    {
-        get
-        {
-            return description;
-        }
-    }
-	public CardChoice(string description, string winText, string lossText, GlobalsScript.Traits trait, int toBeat, Effect[] winEffects, Effect[] lossEffects)
+    #endregion
+
+    #region Constructor
+
+    public CardChoice(string description, string winText, string lossText, GlobalsScript.Traits trait, int toBeat, Effect[] winEffects, Effect[] lossEffects)
     {
         this.description = description;
         this.winEffects = winEffects;
@@ -30,6 +29,8 @@ public class CardChoice : MonoBehaviour {
         cost = toBeat;
         currTrait = trait;
     }
+
+    #endregion
 
     #region Methods
 
@@ -46,6 +47,14 @@ public class CardChoice : MonoBehaviour {
     #endregion
 
     #region Properties
+
+    public string Description
+    {
+        get
+        {
+            return description;
+        }
+    }
 
     public int GetEffectCost
     {
@@ -85,12 +94,20 @@ public class CardChoice : MonoBehaviour {
 
 public class Effect
 {
+    #region
+
+    // value to adjust and what to adjust
     int change;
     GlobalsScript.Traits toChangeTrait;
 	GlobalsScript.Resources toChangeResource;
 
+    // bool if things should change and what to change
     bool ChangeStuff = false;
     bool traitChange;
+
+    #endregion
+
+    #region Constructors
 
     public Effect(int change, GlobalsScript.Traits toChangeTrait)
     {
@@ -106,8 +123,15 @@ public class Effect
         traitChange = false;
 	}
 
+    #endregion
+
+    #region Update
+
     void Update()
     {
+        #region Trait Change
+
+        // check if stats should change
         if (ChangeStuff &&
             traitChange)
         {
@@ -120,15 +144,73 @@ public class Effect
                         ChangeStuff = false;
                         break;
                     }
+                case GlobalsScript.Traits.Strength:
+                    {
+                        GlobalsScript.Instance.GetPlayer().Strength += change;
+                        ChangeStuff = false;
+                        break;
+                    }
+                case GlobalsScript.Traits.Notoriety:
+                    {
+                        GlobalsScript.Instance.GetPlayer().Notoriety += change;
+                        ChangeStuff = false;
+                        break;
+                    }
+                case GlobalsScript.Traits.Survival:
+                    {
+                        GlobalsScript.Instance.GetPlayer().Survival += change;
+                        ChangeStuff = false;
+                        break;
+                    }
+                case GlobalsScript.Traits.Trust:
+                    {
+                        GlobalsScript.Instance.GetPlayer().Trust += change;
+                        ChangeStuff = false;
+                        break;
+                    }
             }
         }
+        #endregion
+
+        #region Resource Change
+
+        // chacks if resources should change
         else if (ChangeStuff &&
             !traitChange)
         {
+            switch (toChangeResource)
+            {
 
+                case GlobalsScript.Resources.Wood:
+                    {
+                        GlobalsScript.Instance.GetPlayer().Wood += change;
+                        ChangeStuff = false;
+                        break;
+                    }
+                case GlobalsScript.Resources.Stone:
+                    {
+                        GlobalsScript.Instance.GetPlayer().Stone += change;
+                        ChangeStuff = false;
+                        break;
+                    }
+                case GlobalsScript.Resources.Food:
+                    {
+                        GlobalsScript.Instance.GetPlayer().Food += change;
+                        ChangeStuff = false;
+                        break;
+                    }
+                case GlobalsScript.Resources.People:
+                    {
+                        GlobalsScript.Instance.GetPlayer().People += change;
+                        ChangeStuff = false;
+                        break;
+                    }
+            }
         }
+        #endregion  
     }
 
+    #endregion  
 
     #region Properties
 
