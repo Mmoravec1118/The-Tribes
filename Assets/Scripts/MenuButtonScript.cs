@@ -5,27 +5,28 @@ using System.Collections.Generic;
 public class MenuButtonScript : MonoBehaviour {
 
     GlobalsScript globals;
-    public GameObject HarvestPanel;
-    public GameObject CraftPanel;
-    public GameObject RecruitPanel;
-    public GameObject UpgradePanel;
-    public GameObject RelocatePanel;
-    public GameObject TradePanel;
+    [SerializeField] GameObject HarvestPanel;
+    [SerializeField] GameObject CraftPanel;
+    [SerializeField] GameObject RecruitPanel;
+    [SerializeField] GameObject UpgradePanel;
+    [SerializeField] GameObject RelocatePanel;
+    [SerializeField] GameObject TradePanel;
 
-    public GameObject HarvestButton;
-    public GameObject CraftButton;
-    public GameObject RecruitButton;
-    public GameObject UpgradeButton;
-    public GameObject RelocateButton;
-    public GameObject TradeButton;
+    [SerializeField] GameObject HarvestButton;
+    [SerializeField] GameObject CraftButton;
+    [SerializeField] GameObject RecruitButton;
+    [SerializeField] GameObject UpgradeButton;
+    [SerializeField] GameObject RelocateButton;
+    [SerializeField] GameObject TradeButton;
+
+    Card currCard;
 
     public Deck deck;
     // Use this for initialization
     void Start () {
         // save reference to globals script
-        globals = GlobalsScript.Instance;
-
-	}
+        globals = FindObjectOfType<GlobalsScript>();
+    }
 
     public void activateHarvestPanel(bool TF)
     {
@@ -247,8 +248,30 @@ public class MenuButtonScript : MonoBehaviour {
         RelocatePanel.SetActive(false);
         UpgradePanel.SetActive(false);
 
-        globals.PlayDeck.DrawCard();
+        //globals.PlayDeck.DrawCard();
+        MonoBehaviour.FindObjectOfType<Deck>().DrawCard();
     }
+
+    public void exitDrawCardPhase()
+    {
+        CraftButton.SetActive(true);
+        HarvestButton.SetActive(true);
+        RecruitButton.SetActive(true);
+        TradeButton.SetActive(true);
+        RelocateButton.SetActive(true);
+        UpgradeButton.SetActive(true);
+
+        CraftPanel.SetActive(false);
+        HarvestPanel.SetActive(false);
+        RecruitPanel.SetActive(false);
+        TradePanel.SetActive(false);
+        RelocatePanel.SetActive(false);
+        UpgradePanel.SetActive(false);
+
+        //globals.PlayDeck.RemoveCard();
+        MonoBehaviour.FindObjectOfType<Deck>().RemoveCard();
+    }
+
     void NextTurn()
     {
         globals.PlayerTurn += 1;

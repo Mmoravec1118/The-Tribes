@@ -4,18 +4,20 @@ using System.Collections.Generic;
 
 public class Deck : MonoBehaviour {
 
-    private static Deck instance;
-    public static Deck Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new Deck();
-            }
-            return instance;
-        }
-    }
+    static Deck instance;
+    Object currCard;
+
+    //public static Deck Instance
+    //{
+    //    get
+    //    {
+    //        if (instance == null)
+    //        {
+    //            instance = new Deck();
+    //        }
+    //        return instance;
+    //    }
+    //}
 	//fields for a new deck
 	public Queue<Card> deck;
     public GameObject cardPrefab; 
@@ -23,9 +25,13 @@ public class Deck : MonoBehaviour {
     public Deck()
         {
         Start();
+        DontDestroyOnLoad(this);
         }
-	// Use this for initialization
-	void Start () {
+
+    #region Create Deck
+
+    // Use this for initialization
+    void Start () {
 		
 	//instantiate new deck on start
 		deck = new Queue<Card>();
@@ -505,13 +511,12 @@ public class Deck : MonoBehaviour {
 			)
 			//end of enqueue card 7
 		);
-
-
-
 	}
 
-	//removed card from the deck
-	public Card Dequeue()
+    #endregion
+
+    //removed card from the deck
+    public Card Dequeue()
 	{
 		//dequeue the card from the top of the deck
 		return deck.Dequeue ();
@@ -519,8 +524,12 @@ public class Deck : MonoBehaviour {
 
     public void DrawCard()
     {
-        Instantiate(cardPrefab, FindObjectOfType<Canvas>().transform);
-        
+        currCard = MonoBehaviour.Instantiate(cardPrefab, MonoBehaviour.FindObjectOfType<Canvas>().transform);
+    }
+
+    public void RemoveCard()
+    {
+        Object.Destroy(currCard);
     }
 
 }

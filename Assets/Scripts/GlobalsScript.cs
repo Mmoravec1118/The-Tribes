@@ -25,28 +25,29 @@ public class GlobalsScript : MonoBehaviour {
     #endregion
 
     #region Fields
-
     static int numPlayers = 0;                                         // number of players in game
     int currPlayerCount = 0;
     int currPlayerTurn = 0;
-    List<PlayerClass> players = new List<PlayerClass>();    // list of players with stats and such
-    Deck deck = new Deck();
+    List<PlayerClass> players;
+    Deck deck;
 
-    static GlobalsScript instance;
+    //static GlobalsScript instance;
 
     #endregion
 
     #region Singleton
 
     // returns instance of object or creates it if it is missing
-    public static GlobalsScript Instance
-    {
-        get { return instance ?? (instance = new GlobalsScript()); }
-    }
+    //public static GlobalsScript Instance
+    //{
+    //    get { return instance ?? (instance = new GlobalsScript()); }
+    //}
 
     // keep object in scene
-    void Awake()
+    void Start()
     {
+        players = new List<PlayerClass>();    // list of players with stats and such
+        deck = new Deck();
         DontDestroyOnLoad(this);
     }
 

@@ -8,7 +8,7 @@ public class DieScript : MonoBehaviour {
     [SerializeField] Text dieDisplay;  //shows up in editor
 
     // value after die was rolled
-    int dieResult;
+    int dieResult = 1;
 
     // if die is rolling and timer it has been rolling
     bool dieRolling;
@@ -38,9 +38,10 @@ public class DieScript : MonoBehaviour {
     // set die to random number until die roll is done
     public void RollDie ()
     {
-
-        dieRolling = true;
-        
+        if (needsToRoll)
+        {
+            dieRolling = true;
+        }
     }
 
     // Display end die result
