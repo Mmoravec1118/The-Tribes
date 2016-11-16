@@ -6,6 +6,8 @@ public class Deck : MonoBehaviour {
 
     static Deck instance;
     Object currCard;
+    bool delete = false;
+    int deleteTimer;
 
     //public static Deck Instance
     //{
@@ -515,6 +517,20 @@ public class Deck : MonoBehaviour {
 
     #endregion
 
+    //void Update()
+    //{
+    //    if (delete)
+    //    {
+    //        deleteTimer++;
+    //    }
+    //    if (deleteTimer >= 3000)
+    //    {
+    //        delete = false;
+    //        deleteTimer = 0;
+    //        Object.Destroy(currCard);
+    //    }
+    //}
+
     //removed card from the deck
     public Card Dequeue()
 	{
@@ -529,6 +545,7 @@ public class Deck : MonoBehaviour {
 
     public void RemoveCard()
     {
+        //delete = true;
         Object.Destroy(currCard);
     }
 
