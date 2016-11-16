@@ -9,17 +9,6 @@ public class Deck : MonoBehaviour {
     bool delete = false;
     int deleteTimer;
 
-    //public static Deck Instance
-    //{
-    //    get
-    //    {
-    //        if (instance == null)
-    //        {
-    //            instance = new Deck();
-    //        }
-    //        return instance;
-    //    }
-    //}
 	//fields for a new deck
 	public Queue<Card> deck;
     public GameObject cardPrefab; 
