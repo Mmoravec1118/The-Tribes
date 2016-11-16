@@ -47,7 +47,7 @@ public class GlobalsScript : MonoBehaviour {
     void Start()
     {
         players = new List<PlayerClass>();    // list of players with stats and such
-        deck = new Deck();
+       // deck = new Deck();
         DontDestroyOnLoad(this);
     }
 
