@@ -96,7 +96,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         if (okbutton.gameObject.activeInHierarchy == false || okbutton.gameObject.activeInHierarchy == true)
         {
             if (tribeType != null 
-                && (strengthStat + agilityStat + trustStat + survivalStat + notorietyStat) < GlobalsScript.statMax)
+                && (strengthStat + agilityStat + trustStat + survivalStat + notorietyStat) <= GlobalsScript.statMax)
             {
                 warningText.gameObject.SetActive(false);
                 okbutton.gameObject.SetActive(true);
@@ -186,6 +186,8 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
         // This is where the Strength stat is stored between scenes
         currPlayer.Strength = strengthStat;
+
+        ActivateOK();
     }
 
     public void AgilityUpdate()
@@ -194,6 +196,8 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
         // This is where the Agility stat is stored between scenes
         currPlayer.Agility = agilityStat;
+
+        ActivateOK();
     }
 
     public void TrustUpdate()
@@ -202,6 +206,8 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
         // This is where the Trust stat is stored between scenes
         currPlayer.Trust = trustStat;
+
+        ActivateOK();
     }
 
     public void SurvivalUpdate()
@@ -210,6 +216,8 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
         // This is where the Survival stat is stored between scenes
         currPlayer.Survival = survivalStat;
+
+        ActivateOK();
     }
 
     public void NotorietyUpdate()
@@ -218,12 +226,14 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
         // This is where the Notoriety stat is stored between scenes
         currPlayer.Notoriety = notorietyStat;
+
+        ActivateOK();
     }
     public void NameUpdate()
     {
         if (tribeNameInputField.text == "")
         {
-            tribeName = "Player " + (GlobalsScript.Instance.CurrentPlayerCount + 1).ToString();
+            tribeName = "Player " + (FindObjectOfType<GlobalsScript>().CurrentPlayerCount + 1).ToString();
         }
         else
         {
@@ -285,7 +295,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     private void ResetStats()
     {
-        tribeName = "Player " + (GlobalsScript.Instance.CurrentPlayerCount + 1).ToString();
+        tribeName = "Player " + (FindObjectOfType<GlobalsScript>().CurrentPlayerCount + 1).ToString();
         tribeType = GlobalsScript.TribeType.Barbarian;
         strengthStat = 0;
         agilityStat = 0;

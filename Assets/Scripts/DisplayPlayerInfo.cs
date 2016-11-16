@@ -28,13 +28,13 @@ public class DisplayPlayerInfo : MonoBehaviour {
         //    players.Add(GlobalsScript.Instance.GetPlayer(i));
         //}
 
-        players = GlobalsScript.Instance.GetPlayerList();
+        //players = GlobalsScript.Instance.GetPlayerList();
 
         DisplayText(currTurn);
-        //for (int i = 0; i < GlobalsScript.NumberofPlayers; i++)
-        //{
-        //    players.Add(FindObjectOfType<GlobalsScript>().GetPlayer(i));
-        //}
+        for (int i = 0; i < GlobalsScript.NumberofPlayers; i++)
+        {
+            players.Add(FindObjectOfType<GlobalsScript>().GetPlayer(i));
+        }
 	
 	}
 	
