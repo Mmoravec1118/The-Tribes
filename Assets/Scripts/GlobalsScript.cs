@@ -101,6 +101,7 @@ public class GlobalsScript : MonoBehaviour {
     #region Methods
 
     /// <summary>
+    /// Returns current player or
     /// Returns player at selected position.
     /// If position doesn't exist, returns null
     /// </summary>
@@ -111,6 +112,7 @@ public class GlobalsScript : MonoBehaviour {
         return players[currPlayerTurn];
     }
 
+    // returns player at given number from list
     public PlayerClass GetPlayer(int number)
     {
         if (number < numPlayers)
@@ -125,6 +127,7 @@ public class GlobalsScript : MonoBehaviour {
         
     }
 
+    // adds playerclass to list
     public void AddPlayer(PlayerClass newPlayer)
     {
         players.Add(newPlayer);
