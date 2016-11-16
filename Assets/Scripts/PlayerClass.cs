@@ -18,7 +18,7 @@ public class PlayerClass
     string name = "";
 
     //Tribe type
-    //TribeType tribeType;
+    GlobalsScript.TribeType tribeType;
 
     // bool for tool creation
     bool hasTool = false;
@@ -163,6 +163,18 @@ public class PlayerClass
         }
     }
 
+    public GlobalsScript.TribeType TribeType
+    {
+        get
+        {
+            return tribeType;
+        }
+        set
+        {
+            tribeType = value;
+        }
+    }
+
     // get or set victory points
     public int VictoryPoints
     {
@@ -223,6 +235,8 @@ public class PlayerClass
         resourceDictionary[GlobalsScript.Resources.Wood] = 4;
 
         currArea = GlobalsScript.Areas.Plain;
+
+        name = "";
     }
 
     #endregion

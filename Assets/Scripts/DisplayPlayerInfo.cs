@@ -12,26 +12,33 @@ public class DisplayPlayerInfo : MonoBehaviour {
     List<PlayerClass> players = new List<PlayerClass>();
 
     // current player turn
-    int currTurn = 1;
+    int currTurn = 0;
 
+    // COMMENTING OUT BECAUSE PREVTURN IS OVERLY CONVOLUTED
     // previouse players turn
     // starts at zero for easier initialization
-    int prevTurn = 0;
+    //int prevTurn = 0;
 
 	// Use this for initialization
 	void Start () {
 
         playerDisplay = GetComponent<Text>();
-        for (int i = 0; i < GlobalsScript.NumberofPlayers; i++)
-        {
-            players.Add(GlobalsScript.Instance.GetPlayer(i));
-        }
-	
+        //for (int i = 0; i < GlobalsScript.NumberofPlayers; i++)
+        //{
+        //    players.Add(GlobalsScript.Instance.GetPlayer(i));
+        //}
+
+        players = GlobalsScript.Instance.GetPlayerList();
+
+        DisplayText(currTurn);
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+        // COMMENTING OUT FOR EASIER IMPLEMENTATION
+        /*
         if (currTurn != prevTurn)
         {
             DisplayText(currTurn - 1);
@@ -43,6 +50,7 @@ public class DisplayPlayerInfo : MonoBehaviour {
             currTurn = 1;
             prevTurn = 0;
         }
+        */
 	
 	}
 
@@ -92,6 +100,15 @@ public class DisplayPlayerInfo : MonoBehaviour {
         set
         {
             currTurn += value;
+
+            // Loops current turn back to 0 if if exceeds the list capacity
+            if (currTurn >= players.Count)
+            {
+                currTurn = 0;
+            }
+
+            // Updates the displayed text to current player info
+            DisplayText(currTurn);
         }
     }
 
