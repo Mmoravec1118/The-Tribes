@@ -8,7 +8,7 @@ public class DieScript : MonoBehaviour {
     [SerializeField] Text dieDisplay;  //shows up in editor
 
     // value after die was rolled
-    int dieResult;
+    int dieResult = 1;
 
     // if die is rolling and timer it has been rolling
     bool dieRolling;

@@ -94,21 +94,25 @@ public class CardChoice : MonoBehaviour {
         die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = GlobalsScript.Instance.GetPlayer();
         currCard = FindObjectOfType<Card>();
-        die.NeedsRoll = true;
+        
         CheckResult();
         if (win)
         {
-            foreach (Effect effect in winEffects)
-            {
-                effect.ApplyEffect();
-            }
+            //foreach (Effect effect in winEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.Strength++;
+            die.NeedsRoll = true;
         }
         else
         {
-            foreach (Effect effect in lossEffects)
-            {
-                effect.ApplyEffect();
-            }
+            //foreach (Effect effect in lossEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.Wood--;
+            die.NeedsRoll = true;
         }
     }
 
@@ -119,21 +123,25 @@ public class CardChoice : MonoBehaviour {
         die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = GlobalsScript.Instance.GetPlayer();
         currCard = FindObjectOfType<Card>();
-        die.NeedsRoll = true;
+        //die.NeedsRoll = true;
         CheckResult();
         if (win)
         {
-            foreach (Effect effect in winEffects)
-            {
-                effect.ApplyEffect();
-            }
+            //foreach (Effect effect in winEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.Trust++;
+            die.NeedsRoll = true;
         }
         else
         {
-            foreach (Effect effect in lossEffects)
-            {
-                effect.ApplyEffect();
-            }
+            //foreach (Effect effect in lossEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.Food--;
+            die.NeedsRoll = true;
         }
     }
 
@@ -144,21 +152,25 @@ public class CardChoice : MonoBehaviour {
         die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = GlobalsScript.Instance.GetPlayer();
         currCard = FindObjectOfType<Card>();
-        die.NeedsRoll = true;
+        //die.NeedsRoll = true;
         CheckResult();
         if (win)
         {
-            foreach (Effect effect in winEffects)
-            {
-                effect.ApplyEffect();
-            }
+            //foreach (Effect effect in winEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.Notoriety++;
+            die.NeedsRoll = true;
         }
         else
         {
-            foreach (Effect effect in lossEffects)
-            {
-                effect.ApplyEffect();
-            }
+            //foreach (Effect effect in lossEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.People--;
+            die.NeedsRoll = true;
         }
     }
 
