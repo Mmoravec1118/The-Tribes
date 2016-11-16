@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
 
-public class CardChoice : MonoBehaviour {
+public class CardChoice {
 
     #region Fields
 
     //Fields
-    Effect[] winEffects;
-    Effect[] lossEffects;
+    public Effect[] winEffects;
+    public Effect[] lossEffects;
     string description;
     string winText;
     string lossText;
@@ -39,8 +39,7 @@ public class CardChoice : MonoBehaviour {
 		this.winText = winText;
 		this.lossText = lossText;
         cost = toBeat;
-        currTrait = trait;
-        DontDestroyOnLoad(this);
+        currTrait = trait;        
     }
 
     #endregion
@@ -95,11 +94,11 @@ public class CardChoice : MonoBehaviour {
     public void CardChoice1()
     {
         // get references to all necessary objects
-        globals = FindObjectOfType<GlobalsScript>();
-        die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
+        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = globals.GetPlayer();
-        currCard = FindObjectOfType<CardPrefab>();
-        menu = FindObjectOfType<MenuButtonScript>();
+        currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
+        menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
         CheckResult();
         if (win)
@@ -130,11 +129,11 @@ public class CardChoice : MonoBehaviour {
     public void CardChoice2()
     {
         // get references to all necessary objects
-        globals = FindObjectOfType<GlobalsScript>();
-        die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
+        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = globals.GetPlayer();
-        currCard = FindObjectOfType<CardPrefab>();
-        menu = FindObjectOfType<MenuButtonScript>();
+        currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
+        menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
         CheckResult();
         if (win)
@@ -165,11 +164,11 @@ public class CardChoice : MonoBehaviour {
     public void CardChoice3()
     {
         // get references to all necessary objects
-        globals = FindObjectOfType<GlobalsScript>();
-        die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
+        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = globals.GetPlayer();
-        currCard = FindObjectOfType<CardPrefab>();
-        menu = FindObjectOfType<MenuButtonScript>();
+        currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
+        menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
         CheckResult();
         if (win)
@@ -197,8 +196,13 @@ public class CardChoice : MonoBehaviour {
     }
 
     // checks result of player stats + die result against card cost
-    void CheckResult()
+   public void CheckResult()
     {
+        globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
+        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
+        currPlayer = globals.GetPlayer();
+
         if (!die.NeedsRoll)
         {
             switch (currTrait)
@@ -288,7 +292,7 @@ public class CardChoice : MonoBehaviour {
 
 
 
-public class Effect : MonoBehaviour
+public class Effect 
 {
     #region Fields
 
@@ -312,7 +316,7 @@ public class Effect : MonoBehaviour
         this.change = change;
         this.toChangeTrait = toChangeTrait;
         trait = true;
-        DontDestroyOnLoad(this);
+       // DontDestroyOnLoad(this);
     }
 
 	public Effect(int change, GlobalsScript.Resources toChangeResource)
@@ -320,7 +324,7 @@ public class Effect : MonoBehaviour
 		this.change = change;
 		this.toChangeResource = toChangeResource;
         resource = true;
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
 
     }
 
