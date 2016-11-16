@@ -16,6 +16,9 @@ public class CardChoice : MonoBehaviour {
     int cost;
     GlobalsScript.Traits currTrait;
 
+    GlobalsScript globals;
+    MenuButtonScript menu;
+
     // reference to die roller
     DieScript die;
 
@@ -38,7 +41,6 @@ public class CardChoice : MonoBehaviour {
         cost = toBeat;
         currTrait = trait;
         DontDestroyOnLoad(this);
-        
     }
 
     #endregion
@@ -92,103 +94,105 @@ public class CardChoice : MonoBehaviour {
     // first button of card
     public void CardChoice1()
     {
-        // get die roller
-
-        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer();
-        currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
-        die.NeedsRoll = true;
-        
+        // get references to all necessary objects
+        globals = FindObjectOfType<GlobalsScript>();
+        die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        currPlayer = globals.GetPlayer();
+        currCard = FindObjectOfType<CardPrefab>();
+        menu = FindObjectOfType<MenuButtonScript>();
 
         CheckResult();
         if (win)
         {
-            //foreach (Effect effect in winEffects)
-            //{
-            //    effect.ApplyEffect();
-            //}
-            currPlayer.Strength++;
+            foreach (Effect effect in winEffects)
+            {
+                effect.ApplyEffect();
+            }
+            //currPlayer.Strength++;
             die.NeedsRoll = true;
+            globals.PlayerTurn += 1;
+            menu.exitDrawCardPhase();
         }
         else
         {
-            //foreach (Effect effect in lossEffects)
-            //{
-            //    effect.ApplyEffect();
-            //}
-            currPlayer.Wood--;
+            foreach (Effect effect in lossEffects)
+            {
+                effect.ApplyEffect();
+            }
+            //currPlayer.Wood--;
             die.NeedsRoll = true;
+            globals.PlayerTurn += 1;
+            menu.exitDrawCardPhase();
         }
     }
 
     // second button on card
     public void CardChoice2()
     {
-        // get die roller
-
-        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer();
-       // currCard = FindObjectOfType<Card>();
-        die.NeedsRoll = true;
+        // get references to all necessary objects
+        globals = FindObjectOfType<GlobalsScript>();
         die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = GlobalsScript.Instance.GetPlayer();
+        currPlayer = globals.GetPlayer();
         currCard = FindObjectOfType<CardPrefab>();
-        //die.NeedsRoll = true;
+        menu = FindObjectOfType<MenuButtonScript>();
 
         CheckResult();
         if (win)
         {
-            //foreach (Effect effect in winEffects)
-            //{
-            //    effect.ApplyEffect();
-            //}
-            currPlayer.Trust++;
+            foreach (Effect effect in winEffects)
+            {
+                effect.ApplyEffect();
+            }
+            //currPlayer.Trust++;
             die.NeedsRoll = true;
+            globals.PlayerTurn += 1;
+            menu.exitDrawCardPhase();
         }
         else
         {
-            //foreach (Effect effect in lossEffects)
-            //{
-            //    effect.ApplyEffect();
-            //}
-            currPlayer.Food--;
+            foreach (Effect effect in lossEffects)
+            {
+                effect.ApplyEffect();
+            }
+            //currPlayer.Food--;
             die.NeedsRoll = true;
+            globals.PlayerTurn += 1;
+            menu.exitDrawCardPhase();
         }
     }
 
     // third button on card
     public void CardChoice3()
     {
-        // get die roller
-
-        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer();
-      //  currCard = FindObjectOfType<Card>();
-        die.NeedsRoll = true;
-
+        // get references to all necessary objects
+        globals = FindObjectOfType<GlobalsScript>();
         die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = GlobalsScript.Instance.GetPlayer();
+        currPlayer = globals.GetPlayer();
         currCard = FindObjectOfType<CardPrefab>();
-        //die.NeedsRoll = true;
+        menu = FindObjectOfType<MenuButtonScript>();
 
         CheckResult();
         if (win)
         {
-            //foreach (Effect effect in winEffects)
-            //{
-            //    effect.ApplyEffect();
-            //}
-            currPlayer.Notoriety++;
+            foreach (Effect effect in winEffects)
+            {
+                effect.ApplyEffect();
+            }
+            //currPlayer.Notoriety++;
             die.NeedsRoll = true;
+            globals.PlayerTurn += 1;
+            menu.exitDrawCardPhase();
         }
         else
         {
-            //foreach (Effect effect in lossEffects)
-            //{
-            //    effect.ApplyEffect();
-            //}
-            currPlayer.People--;
+            foreach (Effect effect in lossEffects)
+            {
+                effect.ApplyEffect();
+            }
+            //currPlayer.People--;
             die.NeedsRoll = true;
+            globals.PlayerTurn += 1;
+            menu.exitDrawCardPhase();
         }
     }
 
@@ -286,7 +290,7 @@ public class CardChoice : MonoBehaviour {
 
 public class Effect : MonoBehaviour
 {
-    #region
+    #region Fields
 
     // value to adjust and what to adjust
     int change;
