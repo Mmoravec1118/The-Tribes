@@ -509,11 +509,6 @@ public class Deck : MonoBehaviour {
 
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	//removed card from the deck
 	public Card Dequeue()
