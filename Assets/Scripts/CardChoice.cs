@@ -92,6 +92,8 @@ public class CardChoice : MonoBehaviour {
 
 }
 
+
+
 public class Effect
 {
     #region
@@ -103,7 +105,6 @@ public class Effect
 
     // bool if things should change and what to change
     bool ChangeStuff = false;
-    bool traitChange;
 
     #endregion
 
@@ -113,27 +114,24 @@ public class Effect
     {
         this.change = change;
         this.toChangeTrait = toChangeTrait;
-        traitChange = true;
     }
 
 	public Effect(int change, GlobalsScript.Resources toChangeResource)
 	{
 		this.change = change;
 		this.toChangeResource = toChangeResource;
-        traitChange = false;
 	}
 
     #endregion
 
-    #region Update
+    #region Method
 
-    void Update()
+    public void ApplyEffect(bool trait)
     {
         #region Trait Change
 
         // check if stats should change
-        if (ChangeStuff &&
-            traitChange)
+        if (trait)
         {
             switch (toChangeTrait)
             {
@@ -175,8 +173,7 @@ public class Effect
         #region Resource Change
 
         // chacks if resources should change
-        else if (ChangeStuff &&
-            !traitChange)
+        else if (!trait)
         {
             switch (toChangeResource)
             {

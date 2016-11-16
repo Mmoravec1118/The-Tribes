@@ -38,7 +38,7 @@ public class Card : MonoBehaviour {
 
     #endregion
 
-    #region Sart
+    #region Start
 
     // Use this for initialization
     void Start () {
