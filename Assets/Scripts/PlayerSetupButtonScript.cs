@@ -61,28 +61,22 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
         print("Number of Players: " + players.ToString());
 
-        playerNumberText.text = "Player " + (GlobalsScript.Instance.CurrentPlayerCount + 1).ToString() + "'s turn";
+        playerNumberText.text = "Player " + (FindObjectOfType<GlobalsScript>().CurrentPlayerCount + 1).ToString() + "'s turn";
 
         currPlayer = new PlayerClass();
 
         ResetStats();
     }
-	
-	// Update is called once per frame
-	void Update () 
-    {
-	
-	}
 
     public void ChangeScene()
     {
         // Adds player class to GlobalsScript
-        GlobalsScript.Instance.AddPlayer(currPlayer);
+        FindObjectOfType<GlobalsScript>().AddPlayer(currPlayer);
         
         // Loops the player setup scene for the number of players selected
         if (SceneManager.GetActiveScene().name == "PlayerSetup")
         {
-            if (GlobalsScript.Instance.CurrentPlayerCount < players)
+            if (FindObjectOfType<GlobalsScript>().CurrentPlayerCount < players)
             {
                 sceneName = "PlayerSetup";
 
@@ -312,6 +306,6 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     public void AddTribe()
     {
-        GlobalsScript.Instance.AddPlayer(currPlayer);
+        FindObjectOfType<GlobalsScript>().AddPlayer(currPlayer);
     }
 }

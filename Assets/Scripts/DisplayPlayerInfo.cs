@@ -31,7 +31,11 @@ public class DisplayPlayerInfo : MonoBehaviour {
         players = GlobalsScript.Instance.GetPlayerList();
 
         DisplayText(currTurn);
-
+        for (int i = 0; i < GlobalsScript.NumberofPlayers; i++)
+        {
+            players.Add(FindObjectOfType<GlobalsScript>().GetPlayer(i));
+        }
+	
 	}
 	
 	// Update is called once per frame

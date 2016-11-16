@@ -23,9 +23,10 @@ public class MenuButtonScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
         // save reference to globals script
-        globals = GlobalsScript.Instance;
+        globals = FindObjectOfType<GlobalsScript>();
 
-	}
+
+    }
 
     public void activateHarvestPanel(bool TF)
     {
