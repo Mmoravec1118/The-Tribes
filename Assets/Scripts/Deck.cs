@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 public class Deck {
 
-    private static Deck instance;
+    static Deck instance;
+    Object currCard;
+
     public static Deck Instance
     {
         get
@@ -24,8 +26,11 @@ public class Deck {
         {
         Start();
         }
-	// Use this for initialization
-	void Start () {
+
+    #region Create Deck
+
+    // Use this for initialization
+    void Start () {
 		
 	//instantiate new deck on start
 		deck = new Queue<Card>();
@@ -505,13 +510,12 @@ public class Deck {
 			)
 			//end of enqueue card 7
 		);
-
-
-
 	}
 
-	//removed card from the deck
-	public Card Dequeue()
+    #endregion
+
+    //removed card from the deck
+    public Card Dequeue()
 	{
 		//dequeue the card from the top of the deck
 		return deck.Dequeue ();
@@ -519,8 +523,12 @@ public class Deck {
 
     public void DrawCard()
     {
-        MonoBehaviour.Instantiate(cardPrefab, MonoBehaviour.FindObjectOfType<Canvas>().transform);
-        
+        currCard = MonoBehaviour.Instantiate(cardPrefab, MonoBehaviour.FindObjectOfType<Canvas>().transform);
+    }
+
+    public void RemoveCard()
+    {
+        currCard = null;
     }
 
 }

@@ -17,6 +17,7 @@ public class CardChoice : MonoBehaviour {
     GlobalsScript.Traits currTrait;
 
     GlobalsScript globals;
+    MenuButtonScript menu;
 
     // reference to die roller
     DieScript die;
@@ -98,6 +99,7 @@ public class CardChoice : MonoBehaviour {
         die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = globals.GetPlayer();
         currCard = FindObjectOfType<CardPrefab>();
+        menu = FindObjectOfType<MenuButtonScript>();
 
         CheckResult();
         if (win)
@@ -109,6 +111,7 @@ public class CardChoice : MonoBehaviour {
             currPlayer.Strength++;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
+            menu.exitDrawCardPhase();
         }
         else
         {
@@ -119,6 +122,7 @@ public class CardChoice : MonoBehaviour {
             currPlayer.Wood--;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
+            menu.exitDrawCardPhase();
         }
     }
 
@@ -130,6 +134,7 @@ public class CardChoice : MonoBehaviour {
         die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = globals.GetPlayer();
         currCard = FindObjectOfType<CardPrefab>();
+        menu = FindObjectOfType<MenuButtonScript>();
 
         CheckResult();
         if (win)
@@ -141,6 +146,7 @@ public class CardChoice : MonoBehaviour {
             currPlayer.Trust++;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
+            menu.exitDrawCardPhase();
         }
         else
         {
@@ -151,6 +157,7 @@ public class CardChoice : MonoBehaviour {
             currPlayer.Food--;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
+            menu.exitDrawCardPhase();
         }
     }
 
@@ -162,7 +169,7 @@ public class CardChoice : MonoBehaviour {
         die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = globals.GetPlayer();
         currCard = FindObjectOfType<CardPrefab>();
-        
+        menu = FindObjectOfType<MenuButtonScript>();
 
         CheckResult();
         if (win)
@@ -174,6 +181,7 @@ public class CardChoice : MonoBehaviour {
             currPlayer.Notoriety++;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
+            menu.exitDrawCardPhase();
         }
         else
         {
@@ -184,6 +192,7 @@ public class CardChoice : MonoBehaviour {
             currPlayer.People--;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
+            menu.exitDrawCardPhase();
         }
     }
 
