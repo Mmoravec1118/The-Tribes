@@ -528,7 +528,7 @@ public class Deck {
 
     public void RemoveCard()
     {
-        currCard = null;
+        Object.Destroy(currCard);
     }
 
 }
