@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Deck : MonoBehaviour {
+public class Deck {
 
     private static Deck instance;
     public static Deck Instance
@@ -1009,7 +1009,7 @@ public class Deck : MonoBehaviour {
 
     public void DrawCard()
     {
-        Instantiate(cardPrefab, FindObjectOfType<Canvas>().transform);
+        MonoBehaviour.Instantiate(cardPrefab, MonoBehaviour.FindObjectOfType<Canvas>().transform);
         
     }
 
