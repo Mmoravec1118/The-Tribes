@@ -15,6 +15,14 @@ public class CardChoice : MonoBehaviour {
     int cost;
     GlobalsScript.Traits currTrait;
 
+    // reference to die roller
+    DieScript die;
+
+    bool win;
+    // reference to current player
+    PlayerClass currPlayer;
+    Card currCard;
+
     #endregion
 
     #region Constructor
@@ -28,20 +36,7 @@ public class CardChoice : MonoBehaviour {
 		this.lossText = lossText;
         cost = toBeat;
         currTrait = trait;
-    }
-
-    #endregion
-
-    #region Methods
-
-    public Effect GetWinEffect(int effectNum)
-    {
-        return winEffects[effectNum];
-    }
-
-    public Effect GetLossEffect(int effectNum)
-    {
-        return lossEffects[effectNum];
+        
     }
 
     #endregion
@@ -90,6 +85,171 @@ public class CardChoice : MonoBehaviour {
 
     #endregion
 
+    #region Button Methods
+
+    // first button of card
+    public void CardChoice1()
+    {
+        // get die roller
+        die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        currPlayer = GlobalsScript.Instance.GetPlayer();
+        currCard = FindObjectOfType<Card>();
+        die.NeedsRoll = true;
+        CheckResult();
+        if (win)
+        {
+            foreach (Effect effect in winEffects)
+            {
+                effect.ApplyEffect();
+            }
+        }
+        else
+        {
+            foreach (Effect effect in lossEffects)
+            {
+                effect.ApplyEffect();
+            }
+        }
+    }
+
+    // second button on card
+    public void CardChoice2()
+    {
+        // get die roller
+        die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        currPlayer = GlobalsScript.Instance.GetPlayer();
+        currCard = FindObjectOfType<Card>();
+        die.NeedsRoll = true;
+        CheckResult();
+        if (win)
+        {
+            foreach (Effect effect in winEffects)
+            {
+                effect.ApplyEffect();
+            }
+        }
+        else
+        {
+            foreach (Effect effect in lossEffects)
+            {
+                effect.ApplyEffect();
+            }
+        }
+    }
+
+    // third button on card
+    public void CardChoice3()
+    {
+        // get die roller
+        die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        currPlayer = GlobalsScript.Instance.GetPlayer();
+        currCard = FindObjectOfType<Card>();
+        die.NeedsRoll = true;
+        CheckResult();
+        if (win)
+        {
+            foreach (Effect effect in winEffects)
+            {
+                effect.ApplyEffect();
+            }
+        }
+        else
+        {
+            foreach (Effect effect in lossEffects)
+            {
+                effect.ApplyEffect();
+            }
+        }
+    }
+
+    // checks result of player stats + die result against card cost
+    void CheckResult()
+    {
+        if (!die.NeedsRoll)
+        {
+            switch (currTrait)
+            {
+                case GlobalsScript.Traits.Strength:
+                    {
+                        if (currPlayer.Strength + die.DieResult >= cost)
+                        {
+                            currCard.description = winText;
+                            win = true;
+                        }
+                        else
+                        {
+                            currCard.description = lossText;
+                            win = false;
+                        }
+                        break;
+                    }
+                case GlobalsScript.Traits.Agility:
+                    {
+                        if (currPlayer.Agility + die.DieResult >= cost)
+                        {
+                            currCard.description = winText;
+                            win = true;
+                        }
+                        else
+                        {
+                            currCard.description = lossText;
+                            win = false;
+                        }
+                        break;
+                    }
+                case GlobalsScript.Traits.Trust:
+                    {
+                        if (currPlayer.Trust + die.DieResult >= cost)
+                        {
+                            currCard.description = winText;
+                            win = true;
+                        }
+                        else
+                        {
+                            currCard.description = lossText;
+                            win = false;
+                        }
+                        break;
+                    }
+                case GlobalsScript.Traits.Notoriety:
+                    {
+                        if (currPlayer.Notoriety + die.DieResult >= cost)
+                        {
+                            currCard.description = winText;
+                            win = true;
+                        }
+                        else
+                        {
+                            currCard.description = lossText;
+                            win = false;
+                        }
+                        break;
+                    }
+                case GlobalsScript.Traits.Survival:
+                    {
+                        if (currPlayer.Survival + die.DieResult >= cost)
+                        {
+                            currCard.description = winText;
+                            win = true;
+                        }
+                        else
+                        {
+                            currCard.description = lossText;
+                            win = false;
+                        }
+                        break;
+                    }
+            }
+        }
+        else
+        {
+            currCard.description = "Roll Die and press Button again";
+
+        }
+    }
+
+#endregion
+
 }
 
 
@@ -106,6 +266,9 @@ public class Effect
     // bool if things should change and what to change
     bool ChangeStuff = false;
 
+    bool trait = false;
+    bool resource = false;
+
     #endregion
 
     #region Constructors
@@ -114,19 +277,21 @@ public class Effect
     {
         this.change = change;
         this.toChangeTrait = toChangeTrait;
+        trait = true;
     }
 
 	public Effect(int change, GlobalsScript.Resources toChangeResource)
 	{
 		this.change = change;
 		this.toChangeResource = toChangeResource;
+        resource = true;
 	}
 
     #endregion
 
     #region Method
 
-    public void ApplyEffect(bool trait)
+    public void ApplyEffect()
     {
         #region Trait Change
 
@@ -173,7 +338,7 @@ public class Effect
         #region Resource Change
 
         // chacks if resources should change
-        else if (!trait)
+        else if (resource)
         {
             switch (toChangeResource)
             {
