@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
 
 public class CardChoice : MonoBehaviour {
 
@@ -21,7 +22,7 @@ public class CardChoice : MonoBehaviour {
     bool win;
     // reference to current player
     PlayerClass currPlayer;
-    Card currCard;
+    CardPrefab currCard;
 
     #endregion
 
@@ -36,6 +37,7 @@ public class CardChoice : MonoBehaviour {
 		this.lossText = lossText;
         cost = toBeat;
         currTrait = trait;
+        DontDestroyOnLoad(this);
         
     }
 
@@ -91,9 +93,9 @@ public class CardChoice : MonoBehaviour {
     public void CardChoice1()
     {
         // get die roller
-        die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = GlobalsScript.Instance.GetPlayer();
-        currCard = FindObjectOfType<Card>();
+        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        currPlayer = MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer();
+        currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
         die.NeedsRoll = true;
         CheckResult();
         if (win)
@@ -116,9 +118,9 @@ public class CardChoice : MonoBehaviour {
     public void CardChoice2()
     {
         // get die roller
-        die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = GlobalsScript.Instance.GetPlayer();
-        currCard = FindObjectOfType<Card>();
+        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        currPlayer = MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer();
+       // currCard = FindObjectOfType<Card>();
         die.NeedsRoll = true;
         CheckResult();
         if (win)
@@ -141,9 +143,9 @@ public class CardChoice : MonoBehaviour {
     public void CardChoice3()
     {
         // get die roller
-        die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = GlobalsScript.Instance.GetPlayer();
-        currCard = FindObjectOfType<Card>();
+        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        currPlayer = MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer();
+      //  currCard = FindObjectOfType<Card>();
         die.NeedsRoll = true;
         CheckResult();
         if (win)
@@ -173,12 +175,12 @@ public class CardChoice : MonoBehaviour {
                     {
                         if (currPlayer.Strength + die.DieResult >= cost)
                         {
-                            currCard.description = winText;
+                            currCard.descriptionMesh.text = winText;
                             win = true;
                         }
                         else
                         {
-                            currCard.description = lossText;
+                            currCard.descriptionMesh.text = lossText;
                             win = false;
                         }
                         break;
@@ -187,12 +189,12 @@ public class CardChoice : MonoBehaviour {
                     {
                         if (currPlayer.Agility + die.DieResult >= cost)
                         {
-                            currCard.description = winText;
+                            currCard.descriptionMesh.text = winText;
                             win = true;
                         }
                         else
                         {
-                            currCard.description = lossText;
+                            currCard.descriptionMesh.text = lossText;
                             win = false;
                         }
                         break;
@@ -201,12 +203,12 @@ public class CardChoice : MonoBehaviour {
                     {
                         if (currPlayer.Trust + die.DieResult >= cost)
                         {
-                            currCard.description = winText;
+                            currCard.descriptionMesh.text = winText;
                             win = true;
                         }
                         else
                         {
-                            currCard.description = lossText;
+                            currCard.descriptionMesh.text = lossText;
                             win = false;
                         }
                         break;
@@ -215,12 +217,12 @@ public class CardChoice : MonoBehaviour {
                     {
                         if (currPlayer.Notoriety + die.DieResult >= cost)
                         {
-                            currCard.description = winText;
+                            currCard.descriptionMesh.text = winText;
                             win = true;
                         }
                         else
                         {
-                            currCard.description = lossText;
+                            currCard.descriptionMesh.text = lossText;
                             win = false;
                         }
                         break;
@@ -229,12 +231,12 @@ public class CardChoice : MonoBehaviour {
                     {
                         if (currPlayer.Survival + die.DieResult >= cost)
                         {
-                            currCard.description = winText;
+                            currCard.descriptionMesh.text = winText;
                             win = true;
                         }
                         else
                         {
-                            currCard.description = lossText;
+                            currCard.descriptionMesh.text = lossText;
                             win = false;
                         }
                         break;
@@ -243,7 +245,7 @@ public class CardChoice : MonoBehaviour {
         }
         else
         {
-            currCard.description = "Roll Die and press Button again";
+            currCard.descriptionMesh.text = "Roll Die and press Button again";
 
         }
     }
@@ -254,7 +256,7 @@ public class CardChoice : MonoBehaviour {
 
 
 
-public class Effect
+public class Effect : MonoBehaviour
 {
     #region
 
@@ -278,6 +280,7 @@ public class Effect
         this.change = change;
         this.toChangeTrait = toChangeTrait;
         trait = true;
+        DontDestroyOnLoad(this);
     }
 
 	public Effect(int change, GlobalsScript.Resources toChangeResource)
@@ -285,7 +288,9 @@ public class Effect
 		this.change = change;
 		this.toChangeResource = toChangeResource;
         resource = true;
-	}
+        DontDestroyOnLoad(this);
+
+    }
 
     #endregion
 
@@ -303,31 +308,31 @@ public class Effect
 
                 case GlobalsScript.Traits.Agility:
                     {
-                        GlobalsScript.Instance.GetPlayer().Agility += change;
+                        MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Agility += change;
                         ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Traits.Strength:
                     {
-                        GlobalsScript.Instance.GetPlayer().Strength += change;
+                        MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Strength += change;
                         ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Traits.Notoriety:
                     {
-                        GlobalsScript.Instance.GetPlayer().Notoriety += change;
+                        MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Notoriety += change;
                         ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Traits.Survival:
                     {
-                        GlobalsScript.Instance.GetPlayer().Survival += change;
+                        MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Survival += change;
                         ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Traits.Trust:
                     {
-                        GlobalsScript.Instance.GetPlayer().Trust += change;
+                        MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Trust += change;
                         ChangeStuff = false;
                         break;
                     }
@@ -345,25 +350,25 @@ public class Effect
 
                 case GlobalsScript.Resources.Wood:
                     {
-                        GlobalsScript.Instance.GetPlayer().Wood += change;
+                        MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Wood += change;
                         ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Resources.Stone:
                     {
-                        GlobalsScript.Instance.GetPlayer().Stone += change;
+                        MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Stone += change;
                         ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Resources.Food:
                     {
-                        GlobalsScript.Instance.GetPlayer().Food += change;
+                        MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Food += change;
                         ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Resources.People:
                     {
-                        GlobalsScript.Instance.GetPlayer().People += change;
+                        MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().People += change;
                         ChangeStuff = false;
                         break;
                     }

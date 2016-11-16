@@ -2,12 +2,12 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Card : MonoBehaviour {
+public class Card {
 
     #region Fields
 
     // deck reference
-    public Deck deck;
+   // public Deck deck;
 
     // title text
     public string title { get; set; }
@@ -41,8 +41,8 @@ public class Card : MonoBehaviour {
     #region Start
 
     // Use this for initialization
-    void Start () {
-        Card card = GlobalsScript.Instance.PlayDeck.Dequeue();
+    public void Start () {
+        Card card = MonoBehaviour.FindObjectOfType<GlobalsScript>().PlayDeck.Dequeue();
         titleMesh.text = card.title;
         descriptionMesh.text = card.description;
         option1.text = card.choices[0].Description;

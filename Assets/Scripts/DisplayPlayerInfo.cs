@@ -24,7 +24,7 @@ public class DisplayPlayerInfo : MonoBehaviour {
         playerDisplay = GetComponent<Text>();
         for (int i = 0; i < GlobalsScript.NumberofPlayers; i++)
         {
-            players.Add(GlobalsScript.Instance.GetPlayer(i));
+            players.Add(FindObjectOfType<GlobalsScript>().GetPlayer(i));
         }
 	
 	}
