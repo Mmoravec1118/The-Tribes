@@ -60,7 +60,7 @@ public class DisplayPlayerInfo : MonoBehaviour {
 
     #region Methods
 
-    void DisplayText(int playerTurn)
+    public void DisplayText(int playerTurn)
     {
         playerDisplay.text = "Tribe Name: " + players[playerTurn].Name + "\n"
              + "Player Stats:" + "\n"
