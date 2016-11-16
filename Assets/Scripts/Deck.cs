@@ -228,7 +228,7 @@ public class Deck : MonoBehaviour {
 						})
 				}
 			)
-			//end of enqueue card 2
+			//end of enqueue card 3
 		);
 
 
@@ -652,9 +652,9 @@ public class Deck : MonoBehaviour {
 					"You are not fast enough and are attacked",
 					//win effect,
 					GlobalsScript.Traits.Agility,
-					0,
+					10,
 					new Effect[]{
-						
+						new Effect(0, GlobalsScript.Resources.People)
 					},
 					//lose effects
 					new Effect[]{
@@ -695,127 +695,135 @@ public class Deck : MonoBehaviour {
 						})
 				}
 			)
-			//end of enqueue card 9
+			//end of enqueue card 10
 		);
 
 		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
 		//CARD 11--------------------------------------------------------------------------------------------------------------------------------------
-		//A Raiding Party------------------------------------------------------------------------------------------------------------------------------
+		//Severe Thunderstorm------------------------------------------------------------------------------------------------------------------------------
 		deck.Enqueue (
 			//new card one
-			new Card ("Raid",
-				"A raiding party attacks your camp",
+			new Card ("Severe Thunderstorm",
+				"A raging thunderstorm sweeps through your settlement, panicking your settlers",
 
 				//choice 1
-				new CardChoice[] {new CardChoice ("AGILITY - You evacuate the camp(10)",
-					"You succeed, but gain nothing in the process",
-					"You are not fast enough and are attacked",
+				new CardChoice[] {new CardChoice ("TRUST - Calm your villagers by convincing them the thunder can't harm them(12)",
+					"Everyone listens and waits out the storm",
+					"Your villagers panick and run, getting struck by lightning",
 					//win effect,
-					GlobalsScript.Traits.Agility,
-					0,
+					GlobalsScript.Traits.Trust,
+					12,
 					new Effect[]{
-
+						new Effect (1, GlobalsScript.Traits.Trust)
 					},
 					//lose effects
 					new Effect[]{
-						new Effect(-1, GlobalsScript.Resources.Food),
-						new Effect(-1, GlobalsScript.Traits.Notoriety)}
+						new Effect (-1, GlobalsScript.Resources.People),
+						new Effect (-1, GlobalsScript.Resources.Food)}
 				),
 
 					//choice 2
-					new CardChoice ("NOTORIETY - Your people are fierce and attempt to show them that",
-						"You scare away the raiders and even convince some to join",
-						"The raiders aren't scared, and show you that",
-						GlobalsScript.Traits.Notoriety,
+					new CardChoice ("SURVIVAL - Contruct a stone shelter to protect them(11)",
+						"The shelter is completed and the villagers thank you for the safety",
+						"The incomplete shelter provides no protection and collapses",
+						GlobalsScript.Traits.Survival,
 						11,
 						//win effect
 						new Effect[]{ 
-							new Effect(2, GlobalsScript.Resources.People)
+							new Effect (1, GlobalsScript.Traits.Trust),
+							new Effect (1, GlobalsScript.Traits.Survival)
 						},
 						//lose effect
 						new Effect[]{
-							new Effect (-1, GlobalsScript.Resources.People),
-							new Effect (-1, GlobalsScript.Resources.Food)}
+							new Effect(-1, GlobalsScript.Resources.People),
+							new Effect (-1, GlobalsScript.Resources.Stone),
+							new Effect (-1, GlobalsScript.Traits.Trust)}
 
 					),
 
 					//choice 3
-					new CardChoice ("SURVIVAL - You lay an ambush for the raiders(12)",
-						"Your ambush was successful, obliterating the raiding party",
-						"They see you coming, leading to a blood bath",
-						GlobalsScript.Traits.Survival,
-						12,
+					new CardChoice ("NOTORIETY - Intimidate your villagers into being orderly(14)",
+						"Your villagers wait out the storm and see you as a more fearsome leader",
+						"Your villagers become more frenzied and panic, taking resources",
+						GlobalsScript.Traits.Notoriety,
+						14,
 						//win effects
 						new Effect[]{
 							new Effect(1, GlobalsScript.Traits.Notoriety)
 						},
 						//lose effect
 						new Effect[]{ 
-							new Effect(-2, GlobalsScript.Resources.People)
+							new Effect (-1, GlobalsScript.Resources.Wood),
+							new Effect (-1, GlobalsScript.Resources.Stone),
+							new Effect (-2, GlobalsScript.Resources.Food)
 						})
 				}
 			)
-			//end of enqueue card 9
+			//end of enqueue card 11
 		);
 
 		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
 		//CARD 12--------------------------------------------------------------------------------------------------------------------------------------
-		//A Raiding Party------------------------------------------------------------------------------------------------------------------------------
+		//Tornado------------------------------------------------------------------------------------------------------------------------------
 		deck.Enqueue (
 			//new card one
-			new Card ("Raid",
-				"A raiding party attacks your camp",
+			new Card ("Tornado",
+				"A tornado sweeps through your settlement",
 
 				//choice 1
 				new CardChoice[] {new CardChoice ("AGILITY - You evacuate the camp(10)",
 					"You succeed, but gain nothing in the process",
-					"You are not fast enough and are attacked",
+					"You are not fast enough and get hit",
 					//win effect,
 					GlobalsScript.Traits.Agility,
-					0,
+					10,
 					new Effect[]{
-
+						new Effect(0, GlobalsScript.Resources.People)
 					},
 					//lose effects
 					new Effect[]{
 						new Effect(-1, GlobalsScript.Resources.Food),
-						new Effect(-1, GlobalsScript.Traits.Notoriety)}
+						new Effect (-1, GlobalsScript.Resources.Stone),
+						new Effect (-1, GlobalsScript.Resources.Wood)}
 				),
 
 					//choice 2
-					new CardChoice ("NOTORIETY - Your people are fierce and attempt to show them that",
-						"You scare away the raiders and even convince some to join",
-						"The raiders aren't scared, and show you that",
+					new CardChoice ("NOTORIETY - Yell at it till it goes away(16)",
+						"The tornado diverts its path",
+						"Tornados don't listen to mortals. It hits you",
 						GlobalsScript.Traits.Notoriety,
 						11,
 						//win effect
 						new Effect[]{ 
-							new Effect(2, GlobalsScript.Resources.People)
+							new Effect(3, GlobalsScript.Traits.Notoriety)
 						},
 						//lose effect
 						new Effect[]{
-							new Effect (-1, GlobalsScript.Resources.People),
-							new Effect (-1, GlobalsScript.Resources.Food)}
+							new Effect(-2, GlobalsScript.Resources.Food),
+							new Effect(-2, GlobalsScript.Resources.Wood),
+							new Effect(-2, GlobalsScript.Resources.Stone),
+							new Effect(-1, GlobalsScript.Traits.Notoriety)}
 
 					),
 
 					//choice 3
-					new CardChoice ("SURVIVAL - You lay an ambush for the raiders(12)",
-						"Your ambush was successful, obliterating the raiding party",
-						"They see you coming, leading to a blood bath",
+					new CardChoice ("SURVIVAL - Dig bunkers for everyone(13)",
+						"Everyone is safe in their own bunkers, reassuring their trust in you",
+						"Not everyone makes bunkers in time, and some are blown away",
 						GlobalsScript.Traits.Survival,
-						12,
+						13,
 						//win effects
 						new Effect[]{
-							new Effect(1, GlobalsScript.Traits.Notoriety)
+							new Effect(1, GlobalsScript.Traits.Trust)
 						},
 						//lose effect
 						new Effect[]{ 
-							new Effect(-2, GlobalsScript.Resources.People)
+							new Effect(-2, GlobalsScript.Resources.People),
+							new Effect(-1, GlobalsScript.Traits.Trust)
 						})
 				}
 			)
-			//end of enqueue card 9
+			//end of enqueue card 12
 		);
 
 		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
@@ -875,7 +883,7 @@ public class Deck : MonoBehaviour {
 						})
 				}
 			)
-			//end of enqueue card 9
+			//end of enqueue card 13
 		);
 
 		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
@@ -935,68 +943,9 @@ public class Deck : MonoBehaviour {
 						})
 				}
 			)
-			//end of enqueue card 9
+			//end of enqueue card 14
 		);
 
-		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
-		//CARD 15--------------------------------------------------------------------------------------------------------------------------------------
-		//A Raiding Party------------------------------------------------------------------------------------------------------------------------------
-		deck.Enqueue (
-			//new card one
-			new Card ("Raid",
-				"A raiding party attacks your camp",
-
-				//choice 1
-				new CardChoice[] {new CardChoice ("AGILITY - You evacuate the camp(10)",
-					"You succeed, but gain nothing in the process",
-					"You are not fast enough and are attacked",
-					//win effect,
-					GlobalsScript.Traits.Agility,
-					0,
-					new Effect[]{
-
-					},
-					//lose effects
-					new Effect[]{
-						new Effect(-1, GlobalsScript.Resources.Food),
-						new Effect(-1, GlobalsScript.Traits.Notoriety)}
-				),
-
-					//choice 2
-					new CardChoice ("NOTORIETY - Your people are fierce and attempt to show them that",
-						"You scare away the raiders and even convince some to join",
-						"The raiders aren't scared, and show you that",
-						GlobalsScript.Traits.Notoriety,
-						11,
-						//win effect
-						new Effect[]{ 
-							new Effect(2, GlobalsScript.Resources.People)
-						},
-						//lose effect
-						new Effect[]{
-							new Effect (-1, GlobalsScript.Resources.People),
-							new Effect (-1, GlobalsScript.Resources.Food)}
-
-					),
-
-					//choice 3
-					new CardChoice ("SURVIVAL - You lay an ambush for the raiders(12)",
-						"Your ambush was successful, obliterating the raiding party",
-						"They see you coming, leading to a blood bath",
-						GlobalsScript.Traits.Survival,
-						12,
-						//win effects
-						new Effect[]{
-							new Effect(1, GlobalsScript.Traits.Notoriety)
-						},
-						//lose effect
-						new Effect[]{ 
-							new Effect(-2, GlobalsScript.Resources.People)
-						})
-				}
-			)
-			//end of enqueue card 9
-		);
 
 	}
 
