@@ -17,6 +17,7 @@ public class DisplayPlayerInfo : MonoBehaviour {
     // previouse players turn
     // starts at zero for easier initialization
     int prevTurn = 0;
+    GlobalsScript globals;
 
 	// Use this for initialization
 	void Start () {
@@ -26,25 +27,16 @@ public class DisplayPlayerInfo : MonoBehaviour {
         {
             players.Add(FindObjectOfType<GlobalsScript>().GetPlayer(i));
         }
+        globals = FindObjectOfType<GlobalsScript>();
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        //if (currTurn != prevTurn)
-        //{
-        //    DisplayText(currTurn - 1);
-        //    prevTurn = currTurn;
-        //    //currTurn++;
-        //}
-        //if (currTurn > GlobalsScript.NumberofPlayers)
-        //{
-        //    currTurn = 1;
-        //    prevTurn = 0;
-        //}
-	
-	}
+        DisplayText(globals.PlayerTurn);
+
+    }
 
     #region Methods
 
