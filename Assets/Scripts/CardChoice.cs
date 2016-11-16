@@ -16,6 +16,8 @@ public class CardChoice : MonoBehaviour {
     int cost;
     GlobalsScript.Traits currTrait;
 
+    GlobalsScript globals;
+
     // reference to die roller
     DieScript die;
 
@@ -38,7 +40,6 @@ public class CardChoice : MonoBehaviour {
         cost = toBeat;
         currTrait = trait;
         DontDestroyOnLoad(this);
-        
     }
 
     #endregion
@@ -92,9 +93,10 @@ public class CardChoice : MonoBehaviour {
     // first button of card
     public void CardChoice1()
     {
-        // get die roller
+        // get references to all necessary objects
+        globals = FindObjectOfType<GlobalsScript>();
         die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = FindObjectOfType<GlobalsScript>().GetPlayer();
+        currPlayer = globals.GetPlayer();
         currCard = FindObjectOfType<CardPrefab>();
 
         CheckResult();
@@ -106,6 +108,7 @@ public class CardChoice : MonoBehaviour {
             //}
             currPlayer.Strength++;
             die.NeedsRoll = true;
+            globals.PlayerTurn += 1;
         }
         else
         {
@@ -115,15 +118,17 @@ public class CardChoice : MonoBehaviour {
             //}
             currPlayer.Wood--;
             die.NeedsRoll = true;
+            globals.PlayerTurn += 1;
         }
     }
 
     // second button on card
     public void CardChoice2()
     {
-        // get die roller
+        // get references to all necessary objects
+        globals = FindObjectOfType<GlobalsScript>();
         die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = FindObjectOfType<GlobalsScript>().GetPlayer();
+        currPlayer = globals.GetPlayer();
         currCard = FindObjectOfType<CardPrefab>();
 
         CheckResult();
@@ -135,6 +140,7 @@ public class CardChoice : MonoBehaviour {
             //}
             currPlayer.Trust++;
             die.NeedsRoll = true;
+            globals.PlayerTurn += 1;
         }
         else
         {
@@ -144,16 +150,19 @@ public class CardChoice : MonoBehaviour {
             //}
             currPlayer.Food--;
             die.NeedsRoll = true;
+            globals.PlayerTurn += 1;
         }
     }
 
     // third button on card
     public void CardChoice3()
     {
-        // get die roller
+        // get references to all necessary objects
+        globals = FindObjectOfType<GlobalsScript>();
         die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = FindObjectOfType<GlobalsScript>().GetPlayer();
+        currPlayer = globals.GetPlayer();
         currCard = FindObjectOfType<CardPrefab>();
+        
 
         CheckResult();
         if (win)
@@ -164,6 +173,7 @@ public class CardChoice : MonoBehaviour {
             //}
             currPlayer.Notoriety++;
             die.NeedsRoll = true;
+            globals.PlayerTurn += 1;
         }
         else
         {
@@ -173,6 +183,7 @@ public class CardChoice : MonoBehaviour {
             //}
             currPlayer.People--;
             die.NeedsRoll = true;
+            globals.PlayerTurn += 1;
         }
     }
 
