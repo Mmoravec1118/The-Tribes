@@ -38,9 +38,10 @@ public class DieScript : MonoBehaviour {
     // set die to random number until die roll is done
     public void RollDie ()
     {
-
-        dieRolling = true;
-        
+        if (needsToRoll)
+        {
+            dieRolling = true;
+        }
     }
 
     // Display end die result

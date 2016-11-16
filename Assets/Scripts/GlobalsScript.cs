@@ -31,17 +31,17 @@ public class GlobalsScript : MonoBehaviour {
     List<PlayerClass> players;
     Deck deck;
 
-    static GlobalsScript instance;
+    //static GlobalsScript instance;
 
     #endregion
 
     #region Singleton
 
     // returns instance of object or creates it if it is missing
-    public static GlobalsScript Instance
-    {
-        get { return instance ?? (instance = new GlobalsScript()); }
-    }
+    //public static GlobalsScript Instance
+    //{
+    //    get { return instance ?? (instance = new GlobalsScript()); }
+    //}
 
     // keep object in scene
     void Start()

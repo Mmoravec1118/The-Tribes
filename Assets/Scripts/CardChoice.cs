@@ -93,12 +93,9 @@ public class CardChoice : MonoBehaviour {
     public void CardChoice1()
     {
         // get die roller
-
-        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer();
-        currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
-        die.NeedsRoll = true;
-        
+        die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        currPlayer = FindObjectOfType<GlobalsScript>().GetPlayer();
+        currCard = FindObjectOfType<CardPrefab>();
 
         CheckResult();
         if (win)
@@ -125,15 +122,9 @@ public class CardChoice : MonoBehaviour {
     public void CardChoice2()
     {
         // get die roller
-
-        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer();
-       // currCard = FindObjectOfType<Card>();
-        die.NeedsRoll = true;
         die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = GlobalsScript.Instance.GetPlayer();
+        currPlayer = FindObjectOfType<GlobalsScript>().GetPlayer();
         currCard = FindObjectOfType<CardPrefab>();
-        //die.NeedsRoll = true;
 
         CheckResult();
         if (win)
@@ -160,16 +151,9 @@ public class CardChoice : MonoBehaviour {
     public void CardChoice3()
     {
         // get die roller
-
-        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer();
-      //  currCard = FindObjectOfType<Card>();
-        die.NeedsRoll = true;
-
         die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = GlobalsScript.Instance.GetPlayer();
+        currPlayer = FindObjectOfType<GlobalsScript>().GetPlayer();
         currCard = FindObjectOfType<CardPrefab>();
-        //die.NeedsRoll = true;
 
         CheckResult();
         if (win)
@@ -286,7 +270,7 @@ public class CardChoice : MonoBehaviour {
 
 public class Effect : MonoBehaviour
 {
-    #region
+    #region Fields
 
     // value to adjust and what to adjust
     int change;
