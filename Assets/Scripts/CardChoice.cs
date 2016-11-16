@@ -93,17 +93,13 @@ public class CardChoice : MonoBehaviour {
     public void CardChoice1()
     {
         // get die roller
-<<<<<<< HEAD
+
         die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer();
         currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
         die.NeedsRoll = true;
-=======
-        die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = GlobalsScript.Instance.GetPlayer();
-        currCard = FindObjectOfType<Card>();
         
->>>>>>> origin/master_Jordan
+
         CheckResult();
         if (win)
         {
@@ -129,17 +125,16 @@ public class CardChoice : MonoBehaviour {
     public void CardChoice2()
     {
         // get die roller
-<<<<<<< HEAD
+
         die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer();
        // currCard = FindObjectOfType<Card>();
         die.NeedsRoll = true;
-=======
         die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = GlobalsScript.Instance.GetPlayer();
-        currCard = FindObjectOfType<Card>();
+        currCard = FindObjectOfType<CardPrefab>();
         //die.NeedsRoll = true;
->>>>>>> origin/master_Jordan
+
         CheckResult();
         if (win)
         {
@@ -165,17 +160,17 @@ public class CardChoice : MonoBehaviour {
     public void CardChoice3()
     {
         // get die roller
-<<<<<<< HEAD
+
         die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer();
       //  currCard = FindObjectOfType<Card>();
         die.NeedsRoll = true;
-=======
+
         die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = GlobalsScript.Instance.GetPlayer();
-        currCard = FindObjectOfType<Card>();
+        currCard = FindObjectOfType<CardPrefab>();
         //die.NeedsRoll = true;
->>>>>>> origin/master_Jordan
+
         CheckResult();
         if (win)
         {
