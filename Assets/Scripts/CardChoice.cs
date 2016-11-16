@@ -31,6 +31,20 @@ public class CardChoice : MonoBehaviour {
         currTrait = trait;
     }
 
+    #region Methods
+
+    public Effect GetWinEffect(int effectNum)
+    {
+        return winEffects[effectNum];
+    }
+
+    public Effect GetLossEffect(int effectNum)
+    {
+        return lossEffects[effectNum];
+    }
+
+    #endregion
+
     #region Properties
 
     public int GetEffectCost
@@ -49,6 +63,21 @@ public class CardChoice : MonoBehaviour {
         }
     }
 
+    public string GetWinText
+    {
+        get
+        {
+            return winText;
+        }
+    }
+
+    public string GetLoseText
+    {
+        get
+        {
+            return lossText;
+        }
+    }
 
     #endregion
 
@@ -60,17 +89,45 @@ public class Effect
     GlobalsScript.Traits toChangeTrait;
 	GlobalsScript.Resources toChangeResource;
 
+    bool ChangeStuff = false;
+    bool traitChange;
+
     public Effect(int change, GlobalsScript.Traits toChangeTrait)
     {
         this.change = change;
         this.toChangeTrait = toChangeTrait;
+        traitChange = true;
     }
 
 	public Effect(int change, GlobalsScript.Resources toChangeResource)
 	{
 		this.change = change;
 		this.toChangeResource = toChangeResource;
+        traitChange = false;
 	}
+
+    void Update()
+    {
+        if (ChangeStuff &&
+            traitChange)
+        {
+            switch (toChangeTrait)
+            {
+
+                case GlobalsScript.Traits.Agility:
+                    {
+                        GlobalsScript.Instance.GetPlayer().Agility += change;
+                        ChangeStuff = false;
+                        break;
+                    }
+            }
+        }
+        else if (ChangeStuff &&
+            !traitChange)
+        {
+
+        }
+    }
 
 
     #region Properties
@@ -96,6 +153,14 @@ public class Effect
         get
         {
             return toChangeTrait;
+        }
+    }
+
+    public bool SetChange
+    {
+        set
+        {
+            ChangeStuff = value;
         }
     }
 

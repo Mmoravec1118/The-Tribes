@@ -3,10 +3,18 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Card : MonoBehaviour {
+
+    // deck reference
     public Deck deck;
-    string title { get; set; }
-    string description { get; set; }
-    CardChoice[] choices { get; set; }
+
+    // title text
+    public string title { get; set; }
+
+    // descrtiption text
+    public string description { get; set; }
+
+    // card choice infromation
+    public CardChoice[] choices { get; set; }
 
     public Text titleMesh;
     public Text descriptionMesh;
