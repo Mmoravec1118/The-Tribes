@@ -4,12 +4,17 @@ using UnityEngine.UI;
 
 public class DieScript : MonoBehaviour {
 
+   // Fields
+    [SerializeField] Text dieDisplay;  //shows up in editor
+
+    // value after die was rolled
     int dieResult;
 
-    public Text dieDisplay;
-
+    // if die is rolling and timer it has been rolling
     bool dieRolling;
     float rollingTimer = 0;
+
+    bool needsToRoll = true;
 
     public void Update()
     {
@@ -22,6 +27,7 @@ public class DieScript : MonoBehaviour {
         {
             rollingTimer = 0;
             dieRolling = false;
+            needsToRoll = false;
             CancelInvoke("UpdateDisplay");
             dieResult = (int)Random.Range(1, 7);
             dieDisplay.text = "" + dieResult;
@@ -29,6 +35,7 @@ public class DieScript : MonoBehaviour {
         
     }
 
+    // set die to random number until die roll is done
     public void RollDie ()
     {
 
@@ -36,11 +43,13 @@ public class DieScript : MonoBehaviour {
         
     }
 
+    // Display end die result
     public void UpdateDisplay ()
     {
         dieDisplay.text = "" + (int)Random.Range(1, 7);
     }
 
+    //Property for getting die result
     public int DieResult
     {
         get
@@ -48,5 +57,19 @@ public class DieScript : MonoBehaviour {
             return dieResult;
         }
     }
+
+    // get ad set if die needs to roll
+    public bool NeedsRoll
+    {
+        get
+        {
+            return needsToRoll;
+        }
+        set
+        {
+            needsToRoll = value;
+        }
+    }
+
 
 }
