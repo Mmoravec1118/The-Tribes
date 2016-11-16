@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour {
 
+    #region Fields
+
     // deck reference
     public Deck deck;
 
@@ -16,11 +18,17 @@ public class Card : MonoBehaviour {
     // card choice infromation
     public CardChoice[] choices { get; set; }
 
-    public Text titleMesh;
-    public Text descriptionMesh;
-    public Text option1;
-	public Text option2;
-	public Text option3;
+    // references to card items
+    [SerializeField] Text titleMesh;
+    [SerializeField] Text descriptionMesh;
+    [SerializeField] Text option1;
+    [SerializeField] Text option2;
+    [SerializeField] Text option3;
+
+    #endregion
+
+    #region Constructor
+
     public Card(string title, string description, CardChoice[] choices)
     {
         this.title = title;
@@ -28,8 +36,12 @@ public class Card : MonoBehaviour {
         this.choices = choices;
     }
 
-	// Use this for initialization
-	void Start () {
+    #endregion
+
+    #region Sart
+
+    // Use this for initialization
+    void Start () {
         Card card = GlobalsScript.Instance.PlayDeck.Dequeue();
         titleMesh.text = card.title;
         descriptionMesh.text = card.description;
@@ -38,6 +50,5 @@ public class Card : MonoBehaviour {
         option3.text = card.choices[2].Description;
     }
 
-    // Update is called once per frame
-
+    #endregion
 }
