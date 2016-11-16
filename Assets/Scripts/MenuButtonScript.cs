@@ -248,7 +248,8 @@ public class MenuButtonScript : MonoBehaviour {
         RelocatePanel.SetActive(false);
         UpgradePanel.SetActive(false);
 
-        globals.PlayDeck.DrawCard();
+        //globals.PlayDeck.DrawCard();
+        MonoBehaviour.FindObjectOfType<Deck>().DrawCard();
     }
 
     public void exitDrawCardPhase()
@@ -267,7 +268,8 @@ public class MenuButtonScript : MonoBehaviour {
         RelocatePanel.SetActive(false);
         UpgradePanel.SetActive(false);
 
-        globals.PlayDeck.RemoveCard();
+        //globals.PlayDeck.RemoveCard();
+        MonoBehaviour.FindObjectOfType<Deck>().RemoveCard();
     }
 
     void NextTurn()
