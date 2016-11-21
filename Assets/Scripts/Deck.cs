@@ -1005,6 +1005,81 @@ public class Deck : MonoBehaviour {
 			)
 			//end of enqueue card 15
 		);
+
+		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 16--------------------------------------------------------------------------------------------------------------------------------------
+		//King of Plebeians------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("King of Plebeians",
+				"A representative of the people lets you know that your villagers are unhappy with you",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("AGILITY - You run away from the representative",
+					"You escape the man, but word travels faster than you do",
+					"Surprisingly, he is much faster and trips you mid-stride",
+					//win effect,
+					GlobalsScript.Traits.Agility,
+					10,
+					new Effect[]{
+						new Effect(1, GlobalsScript.Traits.Agility),
+						new Effect(-2, GlobalsScript.Resources.People)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Traits.Agility)}
+				),
+
+					//choice 2
+					new CardChoice ("TRUST - Reassure him and the people of your ability to lead with a speech",
+						"Your speech moves them. The village works twice as hard to help the people",
+						"Your voice falters, convincing the people you cannot protect your resources",
+						GlobalsScript.Traits.Trust,
+						12,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, GlobalsScript.Resources.Food),
+							new Effect(2, GlobalsScript.Resources.Stone),
+							new Effect(2, GlobalsScript.Resources.Wood),
+							new Effect(2, GlobalsScript.Resources.People)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect (-1, GlobalsScript.Resources.Food),
+							new Effect (-1, GlobalsScript.Resources.Stone),
+							new Effect (-1, GlobalsScript.Resources.Wood)
+						}
+
+					),
+
+					//choice 3
+					new CardChoice ("NOTORIETY - You intimidate the man to scare them back into their place",
+						"Your voice shakens him, and the people avoid your gaze in the streets",
+						"Your threats only madden the man as he swings at you",
+						GlobalsScript.Traits.Notoriety,
+						14,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Resources.Food),
+							new Effect(1, GlobalsScript.Resources.Stone),
+							new Effect(1, GlobalsScript.Resources.Wood),
+							new Effect(2, GlobalsScript.Traits.Notoriety)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-1, GlobalsScript.Traits.Notoriety),
+							new Effect(-1, GlobalsScript.Traits.Strength)
+						})
+				}
+			)
+			//end of enqueue card 16
+		);
+
+
+
+
+
+
 	}
 
     #endregion
