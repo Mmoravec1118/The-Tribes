@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
 
-public class CardChoice {
+public class CardChoice
+{
 
     #region Fields
 
@@ -36,10 +37,10 @@ public class CardChoice {
         this.description = description;
         this.winEffects = winEffects;
         this.lossEffects = lossEffects;
-		this.winText = winText;
-		this.lossText = lossText;
+        this.winText = winText;
+        this.lossText = lossText;
         cost = toBeat;
-        currTrait = trait;        
+        currTrait = trait;
     }
 
     #endregion
@@ -196,99 +197,97 @@ public class CardChoice {
     }
 
     // checks result of player stats + die result against card cost
-   public void CheckResult()
+    public bool CheckResult()
     {
         globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
         die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
         currPlayer = globals.GetPlayer();
 
-        if (!die.NeedsRoll)
+        switch (currTrait)
         {
-            switch (currTrait)
-            {
-                case GlobalsScript.Traits.Strength:
+            case GlobalsScript.Traits.Strength:
+                {
+                    if (currPlayer.Strength + die.DieResult >= cost)
                     {
-                        if (currPlayer.Strength + die.DieResult >= cost)
-                        {
-                            currCard.descriptionMesh.text = winText;
-                            win = true;
-                        }
-                        else
-                        {
-                            currCard.descriptionMesh.text = lossText;
-                            win = false;
-                        }
-                        break;
+                        currCard.descriptionMesh.text = winText;
+                        return true;
                     }
-                case GlobalsScript.Traits.Agility:
+                    else
                     {
-                        if (currPlayer.Agility + die.DieResult >= cost)
-                        {
-                            currCard.descriptionMesh.text = winText;
-                            win = true;
-                        }
-                        else
-                        {
-                            currCard.descriptionMesh.text = lossText;
-                            win = false;
-                        }
-                        break;
+                        currCard.descriptionMesh.text = lossText;
+                        return false;
                     }
-                case GlobalsScript.Traits.Trust:
+                   // break;
+                }
+            case GlobalsScript.Traits.Agility:
+                {
+                    if (currPlayer.Agility + die.DieResult >= cost)
                     {
-                        if (currPlayer.Trust + die.DieResult >= cost)
-                        {
-                            currCard.descriptionMesh.text = winText;
-                            win = true;
-                        }
-                        else
-                        {
-                            currCard.descriptionMesh.text = lossText;
-                            win = false;
-                        }
-                        break;
+                        currCard.descriptionMesh.text = winText;
+                        return true;
                     }
-                case GlobalsScript.Traits.Notoriety:
+                    else
                     {
-                        if (currPlayer.Notoriety + die.DieResult >= cost)
-                        {
-                            currCard.descriptionMesh.text = winText;
-                            win = true;
-                        }
-                        else
-                        {
-                            currCard.descriptionMesh.text = lossText;
-                            win = false;
-                        }
-                        break;
+                        currCard.descriptionMesh.text = lossText;
+                        return false;
                     }
-                case GlobalsScript.Traits.Survival:
+                  //  break;
+                }
+            case GlobalsScript.Traits.Trust:
+                {
+                    if (currPlayer.Trust + die.DieResult >= cost)
                     {
-                        if (currPlayer.Survival + die.DieResult >= cost)
-                        {
-                            currCard.descriptionMesh.text = winText;
-                            win = true;
-                        }
-                        else
-                        {
-                            currCard.descriptionMesh.text = lossText;
-                            win = false;
-                        }
-                        break;
+                        currCard.descriptionMesh.text = winText;
+                        return true;
                     }
-            }
-        }
-        else
-        {
-            currCard.descriptionMesh.text = "Roll Die and press Button again";
+                    else
+                    {
+                        currCard.descriptionMesh.text = lossText;
+                        return false;
+                    }
+                 //   break;
+                }
+            case GlobalsScript.Traits.Notoriety:
+                {
+                    if (currPlayer.Notoriety + die.DieResult >= cost)
+                    {
+                        currCard.descriptionMesh.text = winText;
+                        return true;
+                    }
+                    else
+                    {
+                        currCard.descriptionMesh.text = lossText;
+                        return false;
+                    }
+                 //   break;
+                }
+            case GlobalsScript.Traits.Survival:
+                {
+                    if (currPlayer.Survival + die.DieResult >= cost)
+                    {
+                        currCard.descriptionMesh.text = winText;
+                        return true;
+                    }
+                    else
+                    {
+                        currCard.descriptionMesh.text = lossText;
+                        return false;
+                    }
+              //      break;
+                }
+            default:
+                {
+                    return false;
+                }
 
         }
     }
+}
 
 #endregion
 
-}
+
 
 
 
