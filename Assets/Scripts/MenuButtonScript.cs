@@ -198,6 +198,7 @@ public class MenuButtonScript : MonoBehaviour {
 	//Removes 10 stone, 10 wood, and requires 10 people for +1 AP
 	//Resources doubled? Set a status to doubled?
 	public void Upgrade () {
+
 		//Check for people
 		if (globals.GetPlayer().People >= 10 &&
             globals.GetPlayer().Stone >= 10 &&

@@ -262,7 +262,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         notorietyStat = 0;
 
         // Resets the current player class to its default state
-        currPlayer.ResetPlayerValues();
+        //currPlayer.ResetPlayerValues();
     }
     public void CreateTribe()
     {

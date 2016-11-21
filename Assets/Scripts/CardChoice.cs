@@ -103,22 +103,22 @@ public class CardChoice {
         CheckResult();
         if (win)
         {
-            foreach (Effect effect in winEffects)
-            {
-                effect.ApplyEffect();
-            }
-            //currPlayer.Strength++;
+            //foreach (Effect effect in winEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.Strength++;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
             menu.exitDrawCardPhase();
         }
         else
         {
-            foreach (Effect effect in lossEffects)
-            {
-                effect.ApplyEffect();
-            }
-            //currPlayer.Wood--;
+            //foreach (Effect effect in lossEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.Wood--;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
             menu.exitDrawCardPhase();
@@ -138,22 +138,22 @@ public class CardChoice {
         CheckResult();
         if (win)
         {
-            foreach (Effect effect in winEffects)
-            {
-                effect.ApplyEffect();
-            }
-            //currPlayer.Trust++;
+            //foreach (Effect effect in winEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.Trust++;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
             menu.exitDrawCardPhase();
         }
         else
         {
-            foreach (Effect effect in lossEffects)
-            {
-                effect.ApplyEffect();
-            }
-            //currPlayer.Food--;
+            //foreach (Effect effect in lossEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.Food--;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
             menu.exitDrawCardPhase();
@@ -173,22 +173,22 @@ public class CardChoice {
         CheckResult();
         if (win)
         {
-            foreach (Effect effect in winEffects)
-            {
-                effect.ApplyEffect();
-            }
-            //currPlayer.Notoriety++;
+            //foreach (Effect effect in winEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.Notoriety++;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
             menu.exitDrawCardPhase();
         }
         else
         {
-            foreach (Effect effect in lossEffects)
-            {
-                effect.ApplyEffect();
-            }
-            //currPlayer.People--;
+            //foreach (Effect effect in lossEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.People--;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
             menu.exitDrawCardPhase();
