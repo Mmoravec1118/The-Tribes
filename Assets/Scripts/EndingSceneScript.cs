@@ -8,19 +8,13 @@ public class EndingSceneScript : MonoBehaviour {
 
     // globals script and players
     GlobalsScript globals;
-    PlayerClass[] players = new PlayerClass[4];
+    PlayerClass[] players;
 
     // text fields
     [SerializeField] Text displayText0;
-    [SerializeField] Text displayText1;
-    [SerializeField] Text displayText2;
-    [SerializeField] Text displayText3;
 
     // ending canvas
     [SerializeField] Canvas ending;
-
-    // array of text componants
-    Text[] displays = new Text[4];
 
     // surrent player display
     int currPlayer = 0;
@@ -30,12 +24,14 @@ public class EndingSceneScript : MonoBehaviour {
 
         // save references to fields
         globals = FindObjectOfType<GlobalsScript>();
-        players[0] = globals.GetPlayer(0);
-        players[1] = globals.GetPlayer(1);
-        players[2] = globals.GetPlayer(2);
-        players[3] = globals.GetPlayer(3);
+        players = new PlayerClass[globals.CurrentPlayerCount];
 
-        for (int i = 0; i < 4; ++i)
+        for (int i = 0; i < globals.CurrentPlayerCount; ++i)
+        {
+            players[i] = globals.GetPlayer(i);
+        }
+
+        for (int i = 0; i < globals.CurrentPlayerCount; ++i)
         {
             if (players[i] != null)
             {
@@ -44,13 +40,8 @@ public class EndingSceneScript : MonoBehaviour {
         }
 
         // sort players by victory points
-        players = players.OrderBy(go => go.VictoryPoints).ToArray();
+        players = players.OrderByDescending(go => go.VictoryPoints).ToArray();
 
-        // save text componants to array
-        displays[0] = displayText0;
-        displays[1] = displayText1;
-        displays[2] = displayText2;
-        displays[3] = displayText3;
     }
 	
 	// Update is called once per frame
@@ -60,14 +51,15 @@ public class EndingSceneScript : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (currPlayer < 4)
+            if (currPlayer < globals.CurrentPlayerCount - 1)
             {
-                displays[currPlayer].enabled = false;
                 currPlayer++;
             }
-            else if (currPlayer >= 4)
+        else
             {
-
+                ending.enabled = true;
+                enabled = false;
+                //DisplayEnd();
             }
         }
 	}
@@ -77,9 +69,9 @@ public class EndingSceneScript : MonoBehaviour {
         // check if player exists
         if (players[i] != null)
         {
-            displays[i].enabled = true;
+            
             // display player info
-            displays[i].text = "Tribe Name: " + players[i].Name + "\n"
+            displayText0.text = "Tribe Name: " + players[i].Name + "\n"
              + "Player Stats:" + "\n"
              + "  Strength:  " + players[i].Strength + "\n"
              + "  Agility:   " + players[i].Agility + "\n"
@@ -98,6 +90,7 @@ public class EndingSceneScript : MonoBehaviour {
     void DisplayEnd()
     {
         ending.enabled = true;
+        enabled = false;
     }
 
 }
