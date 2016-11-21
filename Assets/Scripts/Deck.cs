@@ -6,18 +6,9 @@ public class Deck : MonoBehaviour {
 
     static Deck instance;
     Object currCard;
+    bool delete = false;
+    int deleteTimer;
 
-    //public static Deck Instance
-    //{
-    //    get
-    //    {
-    //        if (instance == null)
-    //        {
-    //            instance = new Deck();
-    //        }
-    //        return instance;
-    //    }
-    //}
 	//fields for a new deck
 	public Queue<Card> deck;
     public GameObject cardPrefab; 
@@ -1018,6 +1009,20 @@ public class Deck : MonoBehaviour {
 
     #endregion
 
+    //void Update()
+    //{
+    //    if (delete)
+    //    {
+    //        deleteTimer++;
+    //    }
+    //    if (deleteTimer >= 3000)
+    //    {
+    //        delete = false;
+    //        deleteTimer = 0;
+    //        Object.Destroy(currCard);
+    //    }
+    //}
+
     //removed card from the deck
     public Card Dequeue()
 	{
@@ -1032,6 +1037,7 @@ public class Deck : MonoBehaviour {
 
     public void RemoveCard()
     {
+        //delete = true;
         Object.Destroy(currCard);
     }
 
