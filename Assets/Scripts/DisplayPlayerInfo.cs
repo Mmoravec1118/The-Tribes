@@ -54,7 +54,8 @@ public class DisplayPlayerInfo : MonoBehaviour {
              + "  Wood:   " + currplayer.Wood + "\n"
              + "  Stone:  " + currplayer.Stone + "\n"
              + "  Food:   " + currplayer.Food + "\n"
-             + "  People: " + currplayer.People + "\n";
+             + "  People: " + currplayer.People + "\n"
+             + "Victory Points:" + currplayer.VictoryPoints;
     }
 
     #endregion

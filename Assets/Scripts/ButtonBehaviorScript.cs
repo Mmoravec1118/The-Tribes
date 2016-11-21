@@ -7,10 +7,12 @@ public class ButtonBehaviorScript : MonoBehaviour
 {
 
     // Buttons passed in
-    public Button playbutton;
-    public Button rulesButton;
-    public Button playerSlideButton;
-    public Text sliderText;
+    [SerializeField] Button playbutton;
+    [SerializeField] Button rulesButton;
+    [SerializeField] Button playerSlideButton;
+    [SerializeField] Text sliderText;
+
+    [SerializeField] string sceneName;
 
     // SLiders for stats
     public Slider playerCountSlider;
@@ -36,7 +38,7 @@ public class ButtonBehaviorScript : MonoBehaviour
     {
         // Since these are buttons of the Main Menu, the only scene the scene changes
         // to is PlayerSetup
-        SceneManager.LoadScene("PlayerSetup");
+        SceneManager.LoadScene(sceneName);
     }
         
     public void Play()
