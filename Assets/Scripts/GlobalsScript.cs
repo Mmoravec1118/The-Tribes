@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GlobalsScript : MonoBehaviour {
 
@@ -25,29 +26,38 @@ public class GlobalsScript : MonoBehaviour {
     #endregion
 
     #region Fields
-
     static int numPlayers = 0;                                         // number of players in game
     int currPlayerCount = 0;
     int currPlayerTurn = 0;
-    List<PlayerClass> players = new List<PlayerClass>();    // list of players with stats and such
-    Deck deck = new Deck();
+    List<PlayerClass> players;
+    Deck deck;
 
-    static GlobalsScript instance;
+    //static GlobalsScript instance;
 
     #endregion
 
     #region Singleton
 
     // returns instance of object or creates it if it is missing
-    public static GlobalsScript Instance
-    {
-        get { return instance ?? (instance = new GlobalsScript()); }
-    }
+    //public static GlobalsScript Instance
+    //{
+    //    get { return instance ?? (instance = new GlobalsScript()); }
+    //}
 
     // keep object in scene
-    void Awake()
+    void Start()
     {
+        players = new List<PlayerClass>();    // list of players with stats and such
+       // deck = new Deck();
         DontDestroyOnLoad(this);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Minus))
+        {
+            Ending();
+        }
     }
 
     #endregion
@@ -101,6 +111,7 @@ public class GlobalsScript : MonoBehaviour {
     #region Methods
 
     /// <summary>
+    /// Returns current player or
     /// Returns player at selected position.
     /// If position doesn't exist, returns null
     /// </summary>
@@ -111,6 +122,7 @@ public class GlobalsScript : MonoBehaviour {
         return players[currPlayerTurn];
     }
 
+    // returns player at given number from list
     public PlayerClass GetPlayer(int number)
     {
         if (number < numPlayers)
@@ -125,10 +137,17 @@ public class GlobalsScript : MonoBehaviour {
         
     }
 
+    // adds playerclass to list
     public void AddPlayer(PlayerClass newPlayer)
     {
         players.Add(newPlayer);
         currPlayerCount++;
+    }
+
+
+    public void Ending()
+    {
+        SceneManager.LoadScene("EndingScene");
     }
 
 
