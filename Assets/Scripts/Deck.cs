@@ -502,6 +502,509 @@ public class Deck : MonoBehaviour {
 			)
 			//end of enqueue card 7
 		);
+
+		//add eighth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 8----------------------------------------------------------------------------------------------------------------------------------------
+		//Traders arrive------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Traders",
+				"A caravan arrives, offering goods to your village.",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("TRUST - You negotiate with the traders for a good deal(8)",
+					"Your bargaining pays off, giving some food for supplies",
+					"You didn't convince them, but still get something for your food",
+					//win effect,
+					GlobalsScript.Traits.Trust,
+					8,
+					new Effect[]{
+						new Effect(2, GlobalsScript.Resources.Wood),
+						new Effect (1, GlobalsScript.Resources.Stone),
+						new Effect (-3, GlobalsScript.Resources.Food),
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(1, GlobalsScript.Resources.Wood),
+						new Effect(-1, GlobalsScript.Resources.Food)}
+				),
+
+					//choice 2
+					new CardChoice ("STRENGTH - You show power and try to convince the caravan they need you(10)",
+						"In a marvellous display, you convince them",
+						"Failing to lift anything, they laugh at you",
+						GlobalsScript.Traits.Strength,
+						14,
+						//win effect
+						new Effect[]{ 
+							new Effect(1, GlobalsScript.Traits.Strength),
+							new Effect(1, GlobalsScript.Traits.Trust)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, GlobalsScript.Traits.Strength)}
+
+					),
+
+					//choice 3
+					new CardChoice ("AGILITY - You attempt to steal from the traders(8)",
+						"You succeed, grabbing supplies",
+						"They spot you, making sure others know you are not to be trusted",
+						GlobalsScript.Traits.Survival,
+						10,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Resources.Wood),
+							new Effect(1, GlobalsScript.Resources.Food),
+							new Effect(1, GlobalsScript.Resources.People),
+							new Effect(1, GlobalsScript.Resources.Stone)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(2, GlobalsScript.Traits.Notoriety)
+						})
+
+
+				}
+			)
+			//end of enqueue card 8
+		);
+
+		//add ninth card------------------------------------------------------------------------------------------------------------------------
+		//CARD 9--------------------------------------------------------------------------------------------------------------------------------
+		//Poachers------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Poachers",
+				"Poachers begin hunting prey on your land",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("NOTORIETY - You attempt to scare them away",
+					"The hunters run in fears",
+					"You aren't more scary than they are hungry",
+					//win effect,
+					GlobalsScript.Traits.Notoriety,
+					8,
+					new Effect[]{
+						new Effect (1, GlobalsScript.Resources.Food),
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.Food),
+						new Effect(-1, GlobalsScript.Traits.Notoriety)}
+				),
+
+					//choice 2
+					new CardChoice ("TRUST - You attempt to set up a deal(9)",
+						"The poachers agree to your terms",
+						"You attempt reason, but the poachers are too savage and attack",
+						GlobalsScript.Traits.Strength,
+						14,
+						//win effect
+						new Effect[]{ 
+							new Effect(-1, GlobalsScript.Resources.Food),
+							new Effect(-1, GlobalsScript.Traits.Notoriety),
+							new Effect(1, GlobalsScript.Resources.Wood),
+							new Effect(1, GlobalsScript.Traits.Trust),
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, GlobalsScript.Resources.People)}
+
+					),
+
+					//choice 3
+					new CardChoice ("SURVIVAL - You attack to remove them all(10)",
+						"With the hunters dead, you take their resources",
+						"You aren't as skilled as you think, and they kill your party",
+						GlobalsScript.Traits.Survival,
+						10,
+						//win effects
+						new Effect[]{
+							new Effect (2, GlobalsScript.Resources.Food),
+							new Effect (1, GlobalsScript.Traits.Notoriety)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Resources.People),
+						})
+
+
+				}
+			)
+			//end of enqueue card 9
+		);
+
+		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 10--------------------------------------------------------------------------------------------------------------------------------------
+		//A Raiding Party------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Raid",
+				"A raiding party attacks your camp",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("AGILITY - You evacuate the camp(10)",
+					"You succeed, but gain nothing in the process",
+					"You are not fast enough and are attacked",
+					//win effect,
+					GlobalsScript.Traits.Agility,
+					10,
+					new Effect[]{
+						new Effect(0, GlobalsScript.Resources.People)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.Food),
+						new Effect(-1, GlobalsScript.Traits.Notoriety)}
+				),
+
+					//choice 2
+					new CardChoice ("NOTORIETY - Your people are fierce and attempt to show them that",
+						"You scare away the raiders and even convince some to join",
+						"The raiders aren't scared, and show you that",
+						GlobalsScript.Traits.Notoriety,
+						11,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, GlobalsScript.Resources.People)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect (-1, GlobalsScript.Resources.People),
+							new Effect (-1, GlobalsScript.Resources.Food)}
+
+					),
+
+					//choice 3
+					new CardChoice ("SURVIVAL - You lay an ambush for the raiders(12)",
+						"Your ambush was successful, obliterating the raiding party",
+						"They see you coming, leading to a blood bath",
+						GlobalsScript.Traits.Survival,
+						12,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Notoriety)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Resources.People)
+						})
+				}
+			)
+			//end of enqueue card 10
+		);
+
+		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 11--------------------------------------------------------------------------------------------------------------------------------------
+		//Severe Thunderstorm------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Severe Thunderstorm",
+				"A raging thunderstorm sweeps through your settlement, panicking your settlers",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("TRUST - Calm your villagers by convincing them the thunder can't harm them(12)",
+					"Everyone listens and waits out the storm",
+					"Your villagers panick and run, getting struck by lightning",
+					//win effect,
+					GlobalsScript.Traits.Trust,
+					12,
+					new Effect[]{
+						new Effect (1, GlobalsScript.Traits.Trust)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect (-1, GlobalsScript.Resources.People),
+						new Effect (-1, GlobalsScript.Resources.Food)}
+				),
+
+					//choice 2
+					new CardChoice ("SURVIVAL - Contruct a stone shelter to protect them(11)",
+						"The shelter is completed and the villagers thank you for the safety",
+						"The incomplete shelter provides no protection and collapses",
+						GlobalsScript.Traits.Survival,
+						11,
+						//win effect
+						new Effect[]{ 
+							new Effect (1, GlobalsScript.Traits.Trust),
+							new Effect (1, GlobalsScript.Traits.Survival)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, GlobalsScript.Resources.People),
+							new Effect (-1, GlobalsScript.Resources.Stone),
+							new Effect (-1, GlobalsScript.Traits.Trust)}
+
+					),
+
+					//choice 3
+					new CardChoice ("NOTORIETY - Intimidate your villagers into being orderly(14)",
+						"Your villagers wait out the storm and see you as a more fearsome leader",
+						"Your villagers become more frenzied and panic, taking resources",
+						GlobalsScript.Traits.Notoriety,
+						14,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Notoriety)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect (-1, GlobalsScript.Resources.Wood),
+							new Effect (-1, GlobalsScript.Resources.Stone),
+							new Effect (-2, GlobalsScript.Resources.Food)
+						})
+				}
+			)
+			//end of enqueue card 11
+		);
+
+		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 12--------------------------------------------------------------------------------------------------------------------------------------
+		//Tornado------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Tornado",
+				"A tornado sweeps through your settlement",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("AGILITY - You evacuate the camp(10)",
+					"You succeed, but gain nothing in the process",
+					"You are not fast enough and get hit",
+					//win effect,
+					GlobalsScript.Traits.Agility,
+					10,
+					new Effect[]{
+						new Effect(0, GlobalsScript.Resources.People)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.Food),
+						new Effect (-1, GlobalsScript.Resources.Stone),
+						new Effect (-1, GlobalsScript.Resources.Wood)}
+				),
+
+					//choice 2
+					new CardChoice ("NOTORIETY - Yell at it till it goes away(16)",
+						"The tornado diverts its path",
+						"Tornados don't listen to mortals. It hits you",
+						GlobalsScript.Traits.Notoriety,
+						11,
+						//win effect
+						new Effect[]{ 
+							new Effect(3, GlobalsScript.Traits.Notoriety)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-2, GlobalsScript.Resources.Food),
+							new Effect(-2, GlobalsScript.Resources.Wood),
+							new Effect(-2, GlobalsScript.Resources.Stone),
+							new Effect(-1, GlobalsScript.Traits.Notoriety)}
+
+					),
+
+					//choice 3
+					new CardChoice ("SURVIVAL - Dig bunkers for everyone(13)",
+						"Everyone is safe in their own bunkers, reassuring their trust in you",
+						"Not everyone makes bunkers in time, and some are blown away",
+						GlobalsScript.Traits.Survival,
+						13,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Trust)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Resources.People),
+							new Effect(-1, GlobalsScript.Traits.Trust)
+						})
+				}
+			)
+			//end of enqueue card 12
+		);
+
+		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 13--------------------------------------------------------------------------------------------------------------------------------------
+		//Severe Flooding------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Flood",
+				"Heavy rainstorms have caused the river to overflow",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("SURVIVAL - Build a stone dam(11)",
+					"The floods are successfully diverted",
+					"The wall breaks when water meet brick, washing away your resources",
+					//win effect,
+					GlobalsScript.Traits.Survival,
+					11,
+					new Effect[]{
+						new Effect(1, GlobalsScript.Resources.Food)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.Food),
+						new Effect(-1, GlobalsScript.Resources.Stone)}
+				),
+
+					//choice 2
+					new CardChoice ("STRENGTH - Build rafts of wood to ride it out(12)",
+						"The rafts carry everyone safely",
+						"Some of the rafts leak and break, losing resources",
+						GlobalsScript.Traits.Strength,
+						12,
+						//win effect
+						new Effect[]{ 
+							new Effect(1, GlobalsScript.Traits.Trust)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect (-1, GlobalsScript.Resources.Wood),
+							new Effect (-2, GlobalsScript.Resources.Food)}
+
+					),
+
+					//choice 3
+					new CardChoice ("TRUST - Convince the nearby fairies to make a magic barrier(14)",
+						"The fairies consent and divert the water, trading stone for guidance",
+						"The fairies reject your request, and your village floods",
+						GlobalsScript.Traits.Trust,
+						14,
+						//win effects
+						new Effect[]{
+							new Effect(2, GlobalsScript.Traits.Trust),
+							new Effect(1, GlobalsScript.Resources.Food),
+							new Effect(-1, GlobalsScript.Resources.Stone)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Resources.Food),
+							new Effect(-2, GlobalsScript.Resources.Wood),
+							new Effect(-2, GlobalsScript.Resources.Stone)
+						})
+				}
+			)
+			//end of enqueue card 13
+		);
+
+		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 14--------------------------------------------------------------------------------------------------------------------------------------
+		//Poor Soil------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Poor Soil",
+				"The soil has dried up and isn't sustainable",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("STRENGTH - Dig irrigation trenches between the river and crops(10)",
+					"The crops benefit from the irrigation",
+					"The ditches aren't effective and the crops suffer",
+					//win effect,
+					GlobalsScript.Traits.Strength,
+					10,
+					new Effect[]{
+						new Effect(1, GlobalsScript.Resources.Food)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.Food)}
+				),
+
+					//choice 2
+					new CardChoice ("SURVIVAL - Transplant the soil and fertilize it(12)",
+						"The transplanted soil proves better than the original crop",
+						"The transplanted soil doesn't take, reudcing the crops and your speed",
+						GlobalsScript.Traits.Survival,
+						12,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, GlobalsScript.Resources.Food)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect (-1, GlobalsScript.Traits.Agility),
+							new Effect (-1, GlobalsScript.Resources.Food)}
+
+					),
+
+					//choice 3
+					new CardChoice ("TRUST - Convince the settlers to move the farms(14)",
+						"The villagers agree and move. The new area yields better crops",
+						"The villagers refuse and the crops decay further",
+						GlobalsScript.Traits.Trust,
+						14,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Survival),
+							new Effect(1, GlobalsScript.Traits.Trust),
+							new Effect(1, GlobalsScript.Resources.Food)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-3, GlobalsScript.Resources.Food)
+						})
+				}
+			)
+			//end of enqueue card 14
+		);
+
+		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 15--------------------------------------------------------------------------------------------------------------------------------------
+		//What You Buyin'------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("What You Buyin'",
+				"A man in a tattered black robe approaches, revealing cursed magical items(10)",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("STRENGTH - You grab the axe, which jolts you with energy",
+					"You conquer the axe, gifted with a surge of strength",
+					"The energy is too much, damaging your arms",
+					//win effect,
+					GlobalsScript.Traits.Strength,
+					10,
+					new Effect[]{
+						new Effect(2, GlobalsScript.Traits.Strength)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-2, GlobalsScript.Traits.Strength)}
+				),
+
+					//choice 2
+					new CardChoice ("AGILITY - You grab the boots, which flutter on your feet(10)",
+						"The fluttering quickens, as you take toward the sky",
+						"The fluttering is replaced with an explosion, damaging your feet",
+						GlobalsScript.Traits.Agility,
+						10,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, GlobalsScript.Traits.Agility)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect (-2, GlobalsScript.Traits.Agility)}
+
+					),
+
+					//choice 3
+					new CardChoice ("NOTORIETY - You snag the man's cloak, which swirls with darkness(10)",
+						"The darkness creates a shroud of fear around you",
+						"The darkness begins to dance and scare you",
+						GlobalsScript.Traits.Notoriety,
+						10,
+						//win effects
+						new Effect[]{
+							new Effect(2, GlobalsScript.Traits.Notoriety)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Traits.Notoriety)
+						})
+				}
+			)
+			//end of enqueue card 15
+		);
 	}
 
     #endregion
