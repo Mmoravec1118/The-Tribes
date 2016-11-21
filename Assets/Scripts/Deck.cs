@@ -503,7 +503,7 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 7
 		);
 
-<<<<<<< HEAD
+
         //add items to the queue.
         //CARD 8
         //THE PLAGUE
@@ -863,7 +863,7 @@ public class Deck : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-=======
+
 		//add eighth card-------------------------------------------------------------------------------------------------------------------------------
 		//CARD 8----------------------------------------------------------------------------------------------------------------------------------------
 		//Traders arrive------------------------------------------------------------------------------------------------------------------------------
@@ -1366,7 +1366,6 @@ public class Deck : MonoBehaviour {
 			)
 			//end of enqueue card 15
 		);
->>>>>>> origin/master
 	}
 
     #endregion
