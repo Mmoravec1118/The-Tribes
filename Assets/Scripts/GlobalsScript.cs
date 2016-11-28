@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GlobalsScript : MonoBehaviour {
 
@@ -53,8 +54,16 @@ public class GlobalsScript : MonoBehaviour {
     void Start()
     {
         players = new List<PlayerClass>();    // list of players with stats and such
-        deck = new Deck();
+       // deck = new Deck();
         DontDestroyOnLoad(this);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Minus))
+        {
+            Ending();
+        }
     }
 
     #endregion
@@ -144,6 +153,12 @@ public class GlobalsScript : MonoBehaviour {
     {
         players.Add(newPlayer);
         currPlayerCount++;
+    }
+
+
+    public void Ending()
+    {
+        SceneManager.LoadScene("EndingScene");
     }
 
 

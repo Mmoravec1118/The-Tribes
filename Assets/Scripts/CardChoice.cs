@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
 
-public class CardChoice : MonoBehaviour {
+public class CardChoice
+{
 
     #region Fields
 
     //Fields
-    Effect[] winEffects;
-    Effect[] lossEffects;
+    public Effect[] winEffects;
+    public Effect[] lossEffects;
     string description;
     string winText;
     string lossText;
@@ -36,11 +37,10 @@ public class CardChoice : MonoBehaviour {
         this.description = description;
         this.winEffects = winEffects;
         this.lossEffects = lossEffects;
-		this.winText = winText;
-		this.lossText = lossText;
+        this.winText = winText;
+        this.lossText = lossText;
         cost = toBeat;
         currTrait = trait;
-        DontDestroyOnLoad(this);
     }
 
     #endregion
@@ -95,31 +95,31 @@ public class CardChoice : MonoBehaviour {
     public void CardChoice1()
     {
         // get references to all necessary objects
-        globals = FindObjectOfType<GlobalsScript>();
-        die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
+        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = globals.GetPlayer();
-        currCard = FindObjectOfType<CardPrefab>();
-        menu = FindObjectOfType<MenuButtonScript>();
+        currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
+        menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
         CheckResult();
         if (win)
         {
-            foreach (Effect effect in winEffects)
-            {
-                effect.ApplyEffect();
-            }
-            //currPlayer.Strength++;
+            //foreach (Effect effect in winEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.Strength++;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
             menu.exitDrawCardPhase();
         }
         else
         {
-            foreach (Effect effect in lossEffects)
-            {
-                effect.ApplyEffect();
-            }
-            //currPlayer.Wood--;
+            //foreach (Effect effect in lossEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.Wood--;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
             menu.exitDrawCardPhase();
@@ -130,31 +130,31 @@ public class CardChoice : MonoBehaviour {
     public void CardChoice2()
     {
         // get references to all necessary objects
-        globals = FindObjectOfType<GlobalsScript>();
-        die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
+        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = globals.GetPlayer();
-        currCard = FindObjectOfType<CardPrefab>();
-        menu = FindObjectOfType<MenuButtonScript>();
+        currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
+        menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
         CheckResult();
         if (win)
         {
-            foreach (Effect effect in winEffects)
-            {
-                effect.ApplyEffect();
-            }
-            //currPlayer.Trust++;
+            //foreach (Effect effect in winEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.Trust++;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
             menu.exitDrawCardPhase();
         }
         else
         {
-            foreach (Effect effect in lossEffects)
-            {
-                effect.ApplyEffect();
-            }
-            //currPlayer.Food--;
+            //foreach (Effect effect in lossEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.Food--;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
             menu.exitDrawCardPhase();
@@ -165,31 +165,31 @@ public class CardChoice : MonoBehaviour {
     public void CardChoice3()
     {
         // get references to all necessary objects
-        globals = FindObjectOfType<GlobalsScript>();
-        die = FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
+        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
         currPlayer = globals.GetPlayer();
-        currCard = FindObjectOfType<CardPrefab>();
-        menu = FindObjectOfType<MenuButtonScript>();
+        currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
+        menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
         CheckResult();
         if (win)
         {
-            foreach (Effect effect in winEffects)
-            {
-                effect.ApplyEffect();
-            }
-            //currPlayer.Notoriety++;
+            //foreach (Effect effect in winEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.Notoriety++;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
             menu.exitDrawCardPhase();
         }
         else
         {
-            foreach (Effect effect in lossEffects)
-            {
-                effect.ApplyEffect();
-            }
-            //currPlayer.People--;
+            //foreach (Effect effect in lossEffects)
+            //{
+            //    effect.ApplyEffect();
+            //}
+            currPlayer.People--;
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
             menu.exitDrawCardPhase();
@@ -197,98 +197,101 @@ public class CardChoice : MonoBehaviour {
     }
 
     // checks result of player stats + die result against card cost
-    void CheckResult()
+    public bool CheckResult()
     {
-        if (!die.NeedsRoll)
+        globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
+        die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
+        currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
+        currPlayer = globals.GetPlayer();
+
+        switch (currTrait)
         {
-            switch (currTrait)
-            {
-                case GlobalsScript.Traits.Strength:
+            case GlobalsScript.Traits.Strength:
+                {
+                    if (currPlayer.Strength + die.DieResult >= cost)
                     {
-                        if (currPlayer.Strength + die.DieResult >= cost)
-                        {
-                            currCard.descriptionMesh.text = winText;
-                            win = true;
-                        }
-                        else
-                        {
-                            currCard.descriptionMesh.text = lossText;
-                            win = false;
-                        }
-                        break;
+                        currCard.descriptionMesh.text = winText;
+                        return true;
                     }
-                case GlobalsScript.Traits.Agility:
+                    else
                     {
-                        if (currPlayer.Agility + die.DieResult >= cost)
-                        {
-                            currCard.descriptionMesh.text = winText;
-                            win = true;
-                        }
-                        else
-                        {
-                            currCard.descriptionMesh.text = lossText;
-                            win = false;
-                        }
-                        break;
+                        currCard.descriptionMesh.text = lossText;
+                        return false;
                     }
-                case GlobalsScript.Traits.Trust:
+                   // break;
+                }
+            case GlobalsScript.Traits.Agility:
+                {
+                    if (currPlayer.Agility + die.DieResult >= cost)
                     {
-                        if (currPlayer.Trust + die.DieResult >= cost)
-                        {
-                            currCard.descriptionMesh.text = winText;
-                            win = true;
-                        }
-                        else
-                        {
-                            currCard.descriptionMesh.text = lossText;
-                            win = false;
-                        }
-                        break;
+                        currCard.descriptionMesh.text = winText;
+                        return true;
                     }
-                case GlobalsScript.Traits.Notoriety:
+                    else
                     {
-                        if (currPlayer.Notoriety + die.DieResult >= cost)
-                        {
-                            currCard.descriptionMesh.text = winText;
-                            win = true;
-                        }
-                        else
-                        {
-                            currCard.descriptionMesh.text = lossText;
-                            win = false;
-                        }
-                        break;
+                        currCard.descriptionMesh.text = lossText;
+                        return false;
                     }
-                case GlobalsScript.Traits.Survival:
+                  //  break;
+                }
+            case GlobalsScript.Traits.Trust:
+                {
+                    if (currPlayer.Trust + die.DieResult >= cost)
                     {
-                        if (currPlayer.Survival + die.DieResult >= cost)
-                        {
-                            currCard.descriptionMesh.text = winText;
-                            win = true;
-                        }
-                        else
-                        {
-                            currCard.descriptionMesh.text = lossText;
-                            win = false;
-                        }
-                        break;
+                        currCard.descriptionMesh.text = winText;
+                        return true;
                     }
-            }
-        }
-        else
-        {
-            currCard.descriptionMesh.text = "Roll Die and press Button again";
+                    else
+                    {
+                        currCard.descriptionMesh.text = lossText;
+                        return false;
+                    }
+                 //   break;
+                }
+            case GlobalsScript.Traits.Notoriety:
+                {
+                    if (currPlayer.Notoriety + die.DieResult >= cost)
+                    {
+                        currCard.descriptionMesh.text = winText;
+                        return true;
+                    }
+                    else
+                    {
+                        currCard.descriptionMesh.text = lossText;
+                        return false;
+                    }
+                 //   break;
+                }
+            case GlobalsScript.Traits.Survival:
+                {
+                    if (currPlayer.Survival + die.DieResult >= cost)
+                    {
+                        currCard.descriptionMesh.text = winText;
+                        return true;
+                    }
+                    else
+                    {
+                        currCard.descriptionMesh.text = lossText;
+                        return false;
+                    }
+              //      break;
+                }
+            default:
+                {
+                    return false;
+                }
 
         }
     }
+}
 
 #endregion
 
-}
 
 
 
-public class Effect : MonoBehaviour
+
+public class Effect 
 {
     #region Fields
 
@@ -312,7 +315,7 @@ public class Effect : MonoBehaviour
         this.change = change;
         this.toChangeTrait = toChangeTrait;
         trait = true;
-        DontDestroyOnLoad(this);
+       // DontDestroyOnLoad(this);
     }
 
 	public Effect(int change, GlobalsScript.Resources toChangeResource)
@@ -320,7 +323,7 @@ public class Effect : MonoBehaviour
 		this.change = change;
 		this.toChangeResource = toChangeResource;
         resource = true;
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
 
     }
 

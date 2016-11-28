@@ -99,14 +99,14 @@ public class PlayerSetupButtonScript : MonoBehaviour {
                 && (strengthStat + agilityStat + trustStat + survivalStat + notorietyStat) <= GlobalsScript.statMax)
             {
                 warningText.gameObject.SetActive(false);
-                okbutton.gameObject.SetActive(true);
-            }
+            okbutton.gameObject.SetActive(true);
+        }
             else if (tribeType == null)
             {
                 okbutton.gameObject.SetActive(false);
                 warningText.text = "Please select a tribe";
                 warningText.gameObject.SetActive(true);
-            }
+    }
             else
             {
                 okbutton.gameObject.SetActive(false);
@@ -237,7 +237,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         }
         else
         {
-            tribeName = tribeNameInputField.text;
+        tribeName = tribeNameInputField.text;
         }
         currPlayer.Name = tribeName;
     }

@@ -9,7 +9,7 @@ public class DisplayPlayerInfo : MonoBehaviour {
     Text playerDisplay;
 
     // list of players playing
-    List<PlayerClass> players = new List<PlayerClass>();
+    //List<PlayerClass> players = new List<PlayerClass>();
 
     // current player turn
     int currTurn = 0;
@@ -18,6 +18,7 @@ public class DisplayPlayerInfo : MonoBehaviour {
     // previouse players turn
     // starts at zero for easier initialization
     //int prevTurn = 0;
+    GlobalsScript globals;
 
 	// Use this for initialization
 	void Start () {
@@ -25,55 +26,37 @@ public class DisplayPlayerInfo : MonoBehaviour {
         playerDisplay = GetComponent<Text>();
         //for (int i = 0; i < GlobalsScript.NumberofPlayers; i++)
         //{
-        //    players.Add(GlobalsScript.Instance.GetPlayer(i));
+        //    players.Add(FindObjectOfType<GlobalsScript>().GetPlayer(i));
         //}
-
-        //players = GlobalsScript.Instance.GetPlayerList();
-
-        DisplayText(currTurn);
-        for (int i = 0; i < GlobalsScript.NumberofPlayers; i++)
-        {
-            players.Add(FindObjectOfType<GlobalsScript>().GetPlayer(i));
-        }
+        //globals = FindObjectOfType<GlobalsScript>();
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        // COMMENTING OUT FOR EASIER IMPLEMENTATION
-        /*
-        if (currTurn != prevTurn)
-        {
-            DisplayText(currTurn - 1);
-            prevTurn = currTurn;
-            //currTurn++;
-        }
-        if (currTurn > GlobalsScript.NumberofPlayers)
-        {
-            currTurn = 1;
-            prevTurn = 0;
-        }
-        */
+        DisplayText();
 	
 	}
 
     #region Methods
 
-    public void DisplayText(int playerTurn)
+    public void DisplayText()
     {
-        playerDisplay.text = "Tribe Name: " + players[playerTurn].Name + "\n"
+        PlayerClass currplayer = FindObjectOfType<GlobalsScript>().GetPlayer();
+        playerDisplay.text = "Tribe Name: " + currplayer.Name + "\n"
              + "Player Stats:" + "\n"
-             + "  Strength:  " + players[playerTurn].Strength + "\n"
-             + "  Agility:   " + players[playerTurn].Agility + "\n"
-             + "  Trust:     " + players[playerTurn].Trust + "\n"
-             + "  Survival:  " + players[playerTurn].Survival + "\n"
-             + "  Notoriety: " + players[playerTurn].Notoriety + "\n"
+             + "  Strength:  " + currplayer.Strength + "\n"
+             + "  Agility:   " + currplayer.Agility + "\n"
+             + "  Trust:     " + currplayer.Trust + "\n"
+             + "  Survival:  " + currplayer.Survival + "\n"
+             + "  Notoriety: " + currplayer.Notoriety + "\n"
              + "Resources:" + "\n"
-             + "  Wood:   " + players[playerTurn].Wood + "\n"
-             + "  Stone:  " + players[playerTurn].Stone + "\n"
-             + "  Food:   " + players[playerTurn].Food + "\n"
-             + "  People: " + players[playerTurn].People + "\n";
+             + "  Wood:   " + currplayer.Wood + "\n"
+             + "  Stone:  " + currplayer.Stone + "\n"
+             + "  Food:   " + currplayer.Food + "\n"
+             + "  People: " + currplayer.People + "\n"
+             + "Victory Points:" + currplayer.VictoryPoints;
     }
 
     #endregion
@@ -84,13 +67,13 @@ public class DisplayPlayerInfo : MonoBehaviour {
     /// <summary>
     /// Adds a new player to the list of current players
     /// </summary>
-    public PlayerClass Players
-    {
-        set
-        {
-            players.Add(value);
-        }
-    }
+    //public PlayerClass Players
+    //{
+    //    set
+    //    {
+    //        players.Add(value);
+    //    }
+    //}
 
     /// <summary>
     /// returns current player turn or adds value to player turn
