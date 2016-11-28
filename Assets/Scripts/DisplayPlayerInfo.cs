@@ -89,13 +89,13 @@ public class DisplayPlayerInfo : MonoBehaviour {
             currTurn += value;
 
             // Loops current turn back to 0 if if exceeds the list capacity
-            if (currTurn >= players.Count)
+            if (currTurn >= GlobalsScript.NumberofPlayers)
             {
                 currTurn = 0;
             }
 
             // Updates the displayed text to current player info
-            DisplayText(currTurn);
+            //DisplayText(currTurn);
         }
     }
 
