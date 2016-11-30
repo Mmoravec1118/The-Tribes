@@ -54,7 +54,7 @@ namespace Assets.Scripts
             menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
             win = choices[0].CheckResult();
-            StartCoroutine(ShowInfoTimer());
+           // StartCoroutine(ShowInfoTimer());
             if (win)
             {
                 foreach (Effect effect in card.choices[0].winEffects)
@@ -64,7 +64,7 @@ namespace Assets.Scripts
                 //currPlayer.Strength++;
                 die.NeedsRoll = true;
                 globals.PlayerTurn += 1;
-                menu.exitDrawCardPhase();
+               // menu.exitDrawCardPhase();
             }
             else
             {
@@ -75,9 +75,8 @@ namespace Assets.Scripts
                 //currPlayer.Wood--;
                 die.NeedsRoll = true;
                 globals.PlayerTurn += 1;
-                menu.exitDrawCardPhase();
             }
-
+            Invoke("exitMenuPhase", 5);
         }
 
         // second button on card
@@ -90,7 +89,6 @@ namespace Assets.Scripts
             menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
             win = card.choices[1].CheckResult();
-            StartCoroutine(ShowInfoTimer());
             if (win)
             {
                 foreach (Effect effect in card.choices[1].winEffects)
@@ -100,7 +98,6 @@ namespace Assets.Scripts
                 //currPlayer.Trust++;
                 die.NeedsRoll = true;
                 globals.PlayerTurn += 1;
-                menu.exitDrawCardPhase();
             }
             else
             {
@@ -111,8 +108,8 @@ namespace Assets.Scripts
                 //currPlayer.Food--;
                 die.NeedsRoll = true;
                 globals.PlayerTurn += 1;
-                menu.exitDrawCardPhase();
             }
+            Invoke("exitMenuPhase", 5);
         }
 
         // third button on card
@@ -122,10 +119,8 @@ namespace Assets.Scripts
             globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
             die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
             currPlayer = globals.GetPlayer();
-            menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
-          win = card.choices[2].CheckResult();
-            StartCoroutine(ShowInfoTimer());
+            win = card.choices[2].CheckResult();
             if (win)
             {
                 foreach (Effect effect in card.choices[2].winEffects)
@@ -135,7 +130,6 @@ namespace Assets.Scripts
                 //currPlayer.Notoriety++;
                 die.NeedsRoll = true;
                 globals.PlayerTurn += 1;
-                menu.exitDrawCardPhase();
             }
             else
             {
@@ -146,15 +140,14 @@ namespace Assets.Scripts
                 //currPlayer.People--;
                 die.NeedsRoll = true;
                 globals.PlayerTurn += 1;
-                menu.exitDrawCardPhase();
             }
+            Invoke("exitMenuPhase", 5);
         }
 
-        IEnumerator ShowInfoTimer()
+        public void exitMenuPhase()
         {
-           // print(Time.time);
-            yield return new WaitForSeconds(15);
-           // print(Time.time);
+           menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
+            menu.exitDrawCardPhase();
         }
 
         // checks result of player stats + die result against card cost
