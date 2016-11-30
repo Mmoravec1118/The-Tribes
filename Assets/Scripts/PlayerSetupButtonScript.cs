@@ -98,7 +98,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     public void Tribe0Flavor()
     {
-        tribeType = GlobalsScript.TribeType.Barbarian;
+        tribeType = GlobalsScript.TribeType.Warrior;
 
         // This is where the selected value of the tribe is stored between scenes
         //PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -113,7 +113,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     public void Tribe1Flavor()
     {
-        tribeType = GlobalsScript.TribeType.PeaceMaker;
+        tribeType = GlobalsScript.TribeType.Bandit;
 
         // This is where the selected value of the tribe is stored between scenes
         //PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -143,7 +143,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     public void Tribe3Flavor()
     {
-        tribeType = GlobalsScript.TribeType.Farmer;
+        tribeType = GlobalsScript.TribeType.Peaceful;
 
         // This is where the selected value of the tribe is stored between scenes
         //PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -254,7 +254,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     private void ResetStats()
     {
-        tribeType = GlobalsScript.TribeType.Barbarian;
+        tribeType = GlobalsScript.TribeType.Warrior;
         strengthStat = 0;
         agilityStat = 0;
         trustStat = 0;

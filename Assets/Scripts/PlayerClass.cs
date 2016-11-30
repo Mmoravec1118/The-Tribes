@@ -200,6 +200,18 @@ public class PlayerClass
         }
     }
 
+    public GlobalsScript.TribeType TribeType
+    { get
+        {
+            return tribeType;
+        }
+        set
+        {
+            tribeType = value;
+        }
+    }
+
+
 
     #endregion
 

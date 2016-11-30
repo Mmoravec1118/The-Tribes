@@ -9,7 +9,7 @@ public class GlobalsScript : MonoBehaviour {
 
     // Tribe type enumeration
     public enum TribeType
-    { Barbarian, PeaceMaker, Nomad, Farmer, Gaility }
+    { Warrior, Bandit, Nomad, Peaceful }
 
     // Card Types
     public enum CardType { Event, GlobalEvent, Scar }
