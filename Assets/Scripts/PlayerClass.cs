@@ -18,7 +18,7 @@ public class PlayerClass
     string name = "";
 
     //Tribe type
-    //TribeType tribeType;
+    GlobalsScript.TribeType tribeType;
 
     // bool for tool creation
     bool hasTool = false;
