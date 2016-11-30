@@ -66,6 +66,8 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         currPlayer = new PlayerClass();
 
         ResetStats();
+
+        Tribe0Flavor();
     }
 
     public void ChangeScene()
@@ -79,8 +81,6 @@ public class PlayerSetupButtonScript : MonoBehaviour {
             if (FindObjectOfType<GlobalsScript>().CurrentPlayerCount < players)
             {
                 sceneName = "PlayerSetup";
-
-                ResetStats();
             }
             else
             {
@@ -96,23 +96,34 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         if (okbutton.gameObject.activeInHierarchy == false || okbutton.gameObject.activeInHierarchy == true)
         {
             if (tribeType != null 
-                && (strengthStat + agilityStat + trustStat + survivalStat + notorietyStat) <= GlobalsScript.statMax)
+                && (strengthStat + agilityStat + trustStat + survivalStat + notorietyStat) == GlobalsScript.statMax)
             {
                 warningText.gameObject.SetActive(false);
             okbutton.gameObject.SetActive(true);
-        }
+            }
+
             else if (tribeType == null)
             {
                 okbutton.gameObject.SetActive(false);
                 warningText.text = "Please select a tribe";
                 warningText.gameObject.SetActive(true);
-    }
-            else
+            }
+
+            else if ((strengthStat + agilityStat + trustStat + survivalStat + notorietyStat) > GlobalsScript.statMax)
             {
                 okbutton.gameObject.SetActive(false);
                 warningText.text = "Your stat total may not exceed " + GlobalsScript.statMax.ToString();
                 warningText.gameObject.SetActive(true);
             }
+
+            else
+            {
+                okbutton.gameObject.SetActive(false);
+                warningText.text = "Number of points left: " 
+                    + (GlobalsScript.statMax - (strengthStat + agilityStat + trustStat + survivalStat + notorietyStat)).ToString();
+                warningText.gameObject.SetActive(true);
+            }
+
         }
     }
 
@@ -292,7 +303,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
     {
         return currPlayer;
     }
-
+    
     private void ResetStats()
     {
         tribeName = "Player " + (FindObjectOfType<GlobalsScript>().CurrentPlayerCount + 1).ToString();
