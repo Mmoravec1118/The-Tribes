@@ -53,7 +53,8 @@ namespace Assets.Scripts
             currPlayer = globals.GetPlayer();
             menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
-            choices[0].CheckResult();
+            win = choices[0].CheckResult();
+            StartCoroutine(ShowInfoTimer());
             if (win)
             {
                 foreach (Effect effect in card.choices[0].winEffects)
@@ -88,7 +89,8 @@ namespace Assets.Scripts
             currPlayer = globals.GetPlayer();
             menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
-            card.choices[1].CheckResult();
+            win = card.choices[1].CheckResult();
+            StartCoroutine(ShowInfoTimer());
             if (win)
             {
                 foreach (Effect effect in card.choices[1].winEffects)
@@ -122,7 +124,8 @@ namespace Assets.Scripts
             currPlayer = globals.GetPlayer();
             menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
-            card.choices[2].CheckResult();
+          win = card.choices[2].CheckResult();
+            StartCoroutine(ShowInfoTimer());
             if (win)
             {
                 foreach (Effect effect in card.choices[2].winEffects)
@@ -145,6 +148,13 @@ namespace Assets.Scripts
                 globals.PlayerTurn += 1;
                 menu.exitDrawCardPhase();
             }
+        }
+
+        IEnumerator ShowInfoTimer()
+        {
+           // print(Time.time);
+            yield return new WaitForSeconds(15);
+           // print(Time.time);
         }
 
         // checks result of player stats + die result against card cost
