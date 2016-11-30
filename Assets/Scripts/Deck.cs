@@ -908,7 +908,7 @@ public class Deck : MonoBehaviour {
 					),
 
 					//choice 3
-					new CardChoice (" - You attempt to steal from the traders(12)",
+					new CardChoice ("AGILITY - You attempt to steal from the traders(12)",
 						"You succeed, grabbing supplies",
 						"They spot you, making sure others know you are not to be trusted",
 						GlobalsScript.Traits.Agility,
@@ -1436,7 +1436,75 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 16
 		);
 
+		//add twenty-fourth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 24--------------------------------------------------------------------------------------------------------------------------------------
+		//Hercules------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Hercules",
+				"A mythic hero visits your village and challenges you to a friendly competition",
 
+				//choice 1
+				new CardChoice[] {new CardChoice ("SURVIVAL - A battle of wits, as you play a game against him",
+					"You win and Hercules gives you insight and rewards",
+					"You lose, learning a lesson but giving Hercules his reward",
+					//win effect,
+					GlobalsScript.Traits.Survival,
+					8,
+					new Effect[]{
+						new Effect(2, GlobalsScript.Traits.Survival),
+						new Effect(1, GlobalsScript.Resources.Food),
+						new Effect(1, GlobalsScript.Resources.Stone),
+						new Effect(1, GlobalsScript.Resources.Wood)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(1, GlobalsScript.Traits.Survival),
+						new Effect(-1, GlobalsScript.Resources.Food),
+						new Effect(-1, GlobalsScript.Resources.Stone),
+						new Effect(-1, GlobalsScript.Resources.Wood)
+						}
+				),
+
+					//choice 2
+					new CardChoice ("AGILITY - A race across the to the fields and back",
+						"Your speed was obvious from the beginning, and Hecules recognizes this with food",
+						"His speed surprises you, and you also trample some of the crops as well",
+						GlobalsScript.Traits.Agility,
+						9,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, GlobalsScript.Traits.Agility),
+							new Effect(3, GlobalsScript.Resources.Food),
+						},
+						//lose effect
+						new Effect[]{
+							new Effect (-5, GlobalsScript.Resources.Food),
+						}
+
+					),
+
+					//choice 3
+					new CardChoice ("STRENGTH - You plan to beat the hero at his greatest with wrestling",
+						"In a surprise to all, you beat Hercules, attracting people to your village",
+						"Hercules easily throws you to the ground, breaking your arm and your ego",
+						GlobalsScript.Traits.Strength,
+						11,
+						//win effects
+						new Effect[]{
+							new Effect(2, GlobalsScript.Traits.Strength),
+							new Effect(3, GlobalsScript.Resources.People)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Traits.Strength),
+							new Effect(-1, GlobalsScript.Traits.Notoriety),
+							new Effect(-1, GlobalsScript.Traits.Trust)
+						})
+				}
+			)
+			//end of enqueue card 24
+		);
 
 
 
