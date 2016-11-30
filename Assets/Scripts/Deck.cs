@@ -1506,8 +1506,205 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 24
 		);
 
+		//add twenty-fifth card-------------------------------------------------------------------------------------------------------------------------------
+		//CARD 25--------------------------------------------------------------------------------------------------------------------------------------
+		//Ominous Vision------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Ominous Vision",
+				"A horrible dream predicts the dangers to come. You must ready your village",
 
+				//choice 1
+				new CardChoice[] {new CardChoice ("TRUST - Talk to the villages about growing resources",
+					"Your plan works, bolstering your resources",
+					"Unfortunately, the land becomes barren at your attempts",
+					//win effect,
+					GlobalsScript.Traits.Trust,
+					6,
+					new Effect[]{
+						new Effect(1, GlobalsScript.Resources.Food),
+						new Effect(1, GlobalsScript.Resources.Stone),
+						new Effect(1, GlobalsScript.Resources.Wood)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.Food),
+						new Effect(-1, GlobalsScript.Resources.Stone),
+						new Effect(-1, GlobalsScript.Resources.Wood)
+					}
+				),
 
+					//choice 2
+					new CardChoice ("TRUST - You train the younglings in your village",
+						"They begin to become as beneficial as the adults, gaining more people and resources",
+						"Unfortunately the younglings are stubborn, and only prank you",
+						GlobalsScript.Traits.Trust,
+						8,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, GlobalsScript.Resources.People),
+							new Effect(1, GlobalsScript.Resources.Food),
+							new Effect(1, GlobalsScript.Resources.Stone),
+							new Effect(1, GlobalsScript.Resources.Wood)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, GlobalsScript.Traits.Notoriety),
+							new Effect(-1, GlobalsScript.Traits.Trust)
+						}
+
+					),
+
+					//choice 3
+					new CardChoice ("TRUST - You rally your people to reinforce the village and themselves",
+						"Your people rally, inspired by your charisma and leadership",
+						"Your people think you are paranoid, and ignore you",
+						GlobalsScript.Traits.Trust,
+						10,
+						//win effects
+						new Effect[]{
+							new Effect(3, GlobalsScript.Resources.People),
+							new Effect(2, GlobalsScript.Resources.Food),
+							new Effect(2, GlobalsScript.Resources.Stone),
+							new Effect(2, GlobalsScript.Resources.Wood)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Traits.Trust)
+						})
+				}
+			)
+			//end of enqueue card 25
+		);
+
+		//-------------------------------------------------------------------------------------------------------------------------------
+		//--------------------------------------------------------------------------------------------------------------------------------------
+		//BOULDER------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Boulder",
+				"On a walk around the hills, a boulder comes tumbling down towards you",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("SURVIVAL - You see a dip in the earth and dodge into it",
+					"You make it, avoiding the boulder as it crashes and creates smaller rock",
+					"You barely make it as the boulder hits your leg",
+					//win effect,
+					GlobalsScript.Traits.Survival,
+					7,
+					new Effect[]{
+						new Effect(3, GlobalsScript.Resources.Stone)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Traits.Survival),
+						new Effect(-1, GlobalsScript.Traits.Agility)
+					}
+				),
+
+					//choice 2
+					new CardChoice ("AGILITY - You attempt to outrun the boulder (why not?)",
+						"Surprisingly, you make it. And feel faster than before",
+						"You could have moved left or right. In that, your left and right legs are crushed",
+						GlobalsScript.Traits.Agility,
+						10,
+						//win effect
+						new Effect[]{ 
+							new Effect(2, GlobalsScript.Traits.Agility)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-2, GlobalsScript.Traits.Agility)
+						}
+
+					),
+
+					//choice 3
+					new CardChoice ("STRENGTH - There's no time; You'll have to push the boulder away",
+						"Your strength pulls through and becomes legend to your village",
+						"Boulder wins. You are crushed, hurting your strength and speed",
+						GlobalsScript.Traits.Strength,
+						12,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Strength),
+							new Effect(2, GlobalsScript.Traits.Trust),
+							new Effect(3, GlobalsScript.Traits.Notoriety)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Traits.Strength),
+							new Effect(-2, GlobalsScript.Traits.Agility)
+						})
+				}
+			)
+			//end of enqueue card
+		);
+
+		//-------------------------------------------------------------------------------------------------------------------------------
+		//--------------------------------------------------------------------------------------------------------------------------------------
+		//STAMPEDE------------------------------------------------------------------------------------------------------------------------------
+		deck.Enqueue (
+			//new card one
+			new Card ("Stampede",
+				"The livestock of your farms get loose, threatening your village",
+
+				//choice 1
+				new CardChoice[] {new CardChoice ("AGILITY - You move quickly to recapture and subdue all animals",
+					"Your speed is faster than any animal, and capture more animals than you remember",
+					"Unfortunately you aren't as fast as you think, and they trample the crops",
+					//win effect,
+					GlobalsScript.Traits.Agility,
+					8,
+					new Effect[]{
+						new Effect(5, GlobalsScript.Resources.Food)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-3, GlobalsScript.Resources.Food)
+					}
+				),
+
+					//choice 2
+					new CardChoice ("TRUST - You know these animals, and attempt to calm them",
+						"You calm them, and your animal magnetism attracts animals and villagers",
+						"You cannot calm them, and they trample you",
+						GlobalsScript.Traits.Trust,
+						10,
+						//win effect
+						new Effect[]{ 
+							new Effect(3, GlobalsScript.Resources.Food),
+							new Effect(2, GlobalsScript.Resources.People)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, GlobalsScript.Traits.Trust),
+							new Effect(-1, GlobalsScript.Traits.Strength),
+							new Effect(-1, GlobalsScript.Traits.Agility)
+						}
+
+					),
+
+					//choice 3
+					new CardChoice ("SURVIVAL - Through traps and wit, you try to capture them all",
+						"Your traps not only capture the animals, but increase your protection",
+						"Your traps aren't placed well, and end up hurting your villagers",
+						GlobalsScript.Traits.Survival,
+						11,
+						//win effects
+						new Effect[]{
+							new Effect(2, GlobalsScript.Traits.Notoriety),
+							new Effect(1, GlobalsScript.Traits.Strength)
+						},
+						//lose effect
+						new Effect[]{ 
+							new Effect(-2, GlobalsScript.Resources.People),
+							new Effect(-2, GlobalsScript.Traits.Trust)
+						})
+				}
+			)
+			//end of enqueue card
+		);
 
 	}
 
