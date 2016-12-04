@@ -32,7 +32,7 @@ public class PlayerSetupCanvasTextHandler : MonoBehaviour {
             currPlayer = playerSetupButtonScript.GetCurrentPlayerClass();
 
             statDisplay.text += "Tribe Name: " + currPlayer.Name + "\n";
-            statDisplay.text += "Tribe Type: " + currPlayer.TribeType.ToString() + "\n";
+            statDisplay.text += "Tribe Type: " + currPlayer.Tribe.ToString() + "\n";
             statDisplay.text += "Strength: " + currPlayer.Strength.ToString() + "\n";
             statDisplay.text += "Agility: " + currPlayer.Agility.ToString() + "\n";
             statDisplay.text += "Trust: " + currPlayer.Trust.ToString() + "\n";

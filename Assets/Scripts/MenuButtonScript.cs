@@ -170,7 +170,8 @@ public class MenuButtonScript : MonoBehaviour {
     //Locations are given by cards? Or by class?
     public void Relocate () {
         //Move player to location
-        int r = Random.Range(0, 4);
+        int r = Random.Range(0, 5);
+        GlobalsScript.Areas currArea = globals.GetPlayer().Area;
 
         switch (r)
         {
@@ -189,8 +190,15 @@ public class MenuButtonScript : MonoBehaviour {
             case 3:
                 globals.GetPlayer().Area = GlobalsScript.Areas.Swamp;
                 break;
+            case 4:
+                globals.GetPlayer().Area = GlobalsScript.Areas.Forest;
+                break;
             default:
                 break;
+        }
+        if (currArea == globals.GetPlayer().Area)
+        {
+            Relocate();
         }
     }
 

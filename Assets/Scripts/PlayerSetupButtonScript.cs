@@ -100,7 +100,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
             {
                 warningText.gameObject.SetActive(false);
             okbutton.gameObject.SetActive(true);
-            }
+        }
 
             else if (tribeType == null)
             {
@@ -124,13 +124,13 @@ public class PlayerSetupButtonScript : MonoBehaviour {
                 warningText.gameObject.SetActive(true);
             }
 
-        }
+    }
     }
 
     public void Tribe0Flavor()
     {
-        tribeType = GlobalsScript.TribeType.Barbarian;
-        currPlayer.TribeType = tribeType;
+        tribeType = GlobalsScript.TribeType.Warrior;
+        currPlayer.Tribe = tribeType;
 
         // This is where the selected value of the tribe is stored between scenes
         //PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -145,8 +145,8 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     public void Tribe1Flavor()
     {
-        tribeType = GlobalsScript.TribeType.PeaceMaker;
-        currPlayer.TribeType = tribeType;
+        tribeType = GlobalsScript.TribeType.Bandit;
+        currPlayer.Tribe = tribeType;
 
         // This is where the selected value of the tribe is stored between scenes
         //PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -162,7 +162,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
     public void Tribe2Flavor()
     {
         tribeType = GlobalsScript.TribeType.Nomad;
-        currPlayer.TribeType = tribeType;
+        currPlayer.Tribe = tribeType;
 
         // This is where the selected value of the tribe is stored between scenes
         //PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -177,8 +177,8 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     public void Tribe3Flavor()
     {
-        tribeType = GlobalsScript.TribeType.Farmer;
-        currPlayer.TribeType = tribeType;
+        tribeType = GlobalsScript.TribeType.Peaceful;
+        currPlayer.Tribe = tribeType;
 
         // This is where the selected value of the tribe is stored between scenes
         //PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -303,11 +303,11 @@ public class PlayerSetupButtonScript : MonoBehaviour {
     {
         return currPlayer;
     }
-    
+
     private void ResetStats()
     {
         tribeName = "Player " + (FindObjectOfType<GlobalsScript>().CurrentPlayerCount + 1).ToString();
-        tribeType = GlobalsScript.TribeType.Barbarian;
+        tribeType = GlobalsScript.TribeType.Warrior;
         strengthStat = 0;
         agilityStat = 0;
         trustStat = 0;

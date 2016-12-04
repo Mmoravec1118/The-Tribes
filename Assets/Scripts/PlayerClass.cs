@@ -163,7 +163,7 @@ public class PlayerClass
         }
     }
 
-    public GlobalsScript.TribeType TribeType
+    public GlobalsScript.TribeType Tribe
     {
         get
         {
@@ -211,6 +211,18 @@ public class PlayerClass
             hasTool = value;
         }
     }
+
+    public GlobalsScript.TribeType TribeType
+    { get
+        {
+            return tribeType;
+        }
+        set
+        {
+            tribeType = value;
+        }
+    }
+
 
 
     #endregion

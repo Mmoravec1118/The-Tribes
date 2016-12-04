@@ -8,27 +8,17 @@ public class DisplayPlayerInfo : MonoBehaviour {
     // text box for displaying player info
     Text playerDisplay;
 
-    // list of players playing
-    //List<PlayerClass> players = new List<PlayerClass>();
-
     // current player turn
     int currTurn = 0;
 
-    // COMMENTING OUT BECAUSE PREVTURN IS OVERLY CONVOLUTED
-    // previouse players turn
-    // starts at zero for easier initialization
-    //int prevTurn = 0;
+    // saved reference to globals script
     GlobalsScript globals;
 
 	// Use this for initialization
 	void Start () {
 
         playerDisplay = GetComponent<Text>();
-        //for (int i = 0; i < GlobalsScript.NumberofPlayers; i++)
-        //{
-        //    players.Add(FindObjectOfType<GlobalsScript>().GetPlayer(i));
-        //}
-        //globals = FindObjectOfType<GlobalsScript>();
+        globals = FindObjectOfType<GlobalsScript>();
 	
 	}
 	
@@ -36,14 +26,14 @@ public class DisplayPlayerInfo : MonoBehaviour {
 	void Update () {
 
         DisplayText();
-	
-	}
+
+    }
 
     #region Methods
 
     public void DisplayText()
     {
-        PlayerClass currplayer = FindObjectOfType<GlobalsScript>().GetPlayer();
+        PlayerClass currplayer = globals.GetPlayer();
         playerDisplay.text = "Tribe Name: " + currplayer.Name + "\n"
              + "Player Stats:" + "\n"
              + "  Strength:  " + currplayer.Strength + "\n"
@@ -59,21 +49,35 @@ public class DisplayPlayerInfo : MonoBehaviour {
              + "Victory Points:" + currplayer.VictoryPoints;
     }
 
+    public void DisplayToken()
+    {
+        switch(globals.GetPlayer().Area)
+        {
+            case GlobalsScript.Areas.Desert:
+
+                break;
+
+            case GlobalsScript.Areas.Forest:
+                break;
+
+            case GlobalsScript.Areas.Mountain:
+                break;
+
+            case GlobalsScript.Areas.Plain:
+                break;
+
+            case GlobalsScript.Areas.Swamp:
+                break;
+
+            default:
+                break;
+        }
+    }
+
     #endregion
 
 
     #region Properties
-
-    /// <summary>
-    /// Adds a new player to the list of current players
-    /// </summary>
-    //public PlayerClass Players
-    //{
-    //    set
-    //    {
-    //        players.Add(value);
-    //    }
-    //}
 
     /// <summary>
     /// returns current player turn or adds value to player turn
@@ -98,8 +102,6 @@ public class DisplayPlayerInfo : MonoBehaviour {
             //DisplayText(currTurn);
         }
     }
-
-
 
     #endregion
 
