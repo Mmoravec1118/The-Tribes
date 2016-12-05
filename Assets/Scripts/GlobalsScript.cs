@@ -106,6 +106,15 @@ public class GlobalsScript : MonoBehaviour {
         }
     }
 
+    public List<PlayerClass> Players
+    {
+        get
+        {
+            return players;
+        }
+    }
+
+
     #endregion
 
     #region Methods
