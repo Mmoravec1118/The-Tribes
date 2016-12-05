@@ -2133,6 +2133,31 @@ public class Deck : MonoBehaviour {
 		return deck.Dequeue ();
 	}
 
+    /// <summary>
+    /// Shuffles the deck so that cards are randomly organized
+    /// </summary>
+    public void Shuffle()
+    {
+        // Creates a temporary list from which cards will be randomly pulled
+        List<Card> tempDeck = new List<Card>();
+
+        // Establishes size of deck before cards are dequeued from it
+        int tempCount = deck.Count;
+
+        // Transfers every card from the deck to the temporary list
+        for (int i = 0; i < tempCount; i++)
+        {
+            tempDeck.Add(deck.Dequeue());
+        }
+
+        // Randomly chooses cards from the temporary list and adds them back to the deck.
+        // By doing so in a random order, this simulates shuffling.
+        for (int j = 0; j < tempCount; j++)
+        {
+            deck.Enqueue(tempDeck[Random.Range(0, tempDeck.Count)]);
+        }
+    }
+
     public void DrawCard()
     {
         currCard = MonoBehaviour.Instantiate(cardPrefab, MonoBehaviour.FindObjectOfType<Canvas>().transform);

@@ -9,7 +9,7 @@ public class DisplayPlayerInfo : MonoBehaviour {
     Text playerDisplay;
 
     // current player turn
-    int currTurn = 1;
+    int currTurn = 0;
 
     // saved reference to globals script
     GlobalsScript globals;
@@ -91,6 +91,15 @@ public class DisplayPlayerInfo : MonoBehaviour {
         set
         {
             currTurn += value;
+
+            // Loops current turn back to 0 if if exceeds the list capacity
+            if (currTurn >= GlobalsScript.NumberofPlayers)
+            {
+                currTurn = 0;
+            }
+
+            // Updates the displayed text to current player info
+            //DisplayText(currTurn);
         }
     }
 
