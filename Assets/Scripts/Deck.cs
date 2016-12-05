@@ -1993,7 +1993,7 @@ public class Deck : MonoBehaviour {
                     "The diplomat is completely terrified of you and promises that the Empire will not bother you.",
                     "HAHAHAHAHAHAHAHA, The diplomat demands payment for this insult or the Legions will destroy the village.",
                     //win effect,
-                    GlobalsScript.Traits.Notriety,
+                    GlobalsScript.Traits.Notoriety,
                     12,
                     new Effect[]{
                         new Effect(1, GlobalsScript.Resources.Food),
@@ -2043,7 +2043,7 @@ public class Deck : MonoBehaviour {
 						new Effect[]{
                             new Effect(-1, GlobalsScript.Resources.Food),
                             new Effect(-1, GlobalsScript.Traits.Trust),
-                            new Effect(-1, GlobalsScript.REsources.Wood)
+                            new Effect(-1, GlobalsScript.Resources.Wood)
                         })
                     }
                 )
