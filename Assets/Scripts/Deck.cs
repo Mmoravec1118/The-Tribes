@@ -2108,6 +2108,463 @@ public class Deck : MonoBehaviour {
                 )
             //end of enqueue card 31
             );
+
+		//add items to the queue.
+		//CARD 32
+		//Moving Mountains
+		deck.Enqueue(
+			//new card one
+			new Card("Moving Mountains",
+				"After a landslide, the main trade route is blocked",
+
+				//choice 1
+				new CardChoice[] {new CardChoice("STRENGTH - Remove the small rocks to make a path (6)",
+					"The small path through will suffice, bring some resources",
+					"Even the smallest rocks are too heavy for you, blocking trade",
+					//win effect,
+					GlobalsScript.Traits.Strength,
+					6,
+					new Effect[]{
+						new Effect(1, GlobalsScript.Resources.Food),
+						new Effect(1, GlobalsScript.Resources.Wood),
+						new Effect(1, GlobalsScript.Resources.Stone)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(0, GlobalsScript.Resources.People)
+					}
+				),
+
+					//choice 2
+					new CardChoice("STRENGTH - Remove the boulders as well, bringing back most of the path (8)",
+						"The path now carves through, providing a decent bounty",
+						"The boulders strain your back, wasting supplies as a splint",
+						GlobalsScript.Traits.Strength,
+						8,
+						//win effect
+						new Effect[]{
+							new Effect(2, GlobalsScript.Resources.Food),
+							new Effect(3, GlobalsScript.Resources.Stone),
+							new Effect(1, GlobalsScript.Resources.Wood)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, GlobalsScript.Traits.Strength),
+							new Effect(-1, GlobalsScript.Resources.Wood),
+							new Effect(-1, GlobalsScript.Resources.Stone)
+						}
+					),
+
+					//choice 3
+					new CardChoice("STRENGTH - Why clear a path when you can make a new one? (10)",
+						"Your strength moves mountains, increasing and creating a lot of stone",
+						"You wind up and charge the mountain wall, breaking your arms and legs",
+						GlobalsScript.Traits.Strength,
+						10,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Strength),
+							new Effect(5, GlobalsScript.Resources.Stone)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, GlobalsScript.Traits.Strength),
+							new Effect(-1, GlobalsScript.Traits.Agility)
+						})
+				}
+			)
+			//end of enqueue card 32
+		);
+
+		//add items to the queue.
+		//CARD 33
+		//Message Man
+		deck.Enqueue(
+			//new card one
+			new Card("Message Man",
+				"You must go to a far away village to deliver news of your campaign in person",
+				//choice 1
+				new CardChoice[] {new CardChoice("AGILITY - Ride a horse there and back (6)",
+					"Taking your horse is efficient and quick, saving you effort",
+					"Your horse topples over halfway. You give resources for your lateness",
+					//win effect,
+					GlobalsScript.Traits.Agility,
+					6,
+					new Effect[]{
+						new Effect(0, GlobalsScript.Resources.People)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.Wood),
+						new Effect(-1, GlobalsScript.Resources.Stone)
+					}
+				),
+
+					//choice 2
+					new CardChoice("AGILITY - You walk the distance. A little longer but a scenic route (8)",
+						"Scenic and fine. Your trip bolsters your spirit and speed",
+						"You sprain your ankle on a hidden rock",
+						GlobalsScript.Traits.Agility,
+						8,
+						//win effect
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Agility)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, GlobalsScript.Traits.Agility)
+						}
+					),
+
+					//choice 3
+					new CardChoice("AGILITY - You sprint the distance, trying to get there early (10)",
+						"The village is impressed with your speed and showers you with rewards",
+						"Your trip on the way into the village, embarassing yourself and hurting your legs",
+						GlobalsScript.Traits.Agility,
+						10,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Agility),
+							new Effect(1, GlobalsScript.Resources.Food),
+							new Effect(1, GlobalsScript.Resources.People),
+							new Effect(1, GlobalsScript.Resources.Stone),
+							new Effect(1, GlobalsScript.Resources.Wood)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, GlobalsScript.Traits.Agility),
+							new Effect(-1, GlobalsScript.Traits.Notoriety)
+						})
+				}
+			)
+			//end of enqueue card 33
+		);
+
+		//add items to the queue.
+		//CARD 34
+		//Black Market
+		deck.Enqueue(
+			//new card one
+			new Card("Black Market",
+				"You go into the shady market, looking for weapons while blending in",
+				//choice 1
+				new CardChoice[] {new CardChoice("NOTORIETY - Pose as a common theif, looking for tools",
+					"You manage to grab a few resources for cheap",
+					"You are suspect as best, and leave before anything happens",
+					//win effect,
+					GlobalsScript.Traits.Notoriety,
+					6,
+					new Effect[]{
+						new Effect(1, GlobalsScript.Resources.Stone),
+						new Effect(1, GlobalsScript.Resources.Wood)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(0, GlobalsScript.Resources.People)
+					}
+				),
+
+					//choice 2
+					new CardChoice("NOTORIETY - You are the leader of thieves, and demand goods (8)",
+						"You recieve many goods for less than they are worth",
+						"You are discovered, and chased off, leaving your items",
+						GlobalsScript.Traits.Notoriety,
+						8,
+						//win effect
+						new Effect[]{
+							new Effect(1, GlobalsScript.Resources.Food),
+							new Effect(1, GlobalsScript.Resources.Stone),
+							new Effect(1, GlobalsScript.Resources.Wood)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, GlobalsScript.Resources.Food),
+							new Effect(-1, GlobalsScript.Resources.Stone),
+							new Effect(-1, GlobalsScript.Resources.Wood)
+						}
+					),
+
+					//choice 3
+					new CardChoice("NOTORIETY - You are the scourge, demanding everything worth anything (10)",
+						"You scare everyone into giving you their goods",
+						"Unfortunately, posers aren't welcome as you are marked and attacked",
+						GlobalsScript.Traits.Notoriety,
+						10,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Notoriety),
+							new Effect(2, GlobalsScript.Resources.Food),
+							new Effect(2, GlobalsScript.Resources.Stone),
+							new Effect(2, GlobalsScript.Resources.Wood)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, GlobalsScript.Traits.Notoriety),
+							new Effect(-1, GlobalsScript.Resources.Food),
+							new Effect(-1, GlobalsScript.Resources.People),
+							new Effect(-1, GlobalsScript.Resources.Stone),
+							new Effect(-1, GlobalsScript.Resources.Wood)
+						})
+				}
+			)
+			//end of enqueue card 34
+		);
+
+		//add items to the queue.
+		//CARD 35
+		//In The Wild
+		deck.Enqueue(
+			//new card one
+			new Card("In the Wild",
+				"On the way home you get lost, having to navigate your way home",
+				//choice 1
+				new CardChoice[] {new CardChoice("SURVIVAL - You navigate by the sun, finding your way home (6)",
+					"Not too challenging, you find your way home without a problem",
+					"When you get back, you eat madly after getting lost",
+					//win effect,
+					GlobalsScript.Traits.Survival,
+					6,
+					new Effect[]{
+						new Effect(0, GlobalsScript.Resources.People)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.Food)
+					}
+				),
+
+					//choice 2
+					new CardChoice("SURVIVAL - You attempt to follow your tracks back to the road (8)",
+						"Your track are faint but there, testing your perception",
+						"You follow tracks, to a wolves den. Your food gets you out safely",
+						GlobalsScript.Traits.Survival,
+						8,
+						//win effect
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Survival)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-3, GlobalsScript.Resources.Food)
+						}
+					),
+
+					//choice 3
+					new CardChoice("SURVIVAL - You stay the night, using the morning to find your way home (10)",
+						"You hunt and camp for the night, bringing game back home",
+						"You starve for the night, and regret your lack of skill",
+						GlobalsScript.Traits.Survival,
+						10,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Survival),
+							new Effect(3, GlobalsScript.Resources.Food)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, GlobalsScript.Traits.Survival),
+							new Effect(-5, GlobalsScript.Resources.Food)
+						})
+				}
+			)
+			//end of enqueue card 35
+		);
+
+		//add items to the queue
+		//CARD 36
+		//Ambushed
+		deck.Enqueue(
+			//new card one
+			new Card("Ambushed",
+				"Attacked by a pack of roaming wolves, you must swiftly navigate the situation",
+				//choice 1
+				new CardChoice[] {new CardChoice("AGILITY - Outrun the wolves (6)",
+					"By a hair, you manage to outrun the wolves into the village",
+					"You get caught by them, and some of your villagers suffer",
+					//win effect,
+					GlobalsScript.Traits.Agility,
+					7,
+					new Effect[]{
+						new Effect(0, GlobalsScript.Resources.People)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-1, GlobalsScript.Resources.People)
+					}
+				),
+
+					//choice 2
+					new CardChoice("AGILITY - Dodge around and take each wolf out (9)",
+						"You swiftly dispatch each, gaining wolf meat for the night",
+						"You stumble, paying for your mistake in people",
+						GlobalsScript.Traits.Agility,
+						9,
+						//win effect
+						new Effect[]{
+							new Effect(3, GlobalsScript.Resources.Food)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-3, GlobalsScript.Resources.People)
+						}
+					),
+
+					//choice 3
+					new CardChoice("STRENGTH - WHO NEEDS SPEED WHEN YOU CAN RIP THEM APART?! (11)",
+						"RAWR! (You get plenty of food and fame)",
+						"*whimper* (The wolves dine on your supplies and people)",
+						GlobalsScript.Traits.Strength,
+						11,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Notoriety),
+							new Effect(5, GlobalsScript.Resources.Food)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-3, GlobalsScript.Resources.People),
+							new Effect(-2, GlobalsScript.Resources.Food)
+						})
+				}
+			)
+			//end of enqueue card 36
+		);
+
+		//add items to the queue.
+		//CARD 37
+		//Negotiations
+		deck.Enqueue(
+			//new card one
+			new Card("Negotiations",
+				"Conversations with a nearby village will affect your relations with them from now on",
+				//choice 1
+				new CardChoice[] {new CardChoice("TRUST - Bargain for better trade (8)",
+					"You succeed, gaining more food and stone",
+					"Negotiations go nowhere, putting you back where you started",
+					//win effect,
+					GlobalsScript.Traits.Trust,
+					8,
+					new Effect[]{
+						new Effect(1, GlobalsScript.Resources.Food),
+						new Effect(1, GlobalsScript.Resources.Stone)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(0, GlobalsScript.Resources.People)
+					}
+				),
+
+					//choice 2
+					new CardChoice("TRUST - You bargain for more food, stone, and wood (10)",
+						"You gain plenty of each, putting your village ahead",
+						"Strangely, the village talks you into giving more",
+						GlobalsScript.Traits.Trust,
+						10,
+						//win effect
+						new Effect[]{
+							new Effect(2, GlobalsScript.Resources.Food),
+							new Effect(2, GlobalsScript.Resources.Stone),
+							new Effect(2, GlobalsScript.Resources.Wood)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-1, GlobalsScript.Resources.Food),
+							new Effect(-1, GlobalsScript.Resources.Stone),
+							new Effect(-1, GlobalsScript.Resources.Wood)
+						}
+					),
+
+					//choice 3
+					new CardChoice("NOTORIETY - You demand to be served all of what the village has (12)",
+						"Your voice echos, the villagers bowing in your presence",
+						"Your threats cost you more resources to maintain face",
+						GlobalsScript.Traits.Notoriety,
+						12,
+						//win effects
+						new Effect[]{
+							new Effect(5, GlobalsScript.Resources.Food),
+							new Effect(5, GlobalsScript.Resources.Stone),
+							new Effect(5, GlobalsScript.Resources.Wood)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-3, GlobalsScript.Resources.Food),
+							new Effect(-3, GlobalsScript.Resources.Stone),
+							new Effect(-3, GlobalsScript.Resources.Wood)
+						})
+				}
+			)
+			//end of enqueue card 37
+		);
+
+		//add items to the queue.
+		//CARD 38
+		//BAM
+		deck.Enqueue(
+			//new card one
+			new Card("BAM",
+				"A monsterous monster attacks your village. Fight or be destroyed",
+				//choice 1
+				new CardChoice[] {new CardChoice("SURVIVAL - Using the terrain to your advantage, you try to trap it (6)",
+					"The trap is successful, easily activated from its size",
+					"Unfortunately, the trap is too small. Your village is ransacked",
+					//win effect,
+					GlobalsScript.Traits.Survival,
+					6,
+					new Effect[]{
+						new Effect(0, GlobalsScript.Resources.People)
+					},
+					//lose effects
+					new Effect[]{
+						new Effect(-2, GlobalsScript.Resources.Food),
+						new Effect(-2, GlobalsScript.Resources.Stone),
+						new Effect(-2, GlobalsScript.Resources.Wood)
+					}
+				),
+
+					//choice 2
+					new CardChoice("STRENGTH - Fight the beast, bringing him down by your blade alone (9)",
+						"You smite the beast, improving your skills and proving your worth",
+						"As your vision fades, you see the beast attack the village",
+						GlobalsScript.Traits.Strength,
+						9,
+						//win effect
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Strength),
+							new Effect(1, GlobalsScript.Traits.Agility),
+							new Effect(1, GlobalsScript.Traits.Trust)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-2, GlobalsScript.Resources.Food),
+							new Effect(-2, GlobalsScript.Resources.Stone),
+							new Effect(-2, GlobalsScript.Resources.Wood)
+						}
+					),
+
+					//choice 3
+					new CardChoice("STRENGTH - You want to end this quick, with one blow (12)",
+						"In an impressive feat, you smite the monster, bringing glory to your village",
+						"Your attack misses, and your strength fails to ward the beast off",
+						GlobalsScript.Traits.Strength,
+						12,
+						//win effects
+						new Effect[]{
+							new Effect(1, GlobalsScript.Traits.Strength),
+							new Effect(1, GlobalsScript.Traits.Agility),
+							new Effect(1, GlobalsScript.Traits.Trust),
+							new Effect(1, GlobalsScript.Traits.Notoriety)
+						},
+						//lose effect
+						new Effect[]{
+							new Effect(-2, GlobalsScript.Resources.Food),
+							new Effect(-2, GlobalsScript.Resources.Stone),
+							new Effect(-2, GlobalsScript.Resources.Wood)
+						})
+				}
+			)
+			//end of enqueue card 38
+		);
     }
 
     #endregion
