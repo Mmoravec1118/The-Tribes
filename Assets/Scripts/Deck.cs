@@ -63,11 +63,13 @@ public class Deck : MonoBehaviour {
 						//win effect
 						new Effect[]{ 
 						new Effect(2, GlobalsScript.Resources.People),
-						new Effect(1, GlobalsScript.Traits.Strength)
+						new Effect(1, GlobalsScript.Traits.Agility)
 					},
 						//lose effect
 					new Effect[]{
-							new Effect(-1, GlobalsScript.Traits.Strength)}
+							new Effect(-1, GlobalsScript.Traits.Agility),
+                            new Effect(-1, GlobalsScript.Resources.Food)
+                    }
 					
 					),
 
@@ -81,7 +83,8 @@ public class Deck : MonoBehaviour {
 						new Effect[]{
 						new Effect(1, GlobalsScript.Resources.Wood),
 						new Effect(1, GlobalsScript.Resources.Stone),
-						new Effect(1, GlobalsScript.Resources.Food)	
+						new Effect(1, GlobalsScript.Resources.Food),
+                        new Effect(1, GlobalsScript.Traits.Notoriety)	
 					},
 						//lose effect
 						new Effect[]{ 
@@ -113,11 +116,14 @@ public class Deck : MonoBehaviour {
 					GlobalsScript.Traits.Strength,
 					8,
 					new Effect[]{
-						new Effect(0, GlobalsScript.Resources.People),
+						new Effect(2, GlobalsScript.Resources.Food),
+                        new Effect(1, GlobalsScript.Resources.People)
 					},
 					//lose effects
 					new Effect[]{
-						new Effect(-2, GlobalsScript.Resources.People)}
+						new Effect(-2, GlobalsScript.Resources.People),
+                        new Effect(-1, GlobalsScript.Resources.Food)
+                    }
 				),
 
 					//choice 2
@@ -147,7 +153,8 @@ public class Deck : MonoBehaviour {
 						//win effects
 						new Effect[]{
 							new Effect(1, GlobalsScript.Resources.Wood),
-							new Effect(1, GlobalsScript.Resources.Food)	
+							new Effect(1, GlobalsScript.Resources.Food),
+                            new Effect(1, GlobalsScript.Resources.Stone)	
 						},
 						//lose effect
 						new Effect[]{ 
@@ -200,7 +207,9 @@ public class Deck : MonoBehaviour {
 						//lose effect
 						new Effect[]{
 							new Effect(-2, GlobalsScript.Resources.Wood),
-							new Effect(-2, GlobalsScript.Resources.Stone)}
+							new Effect(-2, GlobalsScript.Resources.Stone),
+                            new Effect(-1, GlobalsScript.Traits.Survival)
+                        }
 					),
 
 					//choice 3
@@ -225,7 +234,7 @@ public class Deck : MonoBehaviour {
 						})
 				}
 			)
-			//end of enqueue card 2
+			//end of enqueue card 3
 		);
 
 
@@ -859,854 +868,1247 @@ public class Deck : MonoBehaviour {
         //end of enqueue card 12
         );
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
 
-		//add eighth card-------------------------------------------------------------------------------------------------------------------------------
-		//CARD 8----------------------------------------------------------------------------------------------------------------------------------------
-		//Traders arrive------------------------------------------------------------------------------------------------------------------------------
-		deck.Enqueue (
-			//new card one
-			new Card ("Traders",
-				"A caravan arrives, offering goods to your village.",
+    // Update is called once per frame
+    void Update()
+    {
 
-				//choice 1
-				new CardChoice[] {new CardChoice ("TRUST - You negotiate with the traders for a good deal(7)",
-					"Your bargaining pays off, giving some food for supplies",
-					"You didn't convince them, but still get something for your food",
+
+        //add eighth card-------------------------------------------------------------------------------------------------------------------------------
+        //CARD 8----------------------------------------------------------------------------------------------------------------------------------------
+        //Traders arrive------------------------------------------------------------------------------------------------------------------------------
+        deck.Enqueue(
+            //new card one
+            new Card("Traders",
+                "A caravan arrives, offering goods to your village.",
+
+                //choice 1
+                new CardChoice[] {new CardChoice ("TRUST - You negotiate with the traders for a good deal(7)",
+                    "Your bargaining pays off, giving some food for supplies",
+                    "You didn't convince them, but still get something for your food",
 					//win effect,
 					GlobalsScript.Traits.Trust,
-					7,
-					new Effect[]{
-						new Effect(2, GlobalsScript.Resources.Wood),
-						new Effect (1, GlobalsScript.Resources.Stone),
-						new Effect (-3, GlobalsScript.Resources.Food),
-					},
+                    7,
+                    new Effect[]{
+                        new Effect(2, GlobalsScript.Resources.Wood),
+                        new Effect (1, GlobalsScript.Resources.Stone),
+                        new Effect (-3, GlobalsScript.Resources.Food),
+                    },
 					//lose effects
 					new Effect[]{
-						new Effect(1, GlobalsScript.Resources.Wood),
-						new Effect(-1, GlobalsScript.Resources.Food)}
-				),
+                        new Effect(1, GlobalsScript.Resources.Wood),
+                        new Effect(-1, GlobalsScript.Resources.Food)}
+                ),
 
 					//choice 2
 					new CardChoice ("STRENGTH - You show power and try to convince the caravan they need you(10)",
-						"In a marvellous display, you convince them",
-						"Failing to lift anything, they laugh at you",
-						GlobalsScript.Traits.Strength,
-						10,
+                        "In a marvellous display, you convince them",
+                        "Failing to lift anything, they laugh at you",
+                        GlobalsScript.Traits.Strength,
+                        10,
 						//win effect
-						new Effect[]{ 
-							new Effect(1, GlobalsScript.Traits.Strength),
-							new Effect(1, GlobalsScript.Traits.Trust)
-						},
+						new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Strength),
+                            new Effect(1, GlobalsScript.Traits.Trust)
+                        },
 						//lose effect
 						new Effect[]{
-							new Effect(-1, GlobalsScript.Traits.Strength)}
+                            new Effect(-1, GlobalsScript.Traits.Strength)}
 
-					),
+                    ),
 
 					//choice 3
 					new CardChoice ("AGILITY - You attempt to steal from the traders(12)",
-						"You succeed, grabbing supplies",
-						"They spot you, making sure others know you are not to be trusted",
-						GlobalsScript.Traits.Agility,
-						12,
+                        "You succeed, grabbing supplies",
+                        "They spot you, making sure others know you are not to be trusted",
+                        GlobalsScript.Traits.Agility,
+                        12,
 						//win effects
 						new Effect[]{
-							new Effect(1, GlobalsScript.Resources.Wood),
-							new Effect(1, GlobalsScript.Resources.Food),
-							new Effect(1, GlobalsScript.Resources.People),
-							new Effect(1, GlobalsScript.Resources.Stone)
-						},
+                            new Effect(1, GlobalsScript.Resources.Wood),
+                            new Effect(1, GlobalsScript.Resources.Food),
+                            new Effect(1, GlobalsScript.Resources.People),
+                            new Effect(1, GlobalsScript.Resources.Stone)
+                        },
 						//lose effect
-						new Effect[]{ 
-							new Effect(2, GlobalsScript.Traits.Notoriety)
-						})
+						new Effect[]{
+                            new Effect(2, GlobalsScript.Traits.Notoriety)
+                        })
 
 
-				}
-			)
-			//end of enqueue card 8
-		);
+                }
+            )
+        //end of enqueue card 8
+        );
 
-		//add ninth card------------------------------------------------------------------------------------------------------------------------
-		//CARD 9--------------------------------------------------------------------------------------------------------------------------------
-		//Poachers------------------------------------------------------------------------------------------------------------------------------
-		deck.Enqueue (
-			//new card one
-			new Card ("Poachers",
-				"Poachers begin hunting prey on your land",
+        //add ninth card------------------------------------------------------------------------------------------------------------------------
+        //CARD 9--------------------------------------------------------------------------------------------------------------------------------
+        //Poachers------------------------------------------------------------------------------------------------------------------------------
+        deck.Enqueue(
+            //new card one
+            new Card("Poachers",
+                "Poachers begin hunting prey on your land",
 
-				//choice 1
-				new CardChoice[] {new CardChoice ("NOTORIETY - You attempt to scare them away(8)",
-					"The hunters run in fears",
-					"You aren't more scary than they are hungry",
+                //choice 1
+                new CardChoice[] {new CardChoice ("NOTORIETY - You attempt to scare them away(8)",
+                    "The hunters run in fears",
+                    "You aren't more scary than they are hungry",
 					//win effect,
 					GlobalsScript.Traits.Notoriety,
-					8,
-					new Effect[]{
-						new Effect (1, GlobalsScript.Resources.Food),
-					},
+                    8,
+                    new Effect[]{
+                        new Effect (1, GlobalsScript.Resources.Food),
+                    },
 					//lose effects
 					new Effect[]{
-						new Effect(-1, GlobalsScript.Resources.Food),
-						new Effect(-1, GlobalsScript.Traits.Notoriety)}
-				),
+                        new Effect(-1, GlobalsScript.Resources.Food),
+                        new Effect(-1, GlobalsScript.Traits.Notoriety)}
+                ),
 
 					//choice 2
 					new CardChoice ("TRUST - You attempt to set up a deal(8)",
-						"The poachers agree to your terms",
-						"You attempt reason, but the poachers are too savage and attack",
-						GlobalsScript.Traits.Trust,
-						8,
+                        "The poachers agree to your terms",
+                        "You attempt reason, but the poachers are too savage and attack",
+                        GlobalsScript.Traits.Trust,
+                        8,
 						//win effect
-						new Effect[]{ 
-							new Effect(-1, GlobalsScript.Resources.Food),
-							new Effect(-1, GlobalsScript.Traits.Notoriety),
-							new Effect(1, GlobalsScript.Resources.Wood),
-							new Effect(1, GlobalsScript.Traits.Trust),
-						},
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Resources.Food),
+                            new Effect(-1, GlobalsScript.Traits.Notoriety),
+                            new Effect(1, GlobalsScript.Resources.Wood),
+                            new Effect(1, GlobalsScript.Traits.Trust),
+                        },
 						//lose effect
 						new Effect[]{
-							new Effect(-1, GlobalsScript.Resources.People)}
+                            new Effect(-1, GlobalsScript.Resources.People)}
 
-					),
+                    ),
 
 					//choice 3
 					new CardChoice ("SURVIVAL - You attack to remove them all(8)",
-						"With the hunters dead, you take their resources",
-						"You aren't as skilled as you think, and they kill your party",
-						GlobalsScript.Traits.Survival,
-						8,
+                        "With the hunters dead, you take their resources",
+                        "You aren't as skilled as you think, and they kill your party",
+                        GlobalsScript.Traits.Survival,
+                        8,
 						//win effects
 						new Effect[]{
-							new Effect (2, GlobalsScript.Resources.Food),
-							new Effect (1, GlobalsScript.Traits.Notoriety)
-						},
+                            new Effect (2, GlobalsScript.Resources.Food),
+                            new Effect (1, GlobalsScript.Traits.Notoriety)
+                        },
 						//lose effect
-						new Effect[]{ 
-							new Effect(-2, GlobalsScript.Resources.People),
-						})
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Resources.People),
+                        })
 
 
-				}
-			)
-			//end of enqueue card 9
-		);
+                }
+            )
+        //end of enqueue card 9
+        );
 
-		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
-		//CARD 10--------------------------------------------------------------------------------------------------------------------------------------
-		//A Raiding Party------------------------------------------------------------------------------------------------------------------------------
-		deck.Enqueue (
-			//new card one
-			new Card ("Raid",
-				"A raiding party attacks your camp",
+        //add tenth card-------------------------------------------------------------------------------------------------------------------------------
+        //CARD 10--------------------------------------------------------------------------------------------------------------------------------------
+        //A Raiding Party------------------------------------------------------------------------------------------------------------------------------
+        deck.Enqueue(
+            //new card one
+            new Card("Raid",
+                "A raiding party attacks your camp",
 
-				//choice 1
-				new CardChoice[] {new CardChoice ("AGILITY - You evacuate the camp(10)",
-					"You succeed, but gain nothing in the process",
-					"You are not fast enough and are attacked",
+                //choice 1
+                new CardChoice[] {new CardChoice ("AGILITY - You evacuate the camp(10)",
+                    "You succeed, but gain nothing in the process",
+                    "You are not fast enough and are attacked",
 					//win effect,
 					GlobalsScript.Traits.Agility,
-					10,
-					new Effect[]{
-						new Effect(0, GlobalsScript.Resources.People)
-					},
+                    10,
+                    new Effect[]{
+                        new Effect(0, GlobalsScript.Resources.People)
+                    },
 					//lose effects
 					new Effect[]{
-						new Effect(-1, GlobalsScript.Resources.Food),
-						new Effect(-1, GlobalsScript.Traits.Notoriety)}
-				),
+                        new Effect(-1, GlobalsScript.Resources.Food),
+                        new Effect(-1, GlobalsScript.Traits.Notoriety)}
+                ),
 
 					//choice 2
 					new CardChoice ("NOTORIETY - Your people are fierce and attempt to show them that",
-						"You scare away the raiders and even convince some to join",
-						"The raiders aren't scared, and show you that",
-						GlobalsScript.Traits.Notoriety,
-						11,
+                        "You scare away the raiders and even convince some to join",
+                        "The raiders aren't scared, and show you that",
+                        GlobalsScript.Traits.Notoriety,
+                        11,
 						//win effect
-						new Effect[]{ 
-							new Effect(2, GlobalsScript.Resources.People)
-						},
+						new Effect[]{
+                            new Effect(2, GlobalsScript.Resources.People)
+                        },
 						//lose effect
 						new Effect[]{
-							new Effect (-1, GlobalsScript.Resources.People),
-							new Effect (-1, GlobalsScript.Resources.Food)}
+                            new Effect (-1, GlobalsScript.Resources.People),
+                            new Effect (-1, GlobalsScript.Resources.Food)}
 
-					),
+                    ),
 
 					//choice 3
 					new CardChoice ("SURVIVAL - You lay an ambush for the raiders(12)",
-						"Your ambush was successful, obliterating the raiding party",
-						"They see you coming, leading to a blood bath",
-						GlobalsScript.Traits.Survival,
-						12,
+                        "Your ambush was successful, obliterating the raiding party",
+                        "They see you coming, leading to a blood bath",
+                        GlobalsScript.Traits.Survival,
+                        12,
 						//win effects
 						new Effect[]{
-							new Effect(1, GlobalsScript.Traits.Notoriety)
-						},
+                            new Effect(1, GlobalsScript.Traits.Notoriety)
+                        },
 						//lose effect
-						new Effect[]{ 
-							new Effect(-2, GlobalsScript.Resources.People)
-						})
-				}
-			)
-			//end of enqueue card 10
-		);
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Resources.People)
+                        })
+                }
+            )
+        //end of enqueue card 10
+        );
 
-		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
-		//CARD 11--------------------------------------------------------------------------------------------------------------------------------------
-		//Severe Thunderstorm------------------------------------------------------------------------------------------------------------------------------
-		deck.Enqueue (
-			//new card one
-			new Card ("Severe Thunderstorm",
-				"A raging thunderstorm sweeps through your settlement, panicking your settlers",
+        //add tenth card-------------------------------------------------------------------------------------------------------------------------------
+        //CARD 11--------------------------------------------------------------------------------------------------------------------------------------
+        //Severe Thunderstorm------------------------------------------------------------------------------------------------------------------------------
+        deck.Enqueue(
+            //new card one
+            new Card("Severe Thunderstorm",
+                "A raging thunderstorm sweeps through your settlement, panicking your settlers",
 
-				//choice 1
-				new CardChoice[] {new CardChoice ("TRUST - Calm your villagers by convincing them the thunder can't harm them(6)",
-					"Everyone listens and waits out the storm",
-					"Your villagers panick and run, getting struck by lightning",
+                //choice 1
+                new CardChoice[] {new CardChoice ("TRUST - Calm your villagers by convincing them the thunder can't harm them(6)",
+                    "Everyone listens and waits out the storm",
+                    "Your villagers panick and run, getting struck by lightning",
 					//win effect,
 					GlobalsScript.Traits.Trust,
-					6,
-					new Effect[]{
-						new Effect (1, GlobalsScript.Traits.Trust)
-					},
+                    6,
+                    new Effect[]{
+                        new Effect (1, GlobalsScript.Traits.Trust)
+                    },
 					//lose effects
 					new Effect[]{
-						new Effect (-1, GlobalsScript.Resources.People),
-						new Effect (-1, GlobalsScript.Resources.Food)}
-				),
+                        new Effect (-1, GlobalsScript.Resources.People),
+                        new Effect (-1, GlobalsScript.Resources.Food)}
+                ),
 
 					//choice 2
 					new CardChoice ("SURVIVAL - Construct a stone shelter to protect them(11)",
-						"The shelter is completed and the villagers thank you for the safety",
-						"The incomplete shelter provides no protection and collapses",
-						GlobalsScript.Traits.Survival,
-						11,
+                        "The shelter is completed and the villagers thank you for the safety",
+                        "The incomplete shelter provides no protection and collapses",
+                        GlobalsScript.Traits.Survival,
+                        11,
 						//win effect
-						new Effect[]{ 
-							new Effect (1, GlobalsScript.Traits.Trust),
-							new Effect (1, GlobalsScript.Traits.Survival)
-						},
+						new Effect[]{
+                            new Effect (1, GlobalsScript.Traits.Trust),
+                            new Effect (1, GlobalsScript.Traits.Survival)
+                        },
 						//lose effect
 						new Effect[]{
-							new Effect(-1, GlobalsScript.Resources.People),
-							new Effect (-1, GlobalsScript.Resources.Stone),
-							new Effect (-1, GlobalsScript.Traits.Trust)}
+                            new Effect(-1, GlobalsScript.Resources.People),
+                            new Effect (-1, GlobalsScript.Resources.Stone),
+                            new Effect (-1, GlobalsScript.Traits.Trust)}
 
-					),
+                    ),
 
 					//choice 3
 					new CardChoice ("NOTORIETY - Intimidate your villagers into being orderly(9)",
-						"Your villagers wait out the storm and see you as a more fearsome leader",
-						"Your villagers become more frenzied and panic, taking resources",
-						GlobalsScript.Traits.Notoriety,
-						9,
+                        "Your villagers wait out the storm and see you as a more fearsome leader",
+                        "Your villagers become more frenzied and panic, taking resources",
+                        GlobalsScript.Traits.Notoriety,
+                        9,
 						//win effects
 						new Effect[]{
-							new Effect(1, GlobalsScript.Traits.Notoriety)
-						},
+                            new Effect(1, GlobalsScript.Traits.Notoriety)
+                        },
 						//lose effect
-						new Effect[]{ 
-							new Effect (-1, GlobalsScript.Resources.Wood),
-							new Effect (-1, GlobalsScript.Resources.Stone),
-							new Effect (-2, GlobalsScript.Resources.Food)
-						})
-				}
-			)
-			//end of enqueue card 11
-		);
+						new Effect[]{
+                            new Effect (-1, GlobalsScript.Resources.Wood),
+                            new Effect (-1, GlobalsScript.Resources.Stone),
+                            new Effect (-2, GlobalsScript.Resources.Food)
+                        })
+                }
+            )
+        //end of enqueue card 11
+        );
 
-		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
-		//CARD 12--------------------------------------------------------------------------------------------------------------------------------------
-		//Tornado------------------------------------------------------------------------------------------------------------------------------
-		deck.Enqueue (
-			//new card one
-			new Card ("Tornado",
-				"A tornado sweeps through your settlement",
+        //add tenth card-------------------------------------------------------------------------------------------------------------------------------
+        //CARD 12--------------------------------------------------------------------------------------------------------------------------------------
+        //Tornado------------------------------------------------------------------------------------------------------------------------------
+        deck.Enqueue(
+            //new card one
+            new Card("Tornado",
+                "A tornado sweeps through your settlement",
 
-				//choice 1
-				new CardChoice[] {new CardChoice ("AGILITY - You evacuate the camp(7)",
-					"You succeed, but gain nothing in the process",
-					"You are not fast enough and get hit",
+                //choice 1
+                new CardChoice[] {new CardChoice ("AGILITY - You evacuate the camp(7)",
+                    "You succeed, but gain nothing in the process",
+                    "You are not fast enough and get hit",
 					//win effect,
 					GlobalsScript.Traits.Agility,
-					7,
-					new Effect[]{
-						new Effect(0, GlobalsScript.Resources.People)
-					},
+                    7,
+                    new Effect[]{
+                        new Effect(0, GlobalsScript.Resources.People)
+                    },
 					//lose effects
 					new Effect[]{
-						new Effect(-1, GlobalsScript.Resources.Food),
-						new Effect (-1, GlobalsScript.Resources.Stone),
-						new Effect (-1, GlobalsScript.Resources.Wood)}
-				),
+                        new Effect(-1, GlobalsScript.Resources.Food),
+                        new Effect (-1, GlobalsScript.Resources.Stone),
+                        new Effect (-1, GlobalsScript.Resources.Wood)}
+                ),
 
 					//choice 2
 					new CardChoice ("NOTORIETY - Yell at it till it goes away(12)",
-						"The tornado diverts its path",
-						"Tornados don't listen to mortals. It hits you",
-						GlobalsScript.Traits.Notoriety,
-						12,
+                        "The tornado diverts its path",
+                        "Tornados don't listen to mortals. It hits you",
+                        GlobalsScript.Traits.Notoriety,
+                        12,
 						//win effect
-						new Effect[]{ 
-							new Effect(3, GlobalsScript.Traits.Notoriety)
-						},
+						new Effect[]{
+                            new Effect(3, GlobalsScript.Traits.Notoriety)
+                        },
 						//lose effect
 						new Effect[]{
-							new Effect(-2, GlobalsScript.Resources.Food),
-							new Effect(-2, GlobalsScript.Resources.Wood),
-							new Effect(-2, GlobalsScript.Resources.Stone),
-							new Effect(-1, GlobalsScript.Traits.Notoriety)}
+                            new Effect(-2, GlobalsScript.Resources.Food),
+                            new Effect(-2, GlobalsScript.Resources.Wood),
+                            new Effect(-2, GlobalsScript.Resources.Stone),
+                            new Effect(-1, GlobalsScript.Traits.Notoriety)}
 
-					),
+                    ),
 
 					//choice 3
 					new CardChoice ("SURVIVAL - Dig bunkers for everyone(7)",
-						"Everyone is safe in their own bunkers, reassuring their trust in you",
-						"Not everyone makes bunkers in time, and some are blown away",
-						GlobalsScript.Traits.Survival,
-						7,
+                        "Everyone is safe in their own bunkers, reassuring their trust in you",
+                        "Not everyone makes bunkers in time, and some are blown away",
+                        GlobalsScript.Traits.Survival,
+                        7,
 						//win effects
 						new Effect[]{
-							new Effect(1, GlobalsScript.Traits.Trust)
-						},
+                            new Effect(1, GlobalsScript.Traits.Trust)
+                        },
 						//lose effect
-						new Effect[]{ 
-							new Effect(-2, GlobalsScript.Resources.People),
-							new Effect(-1, GlobalsScript.Traits.Trust)
-						})
-				}
-			)
-			//end of enqueue card 12
-		);
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Resources.People),
+                            new Effect(-1, GlobalsScript.Traits.Trust)
+                        })
+                }
+            )
+        //end of enqueue card 12
+        );
 
-		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
-		//CARD 13--------------------------------------------------------------------------------------------------------------------------------------
-		//Severe Flooding------------------------------------------------------------------------------------------------------------------------------
-		deck.Enqueue (
-			//new card one
-			new Card ("Flood",
-				"Heavy rainstorms have caused the river to overflow",
+        //add tenth card-------------------------------------------------------------------------------------------------------------------------------
+        //CARD 13--------------------------------------------------------------------------------------------------------------------------------------
+        //Severe Flooding------------------------------------------------------------------------------------------------------------------------------
+        deck.Enqueue(
+            //new card one
+            new Card("Flood",
+                "Heavy rainstorms have caused the river to overflow",
 
-				//choice 1
-				new CardChoice[] {new CardChoice ("SURVIVAL - Build a stone dam(10)",
-					"The floods are successfully diverted",
-					"The wall breaks when water meet brick, washing away your resources",
+                //choice 1
+                new CardChoice[] {new CardChoice ("SURVIVAL - Build a stone dam(10)",
+                    "The floods are successfully diverted",
+                    "The wall breaks when water meet brick, washing away your resources",
 					//win effect,
 					GlobalsScript.Traits.Survival,
-					10,
-					new Effect[]{
-						new Effect(1, GlobalsScript.Resources.Food)
-					},
+                    10,
+                    new Effect[]{
+                        new Effect(1, GlobalsScript.Resources.Food)
+                    },
 					//lose effects
 					new Effect[]{
-						new Effect(-1, GlobalsScript.Resources.Food),
-						new Effect(-1, GlobalsScript.Resources.Stone)}
-				),
+                        new Effect(-1, GlobalsScript.Resources.Food),
+                        new Effect(-1, GlobalsScript.Resources.Stone)}
+                ),
 
 					//choice 2
 					new CardChoice ("STRENGTH - Build rafts of wood to ride it out(8)",
-						"The rafts carry everyone safely",
-						"Some of the rafts leak and break, losing resources",
-						GlobalsScript.Traits.Strength,
-						8,
+                        "The rafts carry everyone safely",
+                        "Some of the rafts leak and break, losing resources",
+                        GlobalsScript.Traits.Strength,
+                        8,
 						//win effect
-						new Effect[]{ 
-							new Effect(1, GlobalsScript.Traits.Trust)
-						},
+						new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Trust)
+                        },
 						//lose effect
 						new Effect[]{
-							new Effect (-1, GlobalsScript.Resources.Wood),
-							new Effect (-2, GlobalsScript.Resources.Food)}
+                            new Effect (-1, GlobalsScript.Resources.Wood),
+                            new Effect (-2, GlobalsScript.Resources.Food)}
 
-					),
+                    ),
 
 					//choice 3
 					new CardChoice ("TRUST - Convince the nearby fairies to make a magic barrier(10)",
-						"The fairies consent and divert the water, trading stone for guidance",
-						"The fairies reject your request, and your village floods",
-						GlobalsScript.Traits.Trust,
-						10,
+                        "The fairies consent and divert the water, trading stone for guidance",
+                        "The fairies reject your request, and your village floods",
+                        GlobalsScript.Traits.Trust,
+                        10,
 						//win effects
 						new Effect[]{
-							new Effect(2, GlobalsScript.Traits.Trust),
-							new Effect(1, GlobalsScript.Resources.Food),
-							new Effect(-1, GlobalsScript.Resources.Stone)
-						},
+                            new Effect(2, GlobalsScript.Traits.Trust),
+                            new Effect(1, GlobalsScript.Resources.Food),
+                            new Effect(-1, GlobalsScript.Resources.Stone)
+                        },
 						//lose effect
-						new Effect[]{ 
-							new Effect(-2, GlobalsScript.Resources.Food),
-							new Effect(-2, GlobalsScript.Resources.Wood),
-							new Effect(-2, GlobalsScript.Resources.Stone)
-						})
-				}
-			)
-			//end of enqueue card 13
-		);
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Resources.Food),
+                            new Effect(-2, GlobalsScript.Resources.Wood),
+                            new Effect(-2, GlobalsScript.Resources.Stone)
+                        })
+                }
+            )
+        //end of enqueue card 13
+        );
 
-		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
-		//CARD 14--------------------------------------------------------------------------------------------------------------------------------------
-		//Poor Soil------------------------------------------------------------------------------------------------------------------------------
-		deck.Enqueue (
-			//new card one
-			new Card ("Poor Soil",
-				"The soil has dried up and isn't sustainable",
+        //add tenth card-------------------------------------------------------------------------------------------------------------------------------
+        //CARD 14--------------------------------------------------------------------------------------------------------------------------------------
+        //Poor Soil------------------------------------------------------------------------------------------------------------------------------
+        deck.Enqueue(
+            //new card one
+            new Card("Poor Soil",
+                "The soil has dried up and isn't sustainable",
 
-				//choice 1
-				new CardChoice[] {new CardChoice ("STRENGTH - Dig irrigation trenches between the river and crops(10)",
-					"The crops benefit from the irrigation",
-					"The ditches aren't effective and the crops suffer",
+                //choice 1
+                new CardChoice[] {new CardChoice ("STRENGTH - Dig irrigation trenches between the river and crops(10)",
+                    "The crops benefit from the irrigation",
+                    "The ditches aren't effective and the crops suffer",
 					//win effect,
 					GlobalsScript.Traits.Strength,
-					10,
-					new Effect[]{
-						new Effect(1, GlobalsScript.Resources.Food)
-					},
+                    10,
+                    new Effect[]{
+                        new Effect(1, GlobalsScript.Resources.Food)
+                    },
 					//lose effects
 					new Effect[]{
-						new Effect(-1, GlobalsScript.Resources.Food)}
-				),
+                        new Effect(-1, GlobalsScript.Resources.Food)}
+                ),
 
 					//choice 2
 					new CardChoice ("SURVIVAL - Transplant the soil and fertilize it(9)",
-						"The transplanted soil proves better than the original crop",
-						"The transplanted soil doesn't take, reudcing the crops and your speed",
-						GlobalsScript.Traits.Survival,
-						9,
+                        "The transplanted soil proves better than the original crop",
+                        "The transplanted soil doesn't take, reudcing the crops and your speed",
+                        GlobalsScript.Traits.Survival,
+                        9,
 						//win effect
-						new Effect[]{ 
-							new Effect(2, GlobalsScript.Resources.Food)
-						},
+						new Effect[]{
+                            new Effect(2, GlobalsScript.Resources.Food)
+                        },
 						//lose effect
 						new Effect[]{
-							new Effect (-1, GlobalsScript.Traits.Agility),
-							new Effect (-1, GlobalsScript.Resources.Food)}
+                            new Effect (-1, GlobalsScript.Traits.Agility),
+                            new Effect (-1, GlobalsScript.Resources.Food)}
 
-					),
+                    ),
 
 					//choice 3
 					new CardChoice ("TRUST - Convince the settlers to move the farms(8)",
-						"The villagers agree and move. The new area yields better crops",
-						"The villagers refuse and the crops decay further",
-						GlobalsScript.Traits.Trust,
-						8,
+                        "The villagers agree and move. The new area yields better crops",
+                        "The villagers refuse and the crops decay further",
+                        GlobalsScript.Traits.Trust,
+                        8,
 						//win effects
 						new Effect[]{
-							new Effect(1, GlobalsScript.Traits.Survival),
-							new Effect(1, GlobalsScript.Traits.Trust),
-							new Effect(1, GlobalsScript.Resources.Food)
-						},
+                            new Effect(1, GlobalsScript.Traits.Survival),
+                            new Effect(1, GlobalsScript.Traits.Trust),
+                            new Effect(1, GlobalsScript.Resources.Food)
+                        },
 						//lose effect
-						new Effect[]{ 
-							new Effect(-3, GlobalsScript.Resources.Food)
-						})
-				}
-			)
-			//end of enqueue card 14
-		);
+						new Effect[]{
+                            new Effect(-3, GlobalsScript.Resources.Food)
+                        })
+                }
+            )
+        //end of enqueue card 14
+        );
 
-		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
-		//CARD 15--------------------------------------------------------------------------------------------------------------------------------------
-		//What You Buyin'------------------------------------------------------------------------------------------------------------------------------
-		deck.Enqueue (
-			//new card one
-			new Card ("What You Buyin'",
-				"A man in a tattered black robe approaches, revealing cursed magical items",
+        //add tenth card-------------------------------------------------------------------------------------------------------------------------------
+        //CARD 15--------------------------------------------------------------------------------------------------------------------------------------
+        //What You Buyin'------------------------------------------------------------------------------------------------------------------------------
+        deck.Enqueue(
+            //new card one
+            new Card("What You Buyin'",
+                "A man in a tattered black robe approaches, revealing cursed magical items",
 
-				//choice 1
-				new CardChoice[] {new CardChoice ("STRENGTH - You grab the axe, which jolts you with energy(8)",
-					"You conquer the axe, gifted with a surge of strength",
-					"The energy is too much, damaging your arms",
+                //choice 1
+                new CardChoice[] {new CardChoice ("STRENGTH - You grab the axe, which jolts you with energy(8)",
+                    "You conquer the axe, gifted with a surge of strength",
+                    "The energy is too much, damaging your arms",
 					//win effect,
 					GlobalsScript.Traits.Strength,
-					8,
-					new Effect[]{
-						new Effect(2, GlobalsScript.Traits.Strength)
-					},
+                    8,
+                    new Effect[]{
+                        new Effect(2, GlobalsScript.Traits.Strength)
+                    },
 					//lose effects
 					new Effect[]{
-						new Effect(-2, GlobalsScript.Traits.Strength)}
-				),
+                        new Effect(-2, GlobalsScript.Traits.Strength)}
+                ),
 
 					//choice 2
 					new CardChoice ("AGILITY - You grab the boots, which flutter on your feet(8)",
-						"The fluttering quickens, as you take toward the sky",
-						"The fluttering is replaced with an explosion, damaging your feet",
-						GlobalsScript.Traits.Agility,
-						8,
+                        "The fluttering quickens, as you take toward the sky",
+                        "The fluttering is replaced with an explosion, damaging your feet",
+                        GlobalsScript.Traits.Agility,
+                        8,
 						//win effect
-						new Effect[]{ 
-							new Effect(2, GlobalsScript.Traits.Agility)
-						},
+						new Effect[]{
+                            new Effect(2, GlobalsScript.Traits.Agility)
+                        },
 						//lose effect
 						new Effect[]{
-							new Effect (-2, GlobalsScript.Traits.Agility)}
+                            new Effect (-2, GlobalsScript.Traits.Agility)}
 
-					),
+                    ),
 
 					//choice 3
 					new CardChoice ("NOTORIETY - You snag the man's cloak, which swirls with darkness(8)",
-						"The darkness creates a shroud of fear around you",
-						"The darkness begins to dance and scare you",
-						GlobalsScript.Traits.Notoriety,
-						8,
+                        "The darkness creates a shroud of fear around you",
+                        "The darkness begins to dance and scare you",
+                        GlobalsScript.Traits.Notoriety,
+                        8,
 						//win effects
 						new Effect[]{
-							new Effect(2, GlobalsScript.Traits.Notoriety)
-						},
+                            new Effect(2, GlobalsScript.Traits.Notoriety)
+                        },
 						//lose effect
-						new Effect[]{ 
-							new Effect(-2, GlobalsScript.Traits.Notoriety)
-						})
-				}
-			)
-			//end of enqueue card 15
-		);
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Traits.Notoriety)
+                        })
+                }
+            )
+        //end of enqueue card 15
+        );
 
-		//add tenth card-------------------------------------------------------------------------------------------------------------------------------
-		//CARD 16--------------------------------------------------------------------------------------------------------------------------------------
-		//King of Plebeians------------------------------------------------------------------------------------------------------------------------------
-		deck.Enqueue (
-			//new card one
-			new Card ("King of Plebeians",
-				"A representative of the people lets you know that your villagers are unhappy with you",
+        //add tenth card-------------------------------------------------------------------------------------------------------------------------------
+        //CARD 16--------------------------------------------------------------------------------------------------------------------------------------
+        //King of Plebeians------------------------------------------------------------------------------------------------------------------------------
+        deck.Enqueue(
+            //new card one
+            new Card("King of Plebeians",
+                "A representative of the people lets you know that your villagers are unhappy with you",
 
-				//choice 1
-				new CardChoice[] {new CardChoice ("AGILITY - You run away from the representative",
-					"You escape the man, but word travels faster than you do",
-					"Surprisingly, he is much faster and trips you mid-stride",
+                //choice 1
+                new CardChoice[] {new CardChoice ("AGILITY - You run away from the representative",
+                    "You escape the man, but word travels faster than you do",
+                    "Surprisingly, he is much faster and trips you mid-stride",
 					//win effect,
 					GlobalsScript.Traits.Agility,
-					10,
-					new Effect[]{
-						new Effect(1, GlobalsScript.Traits.Agility),
-						new Effect(-2, GlobalsScript.Resources.People)
-					},
+                    10,
+                    new Effect[]{
+                        new Effect(1, GlobalsScript.Traits.Agility),
+                        new Effect(-2, GlobalsScript.Resources.People)
+                    },
 					//lose effects
 					new Effect[]{
-						new Effect(-1, GlobalsScript.Traits.Agility)}
-				),
+                        new Effect(-1, GlobalsScript.Traits.Agility)}
+                ),
 
 					//choice 2
 					new CardChoice ("TRUST - Reassure him and the people of your ability to lead with a speech",
-						"Your speech moves them. The village works twice as hard to help the people",
-						"Your voice falters, convincing the people you cannot protect your resources",
-						GlobalsScript.Traits.Trust,
-						12,
+                        "Your speech moves them. The village works twice as hard to help the people",
+                        "Your voice falters, convincing the people you cannot protect your resources",
+                        GlobalsScript.Traits.Trust,
+                        12,
 						//win effect
-						new Effect[]{ 
-							new Effect(2, GlobalsScript.Resources.Food),
-							new Effect(2, GlobalsScript.Resources.Stone),
-							new Effect(2, GlobalsScript.Resources.Wood),
-							new Effect(2, GlobalsScript.Resources.People)
-						},
+						new Effect[]{
+                            new Effect(2, GlobalsScript.Resources.Food),
+                            new Effect(2, GlobalsScript.Resources.Stone),
+                            new Effect(2, GlobalsScript.Resources.Wood),
+                            new Effect(2, GlobalsScript.Resources.People)
+                        },
 						//lose effect
 						new Effect[]{
-							new Effect (-1, GlobalsScript.Resources.Food),
-							new Effect (-1, GlobalsScript.Resources.Stone),
-							new Effect (-1, GlobalsScript.Resources.Wood)
-						}
+                            new Effect (-1, GlobalsScript.Resources.Food),
+                            new Effect (-1, GlobalsScript.Resources.Stone),
+                            new Effect (-1, GlobalsScript.Resources.Wood)
+                        }
 
-					),
+                    ),
 
 					//choice 3
 					new CardChoice ("NOTORIETY - You intimidate the man to scare them back into their place",
-						"Your voice shakens him, and the people avoid your gaze in the streets",
-						"Your threats only madden the man as he swings at you",
-						GlobalsScript.Traits.Notoriety,
-						14,
+                        "Your voice shakens him, and the people avoid your gaze in the streets",
+                        "Your threats only madden the man as he swings at you",
+                        GlobalsScript.Traits.Notoriety,
+                        14,
 						//win effects
 						new Effect[]{
-							new Effect(1, GlobalsScript.Resources.Food),
-							new Effect(1, GlobalsScript.Resources.Stone),
-							new Effect(1, GlobalsScript.Resources.Wood),
-							new Effect(2, GlobalsScript.Traits.Notoriety)
-						},
+                            new Effect(1, GlobalsScript.Resources.Food),
+                            new Effect(1, GlobalsScript.Resources.Stone),
+                            new Effect(1, GlobalsScript.Resources.Wood),
+                            new Effect(2, GlobalsScript.Traits.Notoriety)
+                        },
 						//lose effect
-						new Effect[]{ 
-							new Effect(-1, GlobalsScript.Traits.Notoriety),
-							new Effect(-1, GlobalsScript.Traits.Strength)
-						})
-				}
-			)
-			//end of enqueue card 16
-		);
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Traits.Notoriety),
+                            new Effect(-1, GlobalsScript.Traits.Strength)
+                        })
+                }
+            )
+        //end of enqueue card 16
+        );
 
-		//add twenty-fourth card-------------------------------------------------------------------------------------------------------------------------------
-		//CARD 24--------------------------------------------------------------------------------------------------------------------------------------
-		//Hercules------------------------------------------------------------------------------------------------------------------------------
-		deck.Enqueue (
-			//new card one
-			new Card ("Hercules",
-				"A mythic hero visits your village and challenges you to a friendly competition",
+        //add twenty-fourth card-------------------------------------------------------------------------------------------------------------------------------
+        //CARD 24--------------------------------------------------------------------------------------------------------------------------------------
+        //Hercules------------------------------------------------------------------------------------------------------------------------------
+        deck.Enqueue(
+            //new card one
+            new Card("Hercules",
+                "A mythic hero visits your village and challenges you to a friendly competition",
 
-				//choice 1
-				new CardChoice[] {new CardChoice ("SURVIVAL - A battle of wits, as you play a game against him",
-					"You win and Hercules gives you insight and rewards",
-					"You lose, learning a lesson but giving Hercules his reward",
+                //choice 1
+                new CardChoice[] {new CardChoice ("SURVIVAL - A battle of wits, as you play a game against him",
+                    "You win and Hercules gives you insight and rewards",
+                    "You lose, learning a lesson but giving Hercules his reward",
 					//win effect,
 					GlobalsScript.Traits.Survival,
-					8,
-					new Effect[]{
-						new Effect(2, GlobalsScript.Traits.Survival),
-						new Effect(1, GlobalsScript.Resources.Food),
-						new Effect(1, GlobalsScript.Resources.Stone),
-						new Effect(1, GlobalsScript.Resources.Wood)
-					},
+                    8,
+                    new Effect[]{
+                        new Effect(2, GlobalsScript.Traits.Survival),
+                        new Effect(1, GlobalsScript.Resources.Food),
+                        new Effect(1, GlobalsScript.Resources.Stone),
+                        new Effect(1, GlobalsScript.Resources.Wood)
+                    },
 					//lose effects
 					new Effect[]{
-						new Effect(1, GlobalsScript.Traits.Survival),
-						new Effect(-1, GlobalsScript.Resources.Food),
-						new Effect(-1, GlobalsScript.Resources.Stone),
-						new Effect(-1, GlobalsScript.Resources.Wood)
-						}
-				),
+                        new Effect(1, GlobalsScript.Traits.Survival),
+                        new Effect(-1, GlobalsScript.Resources.Food),
+                        new Effect(-1, GlobalsScript.Resources.Stone),
+                        new Effect(-1, GlobalsScript.Resources.Wood)
+                        }
+                ),
 
 					//choice 2
 					new CardChoice ("AGILITY - A race across the to the fields and back",
-						"Your speed was obvious from the beginning, and Hecules recognizes this with food",
-						"His speed surprises you, and you also trample some of the crops as well",
-						GlobalsScript.Traits.Agility,
-						9,
+                        "Your speed was obvious from the beginning, and Hecules recognizes this with food",
+                        "His speed surprises you, and you also trample some of the crops as well",
+                        GlobalsScript.Traits.Agility,
+                        9,
 						//win effect
-						new Effect[]{ 
-							new Effect(2, GlobalsScript.Traits.Agility),
-							new Effect(3, GlobalsScript.Resources.Food),
-						},
+						new Effect[]{
+                            new Effect(2, GlobalsScript.Traits.Agility),
+                            new Effect(3, GlobalsScript.Resources.Food),
+                        },
 						//lose effect
 						new Effect[]{
-							new Effect (-5, GlobalsScript.Resources.Food),
-						}
+                            new Effect (-5, GlobalsScript.Resources.Food),
+                        }
 
-					),
+                    ),
 
 					//choice 3
 					new CardChoice ("STRENGTH - You plan to beat the hero at his greatest with wrestling",
-						"In a surprise to all, you beat Hercules, attracting people to your village",
-						"Hercules easily throws you to the ground, breaking your arm and your ego",
-						GlobalsScript.Traits.Strength,
-						11,
+                        "In a surprise to all, you beat Hercules, attracting people to your village",
+                        "Hercules easily throws you to the ground, breaking your arm and your ego",
+                        GlobalsScript.Traits.Strength,
+                        11,
 						//win effects
 						new Effect[]{
-							new Effect(2, GlobalsScript.Traits.Strength),
-							new Effect(3, GlobalsScript.Resources.People)
-						},
+                            new Effect(2, GlobalsScript.Traits.Strength),
+                            new Effect(3, GlobalsScript.Resources.People)
+                        },
 						//lose effect
-						new Effect[]{ 
-							new Effect(-2, GlobalsScript.Traits.Strength),
-							new Effect(-1, GlobalsScript.Traits.Notoriety),
-							new Effect(-1, GlobalsScript.Traits.Trust)
-						})
-				}
-			)
-			//end of enqueue card 24
-		);
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Traits.Strength),
+                            new Effect(-1, GlobalsScript.Traits.Notoriety),
+                            new Effect(-1, GlobalsScript.Traits.Trust)
+                        })
+                }
+            )
+        //end of enqueue card 24
+        );
 
-		//add twenty-fifth card-------------------------------------------------------------------------------------------------------------------------------
-		//CARD 25--------------------------------------------------------------------------------------------------------------------------------------
-		//Ominous Vision------------------------------------------------------------------------------------------------------------------------------
-		deck.Enqueue (
-			//new card one
-			new Card ("Ominous Vision",
-				"A horrible dream predicts the dangers to come. You must ready your village",
+        //add twenty-fifth card-------------------------------------------------------------------------------------------------------------------------------
+        //CARD 25--------------------------------------------------------------------------------------------------------------------------------------
+        //Ominous Vision------------------------------------------------------------------------------------------------------------------------------
+        deck.Enqueue(
+            //new card one
+            new Card("Ominous Vision",
+                "A horrible dream predicts the dangers to come. You must ready your village",
 
-				//choice 1
-				new CardChoice[] {new CardChoice ("TRUST - Talk to the villages about growing resources",
-					"Your plan works, bolstering your resources",
-					"Unfortunately, the land becomes barren at your attempts",
+                //choice 1
+                new CardChoice[] {new CardChoice ("TRUST - Talk to the villages about growing resources",
+                    "Your plan works, bolstering your resources",
+                    "Unfortunately, the land becomes barren at your attempts",
 					//win effect,
 					GlobalsScript.Traits.Trust,
-					6,
-					new Effect[]{
-						new Effect(1, GlobalsScript.Resources.Food),
-						new Effect(1, GlobalsScript.Resources.Stone),
-						new Effect(1, GlobalsScript.Resources.Wood)
-					},
+                    6,
+                    new Effect[]{
+                        new Effect(1, GlobalsScript.Resources.Food),
+                        new Effect(1, GlobalsScript.Resources.Stone),
+                        new Effect(1, GlobalsScript.Resources.Wood)
+                    },
 					//lose effects
 					new Effect[]{
-						new Effect(-1, GlobalsScript.Resources.Food),
-						new Effect(-1, GlobalsScript.Resources.Stone),
-						new Effect(-1, GlobalsScript.Resources.Wood)
-					}
-				),
+                        new Effect(-1, GlobalsScript.Resources.Food),
+                        new Effect(-1, GlobalsScript.Resources.Stone),
+                        new Effect(-1, GlobalsScript.Resources.Wood)
+                    }
+                ),
 
 					//choice 2
 					new CardChoice ("TRUST - You train the younglings in your village",
-						"They begin to become as beneficial as the adults, gaining more people and resources",
-						"Unfortunately the younglings are stubborn, and only prank you",
-						GlobalsScript.Traits.Trust,
-						8,
+                        "They begin to become as beneficial as the adults, gaining more people and resources",
+                        "Unfortunately the younglings are stubborn, and only prank you",
+                        GlobalsScript.Traits.Trust,
+                        8,
 						//win effect
-						new Effect[]{ 
-							new Effect(2, GlobalsScript.Resources.People),
-							new Effect(1, GlobalsScript.Resources.Food),
-							new Effect(1, GlobalsScript.Resources.Stone),
-							new Effect(1, GlobalsScript.Resources.Wood)
-						},
+						new Effect[]{
+                            new Effect(2, GlobalsScript.Resources.People),
+                            new Effect(1, GlobalsScript.Resources.Food),
+                            new Effect(1, GlobalsScript.Resources.Stone),
+                            new Effect(1, GlobalsScript.Resources.Wood)
+                        },
 						//lose effect
 						new Effect[]{
-							new Effect(-1, GlobalsScript.Traits.Notoriety),
-							new Effect(-1, GlobalsScript.Traits.Trust)
-						}
+                            new Effect(-1, GlobalsScript.Traits.Notoriety),
+                            new Effect(-1, GlobalsScript.Traits.Trust)
+                        }
 
-					),
+                    ),
 
 					//choice 3
 					new CardChoice ("TRUST - You rally your people to reinforce the village and themselves",
-						"Your people rally, inspired by your charisma and leadership",
-						"Your people think you are paranoid, and ignore you",
-						GlobalsScript.Traits.Trust,
-						10,
+                        "Your people rally, inspired by your charisma and leadership",
+                        "Your people think you are paranoid, and ignore you",
+                        GlobalsScript.Traits.Trust,
+                        10,
 						//win effects
 						new Effect[]{
-							new Effect(3, GlobalsScript.Resources.People),
-							new Effect(2, GlobalsScript.Resources.Food),
-							new Effect(2, GlobalsScript.Resources.Stone),
-							new Effect(2, GlobalsScript.Resources.Wood)
-						},
+                            new Effect(3, GlobalsScript.Resources.People),
+                            new Effect(2, GlobalsScript.Resources.Food),
+                            new Effect(2, GlobalsScript.Resources.Stone),
+                            new Effect(2, GlobalsScript.Resources.Wood)
+                        },
 						//lose effect
-						new Effect[]{ 
-							new Effect(-2, GlobalsScript.Traits.Trust)
-						})
-				}
-			)
-			//end of enqueue card 25
-		);
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Traits.Trust)
+                        })
+                }
+            )
+        //end of enqueue card 25
+        );
 
-		//-------------------------------------------------------------------------------------------------------------------------------
-		//--------------------------------------------------------------------------------------------------------------------------------------
-		//BOULDER------------------------------------------------------------------------------------------------------------------------------
-		deck.Enqueue (
-			//new card one
-			new Card ("Boulder",
-				"On a walk around the hills, a boulder comes tumbling down towards you",
+        //-------------------------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------------------------
+        //BOULDER------------------------------------------------------------------------------------------------------------------------------
+        deck.Enqueue(
+            //new card one
+            new Card("Boulder",
+                "On a walk around the hills, a boulder comes tumbling down towards you",
 
-				//choice 1
-				new CardChoice[] {new CardChoice ("SURVIVAL - You see a dip in the earth and dodge into it",
-					"You make it, avoiding the boulder as it crashes and creates smaller rock",
-					"You barely make it as the boulder hits your leg",
+                //choice 1
+                new CardChoice[] {new CardChoice ("SURVIVAL - You see a dip in the earth and dodge into it",
+                    "You make it, avoiding the boulder as it crashes and creates smaller rock",
+                    "You barely make it as the boulder hits your leg",
 					//win effect,
 					GlobalsScript.Traits.Survival,
-					7,
-					new Effect[]{
-						new Effect(3, GlobalsScript.Resources.Stone)
-					},
+                    7,
+                    new Effect[]{
+                        new Effect(3, GlobalsScript.Resources.Stone)
+                    },
 					//lose effects
 					new Effect[]{
-						new Effect(-1, GlobalsScript.Traits.Survival),
-						new Effect(-1, GlobalsScript.Traits.Agility)
-					}
-				),
+                        new Effect(-1, GlobalsScript.Traits.Survival),
+                        new Effect(-1, GlobalsScript.Traits.Agility)
+                    }
+                ),
 
 					//choice 2
 					new CardChoice ("AGILITY - You attempt to outrun the boulder (why not?)",
-						"Surprisingly, you make it. And feel faster than before",
-						"You could have moved left or right. In that, your left and right legs are crushed",
-						GlobalsScript.Traits.Agility,
-						10,
+                        "Surprisingly, you make it. And feel faster than before",
+                        "You could have moved left or right. In that, your left and right legs are crushed",
+                        GlobalsScript.Traits.Agility,
+                        10,
 						//win effect
-						new Effect[]{ 
-							new Effect(2, GlobalsScript.Traits.Agility)
-						},
+						new Effect[]{
+                            new Effect(2, GlobalsScript.Traits.Agility)
+                        },
 						//lose effect
 						new Effect[]{
-							new Effect(-2, GlobalsScript.Traits.Agility)
-						}
+                            new Effect(-2, GlobalsScript.Traits.Agility)
+                        }
 
-					),
+                    ),
 
 					//choice 3
 					new CardChoice ("STRENGTH - There's no time; You'll have to push the boulder away",
-						"Your strength pulls through and becomes legend to your village",
-						"Boulder wins. You are crushed, hurting your strength and speed",
-						GlobalsScript.Traits.Strength,
-						12,
+                        "Your strength pulls through and becomes legend to your village",
+                        "Boulder wins. You are crushed, hurting your strength and speed",
+                        GlobalsScript.Traits.Strength,
+                        12,
 						//win effects
 						new Effect[]{
-							new Effect(1, GlobalsScript.Traits.Strength),
-							new Effect(2, GlobalsScript.Traits.Trust),
-							new Effect(3, GlobalsScript.Traits.Notoriety)
-						},
+                            new Effect(1, GlobalsScript.Traits.Strength),
+                            new Effect(2, GlobalsScript.Traits.Trust),
+                            new Effect(3, GlobalsScript.Traits.Notoriety)
+                        },
 						//lose effect
-						new Effect[]{ 
-							new Effect(-2, GlobalsScript.Traits.Strength),
-							new Effect(-2, GlobalsScript.Traits.Agility)
-						})
-				}
-			)
-			//end of enqueue card
-		);
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Traits.Strength),
+                            new Effect(-2, GlobalsScript.Traits.Agility)
+                        })
+                }
+            )
+        //end of enqueue card
+        );
 
-		//-------------------------------------------------------------------------------------------------------------------------------
-		//--------------------------------------------------------------------------------------------------------------------------------------
-		//STAMPEDE------------------------------------------------------------------------------------------------------------------------------
-		deck.Enqueue (
-			//new card one
-			new Card ("Stampede",
-				"The livestock of your farms get loose, threatening your village",
+        //-------------------------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------------------------
+        //STAMPEDE------------------------------------------------------------------------------------------------------------------------------
+        deck.Enqueue(
+            //new card one
+            new Card("Stampede",
+                "The livestock of your farms get loose, threatening your village",
 
-				//choice 1
-				new CardChoice[] {new CardChoice ("AGILITY - You move quickly to recapture and subdue all animals",
-					"Your speed is faster than any animal, and capture more animals than you remember",
-					"Unfortunately you aren't as fast as you think, and they trample the crops",
+                //choice 1
+                new CardChoice[] {new CardChoice ("AGILITY - You move quickly to recapture and subdue all animals",
+                    "Your speed is faster than any animal, and capture more animals than you remember",
+                    "Unfortunately you aren't as fast as you think, and they trample the crops",
 					//win effect,
 					GlobalsScript.Traits.Agility,
-					8,
-					new Effect[]{
-						new Effect(5, GlobalsScript.Resources.Food)
-					},
+                    8,
+                    new Effect[]{
+                        new Effect(5, GlobalsScript.Resources.Food)
+                    },
 					//lose effects
 					new Effect[]{
-						new Effect(-3, GlobalsScript.Resources.Food)
-					}
-				),
+                        new Effect(-3, GlobalsScript.Resources.Food)
+                    }
+                ),
 
 					//choice 2
 					new CardChoice ("TRUST - You know these animals, and attempt to calm them",
-						"You calm them, and your animal magnetism attracts animals and villagers",
-						"You cannot calm them, and they trample you",
-						GlobalsScript.Traits.Trust,
-						10,
+                        "You calm them, and your animal magnetism attracts animals and villagers",
+                        "You cannot calm them, and they trample you",
+                        GlobalsScript.Traits.Trust,
+                        10,
 						//win effect
-						new Effect[]{ 
-							new Effect(3, GlobalsScript.Resources.Food),
-							new Effect(2, GlobalsScript.Resources.People)
-						},
+						new Effect[]{
+                            new Effect(3, GlobalsScript.Resources.Food),
+                            new Effect(2, GlobalsScript.Resources.People)
+                        },
 						//lose effect
 						new Effect[]{
-							new Effect(-1, GlobalsScript.Traits.Trust),
-							new Effect(-1, GlobalsScript.Traits.Strength),
-							new Effect(-1, GlobalsScript.Traits.Agility)
-						}
+                            new Effect(-1, GlobalsScript.Traits.Trust),
+                            new Effect(-1, GlobalsScript.Traits.Strength),
+                            new Effect(-1, GlobalsScript.Traits.Agility)
+                        }
 
-					),
+                    ),
 
 					//choice 3
 					new CardChoice ("SURVIVAL - Through traps and wit, you try to capture them all",
-						"Your traps not only capture the animals, but increase your protection",
-						"Your traps aren't placed well, and end up hurting your villagers",
-						GlobalsScript.Traits.Survival,
-						11,
+                        "Your traps not only capture the animals, but increase your protection",
+                        "Your traps aren't placed well, and end up hurting your villagers",
+                        GlobalsScript.Traits.Survival,
+                        11,
 						//win effects
 						new Effect[]{
-							new Effect(2, GlobalsScript.Traits.Notoriety),
-							new Effect(1, GlobalsScript.Traits.Strength)
-						},
+                            new Effect(2, GlobalsScript.Traits.Notoriety),
+                            new Effect(1, GlobalsScript.Traits.Strength)
+                        },
 						//lose effect
-						new Effect[]{ 
-							new Effect(-2, GlobalsScript.Resources.People),
-							new Effect(-2, GlobalsScript.Traits.Trust)
-						})
-				}
-			)
-			//end of enqueue card
-		);
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Resources.People),
+                            new Effect(-2, GlobalsScript.Traits.Trust)
+                        })
+                }
+            )
+        //end of enqueue card
+        );
 
-	}
+        //add items to the queue.
+        //CARD 26
+        //Cats Cats Cats
+        deck.Enqueue(
+                //new card one
+                new Card("Cats Cats Cats",
+                    "GrandMaster Kate Scheer and her cat Army has arrived!",
+
+        //choice 1
+        new CardChoice[] {new CardChoice("AGILITY - You try to capture all the cats(8)",
+                    "After days of rounding them up, you finally capture them and find their food store.",
+                    "Those sneaky cats escaped with some of your food.",
+                    //win effect,
+                    GlobalsScript.Traits.Agility,
+                    8,
+                    new Effect[]{
+                        new Effect(1, GlobalsScript.Resources.Food),
+                        new Effect(1, GlobalsScript.Traits.Agility)
+                    },
+					//lose effects
+					new Effect[]{
+                        new Effect(-1, GlobalsScript.Resources.Food)
+                    }
+                ),
+
+					//choice 2
+					new CardChoice("Trust - You try to convince the cats that you are a better master then Kate.(11)",
+                        "The cats look at Kate Scheer, hiss, and run to you. Now your people have pets.",
+                        "Kate laughs at your incompetence and orders the cats to attack, people flee and food is missing.",
+                        GlobalsScript.Traits.Trust,
+                        11,
+                        //win effect
+                    new Effect[]{
+                            new Effect(2, GlobalsScript.Traits.Trust),
+                            new Effect(1, GlobalsScript.Resources.People)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Traits.Trust),
+                            new Effect(-1, GlobalsScript.Resources.People),
+                            new Effect(-1, GlobalsScript.Resources.Food)
+                        }
+                    ),
+
+					//choice 3
+					new CardChoice("SURVIVAL - Its time to neuter the cats.(10)",
+                        "After days of work, you probably will never date again, you successfully neuter the cat horde.",
+                        "The Horde is too powerful, they chase away your people.",
+                        GlobalsScript.Traits.Survival,
+                        10,
+                        //win effects
+                    new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Survival),
+                            new Effect(1, GlobalsScript.Resources.Food)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Resources.People)
+                        })
+                    }
+                )
+            //end of enqueue card 26
+            );
+
+        //add items to the queue.
+        //CARD 27
+        //Round door to heaven
+        deck.Enqueue(
+                //new card one
+                new Card("Round portal of Heaven",
+                    "A group of Gods have walked through this water portal, They introduce themselves as SG 1!",
+
+        //choice 1
+        new CardChoice[] {new CardChoice("TRUST - You try to talk to them and convince your people they are safe.(7)",
+                    "People all across the lands are convinced SG1 are gods and bring gifts.",
+                    "Some of your people attack SG1, they defend themselves and leave through the portal.",
+                    //win effect,
+                    GlobalsScript.Traits.Trust,
+                    7,
+                    new Effect[]{
+                        new Effect(1, GlobalsScript.Resources.Food),
+                        new Effect(1, GlobalsScript.Resources.Food),
+                        new Effect(1, GlobalsScript.Resources.Wood),
+                        new Effect(1, GlobalsScript.Traits.Trust)
+                    },
+					//lose effects
+					new Effect[]{
+                        new Effect(-1, GlobalsScript.Resources.People),
+                        new Effect(-1, GlobalsScript.Traits.Trust)
+                    }
+                ),
+
+					//choice 2
+					new CardChoice("NOTORIETY - You plot to use these Gods to intimadate your enemies.(12)",
+                        "Since SG1 needs a valuable resouce in your counrty, they decide to help.",
+                        "They outthink you and make you look like a fool in front of your enemies.",
+                        GlobalsScript.Traits.Notoriety,
+                        12,
+                        //win effect
+                    new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Strength),
+                            new Effect(1, GlobalsScript.Traits.Notoriety)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Traits.Notoriety)
+                        }
+                    ),
+
+					//choice 3
+					new CardChoice("STRENGTH - You want their magic weapons and decide to take them.(12)",
+                        "Somehow... You are able to take SG1 captive, Gifts are given to you because of your power.",
+                        "SG1 fights their way out and kills several of your people.",
+                        GlobalsScript.Traits.Strength,
+                        12,
+                        //win effects
+                    new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Strength),
+                            new Effect(1, GlobalsScript.Resources.Food),
+                            new Effect(1, GlobalsScript.Resources.Wood),
+                            new Effect(1, GlobalsScript.Resources.Stone)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-2, GlobalsScript.Resources.People),
+                            new Effect(-1, GlobalsScript.Traits.Strength),
+                            new Effect(-1, GlobalsScript.Traits.Trust)
+                        })
+                    }
+                )
+            //end of enqueue card 27
+            );
+
+        //add items to the queue.
+        //CARD 28
+        //Aliens
+        deck.Enqueue(
+                //new card one
+                new Card("Aliens",
+                    "A crashed ship has landed nearby, its filled with these creepy looking eggs!",
+
+        //choice 1
+        new CardChoice[] {new CardChoice("AGILITY - Screw this place, time to leave.(9)",
+                    "Your village leaves the area, you hope nothing survived the crash.",
+                    "Your villagers panic and flee the area.",
+                    //win effect,
+                    GlobalsScript.Traits.Agility,
+                    9,
+                    new Effect[]{
+                        new Effect(1, GlobalsScript.Traits.Agility)
+                    },
+					//lose effects
+					new Effect[]{
+                        new Effect(-1, GlobalsScript.Resources.People),
+                    }
+                ),
+
+					//choice 2
+					new CardChoice("STRENGTH - Feeling the menace of the ship you decide to destroy everything in the area.(10)",
+                        "You and your warriors successfully destroy everything the ship touched.",
+                        "The aliens surpirse your warriors, killing many and wounding you.",
+                        GlobalsScript.Traits.Strength,
+                        10,
+                        //win effect
+                    new Effect[]{
+                            new Effect(2, GlobalsScript.Traits.Strength),
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Traits.Strength),
+                            new Effect(-1, GlobalsScript.Resources.People)
+                        }
+                    ),
+
+					//choice 3
+					new CardChoice("SURVIVAL - You decide to explore the ship in order to find a way to fight the aliens.(9)",
+                        "You find a women in a powerful metal suit, she kills the aliens while you find some resources.",
+                        "The Aliens chase you out of the ship and track you back to your village, much of it is destroyed.",
+                        GlobalsScript.Traits.Survival,
+                        9,
+                        //win effects
+                    new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Survival),
+                            new Effect(1, GlobalsScript.Resources.Food),
+                            new Effect(1, GlobalsScript.Resources.Wood)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Resources.People),
+                            new Effect(-1, GlobalsScript.Traits.Survival),
+                            new Effect(-1, GlobalsScript.Resources.Wood)
+                        })
+                    }
+                )
+            //end of enqueue card 28
+            );
+
+        //add items to the queue.
+        //CARD 29
+        //TitanFall
+        deck.Enqueue(
+                //new card one
+                new Card("Titanfall",
+                    "Titans are battling each other in the area around your village!",
+
+        //choice 1
+        new CardChoice[] {new CardChoice("TRUST - You pray to the gods for their protection.(10)",
+                    "Impressed with your plea the gods surround the village with a shield village.",
+                    "The gods laugh at you and watch as your people are killed",
+                    //win effect,
+                    GlobalsScript.Traits.Trust,
+                    10,
+                    new Effect[]{
+                        new Effect(2, GlobalsScript.Traits.Trust)
+                    },
+					//lose effects
+					new Effect[]{
+                        new Effect(-1, GlobalsScript.Resources.People)
+                    }
+                ),
+
+					//choice 2
+					new CardChoice("Notoriety - These titans are no match for your fearsome presence.(10)",
+                        "In awe of your presence, the titans make it a point to avoid damaging your village, people flock to your village for safety.",
+                        "Well... you tried but they are titans, they stole resources as payment for your insolence.",
+                        GlobalsScript.Traits.Notoriety,
+                        10,
+                        //win effect
+                        new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Notoriety),
+                            new Effect(1, GlobalsScript.Resources.Food),
+                            new Effect(1, GlobalsScript.Resources.People),
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Traits.Notoriety),
+                            new Effect(-1, GlobalsScript.Resources.Food),
+                            new Effect(-1, GlobalsScript.Resources.Stone)
+                        }
+                    ),
+
+					//choice 3
+					new CardChoice("SURVIVAL - You attempt to build shelters and wait out the titans.(10)",
+                        "The shelters are built deep underground, the people praise your ingenuity.",
+                        "The titans battle collapses some of the shelters, killing people and destroying resources.",
+                        GlobalsScript.Traits.Survival,
+                        10,
+                        //win effects
+                        new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Survival),
+                            new Effect(2, GlobalsScript.Resources.Stone),
+                            new Effect(1, GlobalsScript.Traits.Trust)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Resources.People),
+                            new Effect(-1, GlobalsScript.Traits.Survival),
+                            new Effect(-1, GlobalsScript.Resources.Wood)
+                        })
+                    }
+                )
+            //end of enqueue card 29
+            );
+
+        //add items to the queue.
+        //CARD 30
+        //For the Empire
+        deck.Enqueue(
+                //new card one
+                new Card("FOR THE EMPIRE",
+                    "A powerful nation comes, they want your village to join their Empire!",
+
+        //choice 1
+        new CardChoice[] {new CardChoice("NOTORIETY - You do not fear this Empire, they should fear you.(12)",
+                    "The diplomat is completely terrified of you and promises that the Empire will not bother you.",
+                    "HAHAHAHAHAHAHAHA, The diplomat demands payment for this insult or the Legions will destroy the village.",
+                    //win effect,
+                    GlobalsScript.Traits.Notoriety,
+                    12,
+                    new Effect[]{
+                        new Effect(1, GlobalsScript.Resources.Food),
+                        new Effect(1, GlobalsScript.Resources.Wood),
+                        new Effect(1, GlobalsScript.Resources.Stone),
+                        new Effect(1, GlobalsScript.Traits.Notoriety)
+                    },
+					//lose effects
+					new Effect[]{
+                        new Effect(-1, GlobalsScript.Resources.Wood),
+                        new Effect(-1, GlobalsScript.Resources.Stone),
+                        new Effect(-1, GlobalsScript.Traits.Notoriety)
+                    }
+                ),
+
+					//choice 2
+					new CardChoice("STRENGTH - You lead your warriors in a desperate battle against the legions.(10)",
+                        "The skill of your warriors is impressive, as they win battles more people flock to your cause",
+                        "The legions soundly defeat your forces, enslaving your people.",
+                        GlobalsScript.Traits.Strength,
+                        10,
+                        //win effect
+                        new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Strength),
+                            new Effect(1, GlobalsScript.Resources.Food),
+                            new Effect(2, GlobalsScript.Resources.People)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Traits.Strength),
+                            new Effect(-1, GlobalsScript.Resources.People)
+                        }
+                    ),
+
+					//choice 3
+					new CardChoice("TRUST - You decide to negioate an alliance with the Empire.(8)",
+                        "After days of talks, the Empire agrees to leave your people in peace, but in return their citizens are allowed to settle here.",
+                        "The Empire agrees to a temporary alliance but demands tribute.",
+                        GlobalsScript.Traits.Trust,
+                        8,
+                        //win effects
+                        new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Trust),
+                            new Effect(1, GlobalsScript.Resources.People)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Resources.Food),
+                            new Effect(-1, GlobalsScript.Traits.Trust),
+                            new Effect(-1, GlobalsScript.Resources.Wood)
+                        })
+                    }
+                )
+            //end of enqueue card 30
+            );
+
+        //add items to the queue.
+        //CARD 31
+        //Lair of the Shadow Broker
+        deck.Enqueue(
+                //new card one
+                new Card("Lair of the Shadow Broker",
+                    "This mysterious blue woman offers to help you improve your skills!",
+
+        //choice 1
+        new CardChoice[] {new CardChoice("AGILITY - Speed is everything, the faster get the better.(7)",
+                    "She makes you drink a potion and tells you to run, as you run you realize you are faster.",
+                    "As you drink the potion you decide to ignore her order to run and walk instead, you gain weight and become slower.",
+                    //win effect,
+                    GlobalsScript.Traits.Agility,
+                    7,
+                    new Effect[]{
+                        new Effect(1, GlobalsScript.Traits.Agility)
+                    },
+					//lose effects
+					new Effect[]{
+                        new Effect(-1, GlobalsScript.Traits.Agility)
+                    }
+                ),
+
+					//choice 2
+					new CardChoice("STRENGTH - Strength solves everything in this time, you must become stronger.(7)",
+                        "She tells you to drink a potion and start lifting weights, you do so and before long you notice an increase.",
+                        "After drinking the potion you decide to take a nap, when you wake up you feel weaker.",
+                        GlobalsScript.Traits.Strength,
+                        7,
+                        //win effect
+                        new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Strength),
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Traits.Strength),
+                        }
+                    ),
+
+					//choice 3
+					new CardChoice("SURVIVAL - Knowing how to survive in all situations guarantees our villages success.(7)",
+                        "After drinking the potion she offers you start paying more attention to nature.",
+                        "Once drinking the potion, you decide to try and hit on her... You wake up a month later with no clothes and a deep gash on your body.",
+                        GlobalsScript.Traits.Survival,
+                        7,
+                        //win effects
+                        new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Survival)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Traits.Survival)
+                        })
+                    }
+                )
+            //end of enqueue card 31
+            );
+    }
 
     #endregion
 
@@ -1730,6 +2132,31 @@ public class Deck : MonoBehaviour {
 		//dequeue the card from the top of the deck
 		return deck.Dequeue ();
 	}
+
+    /// <summary>
+    /// Shuffles the deck so that cards are randomly organized
+    /// </summary>
+    public void Shuffle()
+    {
+        // Creates a temporary list from which cards will be randomly pulled
+        List<Card> tempDeck = new List<Card>();
+
+        // Establishes size of deck before cards are dequeued from it
+        int tempCount = deck.Count;
+
+        // Transfers every card from the deck to the temporary list
+        for (int i = 0; i < tempCount; i++)
+        {
+            tempDeck.Add(deck.Dequeue());
+        }
+
+        // Randomly chooses cards from the temporary list and adds them back to the deck.
+        // By doing so in a random order, this simulates shuffling.
+        for (int j = 0; j < tempCount; j++)
+        {
+            deck.Enqueue(tempDeck[Random.Range(0, tempDeck.Count)]);
+        }
+    }
 
     public void DrawCard()
     {

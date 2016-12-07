@@ -16,6 +16,9 @@ public class PlayerSetupButtonScript : MonoBehaviour {
     // The text field that shows which player's turn it is
     public Text playerNumberText;
 
+    // The text field that tells player if certain criteria are unmet
+    public Text warningText;
+
     // The player's decided tribe type
     public GlobalsScript.TribeType tribeType;
 
@@ -63,6 +66,8 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         currPlayer = new PlayerClass();
 
         ResetStats();
+
+        Tribe0Flavor();
     }
 
     public void ChangeScene()
@@ -76,8 +81,6 @@ public class PlayerSetupButtonScript : MonoBehaviour {
             if (FindObjectOfType<GlobalsScript>().CurrentPlayerCount < players)
             {
                 sceneName = "PlayerSetup";
-
-                ResetStats();
             }
             else
             {
@@ -90,15 +93,44 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     public void ActivateOK()
     {
-        if (okbutton.gameObject.activeInHierarchy == false)
+        if (okbutton.gameObject.activeInHierarchy == false || okbutton.gameObject.activeInHierarchy == true)
         {
+            if (tribeType != null 
+                && (strengthStat + agilityStat + trustStat + survivalStat + notorietyStat) == GlobalsScript.statMax)
+            {
+                warningText.gameObject.SetActive(false);
             okbutton.gameObject.SetActive(true);
         }
+
+            else if (tribeType == null)
+            {
+                okbutton.gameObject.SetActive(false);
+                warningText.text = "Please select a tribe";
+                warningText.gameObject.SetActive(true);
+            }
+
+            else if ((strengthStat + agilityStat + trustStat + survivalStat + notorietyStat) > GlobalsScript.statMax)
+            {
+                okbutton.gameObject.SetActive(false);
+                warningText.text = "Your stat total may not exceed " + GlobalsScript.statMax.ToString();
+                warningText.gameObject.SetActive(true);
+            }
+
+            else
+            {
+                okbutton.gameObject.SetActive(false);
+                warningText.text = "Number of points left: " 
+                    + (GlobalsScript.statMax - (strengthStat + agilityStat + trustStat + survivalStat + notorietyStat)).ToString();
+                warningText.gameObject.SetActive(true);
+            }
+
+    }
     }
 
     public void Tribe0Flavor()
     {
         tribeType = GlobalsScript.TribeType.Warrior;
+        currPlayer.Tribe = tribeType;
 
         // This is where the selected value of the tribe is stored between scenes
         //PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -114,6 +146,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
     public void Tribe1Flavor()
     {
         tribeType = GlobalsScript.TribeType.Bandit;
+        currPlayer.Tribe = tribeType;
 
         // This is where the selected value of the tribe is stored between scenes
         //PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -129,6 +162,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
     public void Tribe2Flavor()
     {
         tribeType = GlobalsScript.TribeType.Nomad;
+        currPlayer.Tribe = tribeType;
 
         // This is where the selected value of the tribe is stored between scenes
         //PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -144,6 +178,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
     public void Tribe3Flavor()
     {
         tribeType = GlobalsScript.TribeType.Peaceful;
+        currPlayer.Tribe = tribeType;
 
         // This is where the selected value of the tribe is stored between scenes
         //PlayerPrefs.SetString(playerSelectionController.GetCurrentTribeTypeKey(), tribeType.ToString());
@@ -162,6 +197,8 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
         // This is where the Strength stat is stored between scenes
         currPlayer.Strength = strengthStat;
+
+        ActivateOK();
     }
 
     public void AgilityUpdate()
@@ -170,6 +207,8 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
         // This is where the Agility stat is stored between scenes
         currPlayer.Agility = agilityStat;
+
+        ActivateOK();
     }
 
     public void TrustUpdate()
@@ -178,6 +217,8 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
         // This is where the Trust stat is stored between scenes
         currPlayer.Trust = trustStat;
+
+        ActivateOK();
     }
 
     public void SurvivalUpdate()
@@ -186,6 +227,8 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
         // This is where the Survival stat is stored between scenes
         currPlayer.Survival = survivalStat;
+
+        ActivateOK();
     }
 
     public void NotorietyUpdate()
@@ -194,10 +237,19 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
         // This is where the Notoriety stat is stored between scenes
         currPlayer.Notoriety = notorietyStat;
+
+        ActivateOK();
     }
     public void NameUpdate()
     {
+        if (tribeNameInputField.text == "")
+        {
+            tribeName = "Player " + (FindObjectOfType<GlobalsScript>().CurrentPlayerCount + 1).ToString();
+        }
+        else
+        {
         tribeName = tribeNameInputField.text;
+        }
         currPlayer.Name = tribeName;
     }
 
@@ -254,6 +306,7 @@ public class PlayerSetupButtonScript : MonoBehaviour {
 
     private void ResetStats()
     {
+        tribeName = "Player " + (FindObjectOfType<GlobalsScript>().CurrentPlayerCount + 1).ToString();
         tribeType = GlobalsScript.TribeType.Warrior;
         strengthStat = 0;
         agilityStat = 0;
@@ -262,7 +315,10 @@ public class PlayerSetupButtonScript : MonoBehaviour {
         notorietyStat = 0;
 
         // Resets the current player class to its default state
-        //currPlayer.ResetPlayerValues();
+        currPlayer.ResetPlayerValues();
+
+        // Defaults current player's name to Player (number)
+        currPlayer.Name = tribeName;
     }
     public void CreateTribe()
     {

@@ -36,6 +36,12 @@ public class GlobalsScript : MonoBehaviour {
 
     #endregion
 
+    #region Constants
+
+    public const int statMax = 16;
+
+    #endregion
+
     #region Singleton
 
     // returns instance of object or creates it if it is missing
@@ -106,14 +112,10 @@ public class GlobalsScript : MonoBehaviour {
         }
     }
 
-    public List<PlayerClass> Players
+    public List<PlayerClass> GetPlayerList()
     {
-        get
-        {
-            return players;
-        }
+        return players;
     }
-
 
     #endregion
 
