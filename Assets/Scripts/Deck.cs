@@ -1722,7 +1722,7 @@ public class Deck : MonoBehaviour {
         deck.Enqueue(
                 //new card one
                 new Card("Cats Cats Cats",
-                    "GrandMaster Kate Scheer and her cat Army has arrived!",
+                    "Lord High Field Marshal Kate Scheer and her cat Horde has arrived!",
 
         //choice 1
         new CardChoice[] {new CardChoice("AGILITY - You try to capture all the cats(8)",
@@ -1993,7 +1993,7 @@ public class Deck : MonoBehaviour {
                     "The diplomat is completely terrified of you and promises that the Empire will not bother you.",
                     "HAHAHAHAHAHAHAHA, The diplomat demands payment for this insult or the Legions will destroy the village.",
                     //win effect,
-                    GlobalsScript.Traits.Notriety,
+                    GlobalsScript.Traits.Notoriety,
                     12,
                     new Effect[]{
                         new Effect(1, GlobalsScript.Resources.Food),
@@ -2043,7 +2043,7 @@ public class Deck : MonoBehaviour {
 						new Effect[]{
                             new Effect(-1, GlobalsScript.Resources.Food),
                             new Effect(-1, GlobalsScript.Traits.Trust),
-                            new Effect(-1, GlobalsScript.REsources.Wood)
+                            new Effect(-1, GlobalsScript.Resources.Wood)
                         })
                     }
                 )
@@ -2107,6 +2107,148 @@ public class Deck : MonoBehaviour {
                     }
                 )
             //end of enqueue card 31
+            );
+
+        //add items to the queue.
+        //CARD 32
+        //Olympics
+        deck.Enqueue(
+                //new card one
+                new Card("Olympics",
+                    "It is time to prove your village superior to any others!",
+
+        //choice 1
+        new CardChoice[] {new CardChoice("AGILITY - Running in the marathon.(10)",
+                    "Your skill at running leaves all others in the dirt. You are awarded with food and wood.",
+                    "Your Runners die at the first mile marker. Your village pays for your failure.",
+                    //win effect,
+                    GlobalsScript.Traits.Agility,
+                    10,
+                    new Effect[]{
+                        new Effect(1, GlobalsScript.Traits.Agility),
+                        new Effect(1, GlobalsScript.Resources.Food),
+                        new Effect(1, GlobalsScript.Resources.Wood)
+                    },
+					//lose effects
+					new Effect[]{
+                        new Effect(-1, GlobalsScript.Traits.Agility),
+                        new Effect(-1, GlobalsScript.Resources.Food),
+                        new Effect(-1, GlobalsScript.Resources.Wood)
+                    }
+                ),
+
+					//choice 2
+					new CardChoice("STRENGTH - Lift heavy things.(11)",
+                        "As you somehow lift 500 pounds, all other villages are in awe. You are awarded resources.",
+                        "When you try to lift 80 pounds you hurt your back. Everyone laughs and you have to pay the winner.",
+                        GlobalsScript.Traits.Strength,
+                        11,
+                        //win effect
+                        new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Strength),
+                            new Effect(1, GlobalsScript.Resources.Stone),
+                            new Effect(1, GlobalsScript.Resources.Wood)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Traits.Strength),
+                            new Effect(-1, GlobalsScript.Resources.Stone),
+                            new Effect(-1, GlobalsScript.Resources.Wood)
+                        }
+                    ),
+
+					//choice 3
+					new CardChoice("SURVIVAL - Survive a week in the wilds.(12)",
+                        "As you appear in the stadium, covered in mud and blood. The people cheer and award you.",
+                        "Once drinking the potion, you decide to try and hit on her... You wake up a month later with no clothes and a deep gash on your body.",
+                        GlobalsScript.Traits.Survival,
+                        12,
+                        //win effects
+                        new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Survival),
+                            new Effect(1, GlobalsScript.Resources.Food),
+                            new Effect(1, GlobalsScript.Resources.Stone),
+                            new Effect(1, GlobalsScript.Resources.Wood)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Traits.Survival),
+                            new Effect(-1, GlobalsScript.Resources.Food),
+                            new Effect(-1, GlobalsScript.Resources.Stone),
+                            new Effect(-1, GlobalsScript.Resources.Wood)
+                        })
+                    }
+                )
+            //end of enqueue card 32
+            );
+
+        //add items to the queue.
+        //CARD 33
+        //Show some compasion
+        deck.Enqueue(
+                //new card one
+                new Card("Show Some Compassion",
+                    "A group of people would like to join your people, what will you decide!",
+
+        //choice 1
+        new CardChoice[] {new CardChoice("TRUST - Sure lets accept them with no strings attached.(8)",
+                    "The people of the village believe in your abilities and welocme the newcomers.",
+                    "The villagers our selfish and lash out at the new people, there are casualities on both sides.",
+                    //win effect,
+                    GlobalsScript.Traits.Trust,
+                    8,
+                    new Effect[]{
+                        new Effect(1, GlobalsScript.Traits.Trust),
+                        new Effect(1, GlobalsScript.Resources.People)
+                    },
+					//lose effects
+					new Effect[]{
+                        new Effect(-1, GlobalsScript.Traits.Trust),
+                        new Effect(-1, GlobalsScript.Resources.People)
+                    }
+                ),
+
+					//choice 2
+					new CardChoice("NOTORIETY - Slavery is a thing.(9)",
+                        "While everyone is a little apprehensive of slavery, no one has the guts to challenge you.",
+                        "The people decide you are a horrible leader and leave the village.",
+                        GlobalsScript.Traits.Notoriety,
+                        9,
+                        //win effect
+                        new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Notoriety),
+                            new Effect(1, GlobalsScript.Resources.People)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Traits.Notoriety),
+                            new Effect(-1, GlobalsScript.Resources.People)
+                        }
+                    ),
+
+					//choice 3
+					new CardChoice("SURVIVAL - Survive a week in the wilds.(12)",
+                        "As you appear in the stadium, covered in mud and blood. The people cheer and award you.",
+                        "Once drinking the potion, you decide to try and hit on her... You wake up a month later with no clothes and a deep gash on your body.",
+                        GlobalsScript.Traits.Survival,
+                        12,
+                        //win effects
+                        new Effect[]{
+                            new Effect(1, GlobalsScript.Traits.Survival),
+                            new Effect(1, GlobalsScript.Resources.Food),
+                            new Effect(1, GlobalsScript.Resources.Stone),
+                            new Effect(1, GlobalsScript.Resources.Wood)
+                        },
+						//lose effect
+						new Effect[]{
+                            new Effect(-1, GlobalsScript.Traits.Survival),
+                            new Effect(-1, GlobalsScript.Resources.Food),
+                            new Effect(-1, GlobalsScript.Resources.Stone),
+                            new Effect(-1, GlobalsScript.Resources.Wood)
+                        })
+                    }
+                )
+            //end of enqueue card 33
             );
     }
 
