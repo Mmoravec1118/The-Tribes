@@ -75,7 +75,8 @@ public class DisplayPlayerInfo : MonoBehaviour {
 	void Update () {
 
         DisplayText();
-
+        TokenCount();
+        DisplayTokens();
     }
 
     #region Methods
@@ -137,6 +138,38 @@ public class DisplayPlayerInfo : MonoBehaviour {
             for (int i = 0; i < desert; i++)
             {
                 Rect spriteRect = new Rect(new Vector2(desertX, desertY), new Vector2(0,0));
+                globals.GetPlayer().DisplayToken(i, spriteRect);
+            }
+        }
+        if (forest > 0)
+        {
+            for (int i = 0; i < forest; i++)
+            {
+                Rect spriteRect = new Rect(new Vector2(forestX, forestY), new Vector2(0, 0));
+                globals.GetPlayer().DisplayToken(i, spriteRect);
+            }
+        }
+        if (swamp > 0)
+        {
+            for (int i = 0; i < swamp; i++)
+            {
+                Rect spriteRect = new Rect(new Vector2(swampX, swampY), new Vector2(0, 0));
+                globals.GetPlayer().DisplayToken(i, spriteRect);
+            }
+        }
+        if (mountains > 0)
+        {
+            for (int i = 0; i < mountains; i++)
+            {
+                Rect spriteRect = new Rect(new Vector2(mountainX, mountainY), new Vector2(0, 0));
+                globals.GetPlayer().DisplayToken(i, spriteRect);
+            }
+        }
+        if (plains > 0)
+        {
+            for (int i = 0; i < plains; i++)
+            {
+                Rect spriteRect = new Rect(new Vector2(plainX, plainY), new Vector2(0, 0));
                 globals.GetPlayer().DisplayToken(i, spriteRect);
             }
         }
