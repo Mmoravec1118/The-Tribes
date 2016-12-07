@@ -8,39 +8,6 @@ public class DisplayPlayerInfo : MonoBehaviour {
     // text box for displaying player info
     Text playerDisplay;
 
-    //Token display variables
-    int desert = 0;
-    int forest = 0;
-    int mountains = 0;
-    int swamp = 0;
-    int plains = 0;
-
-    #region Area Locations
-    int desertX;
-    int desertY;
-    int forestX;
-    int forestY;
-    int plainX;
-    int plainY;
-    int mountainX;
-    int mountainY;
-    int swampX;
-    int swampY;
-    #endregion
-
-    // screen size
-    int screenX;
-    int screenY;
-
-    // offset sizes
-    float xOffset;
-    float yOffset;
-
-    //rect sizes
-    int xSize = 0;
-    int ySize = 0;
-
-
     // current player turn
     int currTurn = 0;
 
@@ -53,30 +20,12 @@ public class DisplayPlayerInfo : MonoBehaviour {
         playerDisplay = GetComponent<Text>();
         globals = FindObjectOfType<GlobalsScript>();
 
-        //get screen size values
-        screenX = Camera.main.pixelWidth;
-        screenY = Camera.main.pixelWidth;
-
-        // set initial area values
-        desertX = screenX * (2 / 3);
-        desertY = screenY * (1 / 8);
-        forestX = screenX * (1 / 4);
-        forestY = screenY * (2 / 3);
-        plainX = screenX * (2 / 3);
-        plainY = screenY * (2 / 3);
-        mountainX = screenX * (1 / 4);
-        mountainY = screenY * (1 / 8);
-        swampX = screenX * (1 / 4);
-        swampY = screenY * (1 / 3);
-
     }
 	
 	// Update is called once per frame
 	void Update () {
 
         DisplayText();
-        TokenCount();
-        DisplayTokens();
     }
 
     #region Methods
@@ -97,82 +46,6 @@ public class DisplayPlayerInfo : MonoBehaviour {
              + "  Food:   " + currplayer.Food + "\n"
              + "  People: " + currplayer.People + "\n"
              + "Victory Points:" + currplayer.VictoryPoints;
-    }
-
-    public void TokenCount()
-    {
-        foreach (PlayerClass player in globals.Players)
-        {
-            switch (player.Area)
-            {
-                case GlobalsScript.Areas.Desert:
-                    desert++;
-                    break;
-
-                case GlobalsScript.Areas.Forest:
-                    forest++;
-                    break;
-
-                case GlobalsScript.Areas.Mountain:
-                    mountains++;
-                    break;
-
-                case GlobalsScript.Areas.Plain:
-                    plains++;
-                    break;
-
-                case GlobalsScript.Areas.Swamp:
-                    swamp++;
-                    break;
-
-                default:
-                    break;
-            }
-        }
-    }
-
-    void DisplayTokens()
-    {
-        if (desert > 0)
-        {
-            for (int i = 0; i < desert; i++)
-            {
-                Rect spriteRect = new Rect(new Vector2(desertX, desertY), new Vector2(0,0));
-                globals.GetPlayer().DisplayToken(i, spriteRect);
-            }
-        }
-        if (forest > 0)
-        {
-            for (int i = 0; i < forest; i++)
-            {
-                Rect spriteRect = new Rect(new Vector2(forestX, forestY), new Vector2(0, 0));
-                globals.GetPlayer().DisplayToken(i, spriteRect);
-            }
-        }
-        if (swamp > 0)
-        {
-            for (int i = 0; i < swamp; i++)
-            {
-                Rect spriteRect = new Rect(new Vector2(swampX, swampY), new Vector2(0, 0));
-                globals.GetPlayer().DisplayToken(i, spriteRect);
-            }
-        }
-        if (mountains > 0)
-        {
-            for (int i = 0; i < mountains; i++)
-            {
-                Rect spriteRect = new Rect(new Vector2(mountainX, mountainY), new Vector2(0, 0));
-                globals.GetPlayer().DisplayToken(i, spriteRect);
-            }
-        }
-        if (plains > 0)
-        {
-            for (int i = 0; i < plains; i++)
-            {
-                Rect spriteRect = new Rect(new Vector2(plainX, plainY), new Vector2(0, 0));
-                globals.GetPlayer().DisplayToken(i, spriteRect);
-            }
-        }
     }
 
     #endregion
