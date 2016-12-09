@@ -31,13 +31,13 @@ public class EndingSceneScript : MonoBehaviour {
             players[i] = globals.GetPlayer(i);
         }
 
-        for (int i = 0; i < globals.CurrentPlayerCount; ++i)
-        {
-            if (players[i] != null)
-            {
-                players[i].VictoryPoints = i;
-            }
-        }
+        //for (int i = 0; i < globals.CurrentPlayerCount; ++i)
+        //{
+        //    if (players[i] != null)
+        //    {
+        //        players[i].VictoryPoints = i;
+        //    }
+        //}
 
         // sort players by victory points
         players = players.OrderByDescending(go => go.VictoryPoints).ToArray();
