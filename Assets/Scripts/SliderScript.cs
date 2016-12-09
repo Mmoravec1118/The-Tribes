@@ -11,7 +11,7 @@ public class SliderScript : MonoBehaviour {
 
     void Start()
     {
-        sliderButtonText.text = "Player Count: (2 -4 ) ";
+        sliderButtonText.text = "Player Count: ";
     }
 
     void Update()

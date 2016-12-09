@@ -61,23 +61,24 @@ public class TokenManager : MonoBehaviour {
         count = globals.CurrentPlayerCount;
 
         //get screen size values for area locations
-        screenX = Camera.main.rect.width;
-        screenY = Camera.main.rect.height;
+        screenX = Screen.width / 2f;
+        screenY = Screen.height / 2f;
 
         // set initial area x and y values
-        desertX = screenX * (2 / 3);
-        desertY = screenY * (1 / 8);
-        forestX = screenX * (1 / 4);
-        forestY = screenY * (2 / 3);
-        plainX = screenX * (2 / 3);
-        plainY = screenY * (2 / 3);
-        mountainX = screenX * (1 / 4);
-        mountainY = screenY * (1 / 8);
-        swampX = screenX * (1 / 4);
-        swampY = screenY * (1 / 3);
+        desertX = (float)(screenX * (2 / 3f));
+        desertY = (float)(screenY * (1 / 8f));
+        forestX = (float)(screenX * (1 / 4f));
+        forestY = (float)(screenY * (2 / 3f));
+        plainX = 0;
+        plainY = 0;
+        mountainX = (float)(screenX * (1 / 4f));
+        mountainY = (float)(screenY * (1 / 8f));
+        swampX = (float)(screenX * (1 / 4f));
+        swampY = (float)(screenY * (1 / 3f));
 
-        xOffset = WarriorToken.GetComponent<SpriteRenderer>().bounds.max.x * 2;
-        yOffset = WarriorToken.GetComponent<SpriteRenderer>().bounds.max.y * 2;
+        // set token offset
+        xOffset = WarriorToken.GetComponent<SpriteRenderer>().bounds.max.x;
+        yOffset = WarriorToken.GetComponent<SpriteRenderer>().bounds.max.y;
 
         // creat tokens and add them to list
         CreateTokens();
@@ -103,23 +104,23 @@ public class TokenManager : MonoBehaviour {
                 // move token position based on area
                 // desert area
                 case GlobalsScript.Areas.Desert:
-                    tokens[i].transform.position = new Vector3(desertX + (xOffset * i), desertY /*+ (yOffset * i)*/, 0);
+                    tokens[i].transform.position = new Vector3(desertX + (xOffset * i), desertY, 0);
                     break;
                     // forest area
                 case GlobalsScript.Areas.Forest:
-                    tokens[i].transform.position = new Vector3(forestX + (xOffset * i), forestY , 0);
+                    tokens[i].transform.position = new Vector3(forestX + (xOffset * i), forestY, 0);
                     break;
                     // mountain area
                 case GlobalsScript.Areas.Mountain:
-                    tokens[i].transform.position = new Vector3(mountainX + (xOffset * i), mountainY , 0);
+                    tokens[i].transform.position = new Vector3(mountainX + (xOffset * i), mountainY, 0);
                     break;
                     // swamp area
                 case GlobalsScript.Areas.Swamp:
-                    tokens[i].transform.position = new Vector3(swampX + (xOffset * i), swampY , 0);
+                    tokens[i].transform.position = new Vector3(swampX + (xOffset * i), swampY, 0);
                     break;
                     //plains area
                 case GlobalsScript.Areas.Plain:
-                    tokens[i].transform.position = new Vector3(plainX + (xOffset * i), plainY , 0);
+                    tokens[i].transform.position = new Vector3(plainX + (xOffset * i), plainY, 0);
                     break;
             }
         }
