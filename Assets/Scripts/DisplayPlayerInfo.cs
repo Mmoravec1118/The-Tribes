@@ -19,14 +19,13 @@ public class DisplayPlayerInfo : MonoBehaviour {
 
         playerDisplay = GetComponent<Text>();
         globals = FindObjectOfType<GlobalsScript>();
-	
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
         DisplayText();
-
     }
 
     #region Methods
@@ -47,31 +46,6 @@ public class DisplayPlayerInfo : MonoBehaviour {
              + "  Food:   " + currplayer.Food + "\n"
              + "  People: " + currplayer.People + "\n"
              + "Victory Points:" + currplayer.VictoryPoints;
-    }
-
-    public void DisplayToken()
-    {
-        switch(globals.GetPlayer().Area)
-        {
-            case GlobalsScript.Areas.Desert:
-
-                break;
-
-            case GlobalsScript.Areas.Forest:
-                break;
-
-            case GlobalsScript.Areas.Mountain:
-                break;
-
-            case GlobalsScript.Areas.Plain:
-                break;
-
-            case GlobalsScript.Areas.Swamp:
-                break;
-
-            default:
-                break;
-        }
     }
 
     #endregion

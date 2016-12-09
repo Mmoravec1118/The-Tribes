@@ -7,9 +7,24 @@ public class PlayerClass
 
     #region Fields
 
+    #region Serializable Fields
+    // serializable fields
+    [SerializeField]
+    Texture2D warriorToken;
+    [SerializeField]
+    Texture2D banditToken;
+    [SerializeField]
+    Texture2D agriculturToken;
+    [SerializeField]
+    Texture2D peacefulToken;
+    [SerializeField]
+    Texture2D nomadToken;
+    #endregion
+
     // dictionaries for stats and resources
     Dictionary<GlobalsScript.Traits, int> statDictionary = new Dictionary<GlobalsScript.Traits, int>();
     Dictionary<GlobalsScript.Resources, int> resourceDictionary = new Dictionary<GlobalsScript.Resources, int>();
+
 
     // victory point counter
     int victoryPoint = 0;
@@ -34,6 +49,7 @@ public class PlayerClass
     {
         // Initializes all values to default
         ResetPlayerValues();
+
     }
 
     #endregion
@@ -249,7 +265,7 @@ public class PlayerClass
         currArea = GlobalsScript.Areas.Plain;
 
         name = "";
-    }
+    }       
 
     #endregion
 }
