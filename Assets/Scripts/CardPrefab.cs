@@ -62,6 +62,7 @@ namespace Assets.Scripts
                     effect.ApplyEffect();
                 }
                 //currPlayer.Strength++;
+                currPlayer.VictoryPoints++;
                 die.NeedsRoll = true;
                 globals.PlayerTurn += 1;
                // menu.exitDrawCardPhase();
@@ -96,6 +97,7 @@ namespace Assets.Scripts
                     effect.ApplyEffect();
                 }
                 //currPlayer.Trust++;
+                currPlayer.VictoryPoints++;
                 die.NeedsRoll = true;
                 globals.PlayerTurn += 1;
             }
@@ -127,6 +129,7 @@ namespace Assets.Scripts
                 {
                     effect.ApplyEffect();
                 }
+                currPlayer.VictoryPoints++;
                 //currPlayer.Notoriety++;
                 die.NeedsRoll = true;
                 globals.PlayerTurn += 1;
