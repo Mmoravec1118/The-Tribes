@@ -61,24 +61,24 @@ public class TokenManager : MonoBehaviour {
         count = globals.CurrentPlayerCount;
 
         //get screen size values for area locations
-        screenX = Screen.width / 2f;
-        screenY = Screen.height / 2f;
+        //screenX = Screen.width / 2f;
+        //screenY = Screen.height / 2f;
 
         // set initial area x and y values
-        desertX = (float)(screenX * (2 / 3f));
-        desertY = (float)(screenY * (1 / 8f));
-        forestX = (float)(screenX * (1 / 4f));
-        forestY = (float)(screenY * (2 / 3f));
+        desertX = -60;
+        desertY = -10;
+        forestX = 60;
+        forestY = -10;
         plainX = 0;
         plainY = 0;
-        mountainX = (float)(screenX * (1 / 4f));
-        mountainY = (float)(screenY * (1 / 8f));
-        swampX = (float)(screenX * (1 / 4f));
-        swampY = (float)(screenY * (1 / 3f));
+        mountainX = -60;
+        mountainY = 50;
+        swampX = -60;
+        swampY = 20;
 
         // set token offset
-        xOffset = WarriorToken.GetComponent<SpriteRenderer>().bounds.max.x;
-        yOffset = WarriorToken.GetComponent<SpriteRenderer>().bounds.max.y;
+        xOffset = 15;
+        yOffset = 2;
 
         // creat tokens and add them to list
         CreateTokens();
