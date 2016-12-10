@@ -40,19 +40,4 @@ public class Card
     }
 
     #endregion
-
-    #region Start
-
-    // Use this for initialization
-    public void Start()
-    {
-        Card card = MonoBehaviour.FindObjectOfType<GlobalsScript>().PlayDeck.Dequeue();
-        titleMesh.text = card.title;
-        descriptionMesh.text = card.description;
-        option1.text = card.choices[0].Description;
-        option2.text = card.choices[1].Description;
-        option3.text = card.choices[2].Description;
-    }
-
-    #endregion
 }

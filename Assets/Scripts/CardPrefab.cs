@@ -6,7 +6,9 @@ namespace Assets.Scripts
 {
     class CardPrefab : MonoBehaviour
     {
-        // references to card items
+        #region Fields
+
+        // References to card items
         [SerializeField]
         Text titleMesh;
         [SerializeField]
@@ -18,225 +20,183 @@ namespace Assets.Scripts
         [SerializeField]
         Text option3;
 
+        // The current card in play
         Card card;
 
-        GlobalsScript.Traits currTrait;
-
+        // Reference to the global script
         GlobalsScript globals;
+
+        // Reference to the menu that displays this card
         MenuButtonScript menu;
 
-        // reference to die roller
+        // Reference to die roller
         DieScript die;
 
-        bool win;
-        // reference to current player
+        // Reference to current player
         PlayerClass currPlayer;
-        public CardChoice[] choices { get; set; }
+
+        // This is what keeps track of the phase of card choice
+        CardPrefabState cardPrefabState;
+
+        // Keeps track of which option was chosen
+        int optionChosen;
+
+        #endregion
+
+        #region Initialization
 
         public void Start()
         {
             card = MonoBehaviour.FindObjectOfType<Deck>().Dequeue();
             titleMesh.text = card.title;
             descriptionMesh.text = card.description;
-            choices = card.choices;
             option1.text = card.choices[0].Description;
             option2.text = card.choices[1].Description;
             option3.text = card.choices[2].Description;
+
+            // get references to all necessary objects
+            globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
+            die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
+            currPlayer = globals.GetPlayer();
+            menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
+
+            // Initializes the card so that no option has been chosen yet
+            cardPrefabState = CardPrefabState.Waiting;
+            optionChosen = 0;
+
+            // Sets the die to be inactive until it is needed
+            die.gameObject.SetActive(false);
         }
 
-        // first button of card
+        #endregion
+
+        #region Button Methods
+
+        // First button on card
         public void CardChoice1()
         {
-            // get references to all necessary objects
-            globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
-            die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
-            currPlayer = globals.GetPlayer();
-            menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
+            // Checks to see if an option has been chosen to prevent more than one from being selected
+            if (cardPrefabState == CardPrefabState.Waiting)
+            {
+                // Records that an option has been selected and which option it is
+                cardPrefabState = CardPrefabState.OptionChosen;
+                optionChosen = 0;
 
-            win = choices[0].CheckResult();
-           // StartCoroutine(ShowInfoTimer());
-            if (win)
-            {
-                foreach (Effect effect in card.choices[0].winEffects)
-                {
-                    effect.ApplyEffect();
-                }
-                //currPlayer.Strength++;
-                currPlayer.VictoryPoints++;
+                // Allows die to be rolled
+                die.gameObject.SetActive(true);
                 die.NeedsRoll = true;
-                globals.PlayerTurn += 1;
-               // menu.exitDrawCardPhase();
             }
-            else
-            {
-                foreach (Effect effect in card.choices[0].lossEffects)
-                {
-                    effect.ApplyEffect();
-                }
-                //currPlayer.Wood--;
-                die.NeedsRoll = true;
-                globals.PlayerTurn += 1;
-            }
-            Invoke("exitMenuPhase", 5);
         }
 
-        // second button on card
+        // Second button on card
         public void CardChoice2()
         {
-            // get references to all necessary objects
-            globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
-            die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
-            currPlayer = globals.GetPlayer();
-            menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
+            // Checks to see if an option has been chosen to prevent more than one from being selected
+            if (cardPrefabState == CardPrefabState.Waiting)
+            {
+                // Records that an option has been selected and which option it is
+                cardPrefabState = CardPrefabState.OptionChosen;
+                optionChosen = 1;
 
-            win = card.choices[1].CheckResult();
-            if (win)
-            {
-                foreach (Effect effect in card.choices[1].winEffects)
-                {
-                    effect.ApplyEffect();
-                }
-                //currPlayer.Trust++;
-                currPlayer.VictoryPoints++;
+                // Allows die to be rolled
+                die.gameObject.SetActive(true);
                 die.NeedsRoll = true;
-                globals.PlayerTurn += 1;
             }
-            else
-            {
-                foreach (Effect effect in card.choices[1].lossEffects)
-                {
-                    effect.ApplyEffect();
-                }
-                //currPlayer.Food--;
-                die.NeedsRoll = true;
-                globals.PlayerTurn += 1;
-            }
-            Invoke("exitMenuPhase", 5);
         }
 
-        // third button on card
+        // Third button on card
         public void CardChoice3()
         {
-            // get references to all necessary objects
-            globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
-            die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
-            currPlayer = globals.GetPlayer();
+            // Checks to see if an option has been chosen to prevent more than one from being selected
+            if (cardPrefabState == CardPrefabState.Waiting)
+            {
+                // Records that an option has been selected and which option it is
+                cardPrefabState = CardPrefabState.OptionChosen;
+                optionChosen = 2;
 
-            win = card.choices[2].CheckResult();
-            if (win)
-            {
-                foreach (Effect effect in card.choices[2].winEffects)
-                {
-                    effect.ApplyEffect();
-                }
-                currPlayer.VictoryPoints++;
-                //currPlayer.Notoriety++;
+                // Allows die to be rolled
+                die.gameObject.SetActive(true);
                 die.NeedsRoll = true;
-                globals.PlayerTurn += 1;
             }
-            else
-            {
-                foreach (Effect effect in card.choices[2].lossEffects)
-                {
-                    effect.ApplyEffect();
-                }
-                //currPlayer.People--;
-                die.NeedsRoll = true;
-                globals.PlayerTurn += 1;
-            }
-            Invoke("exitMenuPhase", 5);
         }
 
+        #endregion
+
+        #region Public Methods
+
+        // The method that ends the card
         public void exitMenuPhase()
         {
-           menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
+            globals.PlayerTurn += 1;
+            //die.gameObject.SetActive(false);
+            menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
             menu.exitDrawCardPhase();
         }
 
-        // checks result of player stats + die result against card cost
-        //void CheckResult()
-        //{
-        //    if (!die.NeedsRoll)
-        //    {
-        //        switch (currTrait)
-        //        {
-        //            case GlobalsScript.Traits.Strength:
-        //                {
-        //                    if (currPlayer.Strength + die.DieResult >= cost)
-        //                    {
-        //                        descriptionMesh.text = card.w winText;
-        //                        win = true;
-        //                    }
-        //                    else
-        //                    {
-        //                        currCard.descriptionMesh.text = lossText;
-        //                        win = false;
-        //                    }
-        //                    break;
-        //                }
-        //            case GlobalsScript.Traits.Agility:
-        //                {
-        //                    if (currPlayer.Agility + die.DieResult >= cost)
-        //                    {
-        //                        currCard.descriptionMesh.text = winText;
-        //                        win = true;
-        //                    }
-        //                    else
-        //                    {
-        //                        currCard.descriptionMesh.text = lossText;
-        //                        win = false;
-        //                    }
-        //                    break;
-        //                }
-        //            case GlobalsScript.Traits.Trust:
-        //                {
-        //                    if (currPlayer.Trust + die.DieResult >= cost)
-        //                    {
-        //                        currCard.descriptionMesh.text = winText;
-        //                        win = true;
-        //                    }
-        //                    else
-        //                    {
-        //                        currCard.descriptionMesh.text = lossText;
-        //                        win = false;
-        //                    }
-        //                    break;
-        //                }
-        //            case GlobalsScript.Traits.Notoriety:
-        //                {
-        //                    if (currPlayer.Notoriety + die.DieResult >= cost)
-        //                    {
-        //                        currCard.descriptionMesh.text = winText;
-        //                        win = true;
-        //                    }
-        //                    else
-        //                    {
-        //                        currCard.descriptionMesh.text = lossText;
-        //                        win = false;
-        //                    }
-        //                    break;
-        //                }
-        //            case GlobalsScript.Traits.Survival:
-        //                {
-        //                    if (currPlayer.Survival + die.DieResult >= cost)
-        //                    {
-        //                        currCard.descriptionMesh.text = winText;
-        //                        win = true;
-        //                    }
-        //                    else
-        //                    {
-        //                        currCard.descriptionMesh.text = lossText;
-        //                        win = false;
-        //                    }
-        //                    break;
-        //                }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        currCard.descriptionMesh.text = "Roll Die and press Button again";
+        // Update method, called every frame
+        public void Update()
+        {
+            // Checks for whether an option has been chosen and whether the die has been rolled.
+            // If both are true, commences with determining whether player won or not.
+            if (cardPrefabState == CardPrefabState.OptionChosen && die.NeedsRoll == false)
+            {
+                // If player wins roll, apply winning effects.
+                // Otherwise, the player has lost the roll and losing effects apply.
+                if (card.choices[optionChosen].CheckResult() == true)
+                {
+                    OptionWin(optionChosen);
+                }
+                else
+                {
+                    OptionLose(optionChosen);
+                }
 
-        //    }
-        //}
+                // Waits for a specified amount of time before removing card and sets state to exiting
+                cardPrefabState = CardPrefabState.ExitInvoked;
+                Invoke("exitMenuPhase", 5);
+            }
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        // Applies winning effects
+        private void OptionWin(int whichOption)
+        {
+            // Applies all the winning conditions to the player's stats
+            foreach (Effect effect in card.choices[whichOption].winEffects)
+            {
+                effect.ApplyEffect();
+            }
+            
+            // Increases the player's victory points for winning
+            currPlayer.VictoryPoints++;
+        }
+
+        // Applies losing effects
+        private void OptionLose(int whichOption)
+        {
+            // Applies all the losing conditions to the player's stats
+            foreach (Effect effect in card.choices[whichOption].lossEffects)
+            {
+                effect.ApplyEffect();
+            }
+        }
+
+        #endregion
+
+        #region Enumerations
+
+        // These are the enumerations of the state in which the card prefab may be
+        private enum CardPrefabState
+        {
+            Waiting,       // 0
+            OptionChosen,  // 1
+            ExitInvoked    // 2
+        }
+
+        #endregion
     }
+
 }
