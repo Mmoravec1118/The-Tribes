@@ -60,10 +60,6 @@ public class TokenManager : MonoBehaviour {
         // get number of players in this game
         count = globals.CurrentPlayerCount;
 
-        //get screen size values for area locations
-        //screenX = Screen.width / 2f;
-        //screenY = Screen.height / 2f;
-
         // set initial area x and y values
         desertX = -60;
         desertY = -10;
@@ -78,7 +74,6 @@ public class TokenManager : MonoBehaviour {
 
         // set token offset
         xOffset = 15;
-        yOffset = 2;
 
         // creat tokens and add them to list
         CreateTokens();

@@ -2,12 +2,10 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Card {
+public class Card
+{
 
     #region Fields
-
-    // deck reference
-   // public Deck deck;
 
     // title text
     public string title { get; set; }
@@ -19,11 +17,16 @@ public class Card {
     public CardChoice[] choices { get; set; }
 
     // references to card items
-    [SerializeField] Text titleMesh;
-    [SerializeField] Text descriptionMesh;
-    [SerializeField] Text option1;
-    [SerializeField] Text option2;
-    [SerializeField] Text option3;
+    [SerializeField]
+    Text titleMesh;
+    [SerializeField]
+    Text descriptionMesh;
+    [SerializeField]
+    Text option1;
+    [SerializeField]
+    Text option2;
+    [SerializeField]
+    Text option3;
 
     #endregion
 
@@ -41,7 +44,8 @@ public class Card {
     #region Start
 
     // Use this for initialization
-    public void Start () {
+    public void Start()
+    {
         Card card = MonoBehaviour.FindObjectOfType<GlobalsScript>().PlayDeck.Dequeue();
         titleMesh.text = card.title;
         descriptionMesh.text = card.description;

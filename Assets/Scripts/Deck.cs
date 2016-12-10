@@ -2569,20 +2569,6 @@ public class Deck : MonoBehaviour {
 
     #endregion
 
-    //void Update()
-    //{
-    //    if (delete)
-    //    {
-    //        deleteTimer++;
-    //    }
-    //    if (deleteTimer >= 3000)
-    //    {
-    //        delete = false;
-    //        deleteTimer = 0;
-    //        Object.Destroy(currCard);
-    //    }
-    //}
-
     //removed card from the deck
     public Card Dequeue()
 	{
@@ -2625,5 +2611,4 @@ public class Deck : MonoBehaviour {
         //delete = true;
         Object.Destroy(currCard);
     }
-
 }
