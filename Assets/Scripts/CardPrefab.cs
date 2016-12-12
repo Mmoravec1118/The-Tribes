@@ -25,6 +25,8 @@ namespace Assets.Scripts
         GlobalsScript globals;
         MenuButtonScript menu;
 
+        public GameObject toolTipPrefab;
+
         // reference to die roller
         DieScript die;
 

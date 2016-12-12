@@ -87,6 +87,145 @@ public class CardChoice
         }
     }
 
+    //allows a button index to convert text for the tooltip.
+    public string GetToolTipText()
+    {
+
+        return description;
+    }
+
+    public string GetWinEffects()
+    {
+        //FOR CODERS
+        //THIS CONTROLS THE TEXT ASSIGNED TO THE TOOLTIP.  NEEDS TO READ BACK THE EFFECTS USED IN WINEFFECTS AND LOSEEFFECTS
+        string output;
+        output = "If Win: ";
+        foreach (Effect winEffect in winEffects)
+        {
+        //    if (winEffect.GetTrait == GlobalsScript.Traits.Agility)
+
+        //    {
+        //        output += (winEffect.GetTrait.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (winEffect.GetTrait == GlobalsScript.Traits.Strength)
+
+        //    {
+        //        output += (winEffect.GetTrait.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (winEffect.GetTrait == GlobalsScript.Traits.Notoriety)
+
+        //    {
+        //        output += (winEffect.GetTrait.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (winEffect.GetTrait == GlobalsScript.Traits.Survival)
+
+        //    {
+        //        output += (winEffect.GetTrait.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (winEffect.GetTrait == GlobalsScript.Traits.Trust)
+
+        //    {
+        //        output += (winEffect.GetTrait.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (winEffect.GetResource == GlobalsScript.Resources.Food)
+
+        //    {
+        //        output += (winEffect.GetResource.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (winEffect.GetResource == GlobalsScript.Resources.People)
+
+        //    {
+        //        output += (winEffect.GetResource.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (winEffect.GetResource == GlobalsScript.Resources.Stone)
+
+        //    {
+        //        output += (winEffect.GetResource.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (winEffect.GetResource == GlobalsScript.Resources.Wood)
+
+        //    {
+        //        output += (winEffect.GetResource.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else
+        //    {
+        //        output += "";
+        //    }
+        //}
+        //output += "If Lose: ";
+        //foreach (Effect loseEffect in lossEffects)
+        //{
+        //    if (loseEffect.GetTrait == GlobalsScript.Traits.Agility)
+
+        //    {
+        //        output += (loseEffect.GetTrait.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (loseEffect.GetTrait == GlobalsScript.Traits.Strength)
+
+        //    {
+        //        output += (loseEffect.GetTrait.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (loseEffect.GetTrait == GlobalsScript.Traits.Notoriety)
+
+        //    {
+        //        output += (loseEffect.GetTrait.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (loseEffect.GetTrait == GlobalsScript.Traits.Survival)
+
+        //    {
+        //        output += (loseEffect.GetTrait.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (loseEffect.GetTrait == GlobalsScript.Traits.Trust)
+
+        //    {
+        //        output += (loseEffect.GetTrait.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (loseEffect.GetResource == GlobalsScript.Resources.Food)
+
+        //    {
+        //        output += (loseEffect.GetResource.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (loseEffect.GetResource == GlobalsScript.Resources.People)
+
+        //    {
+        //        output += (loseEffect.GetResource.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (loseEffect.GetResource == GlobalsScript.Resources.Stone)
+
+        //    {
+        //        output += (loseEffect.GetResource.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else if (loseEffect.GetResource == GlobalsScript.Resources.Wood)
+
+        //    {
+        //        output += (loseEffect.GetResource.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
+        //    }
+
+        //    else
+        //    {
+        //        output += "";
+        //    }
+        }
+        return output;
+    }
+
     #endregion
 
     #region Button Methods

@@ -169,7 +169,6 @@ public class GlobalsScript : MonoBehaviour {
         SceneManager.LoadScene("EndingScene");
     }
 
-
     #endregion
 
 }
