@@ -83,7 +83,8 @@ public class EndingSceneScript : MonoBehaviour {
              + "  Stone:  " + players[i].Stone + "\n"
              + "  Food:   " + players[i].Food + "\n"
              + "  People: " + players[i].People + "\n"
-             + "Victory Points:" + players[i].VictoryPoints;
+             + "Victory Points:" + players[i].VictoryPoints + "\n"
+             + "Player's Story:" + "\n" + players[i].Story;
         }
     }
 

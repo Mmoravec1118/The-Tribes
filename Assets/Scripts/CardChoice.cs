@@ -34,6 +34,13 @@ public class CardChoice
 
     public CardChoice(string description, string winText, string lossText, GlobalsScript.Traits trait, int toBeat, Effect[] winEffects, Effect[] lossEffects)
     {
+        // get references to all necessary objects
+        globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
+        currPlayer = globals.GetPlayer();
+        currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
+        menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
+
+        // set card text correctly
         this.description = description;
         this.winEffects = winEffects;
         this.lossEffects = lossEffects;
@@ -94,12 +101,10 @@ public class CardChoice
     // first button of card
     public void CardChoice1()
     {
-        // get references to all necessary objects
-        globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
+        // get reference to dieroller object
         die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = globals.GetPlayer();
-        currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
-        menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
+
+        
 
         win = CheckResult();
         if (win)
@@ -108,6 +113,7 @@ public class CardChoice
             {
                 effect.ApplyEffect();
             }
+
             // currPlayer.Strength++;
             currPlayer.VictoryPoints++;
             die.NeedsRoll = true;
@@ -130,12 +136,8 @@ public class CardChoice
     // second button on card
     public void CardChoice2()
     {
-        // get references to all necessary objects
-        globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
+        // get reference to dieroller object
         die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = globals.GetPlayer();
-        currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
-        menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
         CheckResult();
         if (win)
@@ -165,12 +167,8 @@ public class CardChoice
     // third button on card
     public void CardChoice3()
     {
-        // get references to all necessary objects
-        globals = MonoBehaviour.FindObjectOfType<GlobalsScript>();
+        // get reference to dieroller object
         die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
-        currPlayer = globals.GetPlayer();
-        currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
-        menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
         CheckResult();
         if (win)
@@ -205,6 +203,9 @@ public class CardChoice
         currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
         currPlayer = globals.GetPlayer();
 
+        // add to player story
+        globals.GetPlayer().Story += description;
+
         switch (currTrait)
         {
             case GlobalsScript.Traits.Strength:
@@ -212,11 +213,15 @@ public class CardChoice
                     if (currPlayer.Strength + die.DieResult >= cost)
                     {
                         currCard.descriptionMesh.text = winText;
+                        // add to player story
+                        globals.GetPlayer().Story += winText;
                         return true;
                     }
                     else
                     {
                         currCard.descriptionMesh.text = lossText;
+                        // add to player story
+                        globals.GetPlayer().Story += lossText;
                         return false;
                     }
                    // break;
@@ -226,11 +231,15 @@ public class CardChoice
                     if (currPlayer.Agility + die.DieResult >= cost)
                     {
                         currCard.descriptionMesh.text = winText;
+                        // add to player story
+                        globals.GetPlayer().Story += winText;
                         return true;
                     }
                     else
                     {
                         currCard.descriptionMesh.text = lossText;
+                        // add to player story
+                        globals.GetPlayer().Story += lossText;
                         return false;
                     }
                   //  break;
@@ -240,11 +249,15 @@ public class CardChoice
                     if (currPlayer.Trust + die.DieResult >= cost)
                     {
                         currCard.descriptionMesh.text = winText;
+                        // add to player story
+                        globals.GetPlayer().Story += winText;
                         return true;
                     }
                     else
                     {
                         currCard.descriptionMesh.text = lossText;
+                        // add to player story
+                        globals.GetPlayer().Story += lossText;
                         return false;
                     }
                  //   break;
@@ -254,11 +267,15 @@ public class CardChoice
                     if (currPlayer.Notoriety + die.DieResult >= cost)
                     {
                         currCard.descriptionMesh.text = winText;
+                        // add to player story
+                        globals.GetPlayer().Story += winText;
                         return true;
                     }
                     else
                     {
                         currCard.descriptionMesh.text = lossText;
+                        // add to player story
+                        globals.GetPlayer().Story += lossText;
                         return false;
                     }
                  //   break;
@@ -268,11 +285,15 @@ public class CardChoice
                     if (currPlayer.Survival + die.DieResult >= cost)
                     {
                         currCard.descriptionMesh.text = winText;
+                        // add to player story
+                        globals.GetPlayer().Story += winText;
                         return true;
                     }
                     else
                     {
                         currCard.descriptionMesh.text = lossText;
+                        // add to player story
+                        globals.GetPlayer().Story += lossText;
                         return false;
                     }
               //      break;

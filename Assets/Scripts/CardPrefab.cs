@@ -60,6 +60,9 @@ namespace Assets.Scripts
             currPlayer = globals.GetPlayer();
             menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
+            // Add to player story
+            globals.GetPlayer().Story += card.title + card.description;
+
             // Initializes the card so that no option has been chosen yet
             cardPrefabState = CardPrefabState.Waiting;
             optionChosen = 0;
