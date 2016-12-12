@@ -15,9 +15,16 @@ public class EndingSceneScript : MonoBehaviour {
 
     // ending canvas
     [SerializeField] Canvas ending;
+    //[SerializeField]
+    //Button b1;
+    //[SerializeField]
+    //Button b2;
 
     // surrent player display
     int currPlayer = 0;
+
+    // display eding bool
+    bool displayButtons = false;
 
     // Use this for initialization
     void Start () {
@@ -31,14 +38,6 @@ public class EndingSceneScript : MonoBehaviour {
             players[i] = globals.GetPlayer(i);
         }
 
-        //for (int i = 0; i < globals.CurrentPlayerCount; ++i)
-        //{
-        //    if (players[i] != null)
-        //    {
-        //        players[i].VictoryPoints = i;
-        //    }
-        //}
-
         // sort players by victory points
         players = players.OrderByDescending(go => go.VictoryPoints).ToArray();
 
@@ -51,15 +50,14 @@ public class EndingSceneScript : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (currPlayer < globals.CurrentPlayerCount - 1)
+            if (currPlayer < globals.CurrentPlayerCount - 1 && !displayButtons)
             {
                 currPlayer++;
             }
         else
             {
-                ending.enabled = true;
-                enabled = false;
-                //DisplayEnd();
+                displayButtons = true;
+                
             }
         }
 	}
@@ -86,12 +84,13 @@ public class EndingSceneScript : MonoBehaviour {
              + "Victory Points:" + players[i].VictoryPoints + "\n"
              + "Player's Story:" + "\n" + players[i].Story;
         }
+        if (displayButtons)
+        {
+            ending.gameObject.SetActive(true);
+            // b1.enabled = true;
+            //b2.enabled = true;
+            //displayText0.text = "Game Over";
+            gameObject.SetActive(false);
+        }
     }
-
-    void DisplayEnd()
-    {
-        ending.enabled = true;
-        enabled = false;
-    }
-
 }
