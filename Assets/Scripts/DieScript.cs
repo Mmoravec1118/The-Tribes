@@ -14,7 +14,7 @@ public class DieScript : MonoBehaviour {
     bool dieRolling;
     float rollingTimer = 0;
 
-    bool needsToRoll = true;
+    bool needsToRoll = false;
 
     public void Update()
     {

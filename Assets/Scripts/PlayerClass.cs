@@ -265,21 +265,7 @@ public class PlayerClass
         currArea = GlobalsScript.Areas.Plain;
 
         name = "";
-    }
-
-    public void DisplayToken(int count, Rect spriteRect)
-    {
-        Sprite token;
-        switch (tribeType)
-        {
-            case GlobalsScript.TribeType.Warrior:
-                {
-                    token = Sprite.Create(warriorToken, spriteRect, Vector2.zero);
-                    break;
-                }
-        }
-    }
-        
+    }       
 
     #endregion
 }
