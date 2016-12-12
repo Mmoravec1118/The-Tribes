@@ -9,7 +9,6 @@ using System.Collections;
 public class PlayerSetupCanvasTextHandler : MonoBehaviour {
 
     public Text statDisplay;
-    ButtonBehaviorScript buttonsScript;
     public PlayerSetupButtonScript playerSetupButtonScript;
 
     // The current player stats to show
@@ -18,7 +17,6 @@ public class PlayerSetupCanvasTextHandler : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        buttonsScript = FindObjectOfType<ButtonBehaviorScript>();
         playerSetupButtonScript = FindObjectOfType<PlayerSetupButtonScript>();
     }
 

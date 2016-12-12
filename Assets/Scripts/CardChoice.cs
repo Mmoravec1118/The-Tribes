@@ -96,133 +96,47 @@ public class CardChoice
 
     public string GetWinEffects()
     {
-        //FOR CODERS
-        //THIS CONTROLS THE TEXT ASSIGNED TO THE TOOLTIP.  NEEDS TO READ BACK THE EFFECTS USED IN WINEFFECTS AND LOSEEFFECTS
+        // Assigns a string to return and adds the necessary info to that string
         string output;
-        output = "If Win: ";
+        output = "If You Win: \n";
+
         foreach (Effect winEffect in winEffects)
         {
-        //    if (winEffect.GetTrait == GlobalsScript.Traits.Agility)
-
-        //    {
-        //        output += (winEffect.GetTrait.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (winEffect.GetTrait == GlobalsScript.Traits.Strength)
-
-        //    {
-        //        output += (winEffect.GetTrait.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (winEffect.GetTrait == GlobalsScript.Traits.Notoriety)
-
-        //    {
-        //        output += (winEffect.GetTrait.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (winEffect.GetTrait == GlobalsScript.Traits.Survival)
-
-        //    {
-        //        output += (winEffect.GetTrait.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (winEffect.GetTrait == GlobalsScript.Traits.Trust)
-
-        //    {
-        //        output += (winEffect.GetTrait.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (winEffect.GetResource == GlobalsScript.Resources.Food)
-
-        //    {
-        //        output += (winEffect.GetResource.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (winEffect.GetResource == GlobalsScript.Resources.People)
-
-        //    {
-        //        output += (winEffect.GetResource.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (winEffect.GetResource == GlobalsScript.Resources.Stone)
-
-        //    {
-        //        output += (winEffect.GetResource.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (winEffect.GetResource == GlobalsScript.Resources.Wood)
-
-        //    {
-        //        output += (winEffect.GetResource.ToString() + ":" + winEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else
-        //    {
-        //        output += "";
-        //    }
-        //}
-        //output += "If Lose: ";
-        //foreach (Effect loseEffect in lossEffects)
-        //{
-        //    if (loseEffect.GetTrait == GlobalsScript.Traits.Agility)
-
-        //    {
-        //        output += (loseEffect.GetTrait.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (loseEffect.GetTrait == GlobalsScript.Traits.Strength)
-
-        //    {
-        //        output += (loseEffect.GetTrait.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (loseEffect.GetTrait == GlobalsScript.Traits.Notoriety)
-
-        //    {
-        //        output += (loseEffect.GetTrait.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (loseEffect.GetTrait == GlobalsScript.Traits.Survival)
-
-        //    {
-        //        output += (loseEffect.GetTrait.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (loseEffect.GetTrait == GlobalsScript.Traits.Trust)
-
-        //    {
-        //        output += (loseEffect.GetTrait.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (loseEffect.GetResource == GlobalsScript.Resources.Food)
-
-        //    {
-        //        output += (loseEffect.GetResource.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (loseEffect.GetResource == GlobalsScript.Resources.People)
-
-        //    {
-        //        output += (loseEffect.GetResource.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (loseEffect.GetResource == GlobalsScript.Resources.Stone)
-
-        //    {
-        //        output += (loseEffect.GetResource.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else if (loseEffect.GetResource == GlobalsScript.Resources.Wood)
-
-        //    {
-        //        output += (loseEffect.GetResource.ToString() + ":" + loseEffect.GetChange.ToString() + ". ");
-        //    }
-
-        //    else
-        //    {
-        //        output += "";
-        //    }
+            // If the effect is for a trait, add the trait and the numerical effect to the win effect string.
+            // If the effect is not for a trait, assume it's a resource one and add it and its numerical effect to the string.
+            if (winEffect.IsTrait() == true)
+            {
+                output += winEffect.GetTrait.ToString() + " +" + winEffect.GetChange.ToString() + "; ";
+            }
+            else
+            {
+                output += winEffect.GetResource.ToString() + " +" + winEffect.GetChange.ToString() + "; ";
+            }
         }
+        output += "\n";
+        return output;
+    }
+
+    public string GetLossEffects()
+    {
+        // Assigns a string to return and adds the necessary info to that string
+        string output;
+        output = "If You Lose: \n";
+
+        foreach (Effect lossEffect in lossEffects)
+        {
+            // If the effect is for a trait, add the trait and the numerical effect to the lose effect string.
+            // If the effect is not for a trait, assume it's a resource one and add it and its numerical effect to the string.
+            if (lossEffect.IsTrait() == true)
+            {
+                output += lossEffect.GetTrait.ToString() + " " + lossEffect.GetChange.ToString() + "; ";
+            }
+            else
+            {
+                output += lossEffect.GetResource.ToString() + " " + lossEffect.GetChange.ToString() + "; ";
+            }
+        }
+        output += "\n";
         return output;
     }
 
@@ -334,9 +248,6 @@ public class Effect
     GlobalsScript.Traits toChangeTrait;
 	GlobalsScript.Resources toChangeResource;
 
-    // bool if things should change and what to change
-    bool ChangeStuff = false;
-
     bool trait = false;
     bool resource = false;
 
@@ -378,31 +289,26 @@ public class Effect
                 case GlobalsScript.Traits.Agility:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Agility += change;
-                        ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Traits.Strength:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Strength += change;
-                        ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Traits.Notoriety:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Notoriety += change;
-                        ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Traits.Survival:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Survival += change;
-                        ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Traits.Trust:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Trust += change;
-                        ChangeStuff = false;
                         break;
                     }
             }
@@ -420,25 +326,21 @@ public class Effect
                 case GlobalsScript.Resources.Wood:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Wood += change;
-                        ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Resources.Stone:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Stone += change;
-                        ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Resources.Food:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Food += change;
-                        ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Resources.People:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().People += change;
-                        ChangeStuff = false;
                         break;
                     }
             }
@@ -474,11 +376,18 @@ public class Effect
         }
     }
 
-    public bool SetChange
+    // Returns whether the effect is for a trait or not.
+    // Because there are only two types of effects - traits and resources - hypothetically
+    // by not being a trait, you could assume the effect is a resource one.
+    public bool IsTrait()
     {
-        set
+        if (trait == true && resource == false)
         {
-            ChangeStuff = value;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 

@@ -2,32 +2,39 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Deck : MonoBehaviour {
+public class Deck : MonoBehaviour
+{
+
+    #region Fields
 
     static Deck instance;
     Object currCard;
-    bool delete = false;
+    //bool delete = false;
     int deleteTimer;
 
 	//fields for a new deck
 	public Queue<Card> deck;
-    public GameObject cardPrefab; 
+    public GameObject cardPrefab;
 
-    public Deck()
-        {
-        Start();
-        DontDestroyOnLoad(this);
-        }
+    #endregion
 
     #region Create Deck
 
     // Use this for initialization
-    void Start () {
+    void Start () 
+    {
+        // Prevents the deck from being destroyed upon changing scenes
+        DontDestroyOnLoad(this);
 		
-	//instantiate new deck on start
+	    //instantiate new deck on start
 		deck = new Queue<Card>();
         cardPrefab = Resources.Load("CARD_PREFAB") as GameObject;
         //add items to the queue.
+
+        #region Event Cards
+
+        #region Card 1 - Orc Invasion
+
         //CARD 1
         //ORC INVASION
         deck.Enqueue (
@@ -100,7 +107,11 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 1
 		);
 
-		//add second card
+        #endregion
+
+        #region Card 2 - Spider Infestation
+
+        //add second card
 		//CARD 2
 		//SPIDER INFESTATION
 		deck.Enqueue (
@@ -168,7 +179,11 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 2
 		);
 
-		//add card 3
+        #endregion
+
+        #region Card 3 - Minotaur Rutting Season
+
+        //add card 3
 		//CARD 3
 		//MINOTAUR RUTTING SEASON
 		deck.Enqueue (
@@ -237,8 +252,11 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 3
 		);
 
+        #endregion
 
-		//CARD 4
+        #region Card 4 - Pixies at Play
+
+        //CARD 4
 		//PIXIES AT PLAY
 		deck.Enqueue (
 			//new card one
@@ -306,8 +324,11 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 4
 		);
 
+        #endregion
 
-		//add items to the queue.
+        #region Card 5 - Wizard Protest
+
+        //add items to the queue.
 		//CARD 5
 		//WIZARD PROTEST
 		deck.Enqueue (
@@ -377,7 +398,11 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 5
 		);
 
-		//add items to the queue.
+        #endregion
+
+        #region Card 6 - Thrill of the Hunt
+
+        //add items to the queue.
 		//CARD 6
 		//THRILL OF THE HUNT
 		deck.Enqueue (
@@ -446,8 +471,11 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 6
 		);
 
+        #endregion
 
-		//add items to the queue.
+        #region Card 7 - Wildfire
+
+        //add items to the queue.
 		//CARD 7
 		//WILDFIRE
 		deck.Enqueue (
@@ -512,6 +540,9 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 7
 		);
 
+        #endregion
+
+        #region Card 8 - The Plague
 
         //add items to the queue.
         //CARD 8
@@ -578,6 +609,10 @@ public class Deck : MonoBehaviour {
             )
         //end of enqueue card 8
         );
+
+        #endregion
+
+        #region Card 9 - Bandits
 
         //add items to the queue.
         //CARD 9
@@ -658,6 +693,10 @@ public class Deck : MonoBehaviour {
         //end of enqueue card 9
         );
 
+        #endregion
+
+        #region Card 10 - Fleeing Refugees
+
         //add items to the queue.
         //CARD 10
         //FLEEING REFUGEES
@@ -731,6 +770,10 @@ public class Deck : MonoBehaviour {
         //end of enqueue card 10
         );
 
+        #endregion
+
+        #region Card 11 - Blood for the Blood God
+
         //add items to the queue.
         //CARD 11
         //BLOOD FOR THE BLOOD GOD
@@ -803,6 +846,10 @@ public class Deck : MonoBehaviour {
         //end of enqueue card 11
         );
 
+        #endregion
+
+        #region Card 12 - Festival of Love
+
         //add items to the queue.
         //CARD 12
         //FESTIVAL OF LOVE
@@ -867,12 +914,10 @@ public class Deck : MonoBehaviour {
             )
         //end of enqueue card 12
         );
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        #endregion
 
+        #region Card 13 - Traders
 
         //add eighth card-------------------------------------------------------------------------------------------------------------------------------
         //CARD 8----------------------------------------------------------------------------------------------------------------------------------------
@@ -941,6 +986,10 @@ public class Deck : MonoBehaviour {
         //end of enqueue card 8
         );
 
+        #endregion
+
+        #region Card 14 - Poachers
+
         //add ninth card------------------------------------------------------------------------------------------------------------------------
         //CARD 9--------------------------------------------------------------------------------------------------------------------------------
         //Poachers------------------------------------------------------------------------------------------------------------------------------
@@ -1006,6 +1055,10 @@ public class Deck : MonoBehaviour {
         //end of enqueue card 9
         );
 
+        #endregion
+
+        #region Card 15 - Raid
+
         //add tenth card-------------------------------------------------------------------------------------------------------------------------------
         //CARD 10--------------------------------------------------------------------------------------------------------------------------------------
         //A Raiding Party------------------------------------------------------------------------------------------------------------------------------
@@ -1065,6 +1118,10 @@ public class Deck : MonoBehaviour {
             )
         //end of enqueue card 10
         );
+
+        #endregion
+
+        #region Card 16 - Severe Thunderstorm
 
         //add tenth card-------------------------------------------------------------------------------------------------------------------------------
         //CARD 11--------------------------------------------------------------------------------------------------------------------------------------
@@ -1130,6 +1187,10 @@ public class Deck : MonoBehaviour {
         //end of enqueue card 11
         );
 
+        #endregion
+
+        #region Card 17 - Tornado
+
         //add tenth card-------------------------------------------------------------------------------------------------------------------------------
         //CARD 12--------------------------------------------------------------------------------------------------------------------------------------
         //Tornado------------------------------------------------------------------------------------------------------------------------------
@@ -1193,6 +1254,10 @@ public class Deck : MonoBehaviour {
             )
         //end of enqueue card 12
         );
+
+        #endregion
+
+        #region Card 18 - Severe Flooding
 
         //add tenth card-------------------------------------------------------------------------------------------------------------------------------
         //CARD 13--------------------------------------------------------------------------------------------------------------------------------------
@@ -1258,6 +1323,10 @@ public class Deck : MonoBehaviour {
         //end of enqueue card 13
         );
 
+        #endregion
+
+        #region Card 19 - Poor Soil
+
         //add tenth card-------------------------------------------------------------------------------------------------------------------------------
         //CARD 14--------------------------------------------------------------------------------------------------------------------------------------
         //Poor Soil------------------------------------------------------------------------------------------------------------------------------
@@ -1319,6 +1388,10 @@ public class Deck : MonoBehaviour {
         //end of enqueue card 14
         );
 
+        #endregion
+
+        #region Card 20 - What You Buyin'?
+
         //add tenth card-------------------------------------------------------------------------------------------------------------------------------
         //CARD 15--------------------------------------------------------------------------------------------------------------------------------------
         //What You Buyin'------------------------------------------------------------------------------------------------------------------------------
@@ -1376,6 +1449,10 @@ public class Deck : MonoBehaviour {
             )
         //end of enqueue card 15
         );
+
+        #endregion
+
+        #region Card 21 - King of Plebians
 
         //add tenth card-------------------------------------------------------------------------------------------------------------------------------
         //CARD 16--------------------------------------------------------------------------------------------------------------------------------------
@@ -1446,6 +1523,10 @@ public class Deck : MonoBehaviour {
         //end of enqueue card 16
         );
 
+        #endregion
+
+        #region Card 22 - Hercules
+
         //add twenty-fourth card-------------------------------------------------------------------------------------------------------------------------------
         //CARD 24--------------------------------------------------------------------------------------------------------------------------------------
         //Hercules------------------------------------------------------------------------------------------------------------------------------
@@ -1515,6 +1596,10 @@ public class Deck : MonoBehaviour {
             )
         //end of enqueue card 24
         );
+
+        #endregion
+
+        #region Card 23 - Ominous Vision
 
         //add twenty-fifth card-------------------------------------------------------------------------------------------------------------------------------
         //CARD 25--------------------------------------------------------------------------------------------------------------------------------------
@@ -1587,6 +1672,10 @@ public class Deck : MonoBehaviour {
         //end of enqueue card 25
         );
 
+        #endregion
+
+        #region Card 24 - Boulder
+
         //-------------------------------------------------------------------------------------------------------------------------------
         //--------------------------------------------------------------------------------------------------------------------------------------
         //BOULDER------------------------------------------------------------------------------------------------------------------------------
@@ -1650,6 +1739,10 @@ public class Deck : MonoBehaviour {
             )
         //end of enqueue card
         );
+
+        #endregion
+
+        #region Card 25 - Stampede
 
         //-------------------------------------------------------------------------------------------------------------------------------
         //--------------------------------------------------------------------------------------------------------------------------------------
@@ -1716,6 +1809,10 @@ public class Deck : MonoBehaviour {
         //end of enqueue card
         );
 
+        #endregion
+
+        #region Card 26 - Cats Cats Cats
+
         //add items to the queue.
         //CARD 26
         //Cats Cats Cats
@@ -1779,6 +1876,10 @@ public class Deck : MonoBehaviour {
                 )
             //end of enqueue card 26
             );
+
+        #endregion
+
+        #region Card 27 - Round Portal of Heaven
 
         //add items to the queue.
         //CARD 27
@@ -1849,6 +1950,10 @@ public class Deck : MonoBehaviour {
             //end of enqueue card 27
             );
 
+        #endregion
+
+        #region Card 28 - Aliens
+
         //add items to the queue.
         //CARD 28
         //Aliens
@@ -1912,6 +2017,10 @@ public class Deck : MonoBehaviour {
                 )
             //end of enqueue card 28
             );
+
+        #endregion
+
+        #region Card 29 - Titanfall
 
         //add items to the queue.
         //CARD 29
@@ -1979,6 +2088,10 @@ public class Deck : MonoBehaviour {
                 )
             //end of enqueue card 29
             );
+
+        #endregion
+
+        #region Card 30 - For the Empire
 
         //add items to the queue.
         //CARD 30
@@ -2050,6 +2163,10 @@ public class Deck : MonoBehaviour {
             //end of enqueue card 30
             );
 
+        #endregion
+
+        #region Card 31 - Lair of the Shadow Broker
+
         //add items to the queue.
         //CARD 31
         //Lair of the Shadow Broker
@@ -2109,7 +2226,11 @@ public class Deck : MonoBehaviour {
             //end of enqueue card 31
             );
 
-		//add items to the queue.
+        #endregion
+
+        #region Card 32 - Moving Mountains
+
+        //add items to the queue.
 		//CARD 32
 		//Moving Mountains
 		deck.Enqueue(
@@ -2176,7 +2297,11 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 32
 		);
 
-		//add items to the queue.
+        #endregion
+
+        #region Card 33 - Message Man
+
+        //add items to the queue.
 		//CARD 33
 		//Message Man
 		deck.Enqueue(
@@ -2240,7 +2365,11 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 33
 		);
 
-		//add items to the queue.
+        #endregion
+
+        #region Card 34 - Black Market
+
+        //add items to the queue.
 		//CARD 34
 		//Black Market
 		deck.Enqueue(
@@ -2310,7 +2439,11 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 34
 		);
 
-		//add items to the queue.
+        #endregion
+
+        #region Card 35 - In the Wild
+
+        //add items to the queue.
 		//CARD 35
 		//In The Wild
 		deck.Enqueue(
@@ -2370,7 +2503,11 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 35
 		);
 
-		//add items to the queue
+        #endregion
+
+        #region Card 36 - Ambushed
+
+        //add items to the queue
 		//CARD 36
 		//Ambushed
 		deck.Enqueue(
@@ -2430,7 +2567,11 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 36
 		);
 
-		//add items to the queue.
+        #endregion
+
+        #region Card 37 - Negotiations
+
+        //add items to the queue.
 		//CARD 37
 		//Negotiations
 		deck.Enqueue(
@@ -2497,7 +2638,11 @@ public class Deck : MonoBehaviour {
 			//end of enqueue card 37
 		);
 
-		//add items to the queue.
+        #endregion
+
+        #region Card 38 - BAM
+
+        //add items to the queue.
 		//CARD 38
 		//BAM
 		deck.Enqueue(
@@ -2565,9 +2710,18 @@ public class Deck : MonoBehaviour {
 			)
 			//end of enqueue card 38
 		);
+
+        #endregion
+
+        #endregion
+
+        // Shuffles the deck after creating all of its cards
+        Shuffle();
     }
 
     #endregion
+
+    #region Public Methods
 
     //removed card from the deck
     public Card Dequeue()
@@ -2611,4 +2765,6 @@ public class Deck : MonoBehaviour {
         //delete = true;
         Object.Destroy(currCard);
     }
+
+    #endregion
 }

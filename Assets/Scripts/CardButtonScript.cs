@@ -7,7 +7,7 @@ public class CardButtonScript : MonoBehaviour {
 
     #region fields
 
-    GameObject toolTipPrefab;
+    public GameObject toolTipPrefab;
     GameObject thisToolTip;
     public int cardButtonNumber;
 
@@ -18,7 +18,7 @@ public class CardButtonScript : MonoBehaviour {
     void Start ()
     {
         //get tooltip from parent class
-        toolTipPrefab = GetComponentInParent<CardPrefab>().toolTipPrefab;
+        //toolTipPrefab = GetComponentInParent<CardPrefab>().toolTipPrefab;
 	}
 	
 	// Update is called once per frame
@@ -44,7 +44,9 @@ public class CardButtonScript : MonoBehaviour {
         thisToolTip.GetComponent<RectTransform>().localPosition = new Vector3(175, 20);
 
         //set data
-        thisToolTip.GetComponentInChildren<Text>().text = GetComponentInParent<CardPrefab>().choices[cardButtonNumber].GetWinEffects();
+        thisToolTip.GetComponentInChildren<Text>().text = 
+            GetComponentInParent<CardPrefab>().GetCurrentCard().choices[cardButtonNumber].GetWinEffects()
+            + GetComponentInParent<CardPrefab>().GetCurrentCard().choices[cardButtonNumber].GetLossEffects();
     }
 
     //destroy

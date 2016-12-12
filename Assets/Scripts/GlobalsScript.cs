@@ -30,7 +30,6 @@ public class GlobalsScript : MonoBehaviour {
     int currPlayerCount = 0;
     int currPlayerTurn = 0;
     List<PlayerClass> players;
-    Deck deck;
 
     //static GlobalsScript instance;
 
@@ -69,15 +68,6 @@ public class GlobalsScript : MonoBehaviour {
     #endregion
 
     #region Properties
-
-    public Deck PlayDeck
-    {
-        get
-        {
-            return deck;
-        }
-    }
-
 
     public static int NumberofPlayers
     {

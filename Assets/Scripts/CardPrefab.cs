@@ -133,6 +133,12 @@ namespace Assets.Scripts
             menu.exitDrawCardPhase();
         }
 
+        // This is the accessor for the card being used
+        public Card GetCurrentCard()
+        {
+            return card;
+        }
+
         // Update method, called every frame
         public void Update()
         {
