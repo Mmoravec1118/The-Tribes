@@ -45,7 +45,37 @@ public class DisplayPlayerInfo : MonoBehaviour {
              + "  Stone:  " + currplayer.Stone + "\n"
              + "  Food:   " + currplayer.Food + "\n"
              + "  People: " + currplayer.People + "\n"
-             + "Victory Points:" + currplayer.VictoryPoints;
+             + "Victory Points:" + currplayer.VictoryPoints + "\n"
+             + "Area Efects:";
+        switch (currplayer.Area)
+        {
+            case GlobalsScript.Areas.Plain:
+                {
+                    playerDisplay.text += "\n"  + "Fields improve your agricultural capabilities. when you harvest food, +3 food";
+                    break;
+                }
+            case GlobalsScript.Areas.Mountain:
+                {
+                    playerDisplay.text += "\n" + "Mountains, If you collect stone +2 to stone +1 str";
+                    break;
+                }
+            case GlobalsScript.Areas.Forest:
+                {
+                    playerDisplay.text += "\n" + "Forest gives you +3 wood when collecting wood";
+                    break;
+                }
+            case GlobalsScript.Areas.Desert:
+                {
+                    playerDisplay.text += "\n" + "The Desert tests your skills. Raise SR +2";
+                    break;
+                }
+            case GlobalsScript.Areas.Swamp:
+                {
+                    playerDisplay.text += "\n" + "The Swamp improve your tribes agility +1 and food +2 when harvesting";
+                    break;
+                }
+        }
+
     }
 
     #endregion

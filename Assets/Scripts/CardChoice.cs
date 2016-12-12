@@ -131,7 +131,7 @@ public class CardChoice
             menu.exitDrawCardPhase();
         } */
 
-    }
+    //}
 
     public string GetWinEffects()
     {
