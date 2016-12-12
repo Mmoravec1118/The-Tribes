@@ -61,7 +61,7 @@ namespace Assets.Scripts
             menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
             // Add to player story
-            globals.GetPlayer().Story += card.title + card.description;
+            globals.GetPlayer().Story += "-" + card.title + "- " + card.description + " ";
 
             // Initializes the card so that no option has been chosen yet
             cardPrefabState = CardPrefabState.Waiting;

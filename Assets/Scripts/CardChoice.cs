@@ -170,14 +170,14 @@ public class CardChoice
                     {
                         currCard.descriptionMesh.text = winText;
                         // add to player story
-                        globals.GetPlayer().Story += winText;
+                        globals.GetPlayer().Story += winText + "\n";
                         return true;
                     }
                     else
                     {
                         currCard.descriptionMesh.text = lossText;
                         // add to player story
-                        globals.GetPlayer().Story += lossText;
+                        globals.GetPlayer().Story += lossText + "\n";
                         return false;
                     }
                    // break;
@@ -188,14 +188,14 @@ public class CardChoice
                     {
                         currCard.descriptionMesh.text = winText;
                         // add to player story
-                        globals.GetPlayer().Story += winText;
+                        globals.GetPlayer().Story += winText + "\n";
                         return true;
                     }
                     else
                     {
                         currCard.descriptionMesh.text = lossText;
                         // add to player story
-                        globals.GetPlayer().Story += lossText;
+                        globals.GetPlayer().Story += lossText + "\n";
                         return false;
                     }
                   //  break;
@@ -206,14 +206,14 @@ public class CardChoice
                     {
                         currCard.descriptionMesh.text = winText;
                         // add to player story
-                        globals.GetPlayer().Story += winText;
+                        globals.GetPlayer().Story += winText + "\n";
                         return true;
                     }
                     else
                     {
                         currCard.descriptionMesh.text = lossText;
                         // add to player story
-                        globals.GetPlayer().Story += lossText;
+                        globals.GetPlayer().Story += lossText + "\n";
                         return false;
                     }
                  //   break;
@@ -224,14 +224,14 @@ public class CardChoice
                     {
                         currCard.descriptionMesh.text = winText;
                         // add to player story
-                        globals.GetPlayer().Story += winText;
+                        globals.GetPlayer().Story += winText + "\n";
                         return true;
                     }
                     else
                     {
                         currCard.descriptionMesh.text = lossText;
                         // add to player story
-                        globals.GetPlayer().Story += lossText;
+                        globals.GetPlayer().Story += lossText + "\n";
                         return false;
                     }
                  //   break;
@@ -242,14 +242,14 @@ public class CardChoice
                     {
                         currCard.descriptionMesh.text = winText;
                         // add to player story
-                        globals.GetPlayer().Story += winText;
+                        globals.GetPlayer().Story += winText + "\n";
                         return true;
                     }
                     else
                     {
                         currCard.descriptionMesh.text = lossText;
                         // add to player story
-                        globals.GetPlayer().Story += lossText;
+                        globals.GetPlayer().Story += lossText + "\n";
                         return false;
                     }
               //      break;
