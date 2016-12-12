@@ -41,6 +41,9 @@ public class PlayerClass
     //Current area of tribe
     GlobalsScript.Areas currArea;
 
+    // player story for end game display
+    string playerStory = "";
+
     #endregion
 
     #region Constructor
@@ -213,6 +216,18 @@ public class PlayerClass
         set
         {
             currArea = value;
+        }
+    }
+
+    public string Story
+    {
+        get
+        {
+            return playerStory;
+        }
+        set
+        {
+            playerStory = value;
         }
     }
 

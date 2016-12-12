@@ -10,14 +10,14 @@ public class MenuButtonScript : MonoBehaviour {
     [SerializeField] GameObject RecruitPanel;
     [SerializeField] GameObject UpgradePanel;
     [SerializeField] GameObject RelocatePanel;
-    [SerializeField] GameObject TradePanel;
+  //  [SerializeField] GameObject TradePanel;
 
     [SerializeField] GameObject HarvestButton;
     [SerializeField] GameObject CraftButton;
     [SerializeField] GameObject RecruitButton;
     [SerializeField] GameObject UpgradeButton;
     [SerializeField] GameObject RelocateButton;
-    [SerializeField] GameObject TradeButton;
+  //  [SerializeField] GameObject TradeButton;
 
     Card currCard;
 
@@ -53,10 +53,10 @@ public class MenuButtonScript : MonoBehaviour {
         RelocatePanel.SetActive(TF);
     }
 
-    public void activateTradePanel(bool TF)
-    {
-        TradePanel.SetActive(TF);
-    }
+    //public void activateTradePanel(bool TF)
+    //{
+    //    TradePanel.SetActive(TF);
+    //}
     //Harvest adds one Wood, Stone, or Food to the players assests
     //Needs choice input for which to add
     public void Harvest (GlobalsScript.Resources choice) {
@@ -97,23 +97,49 @@ public class MenuButtonScript : MonoBehaviour {
 
     public void HarvestFood()
     {
-        globals.GetPlayer().Food += 1;
+        if (globals.GetPlayer().Area == GlobalsScript.Areas.Plain)
+        {
+            globals.GetPlayer().Food += 3;
+        }
+        else if (globals.GetPlayer().Area == GlobalsScript.Areas.Swamp)
+        {
+            globals.GetPlayer().Food += 2;
+        }
+        else
+        {
+            globals.GetPlayer().Food += 1;
+        }
     }
 
     public void HarvestStone()
     {
-        globals.GetPlayer().Stone += 1;
+        if (globals.GetPlayer().Area == GlobalsScript.Areas.Mountain)
+        {
+            globals.GetPlayer().Stone += 2;
+        }
+        else
+        {
+            globals.GetPlayer().Stone += 1;
+        }
+        
     }
 
     public void HarvestWood()
     {
-        globals.GetPlayer().Wood += 1;
+        if (globals.GetPlayer().Area == GlobalsScript.Areas.Forest)
+        {
+            globals.GetPlayer().Wood += 3;
+        }
+        else
+        {
+            globals.GetPlayer().Wood += 1;
+        }
     }
 
 	//-1 Wood & -1 Stone for a tool
 	//Needs choice for tool
 	//Input for choice for tool?
-	public void Craft (GlobalsScript.Traits trait) {
+	public void Craft () {
 		// check if player can create a tool
         if (globals.GetPlayer().Wood > 0 &&
             globals.GetPlayer().Stone > 0 )
@@ -123,6 +149,28 @@ public class MenuButtonScript : MonoBehaviour {
             globals.GetPlayer().Stone -= 1;
 
             // Add one point to player stat of choice
+            int r = Random.Range(0, 5);
+            switch (r)
+            {
+                case 0:
+                    globals.GetPlayer().Strength++;
+                    break;
+                case 1:
+                    globals.GetPlayer().Notoriety++;
+                    break;
+                case 2:
+                    globals.GetPlayer().Agility++;
+                    break;
+                case 3:
+                    globals.GetPlayer().Trust++;
+                    break;
+                case 4:
+                    globals.GetPlayer().Survival++;
+                    break;
+
+                default:
+                    break;
+            }
         }
         else
         {
@@ -172,15 +220,25 @@ public class MenuButtonScript : MonoBehaviour {
         //Move player to location
         int r = Random.Range(0, 5);
         GlobalsScript.Areas currArea = globals.GetPlayer().Area;
+        if (currArea == GlobalsScript.Areas.Desert)
+        {
+            globals.GetPlayer().Survival -= 2;
+        }
+        if (currArea == GlobalsScript.Areas.Mountain)
+        {
+            globals.GetPlayer().Strength -= 1;
+        }
 
         switch (r)
         {
             case 0:
                 globals.GetPlayer().Area = GlobalsScript.Areas.Desert;
+                globals.GetPlayer().Survival += 2;
                 break;
 
             case 1:
                 globals.GetPlayer().Area = GlobalsScript.Areas.Mountain;
+                globals.GetPlayer().Strength += 1;
                 break;
 
             case 2:
@@ -234,7 +292,7 @@ public class MenuButtonScript : MonoBehaviour {
         // check food storage
         if (globals.GetPlayer().Food >= 2)
         {
-            globals.GetPlayer().People += 2;
+            globals.GetPlayer().People += 1;
         }
         else
         {
@@ -246,14 +304,14 @@ public class MenuButtonScript : MonoBehaviour {
         CraftButton.SetActive(false);
         HarvestButton.SetActive(false);
         RecruitButton.SetActive(false);
-        TradeButton.SetActive(false);
+     //   TradeButton.SetActive(false);
         RelocateButton.SetActive(false);
         UpgradeButton.SetActive(false);
 
         CraftPanel.SetActive(false);
         HarvestPanel.SetActive(false);
         RecruitPanel.SetActive(false);
-        TradePanel.SetActive(false);
+     //   TradePanel.SetActive(false);
         RelocatePanel.SetActive(false);
         UpgradePanel.SetActive(false);
 
@@ -266,14 +324,14 @@ public class MenuButtonScript : MonoBehaviour {
         CraftButton.SetActive(true);
         HarvestButton.SetActive(true);
         RecruitButton.SetActive(true);
-        TradeButton.SetActive(true);
+      //  TradeButton.SetActive(true);
         RelocateButton.SetActive(true);
         UpgradeButton.SetActive(true);
 
         CraftPanel.SetActive(false);
         HarvestPanel.SetActive(false);
         RecruitPanel.SetActive(false);
-        TradePanel.SetActive(false);
+     //   TradePanel.SetActive(false);
         RelocatePanel.SetActive(false);
         UpgradePanel.SetActive(false);
 
