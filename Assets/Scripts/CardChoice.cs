@@ -94,14 +94,13 @@ public class CardChoice
         }
     }
 
-    #endregion
-
-    #region Button Methods
-
-    // first button of card
-    public void CardChoice1()
+    //allows a button index to convert text for the tooltip.
+    public string GetToolTipText()
     {
-        // get reference to dieroller object
+        return description;
+    }
+
+    /*    // get reference to dieroller object
         die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
 
         
@@ -130,70 +129,69 @@ public class CardChoice
             die.NeedsRoll = true;
             globals.PlayerTurn += 1;
             menu.exitDrawCardPhase();
-        }
+        } */
+
     }
 
-    // second button on card
-    public void CardChoice2()
+    public string GetWinEffects()
     {
+
+        // Assigns a string to return and adds the necessary info to that string
+        string output;
+        output = "If You Win: \n";
+
         // get reference to dieroller object
         die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
 
-        CheckResult();
-        if (win)
+
+        foreach (Effect winEffect in winEffects)
         {
-            foreach (Effect effect in winEffects)
+            // If the effect is for a trait, add the trait and the numerical effect to the win effect string.
+            // If the effect is not for a trait, assume it's a resource one and add it and its numerical effect to the string.
+            if (winEffect.IsTrait() == true)
             {
-                effect.ApplyEffect();
+                output += winEffect.GetTrait.ToString() + " +" + winEffect.GetChange.ToString() + "; ";
             }
-            currPlayer.VictoryPoints++;
-            die.NeedsRoll = true;
-            globals.PlayerTurn += 1;
-            menu.exitDrawCardPhase();
-        }
-        else
-        {
-            foreach (Effect effect in lossEffects)
+            else
             {
-                effect.ApplyEffect();
+                output += winEffect.GetResource.ToString() + " +" + winEffect.GetChange.ToString() + "; ";
             }
-          //  currPlayer.Food--;
-            die.NeedsRoll = true;
-            globals.PlayerTurn += 1;
-            menu.exitDrawCardPhase();
         }
+        output += "\n";
+        return output;
     }
 
-    // third button on card
-    public void CardChoice3()
+    public string GetLossEffects()
     {
+
+        // Assigns a string to return and adds the necessary info to that string
+        string output;
+        output = "If You Lose: \n";
+
         // get reference to dieroller object
         die = MonoBehaviour.FindObjectOfType<DieScript>().GetComponent<DieScript>();
 
-        CheckResult();
-        if (win)
+
+        foreach (Effect lossEffect in lossEffects)
         {
-            foreach (Effect effect in winEffects)
+            // If the effect is for a trait, add the trait and the numerical effect to the lose effect string.
+            // If the effect is not for a trait, assume it's a resource one and add it and its numerical effect to the string.
+            if (lossEffect.IsTrait() == true)
             {
-                effect.ApplyEffect();
+                output += lossEffect.GetTrait.ToString() + " " + lossEffect.GetChange.ToString() + "; ";
             }
-            currPlayer.VictoryPoints++;
-            die.NeedsRoll = true;
-            globals.PlayerTurn += 1;
-            menu.exitDrawCardPhase();
-        }
-        else
-        {
-            foreach (Effect effect in lossEffects)
+            else
             {
-                effect.ApplyEffect();
+                output += lossEffect.GetResource.ToString() + " " + lossEffect.GetChange.ToString() + "; ";
             }
-            //currPlayer.People--;
-            die.NeedsRoll = true;
-            globals.PlayerTurn += 1;
-            menu.exitDrawCardPhase();
         }
+        output += "\n";
+        return output;
     }
+
+    #endregion
+
+    #region Button Methods
 
     // checks result of player stats + die result against card cost
     public bool CheckResult()
@@ -322,9 +320,6 @@ public class Effect
     GlobalsScript.Traits toChangeTrait;
 	GlobalsScript.Resources toChangeResource;
 
-    // bool if things should change and what to change
-    bool ChangeStuff = false;
-
     bool trait = false;
     bool resource = false;
 
@@ -366,31 +361,26 @@ public class Effect
                 case GlobalsScript.Traits.Agility:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Agility += change;
-                        ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Traits.Strength:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Strength += change;
-                        ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Traits.Notoriety:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Notoriety += change;
-                        ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Traits.Survival:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Survival += change;
-                        ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Traits.Trust:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Trust += change;
-                        ChangeStuff = false;
                         break;
                     }
             }
@@ -408,25 +398,21 @@ public class Effect
                 case GlobalsScript.Resources.Wood:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Wood += change;
-                        ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Resources.Stone:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Stone += change;
-                        ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Resources.Food:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().Food += change;
-                        ChangeStuff = false;
                         break;
                     }
                 case GlobalsScript.Resources.People:
                     {
                         MonoBehaviour.FindObjectOfType<GlobalsScript>().GetPlayer().People += change;
-                        ChangeStuff = false;
                         break;
                     }
             }
@@ -462,11 +448,18 @@ public class Effect
         }
     }
 
-    public bool SetChange
+    // Returns whether the effect is for a trait or not.
+    // Because there are only two types of effects - traits and resources - hypothetically
+    // by not being a trait, you could assume the effect is a resource one.
+    public bool IsTrait()
     {
-        set
+        if (trait == true && resource == false)
         {
-            ChangeStuff = value;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 

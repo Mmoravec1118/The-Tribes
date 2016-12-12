@@ -8,11 +8,8 @@ using System;
 /// </summary>
 public class PlayerSelectionController : MonoBehaviour {
 
-    int playersCount = 1;
     int currentPlayer = 1;
-    //int tempPlayerCount = 0;
 
-    string playerCountKeyString = "";
     string currentPlayerTribeKeyString = "";
     string currentPlayerStrengthKeyString = "";
     string currentPlayerAgilityKeyString = "";
@@ -78,11 +75,6 @@ public class PlayerSelectionController : MonoBehaviour {
     public string GetCurrentNotorietyStatKey()
     {
         return currentPlayerNotorietyKeyString;
-    }
-
-    public void SetPlayerCount(int numberOfPlayers)
-    {
-        playersCount = numberOfPlayers;
     }
 
     public int GetCurrentPlayerNumber()

@@ -95,19 +95,20 @@ public class PlayerSetupButtonScript : MonoBehaviour {
     {
         if (okbutton.gameObject.activeInHierarchy == false || okbutton.gameObject.activeInHierarchy == true)
         {
-            if (tribeType != null 
-                && (strengthStat + agilityStat + trustStat + survivalStat + notorietyStat) == GlobalsScript.statMax)
+            if ((strengthStat + agilityStat + trustStat + survivalStat + notorietyStat) == GlobalsScript.statMax)
             {
                 warningText.gameObject.SetActive(false);
             okbutton.gameObject.SetActive(true);
         }
 
-            else if (tribeType == null)
-            {
-                okbutton.gameObject.SetActive(false);
-                warningText.text = "Please select a tribe";
-                warningText.gameObject.SetActive(true);
-            }
+            // COMMENTED OUT BECAUSE COMPARING TRIBE TYPE WITH NULL ALWAYS RESULTS IN TRUE
+            //
+            //else if (tribeType == null)
+            //{
+            //    okbutton.gameObject.SetActive(false);
+            //    warningText.text = "Please select a tribe";
+            //    warningText.gameObject.SetActive(true);
+            //}
 
             else if ((strengthStat + agilityStat + trustStat + survivalStat + notorietyStat) > GlobalsScript.statMax)
             {
