@@ -101,7 +101,7 @@ public class CardChoice
         currCard = MonoBehaviour.FindObjectOfType<CardPrefab>();
         menu = MonoBehaviour.FindObjectOfType<MenuButtonScript>();
 
-        CheckResult();
+        win = CheckResult();
         if (win)
         {
             //foreach (Effect effect in winEffects)

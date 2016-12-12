@@ -31,11 +31,13 @@ public class PlayerSetupCanvasTextHandler : MonoBehaviour {
         {
             currPlayer = playerSetupButtonScript.GetCurrentPlayerClass();
 
-            statDisplay.text += "Strength: " + currPlayer.Strength.ToString() + ";";
-            statDisplay.text += "Agility: " + currPlayer.Agility.ToString() + ";";
-            statDisplay.text += "Trust: " + currPlayer.Trust.ToString() + ";";
-            statDisplay.text += "Survival : " + currPlayer.Survival.ToString() + ";";
-            statDisplay.text += "Notoriety : " + currPlayer.Notoriety.ToString() + ";";
+            statDisplay.text += "Tribe Name: " + currPlayer.Name + "\n";
+            statDisplay.text += "Tribe Type: " + currPlayer.Tribe.ToString() + "\n";
+            statDisplay.text += "Strength: " + currPlayer.Strength.ToString() + "\n";
+            statDisplay.text += "Agility: " + currPlayer.Agility.ToString() + "\n";
+            statDisplay.text += "Trust: " + currPlayer.Trust.ToString() + "\n";
+            statDisplay.text += "Survival : " + currPlayer.Survival.ToString() + "\n";
+            statDisplay.text += "Notoriety : " + currPlayer.Notoriety.ToString() + "\n";
         }
 	}
 }

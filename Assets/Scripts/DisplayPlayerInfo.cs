@@ -8,41 +8,31 @@ public class DisplayPlayerInfo : MonoBehaviour {
     // text box for displaying player info
     Text playerDisplay;
 
-    // list of players playing
-    //List<PlayerClass> players = new List<PlayerClass>();
-
     // current player turn
-    int currTurn = 1;
+    int currTurn = 0;
 
-    // previouse players turn
-    // starts at zero for easier initialization
-    //int prevTurn = 0;
+    // saved reference to globals script
     GlobalsScript globals;
 
 	// Use this for initialization
 	void Start () {
 
         playerDisplay = GetComponent<Text>();
-        //for (int i = 0; i < GlobalsScript.NumberofPlayers; i++)
-        //{
-        //    players.Add(FindObjectOfType<GlobalsScript>().GetPlayer(i));
-        //}
-        //globals = FindObjectOfType<GlobalsScript>();
-	
-	}
+        globals = FindObjectOfType<GlobalsScript>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
         DisplayText();
-
     }
 
     #region Methods
 
     public void DisplayText()
     {
-        PlayerClass currplayer = FindObjectOfType<GlobalsScript>().GetPlayer();
+        PlayerClass currplayer = globals.GetPlayer();
         playerDisplay.text = "Tribe Name: " + currplayer.Name + "\n"
              + "Player Stats:" + "\n"
              + "  Strength:  " + currplayer.Strength + "\n"
@@ -64,17 +54,6 @@ public class DisplayPlayerInfo : MonoBehaviour {
     #region Properties
 
     /// <summary>
-    /// Adds a new player to the list of current players
-    /// </summary>
-    //public PlayerClass Players
-    //{
-    //    set
-    //    {
-    //        players.Add(value);
-    //    }
-    //}
-
-    /// <summary>
     /// returns current player turn or adds value to player turn
     /// </summary>
     public int CurrentTurn
@@ -86,10 +65,17 @@ public class DisplayPlayerInfo : MonoBehaviour {
         set
         {
             currTurn += value;
+
+            // Loops current turn back to 0 if if exceeds the list capacity
+            if (currTurn >= GlobalsScript.NumberofPlayers)
+            {
+                currTurn = 0;
+            }
+
+            // Updates the displayed text to current player info
+            //DisplayText(currTurn);
         }
     }
-
-
 
     #endregion
 

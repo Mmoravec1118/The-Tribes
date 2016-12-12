@@ -7,9 +7,24 @@ public class PlayerClass
 
     #region Fields
 
+    #region Serializable Fields
+    // serializable fields
+    [SerializeField]
+    Texture2D warriorToken;
+    [SerializeField]
+    Texture2D banditToken;
+    [SerializeField]
+    Texture2D agriculturToken;
+    [SerializeField]
+    Texture2D peacefulToken;
+    [SerializeField]
+    Texture2D nomadToken;
+    #endregion
+
     // dictionaries for stats and resources
     Dictionary<GlobalsScript.Traits, int> statDictionary = new Dictionary<GlobalsScript.Traits, int>();
     Dictionary<GlobalsScript.Resources, int> resourceDictionary = new Dictionary<GlobalsScript.Resources, int>();
+
 
     // victory point counter
     int victoryPoint = 0;
@@ -18,7 +33,7 @@ public class PlayerClass
     string name = "";
 
     //Tribe type
-    //TribeType tribeType;
+    GlobalsScript.TribeType tribeType;
 
     // bool for tool creation
     bool hasTool = false;
@@ -34,6 +49,7 @@ public class PlayerClass
     {
         // Initializes all values to default
         ResetPlayerValues();
+
     }
 
     #endregion
@@ -163,6 +179,18 @@ public class PlayerClass
         }
     }
 
+    public GlobalsScript.TribeType Tribe
+    {
+        get
+        {
+            return tribeType;
+        }
+        set
+        {
+            tribeType = value;
+        }
+    }
+
     // get or set victory points
     public int VictoryPoints
     {
@@ -200,6 +228,18 @@ public class PlayerClass
         }
     }
 
+    public GlobalsScript.TribeType TribeType
+    { get
+        {
+            return tribeType;
+        }
+        set
+        {
+            tribeType = value;
+        }
+    }
+
+
 
     #endregion
 
@@ -223,7 +263,9 @@ public class PlayerClass
         resourceDictionary[GlobalsScript.Resources.Wood] = 4;
 
         currArea = GlobalsScript.Areas.Plain;
-    }
+
+        name = "";
+    }       
 
     #endregion
 }

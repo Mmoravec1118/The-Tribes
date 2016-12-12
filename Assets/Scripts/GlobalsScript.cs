@@ -9,7 +9,7 @@ public class GlobalsScript : MonoBehaviour {
 
     // Tribe type enumeration
     public enum TribeType
-    { Barbarian, PeaceMaker, Nomad, Farmer, Gaility }
+    { Warrior, Bandit, Nomad, Peaceful }
 
     // Card Types
     public enum CardType { Event, GlobalEvent, Scar }
@@ -21,7 +21,7 @@ public class GlobalsScript : MonoBehaviour {
     public enum Resources { Wood, Stone, People, Food }
 
     // Areas
-    public enum Areas {Mountain, Plain, Swamp, Desert }
+    public enum Areas {Mountain, Plain, Swamp, Desert, Forest }
 
     #endregion
 
@@ -33,6 +33,12 @@ public class GlobalsScript : MonoBehaviour {
     Deck deck;
 
     //static GlobalsScript instance;
+
+    #endregion
+
+    #region Constants
+
+    public const int statMax = 16;
 
     #endregion
 
@@ -85,6 +91,14 @@ public class GlobalsScript : MonoBehaviour {
         }
     }
 
+    public List<PlayerClass> Players
+    {
+        get
+        {
+            return players;
+        }
+    }
+
     public int CurrentPlayerCount
     {
         get { return currPlayerCount; }
@@ -104,6 +118,11 @@ public class GlobalsScript : MonoBehaviour {
                 currPlayerTurn = 0;
             }
         }
+    }
+
+    public List<PlayerClass> GetPlayerList()
+    {
+        return players;
     }
 
     #endregion
