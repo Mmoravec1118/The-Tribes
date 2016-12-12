@@ -97,17 +97,43 @@ public class MenuButtonScript : MonoBehaviour {
 
     public void HarvestFood()
     {
-        globals.GetPlayer().Food += 1;
+        if (globals.GetPlayer().Area == GlobalsScript.Areas.Plain)
+        {
+            globals.GetPlayer().Food += 3;
+        }
+        else if (globals.GetPlayer().Area == GlobalsScript.Areas.Swamp)
+        {
+            globals.GetPlayer().Food += 2;
+        }
+        else
+        {
+            globals.GetPlayer().Food += 1;
+        }
     }
 
     public void HarvestStone()
     {
-        globals.GetPlayer().Stone += 1;
+        if (globals.GetPlayer().Area == GlobalsScript.Areas.Mountain)
+        {
+            globals.GetPlayer().Stone += 2;
+        }
+        else
+        {
+            globals.GetPlayer().Stone += 1;
+        }
+        
     }
 
     public void HarvestWood()
     {
-        globals.GetPlayer().Wood += 1;
+        if (globals.GetPlayer().Area == GlobalsScript.Areas.Forest)
+        {
+            globals.GetPlayer().Wood += 3;
+        }
+        else
+        {
+            globals.GetPlayer().Wood += 1;
+        }
     }
 
 	//-1 Wood & -1 Stone for a tool
@@ -194,15 +220,25 @@ public class MenuButtonScript : MonoBehaviour {
         //Move player to location
         int r = Random.Range(0, 5);
         GlobalsScript.Areas currArea = globals.GetPlayer().Area;
+        if (currArea == GlobalsScript.Areas.Desert)
+        {
+            globals.GetPlayer().Survival -= 2;
+        }
+        if (currArea == GlobalsScript.Areas.Mountain)
+        {
+            globals.GetPlayer().Strength -= 1;
+        }
 
         switch (r)
         {
             case 0:
                 globals.GetPlayer().Area = GlobalsScript.Areas.Desert;
+                globals.GetPlayer().Survival += 2;
                 break;
 
             case 1:
                 globals.GetPlayer().Area = GlobalsScript.Areas.Mountain;
+                globals.GetPlayer().Strength += 1;
                 break;
 
             case 2:
