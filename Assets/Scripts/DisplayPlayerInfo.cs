@@ -46,7 +46,7 @@ public class DisplayPlayerInfo : MonoBehaviour {
              + "  Food:   " + currplayer.Food + "\n"
              + "  People: " + currplayer.People + "\n"
              + "Victory Points:" + currplayer.VictoryPoints + "\n"
-             + "Area Efects:";
+             + "Area Effects:";
         switch (currplayer.Area)
         {
             case GlobalsScript.Areas.Plain:
